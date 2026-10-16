@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { band, stale, safeUrl, escapeHtml, activity, readings } from '../public/lib.mjs';
+import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore } from '../public/lib.mjs';
 test('PSI boundaries follow NEA categories, including missing data', () => {
   for (const [n, i] of [[0, 0], [50, 0], [51, 1], [100, 1], [101, 2], [200, 2], [201, 3], [300, 3], [301, 4]]) assert.equal(band(n).index, i);
   assert.equal(band(undefined).index, -1);
@@ -45,4 +45,16 @@ test('AQI follows the US EPA PM2.5 table used by aqicn.org', async () => {
   const data = { pm25: { readings: { pm25_one_hourly: { central: 164 } } }, history: { pm25: [{ timestamp: 't', values: { central: 96 } }] } };
   assert.equal(read(data, 'aqi').central, 214);
   assert.equal(history(data, 'aqi')[0].values.central, 172);
+});
+test('postal codes map to the closest NEA region', () => {
+  assert.equal(nearestRegion(1.4289, 103.8335).id, 'north'); // Yishun
+  assert.equal(nearestRegion(1.3404, 103.7090).id, 'west'); // Jurong West
+  assert.equal(nearestRegion(1.3526, 103.9447).id, 'east'); // Tampines
+  assert.equal(nearestRegion(1.2494, 103.8303).id, 'south'); // Sentosa
+  assert.equal(nearestRegion(1.3521, 103.8198).id, 'central');
+  assert.equal(postalCode(' 760 746 '), '760746');
+  assert.equal(postalCode('76074'), null);
+  assert.equal(postalCode('abcdef'), null);
+  assert.equal(inSingapore(1.35, 103.82), true);
+  assert.equal(inSingapore(1.55, 103.75), false); // Johor
 });

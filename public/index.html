@@ -7,6 +7,7 @@
   <meta name="description" content="新加坡雾霾观察站 Singapore Haze Watch：五区官方 PSI 与 PM2.5、政府公告和新闻聚合，每小时更新。Official PSI, PM2.5, advisories and news, updated hourly.">
   <title>雾霾观察站 · Singapore Haze Watch</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -61,6 +62,20 @@
         <a href="#guide"><span data-i18n="alertLink">查看健康建议</span> →</a>
       </div>
 
+      <section class="panel locate-panel" id="locate" data-i18n-attr="aria-label:postalTitle" aria-label="我的空气">
+        <form class="postal-form" id="postal-form" novalidate>
+          <label for="postal-input"><span class="heading-icon" data-icon="pin"></span><b data-i18n="postalTitle">我的空气</b><span data-i18n="postalLabel">输入邮编，查看你所在区域的空气质量</span></label>
+          <div class="postal-row">
+            <input id="postal-input" type="text" inputmode="numeric" maxlength="7" autocomplete="postal-code" data-i18n-attr="placeholder:postalPlaceholder" placeholder="例如 760746">
+            <button class="button primary" type="submit" data-i18n="postalSubmit">查询</button>
+            <button class="text-button" type="button" id="geo-button"><span data-i18n="postalGeo">使用我的位置</span></button>
+          </div>
+          <label class="remember"><input type="checkbox" id="postal-remember"> <span data-i18n="postalRemember">在本浏览器记住</span></label>
+        </form>
+        <p class="postal-status" id="postal-status" role="status" hidden></p>
+        <div class="my-air" id="my-air" hidden></div>
+      </section>
+
       <section class="stats" data-i18n-attr="aria-label:statsLabel" aria-label="全岛空气质量摘要">
         <article class="stat"><div class="stat-label"><span data-i18n="statPsi">24 小时 PSI</span><span data-icon="wind"></span></div><div class="stat-value" id="psi-range">—</div><div class="stat-bottom"><span id="psi-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPsiNote">五区读数范围</small></div></article>
         <article class="stat"><div class="stat-label"><span data-i18n="statPm">1 小时 PM2.5</span><span data-icon="particles"></span></div><div class="stat-value" id="pm-range">—</div><div class="stat-bottom"><span id="pm-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPmNote">五区读数范围</small></div></article>
@@ -96,7 +111,7 @@
             <div><h2 data-i18n="mapTitle">五区空气质量</h2><p data-i18n="mapSub">点击区域查看趋势</p></div>
             <div class="segmented" id="metric-switch" role="group" data-i18n-attr="aria-label:mapMetric" aria-label="地图指标"><button class="selected" data-metric="psi" aria-pressed="true">PSI 24h</button><button data-metric="pm25" aria-pressed="false">PM2.5 1h</button><button data-metric="aqi" aria-pressed="false">AQI</button></div>
           </div>
-          <div class="map-wrap"><div class="map-corner"><span class="live-dot"></span><span id="map-observed">NEA</span></div><svg class="island-map" viewBox="0 0 720 370" role="img" data-i18n-attr="aria-label:mapAria" aria-label="新加坡五区空气质量示意图"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity=".13"/></pattern><linearGradient id="island-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6ebe2"/><stop offset="1" stop-color="#d3e0d8"/></linearGradient></defs><rect width="720" height="370" fill="url(#dots)"/><text x="72" y="62" class="water-label">JOHOR BAHRU</text><text x="504" y="330" class="water-label">SINGAPORE STRAIT</text><path class="coast-shadow" d="M90 231 111 185 127 181 137 143 160 140 179 109 207 106 225 83 250 87 270 70 306 72 326 62 354 75 377 73 394 92 421 87 434 109 457 118 471 141 495 151 507 171 532 176 546 191 584 194 612 219 632 225 626 244 596 251 571 247 549 261 521 257 502 273 478 271 457 287 429 283 408 301 385 294 367 304 348 287 327 290 309 273 281 280 261 263 234 264 215 248 189 253 175 238 148 247 128 230 110 239Z"/><path class="island" d="M90 221 111 175 127 171 137 133 160 130 179 99 207 96 225 73 250 77 270 60 306 62 326 52 354 65 377 63 394 82 421 77 434 99 457 108 471 131 495 141 507 161 532 166 546 181 584 184 612 209 632 215 626 234 596 241 571 237 549 251 521 247 502 263 478 261 457 277 429 273 408 291 385 284 367 294 348 277 327 280 309 263 281 270 261 253 234 254 215 238 189 243 175 228 148 237 128 220 110 229Z"/><g class="map-roads"><path d="M120 196 Q240 135 365 150 T588 217 M171 231 Q320 203 505 230 M276 80 Q290 158 361 275 M404 96 Q376 188 456 261"/></g><path class="small-island" d="M291 305 308 296 324 305 343 307 353 318 331 327 310 323Z M550 137 577 128 602 142 584 153 561 152Z M152 267 175 260 197 269 185 281 160 279Z"/><g id="map-markers"></g><g transform="translate(654 48)" class="compass"><path d="M0 19 7 0 14 19 7 14Z" fill="currentColor"/><text x="7" y="-9" text-anchor="middle">N</text></g></svg></div>
+          <div class="map-wrap"><div class="map-corner"><span class="live-dot"></span><span id="map-observed">NEA</span></div><div id="live-map" class="live-map" data-i18n-attr="aria-label:mapAria" aria-label="新加坡五区空气质量地图" role="region"></div><svg class="island-map" viewBox="0 0 720 370" role="img" data-i18n-attr="aria-label:mapAria" aria-label="新加坡五区空气质量示意图"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity=".13"/></pattern><linearGradient id="island-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6ebe2"/><stop offset="1" stop-color="#d3e0d8"/></linearGradient></defs><rect width="720" height="370" fill="url(#dots)"/><text x="72" y="62" class="water-label">JOHOR BAHRU</text><text x="504" y="330" class="water-label">SINGAPORE STRAIT</text><path class="coast-shadow" d="M90 231 111 185 127 181 137 143 160 140 179 109 207 106 225 83 250 87 270 70 306 72 326 62 354 75 377 73 394 92 421 87 434 109 457 118 471 141 495 151 507 171 532 176 546 191 584 194 612 219 632 225 626 244 596 251 571 247 549 261 521 257 502 273 478 271 457 287 429 283 408 301 385 294 367 304 348 287 327 290 309 273 281 280 261 263 234 264 215 248 189 253 175 238 148 247 128 230 110 239Z"/><path class="island" d="M90 221 111 175 127 171 137 133 160 130 179 99 207 96 225 73 250 77 270 60 306 62 326 52 354 65 377 63 394 82 421 77 434 99 457 108 471 131 495 141 507 161 532 166 546 181 584 184 612 209 632 215 626 234 596 241 571 237 549 251 521 247 502 263 478 261 457 277 429 273 408 291 385 284 367 294 348 277 327 280 309 263 281 270 261 253 234 254 215 238 189 243 175 228 148 237 128 220 110 229Z"/><g class="map-roads"><path d="M120 196 Q240 135 365 150 T588 217 M171 231 Q320 203 505 230 M276 80 Q290 158 361 275 M404 96 Q376 188 456 261"/></g><path class="small-island" d="M291 305 308 296 324 305 343 307 353 318 331 327 310 323Z M550 137 577 128 602 142 584 153 561 152Z M152 267 175 260 197 269 185 281 160 279Z"/><g id="map-markers"></g><g transform="translate(654 48)" class="compass"><path d="M0 19 7 0 14 19 7 14Z" fill="currentColor"/><text x="7" y="-9" text-anchor="middle">N</text></g></svg></div>
           <div class="map-legend" id="map-legend"></div>
           <div class="region-list" id="region-list"></div>
           <div class="panel-foot"><span><span data-i18n="mapSource">来源：NEA / data.gov.sg</span> · <span data-i18n="mapDisclaimer">区域位置示意，非逐街道测量</span></span><span class="foot-links"><a class="text-button" href="https://aqicn.org/map/singapore/cn/" target="_blank" rel="noopener noreferrer"><span data-i18n="aqicnLink">aqicn 站点地图</span> ↗</a><button class="text-button" id="map-info"><span data-i18n="aboutIndicators">指标说明</span> ⓘ</button></span></div>
@@ -170,6 +185,7 @@
     <a class="button" href="https://github.com/SMU-DIGA/singaporehaze2026/commits/main/public/data/latest.json" target="_blank" rel="noopener noreferrer"><span data-i18n="dlgRuns">查看自动更新记录</span> ↗</a>
   </dialog>
   <noscript><div class="noscript">请启用 JavaScript 查看地图与数据 · Please enable JavaScript. <a href="https://www.haze.gov.sg/">haze.gov.sg</a></div></noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

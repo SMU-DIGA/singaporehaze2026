@@ -46,6 +46,11 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 地图与邮编查询
+
+- 地图用 Leaflet 1.9.4（cdnjs，带 SRI 校验）加 OneMap 底图（深色模式用 Night 样式），须保留 OneMap 和 Singapore Land Authority 的署名。五区圆点画在 NEA PSI 接口 `regionMetadata` 给出的各区代表点上。Leaflet 加载失败时，回退为原来的示意图。
+- 「我的空气」：用户输入邮编后，浏览器直接调用 OneMap 搜索接口（无需 key，允许跨域）取得坐标，再按距离最近的 NEA 区域代表点归属区域。NEA 不公布区域边界，所以这只是近似。邮编不会经过本站服务器；只有勾选“记住”时才保存在浏览器的 `localStorage`。也可以使用浏览器定位。
+
 ## 明日预测
 
 `scripts/forecast.py` 由 `update_data.py` 每小时调用，结果写入 `latest.json` 的 `forecast`，同时把每天最后一次预测记入 `forecastLog`（保留 14 天），次日用实测读数核对命中情况（实测当日最高 24 小时 PSI 落在预测区间 ±10% 内即算命中）。综合四个来源，任何一个缺失时都会降级运行：

@@ -1,10 +1,25 @@
+// lat/lon are NEA's reference points for each region (regionMetadata in the PSI API);
+// x/y place them on the schematic map used when the live map cannot load.
 export const regions = [
-  { id: 'north', zh: '北部', en: 'North', x: 361, y: 108 },
-  { id: 'south', zh: '南部', en: 'South', x: 361, y: 282 },
-  { id: 'east', zh: '东部', en: 'East', x: 530, y: 195 },
-  { id: 'west', zh: '西部', en: 'West', x: 190, y: 195 },
-  { id: 'central', zh: '中部', en: 'Central', x: 361, y: 195 },
+  { id: 'north', zh: '北部', en: 'North', x: 361, y: 108, lat: 1.41803, lon: 103.82 },
+  { id: 'south', zh: '南部', en: 'South', x: 361, y: 282, lat: 1.29587, lon: 103.82 },
+  { id: 'east', zh: '东部', en: 'East', x: 530, y: 195, lat: 1.35735, lon: 103.94 },
+  { id: 'west', zh: '西部', en: 'West', x: 190, y: 195, lat: 1.35735, lon: 103.7 },
+  { id: 'central', zh: '中部', en: 'Central', x: 361, y: 195, lat: 1.35735, lon: 103.82 },
 ];
+export const SG_BOUNDS = [[1.15, 103.59], [1.48, 104.1]];
+export function inSingapore(lat, lon) {
+  return lat >= SG_BOUNDS[0][0] && lat <= SG_BOUNDS[1][0] && lon >= SG_BOUNDS[0][1] && lon <= SG_BOUNDS[1][1];
+}
+// NEA publishes no region boundaries, so a location belongs to the closest reference point.
+export function nearestRegion(lat, lon) {
+  const distance = r => (r.lat - lat) ** 2 + ((r.lon - lon) * Math.cos(lat * Math.PI / 180)) ** 2;
+  return regions.reduce((best, r) => (distance(r) < distance(best) ? r : best));
+}
+export function postalCode(input) {
+  const code = String(input ?? '').replace(/\s/g, '');
+  return /^\d{6}$/.test(code) ? code : null;
+}
 export const colors = ['#2e9079', '#b58b2d', '#da7540', '#b74d67', '#7c457e'];
 // AQI uses the US EPA category colours (darkened yellow so text stays readable), as on aqicn.org.
 const aqiColors = ['#009966', '#b8960c', '#e07a1f', '#cc0033', '#660099', '#7e0023'];

@@ -1,8 +1,8 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, postalCode, inSingapore, SG_BOUNDS } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6 };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -54,11 +54,44 @@ $('.language-switch').addEventListener('click', ev => {
 });
 
 try { document.body.classList.toggle('dark', localStorage.getItem('haze-theme') === 'dark'); } catch {}
-$('#theme').addEventListener('click', () => { document.body.classList.toggle('dark'); try { localStorage.setItem('haze-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {} });
+$('#theme').addEventListener('click', () => { document.body.classList.toggle('dark'); live.tiles?.setUrl(tileUrl()); try { localStorage.setItem('haze-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {} });
 const dialog = $('#sources-dialog');
 ['#sources-button', '#footer-sources', '#map-info'].forEach(id => $(id).addEventListener('click', () => dialog.showModal()));
 $('#close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', ev => { if (ev.target === dialog) { const r = dialog.getBoundingClientRect(); if (ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom) dialog.close(); } });
+
+// Live map: OneMap tiles via Leaflet. If Leaflet fails to load, the schematic SVG stays in place.
+const ONEMAP_ATTRIBUTION = '<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" alt="" style="height:20px;width:20px;vertical-align:middle">&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>';
+const tileUrl = () => `https://www.onemap.gov.sg/maps/tiles/${document.body.classList.contains('dark') ? 'Night' : 'Default'}/{z}/{x}/{y}.png`;
+const live = { map: null, tiles: null, markers: {}, you: null };
+const MAIN_ISLAND = [[1.23, 103.62], [1.47, 104.01]];
+function initMap() {
+  const L = window.L;
+  if (live.map || !L) return;
+  $('.map-wrap').classList.add('live'); // Show the container first so Leaflet can measure it.
+  // One-finger drags scroll the page on phones; pinch still zooms.
+  live.map = L.map('live-map', { maxBounds: L.latLngBounds(SG_BOUNDS).pad(0.2), minZoom: 10, maxZoom: 18, zoomSnap: 0.25, zoomControl: false, scrollWheelZoom: false, dragging: !L.Browser.mobile }).fitBounds(MAIN_ISLAND);
+  L.control.zoom({ position: 'topright' }).addTo(live.map);
+  live.map.attributionControl.setPrefix(false);
+  live.tiles = L.tileLayer(tileUrl(), { minZoom: 10, maxZoom: 18, detectRetina: true, attribution: ONEMAP_ATTRIBUTION }).addTo(live.map);
+}
+function renderLiveMap(values) {
+  const L = window.L;
+  if (!live.map) return;
+  for (const r of regions) {
+    const value = values[r.id], b = bandOf(value, state.metric), shown = Number.isFinite(value) ? value : '—';
+    const label = t('regionAria', { region: regionName(r), value: shown, band: b.label });
+    const icon = L.divIcon({ className: 'live-pin', iconSize: [64, 78], iconAnchor: [32, 26], html: `<div class="pin${state.region === r.id ? ' active' : ''}" style="--c:${b.color}"><b>${shown}</b><span>${e(regionName(r))}</span></div>` });
+    if (!live.markers[r.id]) live.markers[r.id] = L.marker([r.lat, r.lon], { icon, keyboard: true, riseOnHover: true }).addTo(live.map).on('click', () => selectRegion(r.id));
+    else live.markers[r.id].setIcon(icon);
+    const el = live.markers[r.id].getElement();
+    if (el) { el.title = label; el.setAttribute('aria-label', label); }
+  }
+}
+function selectRegion(id, toggle = true) {
+  state.region = toggle && state.region === id ? 'all' : id;
+  $('#region-select').value = state.region; renderMap(); renderChart();
+}
 
 function setBadge(id, value, metric) {
   const b = bandOf(value, metric), el = $(id);
@@ -113,10 +146,11 @@ function renderMap() {
     pm25: [[0, '0–55'], [56, '56–150'], [151, '151–250'], [251, '≥251']],
     aqi: [[0, '0–50'], [51, '51–100'], [101, '101–150'], [151, '151–200'], [201, '201–300'], [301, '>300']],
   }[state.metric];
+  renderLiveMap(values);
   $('#map-legend').innerHTML = limits.map(([value, label]) => { const b = bandOf(value, state.metric); return `<span class="legend-item" style="--c:${b.color}"><i></i>${e(b.label)} <span class="legend-range">${label}</span></span>`; }).join('');
   $('#region-list').innerHTML = regions.map(r => { const value = values[r.id], b = bandOf(value, state.metric); return `<button class="region-cell ${state.region === r.id ? 'active' : ''}" data-region="${r.id}" aria-pressed="${state.region === r.id}"><span class="region-name">${e(regionName(r))}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${e(b.label)}</small></button>`; }).join('');
   $$('#map-markers [data-region], #region-list [data-region]').forEach(el => {
-    const select = () => { state.region = state.region === el.dataset.region ? 'all' : el.dataset.region; $('#region-select').value = state.region; renderMap(); renderChart(); };
+    const select = () => selectRegion(el.dataset.region);
     el.addEventListener('click', select); el.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(); } });
   });
 }
@@ -210,7 +244,86 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderForecast(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
+
+// "Air where you are": postal code (or device location) → closest NEA region.
+// Lookups go from the browser straight to OneMap; nothing is sent to this site.
+const ONEMAP_SEARCH = 'https://www.onemap.gov.sg/api/common/elastic/search';
+const titleCase = text => text.toLowerCase().replace(/\b[a-z]/g, c => c.toUpperCase());
+function postalStatus(key) { $('#postal-status').hidden = !key; $('#postal-status').textContent = key ? t(key) : ''; }
+async function lookupPostal(code) {
+  const response = await fetch(`${ONEMAP_SEARCH}?searchVal=${code}&returnGeom=Y&getAddrDetails=Y&pageNum=1`, { signal: AbortSignal.timeout(10000) });
+  if (!response.ok) throw new Error('Lookup failed');
+  const hit = ((await response.json()).results || []).find(r => r.POSTAL === code);
+  if (!hit) return null;
+  const known = value => value && value !== 'NIL';
+  const street = [hit.BLK_NO, hit.ROAD_NAME].filter(known).join(' ');
+  return { lat: +hit.LATITUDE, lon: +hit.LONGITUDE, postal: code, label: `${titleCase(street || hit.BUILDING)} · ${code}` };
+}
+function setPlace(place) {
+  state.place = place;
+  renderMyAir();
+  if (!place) {
+    if (live.you) { live.you.remove(); live.you = null; }
+    selectRegion('all', false);
+    return;
+  }
+  selectRegion(nearestRegion(place.lat, place.lon).id, false);
+  if (live.map) {
+    const icon = window.L.divIcon({ className: 'you-pin', iconSize: [18, 18], html: '<span></span>' });
+    if (live.you) live.you.setLatLng([place.lat, place.lon]);
+    else live.you = window.L.marker([place.lat, place.lon], { icon, zIndexOffset: 1000, keyboard: false }).addTo(live.map);
+    live.you.getElement()?.setAttribute('title', t('myYou'));
+    focusPlace(false);
+  }
+}
+// Frame both the person's location and the region reading that applies to it.
+function focusPlace(animate) {
+  if (!live.map || !state.place) return;
+  const r = nearestRegion(state.place.lat, state.place.lon);
+  const bounds = window.L.latLngBounds([[state.place.lat, state.place.lon], [r.lat, r.lon]]);
+  live.map[animate ? 'flyToBounds' : 'fitBounds'](bounds, { padding: [70, 70], maxZoom: 14 });
+}
+function renderMyAir() {
+  const place = state.place;
+  $('#my-air').hidden = !place;
+  if (!place) return;
+  const d = state.data || {}, r = nearestRegion(place.lat, place.lon);
+  const psi = readings(d, 'psi')[r.id], tomorrow = d.forecast?.regions?.[r.id];
+  const cell = (label, value, metric, unitText) => { const b = bandOf(value, metric); return `<div><span>${e(label)}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}<small>${unitText}</small></b><em style="color:${b.color}">${e(b.label)}</em></div>`; };
+  $('#my-air').innerHTML = `<div class="my-air-head"><div><h3>${e(place.label || t('geoHere'))}</h3><p>${e(t('myRegion', { region: regionName(r) }))}</p></div><div class="my-air-actions"><button class="text-button" data-action="map">${e(t('myShowMap'))}</button><button class="text-button" data-action="clear">${e(t('myClear'))}</button></div></div>`
+    + `<div class="my-air-values">${cell(t('statPsi'), psi, 'psi', 'PSI')}${cell(t('statPm'), readings(d, 'pm25')[r.id], 'pm25', 'µg/m³')}${cell('AQI', readings(d, 'aqi')[r.id], 'aqi', 'AQI')}${Number.isFinite(tomorrow) ? cell(t('myTomorrow'), tomorrow, 'psi', 'PSI') : ''}</div>`
+    + `<p class="my-air-advice">${e(t('myAdvice', { advice: activity(psi, 'general', getLanguage()) }))}</p><p class="my-air-note">${e(t('myNote'))}</p>`;
+}
+function rememberPostal(code) { try { if (code) localStorage.setItem('haze-postal', code); else localStorage.removeItem('haze-postal'); } catch {} }
+async function checkPostal(input) {
+  const code = postalCode(input);
+  if (!code) { postalStatus('postalInvalid'); return; }
+  postalStatus('postalSearching');
+  try {
+    const place = await lookupPostal(code);
+    if (!place) { postalStatus('postalNotFound'); return; }
+    postalStatus(null);
+    rememberPostal($('#postal-remember').checked ? code : null);
+    setPlace(place);
+  } catch { postalStatus('postalFailed'); }
+}
+$('#postal-form').addEventListener('submit', ev => { ev.preventDefault(); checkPostal($('#postal-input').value); });
+$('#postal-remember').addEventListener('change', ev => rememberPostal(ev.target.checked ? state.place?.postal : null));
+$('#geo-button').addEventListener('click', () => {
+  if (!navigator.geolocation) { postalStatus('geoDenied'); return; }
+  postalStatus('postalSearching');
+  navigator.geolocation.getCurrentPosition(pos => {
+    const { latitude: lat, longitude: lon } = pos.coords;
+    if (!inSingapore(lat, lon)) { postalStatus('geoOutside'); return; }
+    postalStatus(null); setPlace({ lat, lon, label: null });
+  }, () => postalStatus('geoDenied'), { timeout: 10000, maximumAge: 600000 });
+});
+$('#my-air').addEventListener('click', ev => {
+  const action = ev.target.closest('[data-action]')?.dataset.action;
+  if (action === 'clear') { $('#postal-input').value = ''; $('#postal-remember').checked = false; rememberPostal(null); postalStatus(null); setPlace(null); }
+  if (action === 'map') { $('#distribution').scrollIntoView({ behavior: 'smooth' }); focusPlace(true); }
+});
 
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
@@ -251,4 +364,9 @@ $$('#overview,#forecast,#distribution,#advisories,#news,#guide').forEach(el => o
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
 renderStatic();
+initMap();
 load();
+try {
+  const saved = localStorage.getItem('haze-postal');
+  if (saved) { $('#postal-input').value = saved; $('#postal-remember').checked = true; checkPostal(saved); }
+} catch {}
