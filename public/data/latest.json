@@ -1,35 +1,35 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T17:00:36+08:00",
-    "timestamp": "2026-10-16T17:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T18:00:35+08:00",
+    "timestamp": "2026-10-16T18:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 160,
-        "south": 183,
-        "west": 205,
+        "north": 162,
+        "south": 182,
+        "west": 204,
         "east": 203,
         "central": 227
       },
       "no2_one_hour_max": {
-        "north": 15,
-        "south": 32,
-        "west": 58,
-        "east": 38,
-        "central": 44
+        "north": 22,
+        "south": 37,
+        "west": 42,
+        "east": 49,
+        "central": 53
       },
       "pm10_twenty_four_hourly": {
-        "north": 143,
+        "north": 144,
         "south": 173,
-        "west": 188,
-        "east": 199,
-        "central": 215
+        "west": 187,
+        "east": 198,
+        "central": 214
       },
       "pm25_twenty_four_hourly": {
-        "north": 112,
-        "south": 134,
-        "west": 154,
-        "east": 153,
+        "north": 114,
+        "south": 133,
+        "west": 153,
+        "east": 152,
         "central": 177
       },
       "so2_twenty_four_hourly": {
@@ -47,44 +47,44 @@
         "central": 2
       },
       "o3_eight_hour_max": {
-        "north": 109,
-        "south": 77,
-        "west": 43,
-        "east": 94,
-        "central": 132
+        "north": 121,
+        "south": 87,
+        "west": 48,
+        "east": 103,
+        "central": 140
       },
       "co_sub_index": {
-        "north": 21,
+        "north": 20,
         "south": 19,
-        "west": 19,
+        "west": 18,
         "east": 18,
-        "central": 19
+        "central": 18
       },
       "o3_sub_index": {
-        "north": 46,
-        "south": 33,
-        "west": 18,
-        "east": 40,
-        "central": 67
+        "north": 54,
+        "south": 37,
+        "west": 20,
+        "east": 44,
+        "central": 78
       },
       "pm10_sub_index": {
         "north": 97,
         "south": 112,
         "west": 119,
-        "east": 125,
-        "central": 133
+        "east": 124,
+        "central": 132
       },
       "pm25_sub_index": {
-        "north": 160,
-        "south": 183,
-        "west": 205,
+        "north": 162,
+        "south": 182,
+        "west": 204,
         "east": 203,
         "central": 227
       },
       "so2_sub_index": {
         "north": 4,
         "south": 3,
-        "west": 5,
+        "west": 4,
         "east": 3,
         "central": 4
       }
@@ -92,19 +92,47 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T17:00:36+08:00",
-    "timestamp": "2026-10-16T17:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T18:00:35+08:00",
+    "timestamp": "2026-10-16T18:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 125,
-        "south": 159,
-        "west": 147,
-        "east": 136,
-        "central": 166
+        "north": 143,
+        "south": 163,
+        "west": 134,
+        "east": 147,
+        "central": 191
       }
     }
   },
   "news": [
+    {
+      "title": "Singapore to send haze prevention notices to 7 companies in Indonesia responsible for fires",
+      "url": "https://www.channelnewsasia.com/singapore/haze-indonesia-companies-fire-grace-fu-6465556",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Platform workers should not be penalised for delays during haze: Jasmin Lau",
+      "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-press-conference-6465216",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Preschools to remain open even if schools close when haze hits hazardous level: Desmond Lee",
+      "url": "https://www.channelnewsasia.com/singapore/haze-o-level-exam-schools-close-preschools-open-6465126",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Haze may reach hazardous levels, says Grace Fu, as mask vending machines to be fully deployed by Oct 16",
+      "url": "https://www.channelnewsasia.com/singapore/haze-hazardous-air-quality-masks-grace-fu-6465121",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "Are two free N95 masks enough? What to know about wearing and reusing them amid the haze",
       "url": "https://www.channelnewsasia.com/singapore/haze-singapore-n95-masks-moh-6465101",
@@ -113,7 +141,7 @@
       "category": "singapore"
     },
     {
-      "title": "No lessons, no pay: Sports coaches hit by haze cancellations, facility closures",
+      "title": "Cancelled classes, lost income: Haze takes a toll on outdoor sports coaches in Singapore",
       "url": "https://www.channelnewsasia.com/singapore/haze-sports-coaches-activesg-facilities-closure-6464996",
       "source": "CNA",
       "publishedAt": null,
@@ -183,32 +211,11 @@
       "category": "singapore"
     },
     {
-      "title": "Haze in Singapore: Retailers impose purchase limits on masks, pledge not to raise prices",
-      "url": "https://www.channelnewsasia.com/watch/haze-in-singapore-retailers-impose-purchase-limits-masks-pledge-not-raise-prices-6462856",
+      "title": "Smooth for some, frustrating for others as N95 mask distribution gets underway amid haze in Singapore - CNA",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNMVRaZ1prLW43YW1taTRYMnh5UURGT0VlYkxyYUZOZERkMUhzT0E4TjRra3ZFMjVlMzVCc3NSQ1FRZjJxMGhwX0VRWVB5aXhCRGVrdGcwak9xdGhidVJBSTgxSF9NUHVRZ1k4VHY2d29WQnQxLXpHODRMQm1FNDgzaEN4V3o2eVJDWXh1bnlIeVRQOG5LRWYtR3NxSC1xVEdNeTJXRFZqZlBKNk45Z1h3?oc=5",
       "source": "CNA",
-      "publishedAt": null,
+      "publishedAt": "2026-10-15T12:15:00+00:00",
       "category": "singapore"
-    },
-    {
-      "title": "CNA Explains: How Indonesia is using dry ice to break down haze",
-      "url": "https://www.channelnewsasia.com/watch/cna-explains-how-indonesia-using-dry-ice-break-down-haze-6462376",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Smooth for some, frustrating for others as N95 mask distribution gets underway amid haze in Singapore",
-      "url": "https://www.channelnewsasia.com/singapore/n95-masks-distribution-vending-machines-community-clubs-haze-6462106",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Prabowo approves foreign help to tackle fires causing regional haze, says Indonesian foreign minister",
-      "url": "https://www.channelnewsasia.com/asia/indonesia-haze-prabowo-approves-foreign-help-6462316",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "regional"
     }
   ],
   "history": {
@@ -2069,6 +2076,16 @@
           "north": 160,
           "south": 183,
           "west": 205,
+          "east": 203,
+          "central": 227
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:00:00+08:00",
+        "values": {
+          "north": 162,
+          "south": 182,
+          "west": 204,
           "east": 203,
           "central": 227
         }
@@ -3934,47 +3951,57 @@
           "east": 136,
           "central": 166
         }
+      },
+      {
+        "timestamp": "2026-10-16T18:00:00+08:00",
+        "values": {
+          "north": 143,
+          "south": 163,
+          "west": 134,
+          "east": 147,
+          "central": 191
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-16T17:05:03.184632+08:00",
-  "nextUpdateAt": "2026-10-16T18:05:00+08:00",
+  "generatedAt": "2026-10-16T18:05:03.616134+08:00",
+  "nextUpdateAt": "2026-10-16T19:05:00+08:00",
   "sources": {
-    "advisories": {
-      "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
-    },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
-    },
-    "history_psi_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+    },
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
-    },
-    "history_pm25_2026-10-15": {
-      "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
-    },
-    "cna": {
-      "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T17:05:03.184632+08:00"
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+    },
+    "history_pm25_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+    },
+    "cna": {
+      "ok": true,
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
     }
   },
   "errors": [],
@@ -4034,13 +4061,6 @@
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-9-october-2026",
       "source": "NEA",
       "publishedAt": "2026-10-09T18:30:00+08:00",
-      "category": "government"
-    },
-    {
-      "title": "Haze Situation Update (8 October 2026)",
-      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-8-october-2026",
-      "source": "NEA",
-      "publishedAt": "2026-10-08T19:11:00+08:00",
       "category": "government"
     }
   ]
