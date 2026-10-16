@@ -5,7 +5,7 @@ const { default: worker } = await import(`data:text/javascript;base64,${Buffer.f
 assert.equal(typeof worker.fetch, 'function');
 const response = await worker.fetch(new Request('https://test.local/'), {});
 assert.equal(response.status, 200);
-assert.match(await response.text(), /狮城烟霾速报/);
+assert.match(await response.text(), /雾霾观察站/);
 const data = await worker.fetch(new Request('https://test.local/api/data'), {});
 assert.equal((await data.json()).schemaVersion, 1);
 console.log('Worker artifact, static assets and initial data verified.');

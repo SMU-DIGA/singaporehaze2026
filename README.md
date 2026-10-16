@@ -1,6 +1,6 @@
-# 狮城烟霾速报 · SG Haze Now
+# 雾霾观察站 · Singapore Haze Watch
 
-新加坡中英双语烟霾聚合看板（右上角切换 中文 / EN，或用 `?lang=en`；首次访问按浏览器语言自动选择）：五区空气质量地图、24/48 小时真实趋势、政府公告、相关新闻和生活指引。响应式布局，支持深色模式、区域选择、指标切换、新闻搜索和分类筛选。
+新加坡中英双语雾霾聚合看板（右上角切换 中文 / EN，或用 `?lang=en`；首次访问按浏览器语言自动选择）：五区空气质量地图、24/48 小时真实趋势、政府公告、相关新闻和生活指引。响应式布局，支持深色模式、区域选择、指标切换、新闻搜索和分类筛选。
 
 ## 运行
 
@@ -18,7 +18,7 @@ node scripts/validate-artifact.mjs
 
 - NEA / data.gov.sg：`https://api-open.data.gov.sg/v2/real-time/api/psi`、`/pm25`。按官方五区呈现 24 小时 PSI、1 小时 PM2.5，历史接口按日期和分页抓取。
 - NEA 政府公告：官方网页使用的 `https://www.nea.gov.sg/media/news/GetData/1/0/0/haze` JSON 接口。仅保留标题、日期、出处和原文链接。
-- CNA 烟霾专题：`https://www.channelnewsasia.com/topic/haze`，直达媒体文章。Python 采集器也通过 Google News RSS 获取可信媒体标题。
+- CNA 雾霾专题：`https://www.channelnewsasia.com/topic/haze`，直达媒体文章。Python 采集器也通过 Google News RSS 获取可信媒体标题。
 - MOM 工作指引、NEA 健康与室内空气指引、ASMC 火点和跨境烟霾监测。
 
 地图为区域定位示意，不表示街道测量、行政边界或浓度插值。PSI 与 PM2.5 使用各自 NEA 分级。健康提示为官方指引中文摘要，活动建议按五区最高观测 PSI 呈现，明确区分观测与预测。所有用户可见时间使用 Asia/Singapore。
