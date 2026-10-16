@@ -1,8 +1,9 @@
-name: Update haze data every 3 hours
+name: Update haze data every hour
 on:
   schedule:
-    # 00:17, 03:17, 06:17, 09:17, 12:17, 15:17, 18:17, 21:17 SGT
-    - cron: '17 1-23/3 * * *'
+    # Hourly at :17 SGT. NEA publishes PSI/PM2.5 hourly, and GitHub may delay or
+    # drop scheduled runs, so hourly keeps a missed run from leaving data hours old.
+    - cron: '17 * * * *'
   workflow_dispatch:
   push:
     branches: [main]

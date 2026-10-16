@@ -4,7 +4,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6 };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
-// The scheduled GitHub Action commits fresh snapshots here every 3 hours. Reading it directly
+// The scheduled GitHub Action commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
 const REPO_DATA = 'https://raw.githubusercontent.com/SMU-DIGA/singaporehaze2026/main/public/data/latest.json';
 const icons = {
@@ -213,7 +213,7 @@ $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews()
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
 $$('#overview,#distribution,#advisories,#news,#guide').forEach(el => observer.observe(el));
-// New snapshots land every 3 hours; check every 15 minutes while the tab is visible, and on return.
+// New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
 renderStatic();

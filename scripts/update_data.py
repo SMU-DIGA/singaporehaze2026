@@ -216,7 +216,7 @@ def main():
             result['news'].append(item)
     result['news'] = result['news'][:24]
     next_run = now.replace(minute=17, second=0, microsecond=0)
-    while next_run <= now or next_run.hour % 3 != 0:
+    while next_run <= now:
         next_run += dt.timedelta(hours=1)
     result.update({'generatedAt': now.isoformat(), 'nextUpdateAt': next_run.isoformat(),
                    'sources': statuses, 'errors': errors, 'schemaVersion': 1})
