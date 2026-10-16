@@ -284,11 +284,11 @@ export function t(key, vars = {}) {
 }
 export function setLanguage(next) {
   language = next === 'en' ? 'en' : 'zh';
+  // Remembered per browser; keep the address short (a ?lang= link still works for sharing).
   try {
     localStorage.setItem('haze-language', language);
     const url = new URL(location.href);
-    url.searchParams.set('lang', language);
-    history.replaceState(null, '', url);
+    if (url.searchParams.has('lang')) { url.searchParams.delete('lang'); history.replaceState(null, '', url); }
   } catch {}
 }
 export function localize(root = document) {

@@ -36,7 +36,7 @@ node scripts/validate-artifact.mjs
 ## 每三小时更新
 
 1. **上线站点**：关联的 Sites 云任务按新加坡时间每三小时执行 `POST /api/refresh`，随后 `GET /api/data` 核实 `persistedAt` 一致。任务通过 `get_site` 在运行时取得 Sites 支持的服务凭证，源代码和任务提示中不保存凭证。站点关闭时也会更新。
-2. **GitHub 数据存档**：`.github/workflows/update.yml` 使用 `17 1-23/3 * * *`（UTC），对应 SGT 每日 00:17、03:17、06:17、09:17、12:17、15:17、18:17、21:17，采集后提交 `public/data/latest.json`，并通过 API 主动触发 GitHub Pages 重新构建（bot 提交本身不一定触发 Pages）。网页同时读取站点内的快照和 `raw.githubusercontent.com` 上的最新快照，取较新者，因此即使 Pages 构建延迟也能显示最新数据；页面打开期间每 15 分钟检查一次。支持手动执行，初次推送会触发。默认 `GITHUB_TOKEN` 需要 contents:write；可选 secret `DATA_GOV_SG_API_KEY` 用于提高官方 API 限额。
+2. **GitHub 数据存档**：`.github/workflows/update.yml` 使用 `17 1-23/3 * * *`（UTC），对应 SGT 每日 00:17、03:17、06:17、09:17、12:17、15:17、18:17、21:17，采集后提交 `public/data/latest.json`，随后 `deploy` 任务把 `public/` 作为网站根目录发布到 GitHub Pages（Settings → Pages → Source 需设为 “GitHub Actions”），网址为 https://smu-diga.github.io/singaporehaze2026/ ，旧的 `/public/` 链接会自动跳转。网页同时读取站点内的快照和 `raw.githubusercontent.com` 上的最新快照，取较新者，因此即使 Pages 构建延迟也能显示最新数据；页面打开期间每 15 分钟检查一次。支持手动执行，初次推送会触发。默认 `GITHUB_TOKEN` 需要 contents:write；可选 secret `DATA_GOV_SG_API_KEY` 用于提高官方 API 限额。
 
 云端计划任务和 GitHub Actions 可能排队延迟。GitHub 公共仓库的长期无活动可能暂停 scheduled workflows；上线站点使用独立 Sites 任务，不依赖此存档任务。GitHub 数据提交不会重新发布 Sites 代码。
 
