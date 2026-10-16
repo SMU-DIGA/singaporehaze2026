@@ -19,6 +19,8 @@
   --side-bg: #dce6df;
   --side-line: #c3d2c8;
   --side-hover: #cfdcd3;
+  --tab-active: var(--side-bg);
+  --tab-active-text: #1f3a2e;
   --radius: 12px;
   --font: 'DM Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
   color-scheme: light;
@@ -41,6 +43,8 @@ body.dark {
   --side-bg: #0d1a16;
   --side-line: #24382f;
   --side-hover: #16261f;
+  --tab-active: #2b4339;
+  --tab-active-text: #e4ece6;
   color-scheme: dark;
 }
 
@@ -71,7 +75,7 @@ svg.icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-w
 .tabs a { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 8px; font-size: 15px; font-weight: 500; color: #c9d8ce; white-space: nowrap; }
 .tabs a .icon { width: 16px; height: 16px; }
 .tabs a:hover { background: #ffffff14; color: #fff; text-decoration: none; }
-.tabs a.active, .tabs a.active:hover { background: #b8d59d; color: #17321f; font-weight: 650; }
+.tabs a.active, .tabs a.active:hover { background: var(--tab-active); color: var(--tab-active-text); font-weight: 650; }
 .top-actions { display: flex; align-items: center; gap: 12px; font-size: 14px; }
 .icon-button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 8px; }
 .icon-button:hover { background: var(--panel-soft); }
@@ -80,12 +84,12 @@ svg.icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-w
 .topbar .segmented { background: #ffffff10; border-color: #ffffff24; }
 .topbar .segmented button { color: #c4d4c9; }
 .topbar .segmented button:hover { color: #fff; }
-.topbar .segmented .selected { background: #b8d59d; color: #17321f; box-shadow: none; }
+.topbar .segmented .selected { background: var(--tab-active); color: var(--tab-active-text); box-shadow: none; }
 .external-top { padding-left: 12px; border-left: 1px solid #ffffff2e; font-weight: 500; white-space: nowrap; color: #dbe7df; }
 .external-top:hover { color: #fff; }
 
 /* ---------- Sidebar: light, table of contents for the open tab ---------- */
-.sidebar { width: 240px; background: var(--side-bg); border-right: 1px solid var(--side-line); position: fixed; top: 64px; bottom: 0; left: 0; padding: 22px 16px 20px; display: flex; flex-direction: column; z-index: 30; }
+.sidebar { width: 208px; background: var(--side-bg); border-right: 1px solid var(--side-line); position: fixed; top: 64px; bottom: 0; left: 0; padding: 20px 12px 18px; display: flex; flex-direction: column; z-index: 30; }
 .date { color: var(--muted); font-size: 13px; padding: 0 12px 16px; }
 .toc { display: flex; flex-direction: column; gap: 2px; min-height: 0; overflow-y: auto; scrollbar-width: none; }
 .toc-title { font-size: 12px; letter-spacing: 1px; color: var(--muted); padding: 0 12px 6px; }
@@ -95,13 +99,13 @@ svg.icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-w
 .toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
 .toc a.active .icon { opacity: 1; }
 .sidebar-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
-.update-card { padding: 14px; background: var(--panel); border: 1px solid var(--side-line); border-radius: 10px; font-size: 14px; }
+.update-card { padding: 12px; background: var(--panel); border: 1px solid var(--side-line); border-radius: 10px; font-size: 14px; }
 .update-card strong { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--text); }
 .update-card small { display: block; color: var(--muted); font-size: 13px; line-height: 1.6; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pulse, .live-dot { display: inline-block; width: 8px; height: 8px; background: #6f9a5c; border-radius: 50%; box-shadow: 0 0 0 4px #6f9a5c26; flex-shrink: 0; }
 #sources-button { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); padding: 10px 12px; border-radius: 8px; text-align: left; }
 #sources-button:hover { background: var(--side-hover); color: var(--text); }
-.page { margin-left: 240px; }
+.page { margin-left: 208px; }
 
 /* ---------- Segmented controls ---------- */
 .segmented { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 3px; gap: 2px; flex-shrink: 0; }
@@ -494,10 +498,10 @@ body.dark .island-map { color: #6f8f7d; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  .sidebar { width: 210px; }
+  .sidebar { width: 192px; }
   .tabs a .icon, .external-top, .brand small { display: none; }
   .tabs a { padding: 8px 11px; }
-  .page { margin-left: 210px; }
+  .page { margin-left: 192px; }
   main { padding: 28px 28px 0; }
   .topbar { padding: 0 20px 0 16px; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -531,6 +535,8 @@ body.dark .island-map { color: #6f8f7d; }
   .tabs { order: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; width: calc(100% + 32px); margin: 4px -16px 0; padding: 0 8px; }
   .tabs a { flex-direction: column; justify-content: center; gap: 2px; padding: 8px 2px; font-size: 12px; line-height: 1.3; text-align: center; white-space: normal; border-radius: 8px 8px 0 0; }
   .tabs a .icon { display: block; width: 17px; height: 17px; }
+  .tabs a.active, .tabs a.active:hover { background: var(--bg); }
+  body.dark .tabs a.active, body.dark .tabs a.active:hover { background: var(--tab-active); }
   .page { margin-left: 0; }
   .date { display: none; }
   main { padding: 22px 16px 0; }
