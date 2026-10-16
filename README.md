@@ -1,6 +1,6 @@
 # 雾霾观察站 · Singapore Haze Watch
 
-新加坡中文雾霾聚合看板：五区空气质量地图、24/48 小时真实趋势、政府公告、相关新闻和生活指引。响应式布局，支持深色模式、区域选择、指标切换、新闻搜索和分类筛选。
+新加坡中英双语雾霾聚合看板（右上角切换 中文 / EN，或用 `?lang=en`；首次访问按浏览器语言自动选择）：五区空气质量地图、24/48 小时真实趋势、政府公告、相关新闻和生活指引。响应式布局，支持深色模式、区域选择、指标切换、新闻搜索和分类筛选。
 
 ## 运行
 
@@ -36,7 +36,7 @@ node scripts/validate-artifact.mjs
 ## 每三小时更新
 
 1. **上线站点**：关联的 Sites 云任务按新加坡时间每三小时执行 `POST /api/refresh`，随后 `GET /api/data` 核实 `persistedAt` 一致。任务通过 `get_site` 在运行时取得 Sites 支持的服务凭证，源代码和任务提示中不保存凭证。站点关闭时也会更新。
-2. **GitHub 数据存档**：`.github/workflows/update.yml` 使用 `17 1-23/3 * * *`（UTC），对应 SGT 每日 00:17、03:17、06:17、09:17、12:17、15:17、18:17、21:17，采集后提交 `public/data/latest.json`。支持手动执行，初次推送会触发。默认 `GITHUB_TOKEN` 需要 contents:write；可选 secret `DATA_GOV_SG_API_KEY` 用于提高官方 API 限额。
+2. **GitHub 数据存档**：`.github/workflows/update.yml` 使用 `17 1-23/3 * * *`（UTC），对应 SGT 每日 00:17、03:17、06:17、09:17、12:17、15:17、18:17、21:17，采集后提交 `public/data/latest.json`，并通过 API 主动触发 GitHub Pages 重新构建（bot 提交本身不一定触发 Pages）。网页同时读取站点内的快照和 `raw.githubusercontent.com` 上的最新快照，取较新者，因此即使 Pages 构建延迟也能显示最新数据；页面打开期间每 15 分钟检查一次。支持手动执行，初次推送会触发。默认 `GITHUB_TOKEN` 需要 contents:write；可选 secret `DATA_GOV_SG_API_KEY` 用于提高官方 API 限额。
 
 云端计划任务和 GitHub Actions 可能排队延迟。GitHub 公共仓库的长期无活动可能暂停 scheduled workflows；上线站点使用独立 Sites 任务，不依赖此存档任务。GitHub 数据提交不会重新发布 Sites 代码。
 
@@ -45,3 +45,7 @@ node scripts/validate-artifact.mjs
 ## 故障排查
 
 检查页面“数据来源与说明”、GitHub Actions 记录与 `/api/data` 的 `sources` / `errors`。`generatedAt` 表示采集时间；`psi.timestamp` / `pm25.timestamp` 表示官方观测时间；`publishedAt` 表示文章时间。源未提供文章时间时明确显示“媒体未提供发布时间”。不要以采集时间代替新鲜观测。
+
+## 文案与翻译
+
+所有界面文字在 `public/locale.mjs` 中按 key 维护中英两份；HTML 用 `data-i18n` / `data-i18n-attr` 标注，脚本用 `t('key', {变量})`。分级名称与健康建议的双语版本在 `public/lib.mjs`。新闻和 NEA 公告标题保留英文原文。

@@ -29,3 +29,10 @@ test('advice changes for vulnerable groups and absent readings stay absent', () 
   assert.match(activity(NaN, 'general'), /暂不可用/);
   assert.deepEqual(readings({}, 'psi'), {});
 });
+test('band labels and advice are available in English', () => {
+  assert.equal(band(120, 'psi', 'en').label, 'Unhealthy');
+  assert.equal(band(160, 'pm25', 'en').label, 'High');
+  assert.equal(band(NaN, 'psi', 'en').label, 'No data');
+  assert.match(activity(201, 'chronic', 'en'), /Avoid outdoor activity/);
+  assert.equal(band(120, 'psi', 'en').color, band(120).color);
+});

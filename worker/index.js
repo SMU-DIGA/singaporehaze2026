@@ -54,7 +54,7 @@ async function news() {
     const title = unescape(match[2]);
     if (href.hostname !== 'www.channelnewsasia.com' || !/-\d{5,}$/.test(href.pathname) || !/haze/i.test(title + href.pathname) || title.length < 18 || seen.has(href.href)) continue;
     seen.add(href.href);
-    items.push({ title: title.replace(/^\s*(Singapore|Asia|News)\s+/i, '').slice(0, 220), url: href.href, source: 'CNA', publishedAt: null, category: href.pathname.startsWith('/asia/') ? 'regional' : 'singapore' });
+    items.push({ title: title.slice(0, 220), url: href.href, source: 'CNA', publishedAt: null, category: href.pathname.startsWith('/asia/') ? 'regional' : 'singapore' });
   }
   if (!items.length) throw new Error('No news headlines');
   return items.slice(0, 24);

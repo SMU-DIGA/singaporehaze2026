@@ -1,53 +1,150 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#172e2b">
-  <meta name="description" content="新加坡雾霾观察站：五区官方空气质量地图、PSI 与 PM2.5 趋势、政府指引和新闻聚合，每三小时更新。">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#183b32">
+  <meta name="description" content="新加坡雾霾观察站 Singapore Haze Watch：五区官方 PSI 与 PM2.5、政府公告和新闻聚合，每三小时更新。Official PSI, PM2.5, advisories and news, updated every 3 hours.">
   <title>雾霾观察站 · Singapore Haze Watch</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#main">跳到主要内容</a>
+  <a class="skip" href="#main" data-i18n="skip">跳到主要内容</a>
+
   <aside class="sidebar">
-    <a class="brand" href="#overview"><span class="brand-mark">≈</span><span>雾霾观察站<small>SINGAPORE HAZE WATCH</small></span></a>
-    <div class="workspace"><span class="flag">🇸🇬</span><span>新加坡<small>Singapore · GMT+8</small></span><span class="workspace-dot"></span></div>
-    <div class="nav-label">观察与了解</div>
-    <nav aria-label="主导航">
-      <a class="active" href="#overview"><span data-icon="dashboard"></span>空气质量概览<span class="nav-arrow">↗</span></a>
-      <a href="#distribution"><span data-icon="map"></span>全岛空气分布</a>
-      <a href="#advisories"><span data-icon="shield"></span>政府指引</a>
-      <a href="#news"><span data-icon="news"></span>新闻动态</a>
-      <a href="#guide"><span data-icon="heart"></span>雾霾生活指南</a>
+    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">雾霾观察站</span><small data-i18n="brandSub">SINGAPORE HAZE WATCH</small></span></a>
+    <nav data-i18n-attr="aria-label:navLabel" aria-label="主导航">
+      <a class="active" href="#overview"><span data-icon="dashboard"></span><span data-i18n="navOverview">空气概览</span></a>
+      <a href="#distribution"><span data-icon="map"></span><span data-i18n="navMap">五区分布</span></a>
+      <a href="#advisories"><span data-icon="shield"></span><span data-i18n="navAdvisories">政府公告</span></a>
+      <a href="#news"><span data-icon="news"></span><span data-i18n="navNews">新闻动态</span></a>
+      <a href="#guide"><span data-icon="heart"></span><span data-i18n="navGuide">健康建议</span></a>
     </nav>
-    <div class="sidebar-bottom"><div class="update-card"><span class="pulse"></span> 每 3 小时更新<small>持续关注，安心生活。<br>官方数据 · 清晰解读</small></div><button id="sources-button"><span data-icon="database"></span> 数据来源与说明 <span>↗</span></button><div class="sidebar-foot">为这座城市，留意每一次呼吸。<span>1.35° N &nbsp; 103.82° E</span></div></div>
+    <div class="sidebar-bottom">
+      <div class="update-card"><strong><span class="pulse"></span><span data-i18n="updateCardTitle">每 3 小时自动更新</span></strong><small data-i18n="updateCardText">数据来自 NEA 官方发布</small><small id="sidebar-next"></small></div>
+      <button id="sources-button"><span data-icon="database"></span><span data-i18n="sources">数据来源与说明</span></button>
+    </div>
   </aside>
+
   <div class="page">
-    <header class="topbar"><div class="breadcrumb">新加坡 <span>/</span> <b>空气质量概览</b></div><div class="top-actions"><span class="date" id="today"></span><button id="theme" class="icon-button" aria-label="切换深色模式"><span data-icon="sun"></span></button><a class="external-top" href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer">NEA 官方网站 ↗</a></div></header>
-    <main id="main">
-      <section id="overview" class="intro"><div><div class="eyebrow"><span></span> THE AIR WE SHARE</div><h1>看见空气，<span>安心呼吸。</span></h1><p>一站了解新加坡空气质量、官方指引与雾霾动态。</p></div><div class="refresh-area"><span id="updated">正在获取空气数据…</span><button class="button" id="refresh"><span data-icon="refresh"></span> 刷新数据</button></div></section>
-      <div id="data-warning" class="data-warning" role="status" hidden></div>
-      <div class="alert" id="alert"><span class="alert-icon" data-icon="shield"></span><div><strong id="alert-title">正在读取最新空气质量</strong><p id="alert-text">空气状况以 NEA 最新发布为准。</p></div><a href="#guide">查看防护建议 <span>→</span></a></div>
-      <section class="stats" aria-label="全岛空气质量摘要">
-        <article class="stat"><div class="stat-label">全岛 24 小时 PSI <span data-icon="wind"></span></div><div class="stat-value" id="psi-range">—<span>PSI</span></div><div class="stat-bottom"><span id="psi-band" class="badge">读取中</span><small>全岛五区读数范围</small></div><div class="stat-line orange"></div></article>
-        <article class="stat"><div class="stat-label">1 小时 PM2.5 <span data-icon="particles"></span></div><div class="stat-value" id="pm-range">—<span>µg/m³</span></div><div class="stat-bottom"><span id="pm-band" class="badge">读取中</span><small>关注接下来一小时</small></div><div class="stat-line purple"></div></article>
-        <article class="stat"><div class="stat-label">空气质量最需关注 <span data-icon="pin"></span></div><div class="stat-value region-value" id="worst-region">—</div><div class="stat-bottom"><span id="worst-value" class="badge">—</span><small>按 24 小时 PSI 比较</small></div><div class="stat-line red"></div></article>
-        <article class="stat schedule-stat"><div class="stat-label">聚合更新 <span data-icon="clock"></span></div><div class="stat-value">3<span>小时 / 次</span></div><div class="stat-bottom"><span class="status-dot"></span><small id="next-update">后台定时采集</small></div><div class="stat-line green"></div></article>
-      </section>
-      <div class="visual-grid">
-        <section class="panel map-panel" id="distribution"><div class="panel-head"><div><h2>全岛空气质量分布</h2><p>五个区域，一眼掌握。</p></div><div class="segmented" id="metric-switch" aria-label="地图指标"><button class="selected" data-metric="psi" aria-pressed="true">24h PSI</button><button data-metric="pm25" aria-pressed="false">1h PM2.5</button></div></div>
-          <div class="map-wrap"><div class="map-corner"><span class="live-dot"></span> <span id="map-observed">NEA 官方观测</span></div><svg class="island-map" viewBox="0 0 720 370" role="img" aria-label="新加坡五区空气质量示意图"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity=".13"/></pattern><linearGradient id="island-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6ebe2"/><stop offset="1" stop-color="#d3e0d8"/></linearGradient></defs><rect width="720" height="370" fill="url(#dots)"/><text x="72" y="62" class="water-label">JOHOR BAHRU</text><text x="504" y="330" class="water-label">SINGAPORE STRAIT</text><path class="coast-shadow" d="M90 231 111 185 127 181 137 143 160 140 179 109 207 106 225 83 250 87 270 70 306 72 326 62 354 75 377 73 394 92 421 87 434 109 457 118 471 141 495 151 507 171 532 176 546 191 584 194 612 219 632 225 626 244 596 251 571 247 549 261 521 257 502 273 478 271 457 287 429 283 408 301 385 294 367 304 348 287 327 290 309 273 281 280 261 263 234 264 215 248 189 253 175 238 148 247 128 230 110 239Z"/><path class="island" d="M90 221 111 175 127 171 137 133 160 130 179 99 207 96 225 73 250 77 270 60 306 62 326 52 354 65 377 63 394 82 421 77 434 99 457 108 471 131 495 141 507 161 532 166 546 181 584 184 612 209 632 215 626 234 596 241 571 237 549 251 521 247 502 263 478 261 457 277 429 273 408 291 385 284 367 294 348 277 327 280 309 263 281 270 261 253 234 254 215 238 189 243 175 228 148 237 128 220 110 229Z"/><g class="map-roads"><path d="M120 196 Q240 135 365 150 T588 217 M171 231 Q320 203 505 230 M276 80 Q290 158 361 275 M404 96 Q376 188 456 261"/></g><path class="small-island" d="M291 305 308 296 324 305 343 307 353 318 331 327 310 323Z M550 137 577 128 602 142 584 153 561 152Z M152 267 175 260 197 269 185 281 160 279Z"/><g id="map-markers"></g><g transform="translate(654 48)" class="compass"><path d="M0 19 7 0 14 19 7 14Z" fill="currentColor"/><text x="7" y="-9" text-anchor="middle">N</text></g><text x="26" y="349" class="map-disclaimer">区域定位示意 · 非逐街道测量或行政区边界</text></svg></div>
-          <div class="map-legend" id="map-legend"></div><div class="region-list" id="region-list"></div><div class="panel-foot"><span>来源：NEA / data.gov.sg</span><button class="text-button" id="map-info">指标说明 <span>ⓘ</span></button></div></section>
-        <section class="panel trend-panel"><div class="panel-head"><div><h2>空气质量趋势</h2><p id="chart-subtitle">过去 24 小时 · 24 小时 PSI</p></div><div class="segmented" id="period-switch"><button class="selected" data-period="24" aria-pressed="true">24h</button><button data-period="48" aria-pressed="false">48h</button></div></div><div class="chart-header"><span><i class="chart-dot"></i><b id="chart-region">全岛五区</b></span><select id="region-select" aria-label="选择趋势区域"><option value="all">全部区域</option><option value="north">北部</option><option value="south">南部</option><option value="east">东部</option><option value="west">西部</option><option value="central">中部</option></select></div><div class="chart-box"><svg id="trend-chart" viewBox="0 0 560 260" role="img" aria-label="空气质量历史趋势"></svg><p id="chart-empty" hidden>暂未取得历史数据，请稍后刷新。</p></div><div class="chart-legend" id="chart-legend"></div><div class="trend-insight"><span data-icon="info"></span><div><strong>两个指标，各有用途</strong><p>1 小时 PM2.5 反映短时变化；24 小时 PSI 反映较长时段的空气状况。安排次日活动，请参考 NEA 的 PSI 预测。</p><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer">了解官方指数说明 ↗</a></div></div></section>
+    <header class="topbar">
+      <span class="date" id="today"></span>
+      <div class="top-actions">
+        <div class="segmented language-switch" role="group" data-i18n-attr="aria-label:languageLabel" aria-label="语言 / Language">
+          <button data-language="zh" lang="zh-CN" class="selected" aria-pressed="true">中文</button>
+          <button data-language="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button id="theme" class="icon-button" data-i18n-attr="aria-label:themeLabel" aria-label="切换深色模式"><span data-icon="sun"></span></button>
+        <a class="external-top" href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="neaSite">NEA 官网</span> ↗</a>
       </div>
-      <section class="panel advisories-panel" id="advisories"><div class="panel-head"><div><h2><span class="heading-icon" data-icon="shield"></span> 政府指引与公告</h2><p>来自官方的最新消息与应对措施。</p></div><a class="subtle-link" href="https://www.nea.gov.sg/media/news" target="_blank" rel="noopener noreferrer">全部官方公告 ↗</a></div><div id="advisory-list" class="advisory-list"></div><div class="official-resources"><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span class="agency">NEA</span><span>空气质量与健康指引</span>↗</a><a href="https://www.mom.gov.sg/haze" target="_blank" rel="noopener noreferrer"><span class="agency">MOM</span><span>雇主与户外工作指引</span>↗</a><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span class="agency">ASMC</span><span>区域火点与烟霾监测</span>↗</a></div></section>
-      <section class="news-section" id="news"><div class="section-head"><div><div class="eyebrow">STAY IN THE KNOW</div><h2>雾霾新闻动态<span class="count" id="news-count">0</span></h2><p>本地进展与区域动态，汇聚于此。</p></div><label class="search"><span data-icon="search"></span><input id="news-search" type="search" placeholder="搜索新闻关键词…" aria-label="搜索新闻"></label></div><div class="news-tabs" id="news-tabs"><button class="selected" data-filter="all" aria-pressed="true">全部动态</button><button data-filter="singapore" aria-pressed="false">新加坡</button><button data-filter="regional" aria-pressed="false">区域动态</button></div><div class="news-grid" id="news-list"></div><button class="load-more" id="load-more" hidden>查看更多报道 <span>↓</span></button><div class="news-note">保留媒体原文标题 · 点击前往原文 · 报道时间以媒体发布为准</div></section>
-      <section class="guide" id="guide"><div class="guide-intro"><div class="eyebrow">A LITTLE CARE, EVERY DAY</div><h2>雾霾天，<br>照顾好每一次呼吸。</h2><p>选择人群，查看当前 PSI 对应的官方活动建议。</p><select id="audience" aria-label="选择健康建议适用人群"><option value="general">一般健康成年人</option><option value="vulnerable">长者、孕妇与儿童</option><option value="chronic">慢性心脏或肺部疾病患者</option></select><p class="personal-advice" id="personal-advice"></p><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer">NEA 健康指引原文 ↗</a></div><div class="guide-items"><article><span data-icon="home"></span><div><h3>关注室内空气</h3><p>雾霾期间减少室外烟霾进入，可参考 NEA 的便携式空气净化器指引。</p><a href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer">室内空气指南 ↗</a></div></article><article><span data-icon="shield"></span><div><h3>留意户外工作安排</h3><p>雇主应评估雾霾风险，并依空气状况与员工健康调整户外工作。</p><a href="https://www.mom.gov.sg/haze/guidelines-on-protecting-employees-from-haze" target="_blank" rel="noopener noreferrer">MOM 工作防护指引 ↗</a></div></article><article><span data-icon="globe"></span><div><h3>了解雾霾从哪里来</h3><p>关注东南亚火点、风向与跨境烟霾；卫星观测可能受云层影响。</p><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer">查看 ASMC 区域监测 ↗</a></div></article></div></section>
-      <footer><a class="footer-brand" href="#overview">≈ &nbsp; 雾霾观察站</a><span>独立信息聚合站 · 非政府官方网站</span><button class="text-button" id="footer-sources">数据来源与更新说明 ↗</button></footer>
+    </header>
+
+    <main id="main">
+      <section id="overview" class="intro">
+        <div>
+          <h1 data-i18n="heroTitle">新加坡雾霾与空气质量</h1>
+          <p data-i18n="heroText">官方 PSI 与 PM2.5 读数、政府公告和相关新闻，每 3 小时汇总一次。</p>
+        </div>
+        <div class="refresh-area">
+          <div class="update-times"><span id="updated" data-i18n="loading">正在获取空气数据…</span><span id="next-update"></span></div>
+          <button class="button" id="refresh"><span data-icon="refresh"></span><span data-i18n="refresh">刷新</span></button>
+        </div>
+      </section>
+
+      <div id="data-warning" class="data-warning" role="status" hidden></div>
+
+      <div class="alert" id="alert">
+        <span class="alert-icon" data-icon="shield"></span>
+        <div><strong id="alert-title" data-i18n="alertLoading">正在读取最新空气质量</strong><p id="alert-text" data-i18n="alertLoadingText">空气状况以 NEA 最新发布为准。</p></div>
+        <a href="#guide"><span data-i18n="alertLink">查看健康建议</span> →</a>
+      </div>
+
+      <section class="stats" data-i18n-attr="aria-label:statsLabel" aria-label="全岛空气质量摘要">
+        <article class="stat"><div class="stat-label"><span data-i18n="statPsi">24 小时 PSI</span><span data-icon="wind"></span></div><div class="stat-value" id="psi-range">—</div><div class="stat-bottom"><span id="psi-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPsiNote">五区读数范围</small></div></article>
+        <article class="stat"><div class="stat-label"><span data-i18n="statPm">1 小时 PM2.5</span><span data-icon="particles"></span></div><div class="stat-value" id="pm-range">—</div><div class="stat-bottom"><span id="pm-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPmNote">五区读数范围</small></div></article>
+        <article class="stat"><div class="stat-label"><span data-i18n="statWorst">读数最高区域</span><span data-icon="pin"></span></div><div class="stat-value region-value" id="worst-region">—</div><div class="stat-bottom"><span id="worst-value" class="badge">—</span><small data-i18n="statWorstNote">按 24 小时 PSI</small></div></article>
+        <article class="stat"><div class="stat-label"><span data-i18n="statSchedule">更新频率</span><span data-icon="clock"></span></div><div class="stat-value">3<span class="unit" data-i18n="statScheduleUnit">小时 / 次</span></div><div class="stat-bottom"><span class="status-dot"></span><small id="schedule-next" data-i18n="nextUpdateUnknown">后台定时采集</small></div></article>
+      </section>
+
+      <div class="visual-grid">
+        <section class="panel map-panel" id="distribution">
+          <div class="panel-head">
+            <div><h2 data-i18n="mapTitle">五区空气质量</h2><p data-i18n="mapSub">点击区域查看趋势</p></div>
+            <div class="segmented" id="metric-switch" role="group" data-i18n-attr="aria-label:mapMetric" aria-label="地图指标"><button class="selected" data-metric="psi" aria-pressed="true">PSI 24h</button><button data-metric="pm25" aria-pressed="false">PM2.5 1h</button></div>
+          </div>
+          <div class="map-wrap"><div class="map-corner"><span class="live-dot"></span><span id="map-observed">NEA</span></div><svg class="island-map" viewBox="0 0 720 370" role="img" data-i18n-attr="aria-label:mapAria" aria-label="新加坡五区空气质量示意图"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity=".13"/></pattern><linearGradient id="island-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6ebe2"/><stop offset="1" stop-color="#d3e0d8"/></linearGradient></defs><rect width="720" height="370" fill="url(#dots)"/><text x="72" y="62" class="water-label">JOHOR BAHRU</text><text x="504" y="330" class="water-label">SINGAPORE STRAIT</text><path class="coast-shadow" d="M90 231 111 185 127 181 137 143 160 140 179 109 207 106 225 83 250 87 270 70 306 72 326 62 354 75 377 73 394 92 421 87 434 109 457 118 471 141 495 151 507 171 532 176 546 191 584 194 612 219 632 225 626 244 596 251 571 247 549 261 521 257 502 273 478 271 457 287 429 283 408 301 385 294 367 304 348 287 327 290 309 273 281 280 261 263 234 264 215 248 189 253 175 238 148 247 128 230 110 239Z"/><path class="island" d="M90 221 111 175 127 171 137 133 160 130 179 99 207 96 225 73 250 77 270 60 306 62 326 52 354 65 377 63 394 82 421 77 434 99 457 108 471 131 495 141 507 161 532 166 546 181 584 184 612 209 632 215 626 234 596 241 571 237 549 251 521 247 502 263 478 261 457 277 429 273 408 291 385 284 367 294 348 277 327 280 309 263 281 270 261 253 234 254 215 238 189 243 175 228 148 237 128 220 110 229Z"/><g class="map-roads"><path d="M120 196 Q240 135 365 150 T588 217 M171 231 Q320 203 505 230 M276 80 Q290 158 361 275 M404 96 Q376 188 456 261"/></g><path class="small-island" d="M291 305 308 296 324 305 343 307 353 318 331 327 310 323Z M550 137 577 128 602 142 584 153 561 152Z M152 267 175 260 197 269 185 281 160 279Z"/><g id="map-markers"></g><g transform="translate(654 48)" class="compass"><path d="M0 19 7 0 14 19 7 14Z" fill="currentColor"/><text x="7" y="-9" text-anchor="middle">N</text></g></svg></div>
+          <div class="map-legend" id="map-legend"></div>
+          <div class="region-list" id="region-list"></div>
+          <div class="panel-foot"><span><span data-i18n="mapSource">来源：NEA / data.gov.sg</span> · <span data-i18n="mapDisclaimer">区域位置示意，非逐街道测量</span></span><button class="text-button" id="map-info"><span data-i18n="aboutIndicators">指标说明</span> ⓘ</button></div>
+        </section>
+
+        <section class="panel trend-panel">
+          <div class="panel-head">
+            <div><h2 data-i18n="trendTitle">变化趋势</h2><p id="chart-subtitle"></p></div>
+            <div class="segmented" id="period-switch" role="group"><button class="selected" data-period="24" aria-pressed="true">24h</button><button data-period="48" aria-pressed="false">48h</button></div>
+          </div>
+          <div class="chart-header"><span><i class="chart-dot"></i><b id="chart-region" data-i18n="allRegions">全部五区</b></span><select id="region-select" data-i18n-attr="aria-label:regionSelect" aria-label="选择趋势区域"><option value="all" data-i18n="allRegions">全部五区</option><option value="north"></option><option value="south"></option><option value="east"></option><option value="west"></option><option value="central"></option></select></div>
+          <div class="chart-box"><svg id="trend-chart" viewBox="0 0 560 260" role="img" data-i18n-attr="aria-label:chartAria" aria-label="空气质量历史趋势图"></svg><p id="chart-empty" data-i18n="chartEmpty" hidden>暂未取得历史数据，请稍后刷新。</p></div>
+          <div class="chart-legend" id="chart-legend"></div>
+          <div class="trend-insight"><span data-icon="info"></span><div><strong data-i18n="insightTitle">两个指标怎么看？</strong><p data-i18n="insightText">PM2.5（1 小时）反映眼下的短时变化；PSI（24 小时）反映一天内的整体状况。安排第二天的活动，请参考 NEA 的 PSI 预报。</p><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="insightLink">NEA 指数说明</span> ↗</a></div></div>
+        </section>
+      </div>
+
+      <section class="panel advisories-panel" id="advisories">
+        <div class="panel-head">
+          <div><h2><span class="heading-icon" data-icon="shield"></span><span data-i18n="advTitle">政府公告</span></h2><p data-i18n="advSub">国家环境局（NEA）发布的最新雾霾公告。</p></div>
+          <a class="subtle-link" href="https://www.nea.gov.sg/media/news" target="_blank" rel="noopener noreferrer"><span data-i18n="advAll">全部公告</span> ↗</a>
+        </div>
+        <div id="advisory-list" class="advisory-list"></div>
+        <div class="official-resources">
+          <a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span class="agency">NEA</span><span data-i18n="resNea">空气质量与健康指引</span>↗</a>
+          <a href="https://www.mom.gov.sg/haze" target="_blank" rel="noopener noreferrer"><span class="agency">MOM</span><span data-i18n="resMom">雇主与户外工作指引</span>↗</a>
+          <a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span class="agency">ASMC</span><span data-i18n="resAsmc">区域火点与烟霾监测</span>↗</a>
+        </div>
+      </section>
+
+      <section class="news-section" id="news">
+        <div class="section-head">
+          <div><h2><span data-i18n="newsTitle">新闻动态</span><span class="count" id="news-count">0</span></h2><p data-i18n="newsSub">本地与区域雾霾报道，点击阅读原文。</p></div>
+          <label class="search"><span data-icon="search"></span><input id="news-search" type="search" data-i18n-attr="placeholder:newsSearch;aria-label:newsSearchLabel" placeholder="搜索新闻…" aria-label="搜索新闻"></label>
+        </div>
+        <div class="news-tabs" id="news-tabs" role="group"><button class="selected" data-filter="all" aria-pressed="true" data-i18n="newsAll">全部</button><button data-filter="singapore" aria-pressed="false" data-i18n="newsSg">新加坡</button><button data-filter="regional" aria-pressed="false" data-i18n="newsRegional">区域</button></div>
+        <div class="news-grid" id="news-list"></div>
+        <button class="load-more" id="load-more" hidden><span data-i18n="newsMore">查看更多</span> ↓</button>
+        <p class="news-note" data-i18n="newsNote">标题为媒体原文 · 发布时间以媒体为准</p>
+      </section>
+
+      <section class="guide" id="guide">
+        <div class="guide-intro">
+          <h2 data-i18n="guideTitle">雾霾天的健康建议</h2>
+          <p data-i18n="guideText">选择人群，查看当前 PSI 对应的 NEA 活动建议。</p>
+          <select id="audience" data-i18n-attr="aria-label:audienceLabel" aria-label="选择适用人群"><option value="general" data-i18n="audGeneral">一般健康人士</option><option value="vulnerable" data-i18n="audVulnerable">长者、孕妇与儿童</option><option value="chronic" data-i18n="audChronic">慢性心肺疾病患者</option></select>
+          <p class="personal-advice" id="personal-advice"></p>
+          <p class="advice-note" id="advice-note"></p>
+          <a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="guideLink">NEA 健康指引原文</span> ↗</a>
+        </div>
+        <div class="guide-items">
+          <article><span data-icon="home"></span><div><h3 data-i18n="tipIndoorTitle">关注室内空气</h3><p data-i18n="tipIndoorText">关好门窗减少烟霾进入，可参考 NEA 的便携式空气净化器指引。</p><a href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="tipIndoorLink">室内空气指南</span> ↗</a></div></article>
+          <article><span data-icon="shield"></span><div><h3 data-i18n="tipWorkTitle">户外工作安排</h3><p data-i18n="tipWorkText">雇主应评估雾霾风险，依空气状况与员工健康调整户外工作。</p><a href="https://www.mom.gov.sg/haze/guidelines-on-protecting-employees-from-haze" target="_blank" rel="noopener noreferrer"><span data-i18n="tipWorkLink">MOM 工作防护指引</span> ↗</a></div></article>
+          <article><span data-icon="globe"></span><div><h3 data-i18n="tipSourceTitle">雾霾从哪里来</h3><p data-i18n="tipSourceText">关注东南亚火点、风向与跨境烟霾；卫星观测可能受云层影响。</p><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span data-i18n="tipSourceLink">ASMC 区域监测</span> ↗</a></div></article>
+        </div>
+      </section>
+
+      <footer><a class="footer-brand" href="#overview">≈ <span data-i18n="brand">雾霾观察站</span></a><span data-i18n="footer">独立信息聚合站 · 非政府官方网站</span><button class="text-button" id="footer-sources"><span data-i18n="footerSources">数据来源与更新说明</span> ↗</button></footer>
     </main>
   </div>
-  <dialog id="sources-dialog"><div class="dialog-head"><h2>数据来源与更新说明</h2><button id="close-dialog" class="icon-button" aria-label="关闭说明">×</button></div><p>官方空气数据来自 <a href="https://data.gov.sg/" target="_blank" rel="noopener noreferrer">data.gov.sg / NEA</a>：全岛北、南、东、西、中五区 24 小时 PSI 和 1 小时 PM2.5。地图为区域定位示意，不表示各街道的实际浓度。</p><p>PSI：0–50 良好；51–100 中等；101–200 不健康；201–300 非常不健康；高于 300 危险。PM2.5：0–55 正常；56–150 偏高；151–250 高；251 及以上非常高，单位 µg/m³。</p><p>后台每三小时采集空气数据、NEA 公告与新闻。观测时间、采集时间和文章发布时间含义不同；所有时间按新加坡时区显示。计划任务可能因平台排队而延迟。</p><p>新闻来自 CNA 与可信媒体 RSS，保留标题与出处，不转载全文。健康建议为 NEA 指引的中文摘要；请结合个人情况查看官方最新指引。</p><div id="source-status"></div><a class="button" href="https://github.com/SMU-DIGA/singaporehaze2026/actions" target="_blank" rel="noopener noreferrer">查看自动更新记录 ↗</a></dialog>
-  <noscript><div class="noscript">请启用 JavaScript 查看地图与数据，或直接访问 <a href="https://www.haze.gov.sg/">NEA 雾霾官网</a>。</div></noscript>
+
+  <dialog id="sources-dialog">
+    <div class="dialog-head"><h2 data-i18n="dialogTitle">数据来源与说明</h2><button id="close-dialog" class="icon-button" data-i18n-attr="aria-label:close" aria-label="关闭">×</button></div>
+    <p data-i18n="dlgData"></p>
+    <p data-i18n="dlgBands"></p>
+    <p data-i18n="dlgSchedule"></p>
+    <p data-i18n="dlgNews"></p>
+    <div id="source-status"></div>
+    <a class="button" href="https://github.com/SMU-DIGA/singaporehaze2026/actions" target="_blank" rel="noopener noreferrer"><span data-i18n="dlgRuns">查看自动更新记录</span> ↗</a>
+  </dialog>
+  <noscript><div class="noscript">请启用 JavaScript 查看地图与数据 · Please enable JavaScript. <a href="https://www.haze.gov.sg/">haze.gov.sg</a></div></noscript>
   <script type="module" src="app.js"></script>
-</body></html>
+</body>
+</html>

@@ -30,8 +30,10 @@ def government_news():
         if not re.search(r'haze|雾霾', title, re.I):
             continue
         section = 'advisories' if item.get('NewsOrAdvisory') == 'Advisory' else 'news'
+        date_match = re.search(r'\d{10,}', item.get('DateOfArticle', ''))
+        published = dt.datetime.fromtimestamp(int(date_match.group(0)) / 1000, SGT).isoformat() if date_match else item.get('DateOfArticleStr')
         result.append({'title': title, 'url': f'https://www.nea.gov.sg/media/news/{section}/index/{item["UrlName"]}',
-                       'source': 'NEA', 'publishedAt': item.get('DateOfArticleStr'), 'category': 'government'})
+                       'source': 'NEA', 'publishedAt': published, 'category': 'government'})
     return result[:12]
 
 
@@ -108,7 +110,6 @@ def extract_links(markup, base, government=False):
         if host not in ('www.nea.gov.sg', 'www.channelnewsasia.com'):
             continue
         seen.add(url)
-        text = re.sub(r'^\s*(Advisory|News|Singapore|Asia)\s+', '', text)
         date = re.search(r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+20\d\d)', text)
         result.append({'title': text[:220], 'url': url, 'source': 'NEA' if government else 'CNA',
                        'publishedAt': date.group(1) if date else None,

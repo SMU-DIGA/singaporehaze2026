@@ -1,8 +1,12 @@
 import { regions, band, readings, validValues, stale, safeUrl, escapeHtml as e, activity } from './lib.mjs';
+import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6 };
-const seriesColors = { north: '#77946d', south: '#8aa7ad', east: '#c8aa6b', west: '#d78254', central: '#a482ac' };
+const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
+// The scheduled GitHub Action commits fresh snapshots here every 3 hours. Reading it directly
+// means the static site shows new data even before GitHub Pages finishes redeploying.
+const REPO_DATA = 'https://raw.githubusercontent.com/SMU-DIGA/singaporehaze2026/main/public/data/latest.json';
 const icons = {
   dashboard: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
   map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z M9 3v16 M15 5v16"/>',
@@ -22,11 +26,28 @@ const icons = {
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18 M5 6.5h14 M5 17.5h14"/>',
 };
 $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[el.dataset.icon] || icons.info}</svg>`; });
+
+const en = () => getLanguage() === 'en';
+const regionName = r => (en() ? r.en : r.zh);
+const bandOf = (value, metric = 'psi') => band(value, metric, getLanguage());
+const unit = metric => (metric === 'psi' ? 'PSI' : 'µg/m³');
 const fmt = (date, options = {}) => {
   const d = new Date(date);
-  return Number.isFinite(+d) ? new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Singapore', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false, ...options }).format(d) : '时间未提供';
+  return Number.isFinite(+d) ? new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false, ...options }).format(d) : t('timeUnknown');
 };
-$('#today').textContent = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Singapore', year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' }).format(new Date());
+const clock = date => fmt(date, { month: undefined, day: undefined });
+const sgt = text => `${text} SGT`;
+
+function renderStatic() {
+  localize();
+  $('#today').textContent = new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' }).format(new Date());
+  for (const option of $$('#region-select option')) { const r = regions.find(x => x.id === option.value); if (r) option.textContent = regionName(r); }
+}
+$('.language-switch').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-language]'); if (!b) return;
+  setLanguage(b.dataset.language); renderStatic(); if (state.data) render();
+});
+
 try { document.body.classList.toggle('dark', localStorage.getItem('haze-theme') === 'dark'); } catch {}
 $('#theme').addEventListener('click', () => { document.body.classList.toggle('dark'); try { localStorage.setItem('haze-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {} });
 const dialog = $('#sources-dialog');
@@ -35,44 +56,57 @@ $('#close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', ev => { if (ev.target === dialog) { const r = dialog.getBoundingClientRect(); if (ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom) dialog.close(); } });
 
 function setBadge(id, value, metric) {
-  const b = band(value, metric); const el = $(id);
-  el.textContent = b.label; el.style.color = b.color; el.style.background = `${b.color}15`;
+  const b = bandOf(value, metric), el = $(id);
+  el.removeAttribute('data-i18n');
+  el.textContent = b.label; el.style.color = b.color; el.style.background = `${b.color}1a`;
 }
 function renderSummary() {
   const d = state.data, psi = readings(d, 'psi'), pm = readings(d, 'pm25');
   const pv = validValues(psi), mv = validValues(pm);
-  $('#psi-range').innerHTML = `${pv.length ? `${Math.min(...pv)}–${Math.max(...pv)}` : '—'}<span>PSI</span>`;
-  $('#pm-range').innerHTML = `${mv.length ? `${Math.min(...mv)}–${Math.max(...mv)}` : '—'}<span>µg/m³</span>`;
+  const range = values => (values.length ? (Math.min(...values) === Math.max(...values) ? `${values[0]}` : `${Math.min(...values)}–${Math.max(...values)}`) : '—');
+  $('#psi-range').innerHTML = `${range(pv)}<span class="unit">PSI</span>`;
+  $('#pm-range').innerHTML = `${range(mv)}<span class="unit">µg/m³</span>`;
   const max = pv.length ? Math.max(...pv) : NaN;
   setBadge('#psi-band', max, 'psi'); setBadge('#pm-band', mv.length ? Math.max(...mv) : NaN, 'pm25');
   const worst = regions.filter(r => Number.isFinite(psi[r.id])).sort((a, b) => psi[b.id] - psi[a.id])[0];
-  $('#worst-region').textContent = worst?.zh || '暂无数据';
-  $('#worst-value').textContent = worst ? `PSI ${psi[worst.id]} · ${band(max).label}` : '—';
-  $('#worst-value').style.color = band(max).color;
-  $('#updated').textContent = `最近采集 ${fmt(d.generatedAt)} SGT`;
-  $('#next-update').textContent = d.nextUpdateAt ? `下次预计 ${fmt(d.nextUpdateAt, { month: undefined, day: undefined })} SGT` : '后台定时采集';
-  $('#alert-title').textContent = Number.isFinite(max) ? `全岛空气质量：${band(max).label}，出行前留意最新读数` : '空气数据暂时不可用';
-  $('#alert-text').textContent = pv.length ? `24 小时 PSI 为 ${Math.min(...pv)}–${max}。${activity(max, 'general')} 最新观测 ${fmt(d.psi.timestamp)} SGT。` : '请直接查看 NEA 官方最新读数。';
+  $('#worst-region').textContent = worst ? regionName(worst) : t('noData');
+  $('#worst-value').textContent = worst ? `PSI ${psi[worst.id]}` : '—';
+  $('#worst-value').style.color = bandOf(max).color; $('#worst-value').style.background = `${bandOf(max).color}1a`;
+
+  $('#updated').removeAttribute('data-i18n');
+  $('#updated').textContent = t('collected', { time: sgt(fmt(d.generatedAt)) });
+  const next = d.nextUpdateAt ? t('nextUpdate', { time: sgt(clock(d.nextUpdateAt)) }) : t('nextUpdateUnknown');
+  $('#next-update').textContent = next; $('#sidebar-next').textContent = next;
+  $('#schedule-next').removeAttribute('data-i18n'); $('#schedule-next').textContent = next;
+
+  $('#alert-title').removeAttribute('data-i18n'); $('#alert-text').removeAttribute('data-i18n');
+  $('#alert').style.setProperty('--alert', bandOf(max).color);
+  $('#alert-title').textContent = Number.isFinite(max) ? t('alertTitle', { band: bandOf(max).label }) : t('alertNoData');
+  $('#alert-text').textContent = pv.length ? t('alertText', { range: range(pv), advice: activity(max, 'general', getLanguage()), time: sgt(fmt(d.psi.timestamp)) }) : t('alertNoDataText');
+
   const warnings = [];
-  if (stale(d.psi?.timestamp) || stale(d.pm25?.timestamp)) warnings.push('空气数据已过期或暂不可用，当前显示最近一次有效观测，请查看 NEA 最新发布。');
-  if (stale(d.generatedAt)) warnings.push('后台采集时间已超过 4 小时，自动更新可能延迟。');
-  if (Object.entries(d.sources || {}).some(([key, value]) => ['psi', 'pm25', 'news', 'advisories', 'cna'].includes(key) && !value.ok)) warnings.push('部分内容源暂不可用，已保留此前内容和官方入口。');
+  if (stale(d.psi?.timestamp) || stale(d.pm25?.timestamp)) warnings.push(t('warnStale'));
+  else if (stale(d.generatedAt)) warnings.push(t('warnCollect'));
+  if (Object.entries(d.sources || {}).some(([key, value]) => ['psi', 'pm25', 'news', 'advisories', 'cna'].includes(key) && !value.ok)) warnings.push(t('warnSources'));
   $('#data-warning').hidden = warnings.length === 0; $('#data-warning').textContent = warnings.join(' ');
-  $('#source-status').innerHTML = `<strong>本次采集 ${e(fmt(d.generatedAt))} SGT</strong><br>` + ['psi', 'pm25', 'advisories', 'news', 'cna'].map(k => `${e(({ psi: '官方 PSI', pm25: '官方 PM2.5', advisories: 'NEA 公告', news: '媒体 RSS', cna: 'CNA 新闻' })[k])}：${d.sources?.[k]?.ok ? '正常' : '未更新 / 使用已保存内容'}`).join('<br>');
+
+  const labels = { psi: 'srcPsi', pm25: 'srcPm', advisories: 'srcAdv', news: 'srcNews', cna: 'srcCna' };
+  $('#source-status').innerHTML = `<strong>${e(t('statusHead', { time: sgt(fmt(d.generatedAt)) }))}</strong><ul>` + Object.entries(labels).map(([k, label]) => `<li><span>${e(t(label))}</span><span class="${d.sources?.[k]?.ok ? 'ok' : 'fail'}">${e(t(d.sources?.[k]?.ok ? 'statusOk' : 'statusFail'))}</span></li>`).join('') + '</ul>';
   renderAdvice();
 }
 function renderMap() {
   const values = readings(state.data, state.metric);
-  $('#map-observed').textContent = `${fmt(state.data?.[state.metric]?.timestamp)} SGT`;
+  const observed = state.data?.[state.metric]?.timestamp;
+  $('#map-observed').textContent = observed ? t('mapObserved', { time: sgt(fmt(observed)) }) : 'NEA';
   $('#map-markers').innerHTML = regions.map(r => {
-    const value = values[r.id], b = band(value, state.metric);
-    return `<g class="marker" tabindex="0" role="button" aria-label="${r.zh} ${Number.isFinite(value) ? value : '暂无数据'}，${b.label}；查看区域趋势" data-region="${r.id}" transform="translate(${r.x} ${r.y})"><title>${r.zh}：${value ?? '—'} ${state.metric === 'psi' ? 'PSI' : 'µg/m³'} · ${b.label}</title><circle r="27" fill="${b.color}12"/><circle r="22" fill="var(--panel)" stroke="${b.color}" stroke-width="1.5"/><text text-anchor="middle" y="6" fill="${b.color}" font-size="18" font-weight="650">${Number.isFinite(value) ? value : '—'}</text><text class="region-label" text-anchor="middle" y="39" fill="#59715e" font-size="10">${r.zh} ${r.en}</text></g>`;
+    const value = values[r.id], b = bandOf(value, state.metric), shown = Number.isFinite(value) ? value : '—';
+    return `<g class="marker${state.region === r.id ? ' active' : ''}" tabindex="0" role="button" aria-label="${e(t('regionAria', { region: regionName(r), value: shown, band: b.label }))}" data-region="${r.id}" transform="translate(${r.x} ${r.y})"><title>${e(regionName(r))}: ${shown} ${unit(state.metric)} · ${e(b.label)}</title><circle r="31" fill="${b.color}1f"/><circle r="25" fill="var(--panel)" stroke="${b.color}" stroke-width="2.5"/><text text-anchor="middle" y="7" fill="${b.color}" font-size="20" font-weight="700">${shown}</text><text class="region-label" text-anchor="middle" y="46" font-size="14" font-weight="600">${e(regionName(r))}</text></g>`;
   }).join('');
   const limits = state.metric === 'psi' ? [[0, '0–50'], [51, '51–100'], [101, '101–200'], [201, '201–300'], [301, '>300']] : [[0, '0–55'], [56, '56–150'], [151, '151–250'], [251, '≥251']];
-  $('#map-legend').innerHTML = limits.map(([value, label]) => { const b = band(value, state.metric); return `<span class="legend-item" style="--c:${b.color}"><i></i>${b.label} ${label}</span>`; }).join('');
-  $('#region-list').innerHTML = regions.map(r => { const value = values[r.id], b = band(value, state.metric); return `<button class="region-cell ${state.region === r.id ? 'active' : ''}" data-region="${r.id}" aria-label="查看${r.zh}历史趋势"><span class="region-name">${r.zh}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${b.label}</small></button>`; }).join('');
+  $('#map-legend').innerHTML = limits.map(([value, label]) => { const b = bandOf(value, state.metric); return `<span class="legend-item" style="--c:${b.color}"><i></i>${e(b.label)} <span class="legend-range">${label}</span></span>`; }).join('');
+  $('#region-list').innerHTML = regions.map(r => { const value = values[r.id], b = bandOf(value, state.metric); return `<button class="region-cell ${state.region === r.id ? 'active' : ''}" data-region="${r.id}" aria-pressed="${state.region === r.id}"><span class="region-name">${e(regionName(r))}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${e(b.label)}</small></button>`; }).join('');
   $$('#map-markers [data-region], #region-list [data-region]').forEach(el => {
-    const select = () => { state.region = el.dataset.region; $('#region-select').value = state.region; renderMap(); renderChart(); };
+    const select = () => { state.region = state.region === el.dataset.region ? 'all' : el.dataset.region; $('#region-select').value = state.region; renderMap(); renderChart(); };
     el.addEventListener('click', select); el.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(); } });
   });
 }
@@ -83,16 +117,20 @@ function renderChart() {
   const points = history.filter(p => Date.parse(p.timestamp) >= start && Date.parse(p.timestamp) <= end);
   const selected = state.region === 'all' ? regions : regions.filter(r => r.id === state.region);
   const valueList = points.flatMap(p => selected.map(r => p.values[r.id])).filter(Number.isFinite);
-  const max = Math.max(100, Math.ceil((Math.max(0, ...valueList) + 20) / 50) * 50);
-  const x = t => 40 + (Date.parse(t) - start) / (end - start) * 500;
+  // Round the axis to a readable step (e.g. 0/50/100/150… rather than 0/63/125/188…).
+  const top = Math.max(100, Math.max(0, ...valueList) * 1.1);
+  const step = [10, 20, 25, 50, 100, 200].find(s => top / s <= 6) || 500;
+  const max = Math.ceil(top / step) * step, ticks = max / step;
+  const x = time => 44 + (Date.parse(time) - start) / (end - start) * 496;
   const y = v => 215 - v / max * 185;
-  $('#chart-subtitle').textContent = `过去 ${state.period} 小时 · ${state.metric === 'psi' ? '24 小时 PSI' : '1 小时 PM2.5 (µg/m³)'}`;
-  $('#chart-region').textContent = state.region === 'all' ? '全岛五区' : selected[0].zh;
+  $('#chart-subtitle').textContent = t('trendSub', { hours: state.period, metric: t(state.metric === 'psi' ? 'metricPsi' : 'metricPm') });
+  $('#chart-region').removeAttribute('data-i18n');
+  $('#chart-region').textContent = state.region === 'all' ? t('allRegions') : regionName(selected[0]);
   $('#chart-empty').hidden = valueList.length > 0;
   let svg = '';
-  for (let i = 0; i <= 4; i++) { const v = i * max / 4; svg += `<line class="grid" x1="40" x2="540" y1="${y(v)}" y2="${y(v)}"/><text x="29" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`; }
-  for (let i = 0; i <= 4; i++) { const t = start + (end - start) * i / 4; svg += `<text x="${40 + i * 125}" y="242" text-anchor="${i === 0 ? 'start' : i === 4 ? 'end' : 'middle'}">${e(fmt(t, { month: undefined, day: undefined }))}</text>`; }
-  if (state.metric === 'psi' && max >= 100) svg += `<line class="threshold" x1="40" x2="540" y1="${y(100)}" y2="${y(100)}"/><text x="537" y="${y(100) - 7}" text-anchor="end" opacity=".7">PSI 100</text>`;
+  for (let i = 0; i <= ticks; i++) { const v = i * step; svg += `<line class="grid" x1="44" x2="540" y1="${y(v)}" y2="${y(v)}"/><text x="34" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`; }
+  for (let i = 0; i <= 4; i++) { const time = start + (end - start) * i / 4; svg += `<text x="${44 + i * 124}" y="244" text-anchor="${i === 0 ? 'start' : i === 4 ? 'end' : 'middle'}">${e(clock(time))}</text>`; }
+  if (state.metric === 'psi' && max >= 100) svg += `<line class="threshold" x1="44" x2="540" y1="${y(100)}" y2="${y(100)}"/><text class="threshold-label" x="537" y="${y(100) - 7}" text-anchor="end">PSI 100</text>`;
   for (const r of selected) {
     let path = '', lastTime = 0;
     for (const p of points) {
@@ -102,41 +140,56 @@ function renderChart() {
       lastTime = time;
     }
     svg += `<path class="series" d="${path}" stroke="${seriesColors[r.id]}"/>`;
-    for (const p of points) if (Number.isFinite(p.values[r.id])) svg += `<circle cx="${x(p.timestamp)}" cy="${y(p.values[r.id])}" r="3.5" fill="${seriesColors[r.id]}" opacity=".12"><title>${r.zh} · ${e(fmt(p.timestamp))} · ${p.values[r.id]} ${state.metric === 'psi' ? 'PSI' : 'µg/m³'}</title></circle>`;
+    for (const p of points) if (Number.isFinite(p.values[r.id])) svg += `<circle cx="${x(p.timestamp)}" cy="${y(p.values[r.id])}" r="5" fill="${seriesColors[r.id]}" opacity="0"><title>${e(regionName(r))} · ${e(fmt(p.timestamp))} · ${p.values[r.id]} ${unit(state.metric)}</title></circle>`;
   }
   $('#trend-chart').innerHTML = svg;
-  $('#chart-legend').innerHTML = regions.map(r => `<button data-region="${r.id}" style="--c:${seriesColors[r.id]};opacity:${state.region === 'all' || state.region === r.id ? 1 : .45}" aria-label="查看${r.zh}趋势"><i></i>${r.zh}</button>`).join('');
+  $('#chart-legend').innerHTML = regions.map(r => `<button data-region="${r.id}" style="--c:${seriesColors[r.id]}" class="${state.region === 'all' || state.region === r.id ? '' : 'dim'}" aria-pressed="${state.region === r.id}"><i></i>${e(regionName(r))}</button>`).join('');
   $$('#chart-legend button').forEach(el => el.addEventListener('click', () => { state.region = state.region === el.dataset.region ? 'all' : el.dataset.region; $('#region-select').value = state.region; renderMap(); renderChart(); }));
 }
 function renderAdvisories() {
-  const items = (state.data?.advisories || []).slice(0, 4);
-  $('#advisory-list').innerHTML = items.length ? items.map(item => `<article class="advisory-item"><span class="advisory-label">NEA</span><div><h3><a href="${e(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer">${e(item.title)}</a></h3><p>国家环境局 · ${e(item.publishedAt ? fmt(item.publishedAt, { hour: undefined, minute: undefined }) : '官方公告')} · 英文原文</p></div><a href="${e(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer" aria-label="打开官方公告">↗</a></article>`).join('') : '<p class="empty">最新公告暂未读取成功。请通过下方官方入口查看实时指引。</p>';
+  const all = state.data?.advisories || [];
+  const policy = all.find(a => a.url.includes('/news/index/'));
+  const items = policy ? [...all.filter(a => a !== policy).slice(0, 3), policy] : all.slice(0, 4);
+  $('#advisory-list').innerHTML = items.length ? items.map(item => `<article class="advisory-item"><span class="advisory-label">NEA</span><div><h3 lang="en"><a href="${e(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer">${e(item.title)}</a></h3><p>${e(t('advMeta', { date: item.publishedAt ? fmt(item.publishedAt, { hour: undefined, minute: undefined, year: 'numeric' }) : t('advNoDate') }))}</p></div><a href="${e(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('advOpen'))}">↗</a></article>`).join('') : `<p class="empty">${e(t('advEmpty'))}</p>`;
 }
 function renderNews() {
   const items = (state.data?.news || []).filter(n => (state.filter === 'all' || n.category === state.filter) && `${n.title} ${n.source}`.toLowerCase().includes(state.query.toLowerCase()));
   $('#news-count').textContent = items.length;
-  $('#news-list').innerHTML = items.length ? items.slice(0, state.limit).map(n => `<a class="news-card" href="${e(safeUrl(n.url))}" target="_blank" rel="noopener noreferrer"><div class="news-meta"><span class="source-mark ${n.source === 'CNA' ? 'cna' : ''}">${e(n.source)}</span><span class="news-category">${n.category === 'regional' ? '区域动态' : '新加坡'}</span></div><h3>${e(n.title)}</h3><div class="news-card-foot"><span>${n.publishedAt ? e(fmt(n.publishedAt)) : '媒体未提供发布时间'} · 原文报道</span><span>↗</span></div></a>`).join('') : '<p class="empty">没有符合条件的报道，试试其他关键词或分类。</p>';
+  $('#news-list').innerHTML = items.length ? items.slice(0, state.limit).map(n => `<a class="news-card" href="${e(safeUrl(n.url))}" target="_blank" rel="noopener noreferrer"><div class="news-meta"><span class="source-mark ${n.source === 'CNA' ? 'cna' : ''}">${e(n.source)}</span><span class="news-category">${e(t(n.category === 'regional' ? 'newsRegional' : 'newsSg'))}</span></div><h3 lang="en">${e(n.title)}</h3><div class="news-card-foot"><span>${e(n.publishedAt ? fmt(n.publishedAt) : t('newsNoTime'))}</span><span aria-hidden="true">↗</span></div></a>`).join('') : `<p class="empty">${e(t('newsEmpty'))}</p>`;
   $('#load-more').hidden = items.length <= state.limit;
 }
 function renderAdvice() {
   const pv = validValues(readings(state.data, 'psi'));
-  $('#personal-advice').textContent = activity(pv.length ? Math.max(...pv) : NaN, $('#audience').value) + '（按五区最高 24 小时 PSI；并非次日预测。）';
+  const max = pv.length ? Math.max(...pv) : NaN;
+  $('#personal-advice').textContent = activity(max, $('#audience').value, getLanguage());
+  $('#personal-advice').style.setProperty('--c', bandOf(max).color);
+  $('#advice-note').textContent = Number.isFinite(max) ? t('adviceNote', { value: `PSI ${max}` }) : '';
 }
 function render() { renderSummary(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
+
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
+  if (!response.ok || !(response.headers.get('content-type') || '').match(/json|text\/plain/)) throw new Error('Unavailable');
+  const data = await response.json();
+  if (data.schemaVersion !== 1) throw new Error('Invalid data format');
+  return data;
+}
+async function fetchLatest() {
+  const staticHost = location.hostname.endsWith('github.io') || ['localhost', '127.0.0.1', ''].includes(location.hostname);
+  // Hosted worker supplies durable snapshots from its own scheduled refresh.
+  if (!staticHost) { try { return await fetchJson(`./api/data?t=${Date.now()}`); } catch {} }
+  const local = new URL('./data/latest.json', import.meta.url); local.searchParams.set('t', Date.now());
+  const candidates = (await Promise.allSettled([fetchJson(local), fetchJson(`${REPO_DATA}?t=${Date.now()}`)])).filter(r => r.status === 'fulfilled').map(r => r.value);
+  if (!candidates.length) throw new Error('Data unavailable');
+  return candidates.sort((a, b) => (Date.parse(b.generatedAt) || 0) - (Date.parse(a.generatedAt) || 0))[0];
+}
 async function load() {
   $('#refresh').disabled = true;
   try {
-    // Hosted worker supplies durable snapshots. Static / GitHub Pages builds use the bundled snapshot.
-    let response;
-    try { response = await fetch(`./api/data?t=${Date.now()}`, { cache: 'no-store', signal: AbortSignal.timeout(15000) }); if (!response.ok || !(response.headers.get('content-type') || '').includes('application/json')) throw new Error('Static hosting'); }
-    catch { response = await fetch(`./data/latest.json?t=${Date.now()}`, { cache: 'no-store', signal: AbortSignal.timeout(15000) }); }
-    if (!response.ok) throw new Error('Data unavailable');
-    const next = await response.json();
-    if (next.schemaVersion !== 1) throw new Error('Invalid data format');
-    state.data = next; render();
+    state.data = await fetchLatest(); render();
   } catch {
-    $('#data-warning').hidden = false; $('#data-warning').textContent = '暂时无法连接数据源，请稍后刷新或查看 NEA 官网。';
-    if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').textContent = '数据加载失败'; }
+    $('#data-warning').hidden = false; $('#data-warning').textContent = t('warnOffline');
+    if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').removeAttribute('data-i18n'); $('#updated').textContent = t('loadFailed'); }
   } finally { $('#refresh').disabled = false; }
 }
 $('#refresh').addEventListener('click', load);
@@ -149,5 +202,8 @@ $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews()
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
 $$('#overview,#distribution,#advisories,#news,#guide').forEach(el => observer.observe(el));
+// New snapshots land every 3 hours; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
+renderStatic();
 load();

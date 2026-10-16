@@ -6,10 +6,15 @@ export const regions = [
   { id: 'central', zh: '中部', en: 'Central', x: 361, y: 195 },
 ];
 export const colors = ['#2e9079', '#b58b2d', '#da7540', '#b74d67', '#7c457e'];
-export function band(value, metric = 'psi') {
-  if (!Number.isFinite(value)) return { index: -1, label: '暂无数据', color: '#8b949e' };
+const bandLabels = {
+  zh: { none: '暂无数据', psi: ['良好', '中等', '不健康', '非常不健康', '危险'], pm25: ['正常', '偏高', '高', '非常高'] },
+  en: { none: 'No data', psi: ['Good', 'Moderate', 'Unhealthy', 'Very unhealthy', 'Hazardous'], pm25: ['Normal', 'Elevated', 'High', 'Very high'] },
+};
+export function band(value, metric = 'psi', lang = 'zh') {
+  const text = bandLabels[lang] || bandLabels.zh;
+  if (!Number.isFinite(value)) return { index: -1, label: text.none, color: '#8b949e' };
   const limits = metric === 'psi' ? [50, 100, 200, 300] : [55, 150, 250];
-  const labels = metric === 'psi' ? ['良好', '中等', '不健康', '非常不健康', '危险'] : ['正常', '偏高', '高', '非常高'];
+  const labels = text[metric === 'psi' ? 'psi' : 'pm25'];
   const index = limits.findIndex(n => value <= n);
   const i = index === -1 ? limits.length : index;
   return { index: i, label: labels[i], color: colors[metric === 'pm25' && i > 0 ? i + 1 : i] };
@@ -30,12 +35,21 @@ export function safeUrl(input) {
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
-export function activity(value, audience) {
-  const level = band(value).index;
-  const messages = {
+const advice = {
+  zh: {
     general: ['可正常安排日常活动。', '可正常安排日常活动。', '减少长时间或剧烈的户外体力活动。', '避免长时间或剧烈的户外体力活动。', '尽量减少户外活动。'],
     vulnerable: ['可正常安排日常活动。', '可正常安排日常活动。', '尽量减少长时间或剧烈的户外体力活动。', '尽量减少户外活动。', '避免户外活动。'],
     chronic: ['可正常安排日常活动。', '可正常安排日常活动。', '避免长时间或剧烈的户外体力活动。', '避免户外活动。', '避免户外活动。'],
-  };
-  return level < 0 ? '数据暂不可用，请查看 NEA 最新指引。' : messages[audience][level];
+    none: '数据暂不可用，请查看 NEA 最新指引。',
+  },
+  en: {
+    general: ['Normal activities.', 'Normal activities.', 'Reduce prolonged or strenuous outdoor physical exertion.', 'Avoid prolonged or strenuous outdoor physical exertion.', 'Minimise outdoor activity.'],
+    vulnerable: ['Normal activities.', 'Normal activities.', 'Minimise prolonged or strenuous outdoor physical exertion.', 'Minimise outdoor activity.', 'Avoid outdoor activity.'],
+    chronic: ['Normal activities.', 'Normal activities.', 'Avoid prolonged or strenuous outdoor physical exertion.', 'Avoid outdoor activity.', 'Avoid outdoor activity.'],
+    none: 'Data unavailable. Please check the latest NEA advice.',
+  },
+};
+export function activity(value, audience, lang = 'zh') {
+  const level = band(value).index, text = advice[lang] || advice.zh;
+  return level < 0 ? text.none : text[audience][level];
 }

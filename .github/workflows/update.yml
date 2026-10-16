@@ -9,6 +9,7 @@ on:
     paths-ignore: ['public/data/**', 'README.md']
 permissions:
   contents: write
+  pages: write
 concurrency:
   group: haze-data
   cancel-in-progress: false
@@ -31,6 +32,7 @@ jobs:
           node --test tests/*.test.mjs
           python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Commit refreshed snapshot
+        id: commit
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -38,7 +40,16 @@ jobs:
           if ! git diff --staged --quiet; then
             git commit -m "data: refresh Singapore haze snapshot"
             git push origin HEAD:main
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
+      # Commits pushed with GITHUB_TOKEN may not trigger a Pages rebuild on their own,
+      # so request one explicitly; the site then serves the fresh snapshot.
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.pushed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
       - name: Report critical upstream failures
         if: steps.refresh.outcome == 'failure'
         run: exit 1
