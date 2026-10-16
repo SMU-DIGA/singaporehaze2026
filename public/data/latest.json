@@ -1,7 +1,7 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T22:00:54+08:00",
+    "updatedTimestamp": "2026-10-16T22:30:37+08:00",
     "timestamp": "2026-10-16T22:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
@@ -92,7 +92,7 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T22:00:54+08:00",
+    "updatedTimestamp": "2026-10-16T22:30:37+08:00",
     "timestamp": "2026-10-16T22:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
@@ -105,6 +105,20 @@
     }
   },
   "news": [
+    {
+      "title": "Haze in Singapore: Preventive measure notices sent to 7 companies responsible for fires",
+      "url": "https://www.channelnewsasia.com/watch/st13-15-haze-seven-indo-companies-6466481",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Haze in Singapore: Air quality could reach hazardous levels for the first time this year",
+      "url": "https://www.channelnewsasia.com/watch/haze-in-singapore-air-quality-could-reach-hazardous-levels-first-time-year-6466456",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "Great Eastern Women’s Run cancelled due to worsening haze",
       "url": "https://www.channelnewsasia.com/singapore/great-eastern-womens-run-cancelled-haze-air-quality-6466311",
@@ -192,20 +206,6 @@
     {
       "title": "Haze prompts closure of all outdoor and non-air-conditioned ActiveSG facilities",
       "url": "https://www.channelnewsasia.com/singapore/activesg-outdoor-facilities-closed-haze-6465086",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "NTU student creates website that estimates how many cigarettes’ worth of haze you've breathed in",
-      "url": "https://www.channelnewsasia.com/living/singapore-haze-tracker-ntu-student-6464691",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Singapore-listed First Resources, Bumitama Agri point to El Nino, say some fires began beyond their boundaries",
-      "url": "https://www.channelnewsasia.com/singapore/haze-el-nino-first-resources-bumitama-agri-indonesia-6464761",
       "source": "CNA",
       "publishedAt": null,
       "category": "singapore"
@@ -4051,56 +4051,56 @@
       }
     ]
   },
-  "generatedAt": "2026-10-16T22:06:58.297963+08:00",
+  "generatedAt": "2026-10-16T22:36:35.106577+08:00",
   "nextUpdateAt": "2026-10-16T23:05:00+08:00",
   "sources": {
-    "news": {
+    "advisories": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
-    },
-    "pm25": {
-      "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
-    "history_psi_2026-10-16": {
+    "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
-    "history_pm25_2026-10-15": {
+    "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
+    },
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
-    "advisories": {
+    "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "forecast_nea": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+      "checkedAt": "2026-10-16T22:36:35.106577+08:00"
     }
   },
   "errors": [],
@@ -4165,7 +4165,7 @@
   ],
   "forecast": {
     "targetDate": "2026-10-17",
-    "issuedAt": "2026-10-16T22:06:58.297963+08:00",
+    "issuedAt": "2026-10-16T22:36:35.106577+08:00",
     "psi": {
       "low": 135,
       "high": 201
@@ -4209,12 +4209,178 @@
       "rain": true,
       "southerly": true,
       "factor": 0.92
+    },
+    "hourly": {
+      "times": [
+        "2026-10-16T23",
+        "2026-10-17T00",
+        "2026-10-17T01",
+        "2026-10-17T02",
+        "2026-10-17T03",
+        "2026-10-17T04",
+        "2026-10-17T05",
+        "2026-10-17T06",
+        "2026-10-17T07",
+        "2026-10-17T08",
+        "2026-10-17T09",
+        "2026-10-17T10",
+        "2026-10-17T11",
+        "2026-10-17T12",
+        "2026-10-17T13",
+        "2026-10-17T14",
+        "2026-10-17T15",
+        "2026-10-17T16",
+        "2026-10-17T17",
+        "2026-10-17T18",
+        "2026-10-17T19",
+        "2026-10-17T20",
+        "2026-10-17T21",
+        "2026-10-17T22",
+        "2026-10-17T23"
+      ],
+      "regions": {
+        "north": [
+          22,
+          26,
+          23,
+          13,
+          10,
+          11,
+          15,
+          17,
+          16,
+          12,
+          22,
+          20,
+          21,
+          20,
+          23,
+          28,
+          33,
+          41,
+          48,
+          54,
+          66,
+          71,
+          52,
+          52,
+          56
+        ],
+        "south": [
+          28,
+          29,
+          27,
+          24,
+          23,
+          23,
+          25,
+          28,
+          32,
+          34,
+          40,
+          45,
+          45,
+          49,
+          56,
+          62,
+          68,
+          73,
+          75,
+          73,
+          70,
+          68,
+          66,
+          60,
+          57
+        ],
+        "east": [
+          30,
+          32,
+          30,
+          26,
+          25,
+          25,
+          27,
+          30,
+          34,
+          37,
+          43,
+          48,
+          49,
+          53,
+          60,
+          67,
+          73,
+          78,
+          80,
+          78,
+          76,
+          73,
+          71,
+          65,
+          61
+        ],
+        "west": [
+          45,
+          43,
+          39,
+          34,
+          32,
+          33,
+          32,
+          34,
+          36,
+          37,
+          41,
+          44,
+          46,
+          50,
+          55,
+          59,
+          62,
+          63,
+          63,
+          63,
+          61,
+          60,
+          57,
+          51,
+          50
+        ],
+        "central": [
+          36,
+          37,
+          35,
+          31,
+          29,
+          30,
+          31,
+          35,
+          40,
+          43,
+          51,
+          57,
+          57,
+          62,
+          71,
+          78,
+          86,
+          92,
+          94,
+          92,
+          89,
+          86,
+          83,
+          76,
+          72
+        ]
+      }
     }
   },
   "forecastLog": [
     {
       "targetDate": "2026-10-17",
-      "issuedAt": "2026-10-16T22:06:58.297963+08:00",
+      "issuedAt": "2026-10-16T22:36:35.106577+08:00",
       "low": 135,
       "high": 201,
       "official": true

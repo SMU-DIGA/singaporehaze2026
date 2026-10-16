@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest, flightTime, flightLinks } from '../public/lib.mjs';
+import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime } from '../public/lib.mjs';
 test('PSI boundaries follow NEA categories, including missing data', () => {
   for (const [n, i] of [[0, 0], [50, 0], [51, 1], [100, 1], [101, 2], [200, 2], [201, 3], [300, 3], [301, 4]]) assert.equal(band(n).index, i);
   assert.equal(band(undefined).index, -1);
@@ -76,4 +76,25 @@ test('flight times and search links', () => {
   assert.match(links.trip, /dcity=sin&acity=kul&ddate=2026-10-17/);
   assert.equal(links.skyscanner, 'https://www.skyscanner.com.sg/transport/flights/sin/kul/261017/');
   assert.match(links.google, /Flights%20to%20KUL%20from%20SIN%20on%202026-10-17/);
+});
+test('1-hour PM2.5 bands follow NEA limits', () => {
+  for (const [v, i] of [[0, 0], [55, 0], [56, 1], [150, 1], [151, 2], [250, 2], [251, 3]]) assert.equal(pm25Band(v), i);
+  assert.equal(pm25Band(NaN), -1);
+});
+test('best time to go out is the cleanest two waking hours', () => {
+  const day = [3, 4, 5, 6, 7, 8, 9, 10, 22].map((hour, k) => ({ hour, value: [10, 10, 10, 80, 40, 30, 90, 95, 5][k] }));
+  // 03:00-05:00 and 22:00 are cleaner but outside 06:00-21:00 starts; 07:00-09:00 averages 35.
+  assert.deepEqual(bestWindow(day), { start: 7, end: 9, mean: 35, peak: 40 });
+  // A gap in the hours breaks a window.
+  assert.equal(bestWindow([{ hour: 8, value: 10 }, { hour: 10, value: 10 }]), null);
+});
+test('air cleaner sizing matches the EPA chart', () => {
+  // 100 sq ft = 9.29 m² at an 8 ft ceiling → 65 cfm.
+  assert.equal(cadrNeeded(9.2903, 2.44).cfm, 65);
+  assert.equal(cadrNeeded(12, 2.6).m3h, Math.round(0.65 * 12 * 10.7639 * (2.6 / 2.44) * 1.699));
+  assert.equal(cadrNeeded(0), null);
+  const t = cleaningTime(300, 12, 2.6); // ~9.6 air changes an hour
+  assert.equal(t.ach, 9.6);
+  assert.equal(t.minutes90, 14);
+  assert.equal(cleaningTime(0, 12), null);
 });

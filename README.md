@@ -46,6 +46,11 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 出门时间与净化器计算器
+
+- **什么时候出门**：`scripts/forecast.py` 在算明日预测时，把 CAMS 逐小时 PM2.5 按各区近 48 小时的 NEA 实测比值校正，从下一小时到明天 23 点写入 `forecast.hourly`。页面按区域（默认用户邮编所在区域）画出每小时柱状图，找出 6–21 点开始、平均最低的连续 2 小时作为最佳时段，并按 NEA 1 小时 PM2.5 分级（haze.gov.sg 的个人指引）给出健康人士和易感人群的建议。
+- **空气净化器计算器**：纯前端。按美国 EPA 选购表（层高 8 英尺时每平方英尺约 0.65 CFM 的烟雾 CADR）估算所需 CADR，并按层高等比例放大；输入已有净化器的 CADR 时，计算每小时换气次数，以及理想密闭房间内颗粒物降低 90% 所需时间（ln10 / 换气次数）。NEA 只建议按 CADR 和房间大小选购，没有给出具体公式。
+
 ## 周边城市
 
 `scripts/update_escape.py` 每小时（随整点任务）生成 `public/data/escape.json`：17 个周边城市（含新加坡作对照）现在的 AQI，以及明天和后天的最高 AQI。数据来自 Open-Meteo 的 CAMS 模式（`us_aqi_pm2_5`，美国标准，按 24 小时 PM2.5 计算；不用总 AQI，因为臭氧会把曼谷等城市拉高，和烟霾无关）。城市列表和大致飞行时间写在脚本的 `CITIES` 里。

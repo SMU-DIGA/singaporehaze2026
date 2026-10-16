@@ -117,7 +117,9 @@ def model_forecast(fetch, target, pm25_history, now):
             continue
         bias = min(3.0, max(0.33, sum(o for o, _ in pairs) / max(1.0, sum(m for _, m in pairs))))
         pm = sum(ahead) / len(ahead) * bias
-        result[region] = {'psi': round(psi_from_pm25(pm)), 'pm25': round(pm, 1), 'bias': round(bias, 2)}
+        # Bias-corrected hourly PM2.5 from the next hour to the end of the target day ("when to go out").
+        upcoming = {t: round(v * bias) for t, v in series if now.strftime('%Y-%m-%dT%H') < t <= f'{target.isoformat()}T23'}
+        result[region] = {'psi': round(psi_from_pm25(pm)), 'pm25': round(pm, 1), 'bias': round(bias, 2), 'hourly': upcoming}
     if not result:
         raise ValueError('Model run did not cover the target day')
     return result
@@ -229,8 +231,19 @@ def build(fetch, data, now):
         'model': model_span and {**model_span, 'pm25': round(sum(model_pm) / len(model_pm)),
                                  'bias': round(sum(v['bias'] for v in model.values()) / len(model), 2)},
         'weather': weather,
+        'hourly': hourly_series(model),
     }
     return forecast, statuses, errors
+
+
+def hourly_series(model):
+    """{'times': ['2026-10-17T06', ...], 'regions': {'north': [48, ...]}} aligned on the hours every region has."""
+    if not model:
+        return None
+    times = sorted(set.intersection(*(set(v['hourly']) for v in model.values())))
+    if not times:
+        return None
+    return {'times': times, 'regions': {r: [v['hourly'][t] for t in times] for r, v in model.items()}}
 
 
 def update_log(log, forecast, psi_history, now):

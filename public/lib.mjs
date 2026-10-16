@@ -39,6 +39,39 @@ export function flightLinks(iata, date) {
     skyscanner: `https://www.skyscanner.com.sg/transport/flights/sin/${code}/${compact}/`,
   };
 }
+// NEA 1-hr PM2.5 bands (µg/m³) and the matching activity advice for the next hour.
+export const PM25_BANDS = [55, 150, 250];
+export function pm25Band(value) {
+  if (!Number.isFinite(value)) return -1;
+  const i = PM25_BANDS.findIndex(limit => value <= limit);
+  return i === -1 ? PM25_BANDS.length : i;
+}
+// Lowest-average run of `span` consecutive hours whose start falls in [fromHour, toHour].
+// hours: [{ hour: 0-23, value }] in time order for one day.
+export function bestWindow(hours, span = 2, fromHour = 6, toHour = 21) {
+  let best = null;
+  for (let i = 0; i + span <= hours.length; i++) {
+    const run = hours.slice(i, i + span);
+    if (run[0].hour < fromHour || run[0].hour > toHour || run.some((h, k) => h.hour !== run[0].hour + k || !Number.isFinite(h.value))) continue;
+    const mean = run.reduce((sum, h) => sum + h.value, 0) / span;
+    if (!best || mean < best.mean) best = { start: run[0].hour, end: run[0].hour + span, mean: Math.round(mean), peak: Math.max(...run.map(h => h.value)) };
+  }
+  return best;
+}
+// Air cleaner sizing. US EPA's chart asks for a smoke CADR of about 0.65 cfm per square foot
+// (65 cfm for 100 sq ft) at an 8 ft (2.44 m) ceiling; taller rooms need proportionally more.
+const CFM_TO_M3H = 1.699;
+export function cadrNeeded(areaM2, heightM = 2.6) {
+  if (!(areaM2 > 0) || !(heightM > 0)) return null;
+  const cfm = 0.65 * areaM2 * 10.7639 * (heightM / 2.44);
+  return { cfm: Math.round(cfm), m3h: Math.round(cfm * CFM_TO_M3H) };
+}
+// Air changes per hour, and minutes to cut indoor particles by 90% in a closed, well-mixed room.
+export function cleaningTime(cadrM3h, areaM2, heightM = 2.6) {
+  if (!(cadrM3h > 0) || !(areaM2 > 0) || !(heightM > 0)) return null;
+  const ach = cadrM3h / (areaM2 * heightM);
+  return { ach: Math.round(ach * 10) / 10, minutes90: Math.round(Math.log(10) / ach * 60) };
+}
 export function postalCode(input) {
   const code = String(input ?? '').replace(/\s/g, '');
   return /^\d{6}$/.test(code) ? code : null;

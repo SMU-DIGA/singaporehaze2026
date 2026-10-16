@@ -258,6 +258,42 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .resource-note { color: var(--muted); font-size: 13px; }
 .mask-stock { font-weight: 600; color: var(--accent); }
 
+/* ---------- When to go out ---------- */
+.hours-panel { margin-bottom: 24px; }
+.hours-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px 28px; padding: 0 22px 8px; }
+.hours-day h3 { font-size: 15px; font-weight: 650; }
+.hours-best { margin-top: 6px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
+.hours-best b { color: var(--c); font-weight: 650; }
+.hours-best span, .hours-none { font-size: 13px; color: var(--muted); }
+.hours-advice { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
+.hour-strip { display: flex; align-items: flex-end; gap: 3px; height: 92px; margin-top: 12px; }
+.hour { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; }
+.hour i { display: block; height: var(--h); background: var(--c); border-radius: 3px 3px 0 0; opacity: .55; }
+.hour.best i { opacity: 1; outline: 2px solid var(--c); outline-offset: 1px; }
+.hour span { height: 16px; font-size: 11px; color: var(--muted); text-align: left; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hours-footnote { grid-column: 1 / -1; font-size: 12px; color: var(--faint); }
+.hours-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; padding: 10px 16px 14px; font-size: 13px; }
+#hours-region button { white-space: nowrap; }
+
+/* ---------- Air cleaner calculator ---------- */
+.purifier-panel { margin-bottom: 24px; }
+.purifier-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 28px; padding: 0 22px 8px; }
+.purifier-form { display: flex; flex-direction: column; gap: 12px; }
+.purifier-form label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted); }
+.input-unit { display: flex; align-items: center; gap: 8px; }
+.input-unit input { width: 160px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); font-size: 16px; color: var(--text); font-variant-numeric: tabular-nums; }
+.input-unit input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.input-unit i { font-style: normal; color: var(--muted); }
+.pur-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: -4px; }
+.pur-presets button { padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--muted); }
+.pur-presets button.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
+.purifier-result { background: var(--panel-soft); border-radius: 10px; padding: 16px 18px; align-self: start; }
+.pur-need { font-size: 20px; font-weight: 650; line-height: 1.4; color: var(--accent); }
+.pur-verdict { margin-top: 10px; font-size: 14px; line-height: 1.6; }
+.pur-verdict.ok { color: #2e7d5b; }
+.pur-verdict.short { color: #b0582a; }
+.purifier-tips { margin: 8px 22px 16px; padding-left: 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+
 /* ---------- Getting away ---------- */
 .escape-panel { margin-bottom: 24px; }
 .escape-table-wrap { padding: 0 22px 8px; overflow-x: auto; }
@@ -403,6 +439,7 @@ body.dark .island-map { color: #6f8f7d; }
   .alert > a { margin-left: 58px; }
   .forecast-body { grid-template-columns: 1fr; gap: 20px; }
   .resources-grid { grid-template-columns: 1fr; }
+  .purifier-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
   .sidebar { position: sticky; top: 0; width: 100%; padding: 12px 16px 0; inset: auto; }
@@ -452,6 +489,10 @@ body.dark .island-map { color: #6f8f7d; }
   .resources-grid { padding: 0 16px 16px; }
   /* Phones: one card per city instead of a wide table. */
   .escape-table-wrap { padding: 0 16px 8px; }
+  .hours-days, .purifier-body { padding: 0 16px 8px; }
+  .hours-days { grid-template-columns: 1fr; }
+  .purifier-tips { margin: 8px 16px 16px; }
+  .hour-strip { gap: 2px; }
   .escape-table thead { display: none; }
   .escape-table tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; padding: 12px 0; border-top: 1px solid var(--border); }
   .escape-table tr.home { margin: 0 -16px; padding: 12px 16px; }

@@ -1,8 +1,8 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks } from './lib.mjs';
-import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime } from './lib.mjs';
+import { getLanguage, setLanguage, localize, locale, t, list } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -55,6 +55,7 @@ $('.language-switch').addEventListener('click', ev => {
   const b = ev.target.closest('[data-language]'); if (!b) return;
   setLanguage(b.dataset.language); renderStatic(); if (state.data) render();
   if (state.resources) renderResources(); // popups are built in the current language
+  renderPurifier();
 });
 
 try { document.body.classList.toggle('dark', localStorage.getItem('haze-theme') === 'dark'); } catch {}
@@ -267,7 +268,55 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderMyAir(); renderForecast(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
+
+// When to go out: bias-corrected hourly PM2.5 for one region, today and tomorrow.
+const hoursRegion = () => state.hoursRegion || (state.place ? nearestRegion(state.place.lat, state.place.lon).id : state.region !== 'all' ? state.region : 'central');
+function renderHours() {
+  const hourly = state.data?.forecast?.hourly;
+  $('#hours').hidden = !hourly?.times?.length;
+  if (!hourly?.times?.length) return;
+  const region = hoursRegion();
+  $('#hours-region').innerHTML = regions.map(r => `<button data-region="${r.id}" class="${r.id === region ? 'selected' : ''}" aria-pressed="${r.id === region}">${e(regionName(r))}</button>`).join('');
+  const values = hourly.regions[region] || [];
+  const days = {};
+  hourly.times.forEach((time, i) => { (days[time.slice(0, 10)] ||= []).push({ hour: +time.slice(11, 13), value: values[i] }); });
+  const top = Math.max(150, ...values.filter(Number.isFinite));
+  const colourOf = v => bandOf(v, 'pm25');
+  const hh = h => `${String(h).padStart(2, '0')}:00`;
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Singapore' }).format(new Date());
+  $('#hours-days').innerHTML = Object.entries(days).slice(0, 2).map(([date, hours]) => {
+    const waking = hours.filter(h => h.hour >= 6);
+    const best = bestWindow(hours);
+    const worst = waking.filter(h => Number.isFinite(h.value)).sort((a, b) => b.value - a.value)[0];
+    const label = `${t(date === today ? 'hrsToday' : 'hrsTomorrow')} · ${fmt(`${date}T12:00:00+08:00`, { weekday: 'short', month: 'short', day: 'numeric', hour: undefined, minute: undefined })}`;
+    let summary = `<p class="hours-none">${e(t('hrsNoWindow'))}</p>`;
+    if (best) {
+      const band = pm25Band(best.peak), b = colourOf(best.peak);
+      summary = `<p class="hours-best" style="--c:${b.color}"><b>${e(t('hrsBest', { from: hh(best.start), to: hh(best.end), value: best.mean, band: b.label }))}</b>${worst ? `<span>${e(t('hrsWorst', { at: hh(worst.hour), value: worst.value }))}</span>` : ''}</p>`
+        + `<p class="hours-advice">${e(t('hrsHealthy', { advice: list('pmAdviceHealthy')[band] }))}<br>${e(t('hrsVulnerable', { advice: list('pmAdviceVulnerable')[band] }))}</p>`;
+    }
+    const bars = waking.map(h => { const b = colourOf(h.value); const inBest = best && h.hour >= best.start && h.hour < best.end;
+      return `<div class="hour${inBest ? ' best' : ''}" style="--c:${b.color};--h:${Math.max(6, Math.round(h.value / top * 100))}%" title="${e(t('hrsHour', { time: hh(h.hour), value: h.value, band: b.label }))}"><i></i><span>${h.hour % 3 === 0 ? String(h.hour).padStart(2, '0') : ''}</span></div>`; }).join('');
+    return `<div class="hours-day"><h3>${e(label)}</h3>${summary}${best ? `<div class="hour-strip" role="img" aria-label="${e(label)}">${bars}</div>` : ''}</div>`;
+  }).join('') + `<p class="hours-footnote">${e(t('hrsVulnerableNote'))}</p>`;
+  $('#hours-legend').innerHTML = [0, 56, 151, 251].map((v, i) => { const b = colourOf(v); return `<span class="legend-item" style="--c:${b.color}"><i></i>${e(b.label)} <span class="legend-range">${['0–55', '56–150', '151–250', '≥251'][i]}</span></span>`; }).join('') + '<span class="legend-range">µg/m³</span>';
+}
+$('#hours-region').addEventListener('click', ev => { const b = ev.target.closest('[data-region]'); if (!b) return; state.hoursRegion = b.dataset.region; renderHours(); });
+
+// Air cleaner calculator.
+function renderPurifier() {
+  const area = parseFloat($('#pur-area').value), height = parseFloat($('#pur-height').value), cadr = parseFloat($('#pur-cadr').value);
+  const need = cadrNeeded(area, height);
+  if (!need) { $('#purifier-result').innerHTML = `<p>${e(t('purInvalid'))}</p>`; return; }
+  const have = cleaningTime(cadr, area, height);
+  const verdict = have ? `<p class="pur-verdict ${cadr >= need.m3h ? 'ok' : 'short'}">${e(t(cadr >= need.m3h ? 'purEnough' : 'purShort', { ach: have.ach, minutes: have.minutes90 }))}</p>` : '';
+  $('#purifier-result').innerHTML = `<p class="pur-need">${e(t('purNeed', need))}</p>${verdict}`;
+  $$('#pur-presets [data-area]').forEach(b => b.classList.toggle('selected', +b.dataset.area === area));
+}
+$('#purifier-form').addEventListener('input', renderPurifier);
+$('#purifier-form').addEventListener('submit', ev => ev.preventDefault());
+$('#pur-presets').addEventListener('click', ev => { const b = ev.target.closest('[data-area]'); if (!b) return; $('#pur-area').value = b.dataset.area; renderPurifier(); });
 
 // Haze resources: N95 machines (stock mirrored from HazeMaskGoWhere), Community Clubs and polyclinics.
 const stockColors = { available: '#2e9079', limited: '#b58b2d', out: '#b74d67', unknown: '#8b949e', offline: '#8b949e' };
@@ -366,6 +415,7 @@ function setPlace(place) {
     return;
   }
   selectRegion(nearestRegion(place.lat, place.lon).id, false);
+  state.hoursRegion = null; renderHours();
   if (live.map) {
     const icon = window.L.divIcon({ className: 'you-pin', iconSize: [18, 18], html: '<span></span>' });
     if (live.you) live.you.setLatLng([place.lat, place.lon]);
@@ -492,11 +542,12 @@ $('#news-search').addEventListener('input', ev => { state.query = ev.target.valu
 $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews(); });
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
-$$('#overview,#forecast,#distribution,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
+$$('#overview,#forecast,#hours,#distribution,#purifier,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
 // New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
 renderStatic();
+renderPurifier();
 initMap();
 load();
 try {

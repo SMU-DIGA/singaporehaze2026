@@ -85,6 +85,10 @@ class ForecastTests(unittest.TestCase):
         self.assertEqual(model['central']['bias'], 2.0)
         self.assertEqual(model['central']['pm25'], 80.0)
         self.assertEqual(model['central']['psi'], round(forecast.psi_from_pm25(80)))
+        # Hourly values start after the current hour and stop at the end of the target day.
+        hours = sorted(model['central']['hourly'])
+        self.assertEqual((hours[0], hours[-1]), ('2026-10-16T20', '2026-10-17T23'))
+        self.assertEqual(set(model['central']['hourly'].values()), {80})
 
     def test_blend_weights_official_forecast_and_reports_confidence(self):
         result, statuses, errors = forecast.build(fake_fetch, snapshot(), NOW)
@@ -96,6 +100,8 @@ class ForecastTests(unittest.TestCase):
         self.assertLessEqual(result['psi']['low'], result['psi']['high'])
         self.assertEqual(result['confidence'], 'high')
         self.assertEqual(set(result['regions']), set(forecast.REGIONS))
+        self.assertEqual(set(result['hourly']['regions']), set(forecast.REGIONS))
+        self.assertEqual(len(result['hourly']['times']), len(result['hourly']['regions']['north']))
 
     def test_stale_official_forecast_ignored_and_failures_degrade(self):
         def fetch(url):
