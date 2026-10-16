@@ -202,10 +202,12 @@
                 <button type="button" data-area="25" data-i18n="purPresetLiving">客厅 25 m²</button>
               </div>
               <label><span data-i18n="purHeight">层高</span><span class="input-unit"><input id="pur-height" type="number" inputmode="decimal" min="2" max="6" step="0.1" value="2.6"><i>m</i></span></label>
+              <label class="pur-check"><input type="checkbox" id="pur-poor"> <span data-i18n="purPoor">房间通风差（没有可以打开的窗）</span></label>
               <label><span data-i18n="purHave">你的净化器 CADR（可选）</span><span class="input-unit"><input id="pur-cadr" type="number" inputmode="decimal" min="0" step="10" data-i18n-attr="placeholder:purHavePlaceholder" placeholder="例如 300"><i>m³/h</i></span></label>
             </form>
             <div class="purifier-result" id="purifier-result" aria-live="polite"></div>
           </div>
+          <div class="purifier-models" id="pur-models" hidden></div>
           <ul class="purifier-tips">
             <li data-i18n="purTip1">看包装上针对烟雾（smoke）的 CADR，细颗粒物要看这一项。</li>
             <li data-i18n="purTip2">标称 CADR 通常在最高档测得，低档时实际效果会差很多。</li>
@@ -213,7 +215,7 @@
             <li data-i18n="purTip4">避免会产生臭氧的机型，例如带离子发生器、静电集尘或紫外线灯的机型（美国 EPA 建议）。</li>
             <li data-i18n="purTip5">按说明书定期更换滤网；滤网堵塞后 CADR 会下降。</li>
           </ul>
-          <div class="panel-foot"><span data-i18n="purNote">按美国 EPA 选购表估算：层高 2.44 米时，每平方英尺约需 0.65 CFM 的烟雾 CADR，层高更高时按比例增加。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
+          <div class="panel-foot"><span data-i18n="purNote">按 NEA 公式估算：所需烟雾 CADR（m³/h）≥ 房间体积（m³）× 5；房间通风差，或机型带离子等电子净化技术时 × 7。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.nea.gov.sg/our-services/public-cleanliness/environmental-cleaning-guidelines/guidelines/list-of-portable-air-cleaners-against-covid-19-virus-aerosols" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
         </section>
 
         <section data-toc="tocResources" class="panel resources-panel" id="resources">

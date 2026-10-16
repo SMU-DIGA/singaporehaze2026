@@ -1,9 +1,9 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime, suitablePurifiers } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t, list } from './locale.mjs';
 import { rules, TIERS, tierOf, checked as rulesChecked } from './rules.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, history: null, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, history: null, purAll: false, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -391,13 +391,27 @@ $('#hours-region').addEventListener('click', ev => { const b = ev.target.closest
 // Air cleaner calculator.
 function renderPurifier() {
   const area = parseFloat($('#pur-area').value), height = parseFloat($('#pur-height').value), cadr = parseFloat($('#pur-cadr').value);
-  const need = cadrNeeded(area, height);
-  if (!need) { $('#purifier-result').innerHTML = `<p>${e(t('purInvalid'))}</p>`; return; }
+  const poor = $('#pur-poor').checked;
+  const need = cadrNeeded(area, height, poor ? 7 : 5);
+  $$('#pur-presets [data-area]').forEach(b => b.classList.toggle('selected', +b.dataset.area === area));
+  if (!need) { $('#purifier-result').innerHTML = `<p>${e(t('purInvalid'))}</p>`; $('#pur-models').hidden = true; return; }
   const have = cleaningTime(cadr, area, height);
   const verdict = have ? `<p class="pur-verdict ${cadr >= need.m3h ? 'ok' : 'short'}">${e(t(cadr >= need.m3h ? 'purEnough' : 'purShort', { ach: have.ach, minutes: have.minutes90 }))}</p>` : '';
   $('#purifier-result').innerHTML = `<p class="pur-need">${e(t('purNeed', need))}</p>${verdict}`;
-  $$('#pur-presets [data-area]').forEach(b => b.classList.toggle('selected', +b.dataset.area === area));
+  // Models from NEA's list that are big enough, with shop searches for live prices.
+  const list = state.resources?.purifiers;
+  $('#pur-models').hidden = !list?.items?.length;
+  if (!list?.items?.length) return;
+  const fits = suitablePurifiers(list.items, area, height, poor);
+  const shown = state.purAll ? fits : fits.slice(0, 5);
+  const shop = (name, url) => `<a href="${e(url)}" target="_blank" rel="noopener noreferrer">${name} ↗</a>`;
+  const query = model => encodeURIComponent(model.replace(/\(.*?\)/g, '').replace(/\s+/g, ' ').trim()); // shop search copes badly with brackets
+  const rows = shown.map(p => `<li><div><b>${e(p.model)}</b><small>${e(t(p.electronic ? 'purElec' : 'purMech', { filter: p.filter }))}</small></div><div class="pur-model-cadr"><b>${e(t('purCadr', { cadr: p.cadr }))}</b><small>${e(t('purAch', { ach: p.ach }))}</small></div><div class="pur-shops">${shop('Lazada', `https://www.lazada.sg/catalog/?q=${query(p.model)}`)}${shop('Shopee', `https://shopee.sg/search?keyword=${query(p.model)}`)}</div></li>`).join('');
+  const more = fits.length > 5 ? `<button class="text-button" id="pur-more">${e(t(state.purAll ? 'purLess' : 'purMore', { n: fits.length }))}</button>` : '';
+  const date = list.listUpdated ? fmt(`${list.listUpdated}T12:00:00+08:00`, { year: 'numeric', hour: undefined, minute: undefined }) : '—';
+  $('#pur-models').innerHTML = `<h3>${e(t('purModels'))}</h3><p class="pur-models-sub">${e(t(fits.length ? 'purModelsSub' : 'purModelsNone'))}</p>${fits.length ? `<ul>${rows}</ul>${more}` : ''}<p class="pur-disclaimer">${e(t('purDisclaimer', { date }))}</p>`;
 }
+$('#pur-models').addEventListener('click', ev => { if (ev.target.closest('#pur-more')) { state.purAll = !state.purAll; renderPurifier(); } });
 $('#purifier-form').addEventListener('input', renderPurifier);
 $('#purifier-form').addEventListener('submit', ev => ev.preventDefault());
 $('#pur-presets').addEventListener('click', ev => { const b = ev.target.closest('[data-area]'); if (!b) return; $('#pur-area').value = b.dataset.area; renderPurifier(); });
@@ -665,7 +679,7 @@ async function load() {
   $('#refresh').disabled = true;
   try {
     const [data, resources, escape, history] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources), fetchNewest('escape.json').catch(() => state.escape), fetchNewest('history.json').catch(() => state.history)]);
-    state.data = data; state.resources = resources; state.escape = escape; state.history = history; render(); renderResources();
+    state.data = data; state.resources = resources; state.escape = escape; state.history = history; render(); renderResources(); renderPurifier();
   } catch {
     $('#data-warning').hidden = false; $('#data-warning').textContent = t('warnOffline');
     if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').removeAttribute('data-i18n'); $('#updated').textContent = t('loadFailed'); }

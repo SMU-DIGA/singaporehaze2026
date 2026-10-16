@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T00:22:51+08:00",
+    "updatedAt": "2026-10-17T00:32:51+08:00",
     "label": "16 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -1461,7 +1461,168 @@
       }
     ]
   },
+  "purifiers": {
+    "fetchedAt": "2026-10-17T00:34:14.714465+08:00",
+    "source": "https://www.nea.gov.sg/our-services/public-cleanliness/environmental-cleaning-guidelines/guidelines/list-of-portable-air-cleaners-against-covid-19-virus-aerosols",
+    "listUpdated": "2024-12-30",
+    "items": [
+      {
+        "model": "AiRazor AR-100",
+        "electronic": false,
+        "filter": "MERV-14",
+        "cadrFilter": 302,
+        "cadrOverall": 302
+      },
+      {
+        "model": "Airify AP1402",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 176,
+        "cadrOverall": 176
+      },
+      {
+        "model": "Atmosphere MINI 124746M",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 220,
+        "cadrOverall": 220
+      },
+      {
+        "model": "Atmosphere SKY 120539M",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 510,
+        "cadrOverall": 510
+      },
+      {
+        "model": "Cleanroom 250",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 460,
+        "cadrOverall": 460
+      },
+      {
+        "model": "Cleanroom H13",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 461,
+        "cadrOverall": 461
+      },
+      {
+        "model": "Defender Air Cleaner (AM4000UK/AM4000G)",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 212,
+        "cadrOverall": 212
+      },
+      {
+        "model": "Euromate VisionAir Blue Line 1 (Vision Air double)",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 835,
+        "cadrOverall": 835
+      },
+      {
+        "model": "Euromate VisionAir Blue Line 1 (Vision Air single)",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 414,
+        "cadrOverall": 414
+      },
+      {
+        "model": "HealthPro 100",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 500,
+        "cadrOverall": 500
+      },
+      {
+        "model": "HealthPro 250",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 468,
+        "cadrOverall": 468
+      },
+      {
+        "model": "Healthy Air Technology HA500",
+        "electronic": true,
+        "filter": "HEPA",
+        "cadrFilter": null,
+        "cadrOverall": 516
+      },
+      {
+        "model": "Healthy Air Technology HA800",
+        "electronic": true,
+        "filter": "HEPA",
+        "cadrFilter": null,
+        "cadrOverall": 776
+      },
+      {
+        "model": "IQAir Cleanroom H13",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 530,
+        "cadrOverall": 530
+      },
+      {
+        "model": "Novita Air Purifier A8i",
+        "electronic": true,
+        "filter": "HEPA",
+        "cadrFilter": null,
+        "cadrOverall": 847
+      },
+      {
+        "model": "Novita Air Purifier A11, A11i",
+        "electronic": true,
+        "filter": "HEPA",
+        "cadrFilter": null,
+        "cadrOverall": 318
+      },
+      {
+        "model": "Novita Air Purifier A18, A18i",
+        "electronic": true,
+        "filter": "HEPA",
+        "cadrFilter": null,
+        "cadrOverall": 488
+      },
+      {
+        "model": "Philips Air Purifier AC0820/30",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 190,
+        "cadrOverall": 190
+      },
+      {
+        "model": "Philips Air Purifier AC2887/30",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 333,
+        "cadrOverall": 333
+      },
+      {
+        "model": "Philips Air Purifier AC2936/33",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 380,
+        "cadrOverall": 380
+      },
+      {
+        "model": "Philips Air Purifier AC3033/30",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 520,
+        "cadrOverall": 520
+      },
+      {
+        "model": "Tefal Pure Air PT3030",
+        "electronic": false,
+        "filter": "HEPA",
+        "cadrFilter": 268,
+        "cadrOverall": 268
+      }
+    ]
+  },
   "errors": [],
-  "generatedAt": "2026-10-17T00:30:02.422939+08:00",
+  "generatedAt": "2026-10-17T00:34:14.714465+08:00",
   "schemaVersion": 1
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime } from '../public/lib.mjs';
+import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime, suitablePurifiers } from '../public/lib.mjs';
 test('PSI boundaries follow NEA categories, including missing data', () => {
   for (const [n, i] of [[0, 0], [50, 0], [51, 1], [100, 1], [101, 2], [200, 2], [201, 3], [300, 3], [301, 4]]) assert.equal(band(n).index, i);
   assert.equal(band(undefined).index, -1);
@@ -88,15 +88,28 @@ test('best time to go out is the cleanest two waking hours', () => {
   // A gap in the hours breaks a window.
   assert.equal(bestWindow([{ hour: 8, value: 10 }, { hour: 10, value: 10 }]), null);
 });
-test('air cleaner sizing matches the EPA chart', () => {
-  // 100 sq ft = 9.29 m² at an 8 ft ceiling → 65 cfm.
-  assert.equal(cadrNeeded(9.2903, 2.44).cfm, 65);
-  assert.equal(cadrNeeded(12, 2.6).m3h, Math.round(0.65 * 12 * 10.7639 * (2.6 / 2.44) * 1.699));
+test("air cleaner sizing follows NEA's volume × 5 rule", () => {
+  // 12 m² × 2.6 m = 31.2 m³ → 156 m³/h; × 7 for poor ventilation → 219 m³/h.
+  assert.deepEqual(cadrNeeded(12, 2.6), { m3h: 156, cfm: 92, volume: 31 });
+  assert.equal(cadrNeeded(12, 2.6, 7).m3h, 219);
   assert.equal(cadrNeeded(0), null);
   const t = cleaningTime(300, 12, 2.6); // ~9.6 air changes an hour
   assert.equal(t.ach, 9.6);
   assert.equal(t.minutes90, 14);
   assert.equal(cleaningTime(0, 12), null);
+});
+test('NEA-listed air cleaners are matched to the room', () => {
+  const items = [
+    { model: 'Small', electronic: false, cadrFilter: 150, cadrOverall: 150 },
+    { model: 'Mid', electronic: false, cadrFilter: 200, cadrOverall: 200 },
+    { model: 'Ioniser', electronic: true, cadrFilter: null, cadrOverall: 210 },
+    { model: 'Big', electronic: false, cadrFilter: 500, cadrOverall: 500 },
+  ];
+  // 31.2 m³ needs 156 (× 5); the ioniser needs 219 (× 7) on its overall CADR.
+  assert.deepEqual(suitablePurifiers(items, 12, 2.6).map(x => x.model), ['Mid', 'Big']);
+  assert.deepEqual(suitablePurifiers(items, 12, 2.6, true).map(x => x.model), ['Big']);
+  assert.equal(suitablePurifiers(items, 12, 2.6)[0].ach, 6.4);
+  assert.deepEqual(suitablePurifiers(items, 0), []);
 });
 test('official measures: bands and complete bilingual rules', async () => {
   const { rules, TIERS, tierOf } = await import('../public/rules.mjs');

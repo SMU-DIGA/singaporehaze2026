@@ -32,9 +32,15 @@ GEOJSON = json.dumps({'features': [
 MODIFIED = dt.datetime(2026, 10, 16, 12, 2, 51, tzinfo=dt.timezone.utc)
 
 
+PURIFIER_PAGE = ('<table><tr><th>S/N</th><th>Brand and Model</th><th>Category</th><th>Filter Grade</th><th>A</th><th>B</th></tr>'
+                 '<tr><td>1</td><td>Airify AP1402</td><td>Mechanical</td><td>HEPA</td><td>176</td><td>176</td></tr></table>')
+
+
 def fake_fetch(url):
     if url == resources.MASKS:
         return MASKS, MODIFIED
+    if url == resources.PURIFIERS:
+        return PURIFIER_PAGE, None
     if 'poll-download' in url:
         return json.dumps({'data': {'url': 'https://example.invalid/file.geojson'}}), None
     return GEOJSON, None
@@ -70,7 +76,22 @@ class ResourceTests(unittest.TestCase):
                 resources.main()
             saved = json.loads(output.read_text())
             self.assertEqual(len(saved['masks']['items']), 3)
-            self.assertEqual(saved['errors'], ['masks: OSError'])
+            self.assertEqual(saved['errors'], ['masks: OSError'])  # static lists were fetched within the last week
+
+    def test_nea_air_cleaner_table(self):
+        page = ('<p>Last updated on 30 Dec 2024</p><table><tr><td>Disclaimer</td></tr></table>'
+                '<table><tr><th>S/N</th><th>Brand and Model</th><th>Category</th><th>Filter Grade</th>'
+                '<th>Smoke CADR in CMH (Filtration Alone)</th><th>Smoke CADR in CMH (Overall)</th></tr>'
+                '<tr><td>1</td><td>Airify <b>AP1402</b></td><td>Mechanical</td><td>HEPA</td><td>176</td><td>176</td></tr>'
+                '<tr><td>2</td><td>Novita A8i</td><td>Mechanical and Electronic</td><td>HEPA</td><td>N.A.</td><td>847</td></tr>'
+                '<tr><td>3</td><td>Broken</td><td>Mechanical</td><td>HEPA</td><td>-</td><td>-</td></tr></table>')
+        result = resources.purifier_list(page)
+        self.assertEqual(result['listUpdated'], '2024-12-30')
+        self.assertEqual(result['items'], [
+            {'model': 'Airify AP1402', 'electronic': False, 'filter': 'HEPA', 'cadrFilter': 176, 'cadrOverall': 176},
+            {'model': 'Novita A8i', 'electronic': True, 'filter': 'HEPA', 'cadrFilter': None, 'cadrOverall': 847}])
+        with self.assertRaises(ValueError):
+            resources.purifier_list('<table></table>')
 
 
 if __name__ == '__main__':

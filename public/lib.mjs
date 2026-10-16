@@ -58,13 +58,24 @@ export function bestWindow(hours, span = 2, fromHour = 6, toHour = 21) {
   }
   return best;
 }
-// Air cleaner sizing. US EPA's chart asks for a smoke CADR of about 0.65 cfm per square foot
-// (65 cfm for 100 sq ft) at an 8 ft (2.44 m) ceiling; taller rooms need proportionally more.
+// Air cleaner sizing, NEA's rule: smoke CADR (m³/h) ≥ room volume (m³) × 5, or × 7 where
+// ventilation is poor or the unit relies partly on electronic cleaning (ionisers etc.).
 const CFM_TO_M3H = 1.699;
-export function cadrNeeded(areaM2, heightM = 2.6) {
+export function cadrNeeded(areaM2, heightM = 2.6, factor = 5) {
   if (!(areaM2 > 0) || !(heightM > 0)) return null;
-  const cfm = 0.65 * areaM2 * 10.7639 * (heightM / 2.44);
-  return { cfm: Math.round(cfm), m3h: Math.round(cfm * CFM_TO_M3H) };
+  const m3h = Math.ceil(areaM2 * heightM * factor);
+  return { m3h, cfm: Math.round(m3h / CFM_TO_M3H), volume: Math.round(areaM2 * heightM) };
+}
+// Models from NEA's list that are big enough for the room, smallest first. Units with
+// electronic cleaning are judged on their overall CADR against the × 7 rule.
+export function suitablePurifiers(items = [], areaM2, heightM = 2.6, poorVentilation = false) {
+  const volume = areaM2 * heightM;
+  if (!(volume > 0)) return [];
+  return items.map(item => {
+    const cadr = item.electronic ? item.cadrOverall : (item.cadrFilter ?? item.cadrOverall);
+    const need = Math.ceil(volume * (item.electronic || poorVentilation ? 7 : 5));
+    return { ...item, cadr, need, ach: Math.round(cadr / volume * 10) / 10 };
+  }).filter(item => item.cadr >= item.need).sort((a, b) => a.cadr - b.cadr);
 }
 // Air changes per hour, and minutes to cut indoor particles by 90% in a closed, well-mixed room.
 export function cleaningTime(cadrM3h, areaM2, heightM = 2.6) {
