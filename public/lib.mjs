@@ -60,7 +60,7 @@ export function bestWindow(hours, span = 2, fromHour = 6, toHour = 21) {
 }
 // Air cleaner sizing, NEA's rule: smoke CADR (m³/h) ≥ room volume (m³) × 5, or × 7 where
 // ventilation is poor or the unit relies partly on electronic cleaning (ionisers etc.).
-const CFM_TO_M3H = 1.699;
+export const CFM_TO_M3H = 1.699;
 export function cadrNeeded(areaM2, heightM = 2.6, factor = 5) {
   if (!(areaM2 > 0) || !(heightM > 0)) return null;
   const m3h = Math.ceil(areaM2 * heightM * factor);
@@ -82,6 +82,19 @@ export function cleaningTime(cadrM3h, areaM2, heightM = 2.6) {
   if (!(cadrM3h > 0) || !(areaM2 > 0) || !(heightM > 0)) return null;
   const ach = cadrM3h / (areaM2 * heightM);
   return { ach: Math.round(ach * 10) / 10, minutes90: Math.round(Math.log(10) / ach * 60) };
+}
+// Indoor PM2.5 after closing up and switching the cleaner on, starting from the outdoor
+// level. Closed rooms still leak about LEAK_ACH air changes an hour, so the level settles
+// at a floor rather than zero. Without a cleaner it stays at the outdoor level.
+export const LEAK_ACH = 0.5;
+export function indoorPm(outdoor, cadrM3h, volumeM3, leak = LEAK_ACH) {
+  if (!(outdoor > 0) || !(volumeM3 > 0)) return null;
+  const k = Math.max(cadrM3h || 0, 0) / volumeM3 + leak, floor = outdoor * leak / k;
+  return {
+    floor: Math.round(floor),
+    at: minutes => floor + (outdoor - floor) * Math.exp(-k * minutes / 60),
+    minutesTo: target => (outdoor <= target ? 0 : floor >= target ? null : Math.ceil(-Math.log((target - floor) / (outdoor - floor)) / k * 60)),
+  };
 }
 export function postalCode(input) {
   const code = String(input ?? '').replace(/\s/g, '');

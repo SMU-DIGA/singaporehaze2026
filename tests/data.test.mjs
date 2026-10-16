@@ -98,6 +98,19 @@ test("air cleaner sizing follows NEA's volume × 5 rule", () => {
   assert.equal(t.minutes90, 14);
   assert.equal(cleaningTime(0, 12), null);
 });
+test('indoor PM2.5 falls towards a floor set by leakage', async () => {
+  const { indoorPm } = await import('../public/lib.mjs');
+  // 156 m³/h in 31.2 m³ is 5 air changes plus 0.5 leaking in: floor = 120 × 0.5 / 5.5.
+  const room = indoorPm(120, 156, 31.2);
+  assert.equal(room.floor, 11);
+  assert.equal(Math.round(room.at(0)), 120);
+  assert.equal(room.minutesTo(55), 10);
+  assert.equal(room.minutesTo(200), 0);
+  assert.equal(room.minutesTo(5), null);
+  const none = indoorPm(120, 0, 31.2);
+  assert.equal(Math.round(none.at(60)), 120);
+  assert.equal(indoorPm(0, 156, 31.2), null);
+});
 test('NEA-listed air cleaners are matched to the room', () => {
   const items = [
     { model: 'Small', electronic: false, cadrFilter: 150, cadrOverall: 150 },

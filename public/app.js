@@ -1,4 +1,4 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime, suitablePurifiers } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime, suitablePurifiers, indoorPm, CFM_TO_M3H } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t, list } from './locale.mjs';
 import { rules, TIERS, tierOf, checked as rulesChecked } from './rules.mjs';
 const $ = s => document.querySelector(s);
@@ -390,14 +390,15 @@ $('#hours-region').addEventListener('click', ev => { const b = ev.target.closest
 
 // Air cleaner calculator.
 function renderPurifier() {
-  const area = parseFloat($('#pur-area').value), height = parseFloat($('#pur-height').value), cadr = parseFloat($('#pur-cadr').value);
+  const area = parseFloat($('#pur-area').value), height = parseFloat($('#pur-height').value);
+  const cadr = Math.round(parseFloat($('#pur-cadr').value) * ($('#pur-unit').value === 'cfm' ? CFM_TO_M3H : 1));
   const poor = $('#pur-poor').checked;
   const need = cadrNeeded(area, height, poor ? 7 : 5);
   $$('#pur-presets [data-area]').forEach(b => b.classList.toggle('selected', +b.dataset.area === area));
   if (!need) { $('#purifier-result').innerHTML = `<p>${e(t('purInvalid'))}</p>`; $('#pur-models').hidden = true; return; }
   const have = cleaningTime(cadr, area, height);
   const verdict = have ? `<p class="pur-verdict ${cadr >= need.m3h ? 'ok' : 'short'}">${e(t(cadr >= need.m3h ? 'purEnough' : 'purShort', { ach: have.ach, minutes: have.minutes90 }))}</p>` : '';
-  $('#purifier-result').innerHTML = `<p class="pur-need">${e(t('purNeed', need))}</p>${verdict}`;
+  $('#purifier-result').innerHTML = `<p class="pur-need">${e(t('purNeed', need))}</p>${verdict}${purifierCurve(need.m3h, have ? cadr : null, area * height)}`;
   // Models from NEA's list that are big enough, with shop searches for live prices.
   const list = state.resources?.purifiers;
   $('#pur-models').hidden = !list?.items?.length;
@@ -410,6 +411,30 @@ function renderPurifier() {
   const more = fits.length > 5 ? `<button class="text-button" id="pur-more">${e(t(state.purAll ? 'purLess' : 'purMore', { n: fits.length }))}</button>` : '';
   const date = list.listUpdated ? fmt(`${list.listUpdated}T12:00:00+08:00`, { year: 'numeric', hour: undefined, minute: undefined }) : '—';
   $('#pur-models').innerHTML = `<h3>${e(t('purModels'))}</h3><p class="pur-models-sub">${e(t(fits.length ? 'purModelsSub' : 'purModelsNone'))}</p>${fits.length ? `<ul>${rows}</ul>${more}` : ''}<p class="pur-disclaimer">${e(t('purDisclaimer', { date }))}</p>`;
+}
+// What happens indoors after closing up: indoor PM2.5 from now's highest outdoor reading,
+// for no cleaner, the NEA minimum and the reader's own cleaner.
+function purifierCurve(needM3h, haveM3h, volume) {
+  const pm = readings(state.data, 'pm25'), worst = regions.filter(r => Number.isFinite(pm[r.id])).sort((a, b) => pm[b.id] - pm[a.id])[0];
+  const outdoor = worst ? pm[worst.id] : 100, NORMAL = 55, W = 420, H = 190, L = 34, R = 12, T = 14, B = 26, MIN = 60;
+  const lines = [['none', 0], ['need', needM3h], ...(haveM3h ? [['have', haveM3h]] : [])].map(([id, cadr]) => ({ id, room: indoorPm(outdoor, cadr, volume) }));
+  const top = Math.max(outdoor, NORMAL) * 1.1, x = m => L + m / MIN * (W - L - R), y = v => T + (1 - v / top) * (H - T - B);
+  let svg = '';
+  for (const v of [0, Math.round(top / 2 / 10) * 10, Math.round(outdoor)]) svg += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  for (const m of [0, 15, 30, 45, 60]) svg += `<text x="${x(m)}" y="${H - 6}" text-anchor="${m === MIN ? 'end' : 'middle'}">${m === MIN ? t('purMinutes', { m }) : m}</text>`;
+  if (outdoor > NORMAL) svg += `<line class="threshold" x1="${L}" x2="${W - R}" y1="${y(NORMAL)}" y2="${y(NORMAL)}"/><text class="threshold-label" x="${W - R}" y="${y(NORMAL) - 5}" text-anchor="end">${e(t('purNormal'))}</text>`;
+  for (const { id, room } of lines) {
+    const points = Array.from({ length: MIN + 1 }, (_, m) => `${x(m).toFixed(1)},${y(room.at(m)).toFixed(1)}`).join(' ');
+    svg += `<polyline class="series pur-line-${id}" points="${points}"/>`;
+  }
+  const key = lines.map(({ id }) => `<span class="pur-key-${id}"><i></i>${e(t({ none: 'purLineNone', need: 'purLineNeed', have: 'purLineHave' }[id]))}</span>`).join('');
+  const main = lines[lines.length - 1].room, reach = main.minutesTo(NORMAL);
+  const stat = (label, value) => `<div><small>${e(label)}</small><b>${e(value)}</b></div>`;
+  const time = cleaningTime(haveM3h || needM3h, volume, 1); // area × height = volume
+  const stats = `<div class="pur-stats">${stat(t('purStatAch'), String(time.ach))}${stat(t('purStat90'), t('purMinutes', { m: time.minutes90 }))}${stat(t('purStatFloor'), `${main.floor} µg/m³`)}</div>`;
+  const start = worst ? t('purStartNow', { pm: outdoor, region: regionName(worst) }) : t('purStartExample', { pm: outdoor });
+  const gap = en() ? ' ' : '', summary = outdoor <= NORMAL ? t('purAlreadyNormal') : reach === null ? t('purNeverNormal') : t('purReach', { m: reach });
+  return `<div class="pur-curve"><h3>${e(t(haveM3h ? 'purStatsHave' : 'purStatsNeed'))}</h3>${stats}<p class="pur-curve-title">${e(t('purCurveTitle'))}</p><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${e(start + gap + summary)}">${svg}</svg><div class="pur-key">${key}</div><p class="pur-curve-note">${e(start + gap + summary)}</p></div>`;
 }
 $('#pur-models').addEventListener('click', ev => { if (ev.target.closest('#pur-more')) { state.purAll = !state.purAll; renderPurifier(); } });
 $('#purifier-form').addEventListener('input', renderPurifier);

@@ -194,6 +194,7 @@
             <div><h2><span class="heading-icon" data-icon="home"></span><span data-i18n="purTitle">空气净化器要多大？</span></h2><p data-i18n="purSub">按房间大小估算需要的 CADR（洁净空气输送率），或者看看你的净化器够不够用。</p></div>
           </div>
           <div class="purifier-body">
+            <div class="purifier-left">
             <form class="purifier-form" id="purifier-form" novalidate>
               <label><span data-i18n="purArea">房间面积</span><span class="input-unit"><input id="pur-area" type="number" inputmode="decimal" min="1" max="500" step="0.5" value="12"><i>m²</i></span></label>
               <div class="pur-presets" id="pur-presets">
@@ -203,19 +204,20 @@
               </div>
               <label><span data-i18n="purHeight">层高</span><span class="input-unit"><input id="pur-height" type="number" inputmode="decimal" min="2" max="6" step="0.1" value="2.6"><i>m</i></span></label>
               <label class="pur-check"><input type="checkbox" id="pur-poor"> <span data-i18n="purPoor">房间通风差（没有可以打开的窗）</span></label>
-              <label><span data-i18n="purHave">你的净化器 CADR（可选）</span><span class="input-unit"><input id="pur-cadr" type="number" inputmode="decimal" min="0" step="10" data-i18n-attr="placeholder:purHavePlaceholder" placeholder="例如 300"><i>m³/h</i></span></label>
+              <label><span data-i18n="purHave">你的净化器 CADR（可选）</span><span class="input-unit"><input id="pur-cadr" type="number" inputmode="decimal" min="0" step="10" data-i18n-attr="placeholder:purHavePlaceholder" placeholder="例如 300"><select id="pur-unit" data-i18n-attr="aria-label:purUnit" aria-label="单位"><option value="m3h">m³/h</option><option value="cfm">CFM</option></select></span></label>
             </form>
+              <div class="purifier-tips"><h3 data-i18n="purTipsTitle">选购和使用要点</h3><ul>
+                <li data-i18n="purTip1">看包装上针对烟雾（smoke）的 CADR，细颗粒物要看这一项。</li>
+                <li data-i18n="purTip2">标称 CADR 通常在最高档测得，低档时实际效果会差很多。</li>
+                <li data-i18n="purTip3">使用时关好门窗；房间越密闭，效果越好。</li>
+                <li data-i18n="purTip4">避免会产生臭氧的机型，例如带离子发生器、静电集尘或紫外线灯的机型（美国 EPA 建议）。</li>
+                <li data-i18n="purTip5">按说明书定期更换滤网；滤网堵塞后 CADR 会下降。</li>
+              </ul></div>
+            </div>
             <div class="purifier-result" id="purifier-result" aria-live="polite"></div>
           </div>
           <div class="purifier-models" id="pur-models" hidden></div>
-          <ul class="purifier-tips">
-            <li data-i18n="purTip1">看包装上针对烟雾（smoke）的 CADR，细颗粒物要看这一项。</li>
-            <li data-i18n="purTip2">标称 CADR 通常在最高档测得，低档时实际效果会差很多。</li>
-            <li data-i18n="purTip3">使用时关好门窗；房间越密闭，效果越好。</li>
-            <li data-i18n="purTip4">避免会产生臭氧的机型，例如带离子发生器、静电集尘或紫外线灯的机型（美国 EPA 建议）。</li>
-            <li data-i18n="purTip5">按说明书定期更换滤网；滤网堵塞后 CADR 会下降。</li>
-          </ul>
-          <div class="panel-foot"><span data-i18n="purNote">按 NEA 公式估算：所需烟雾 CADR（m³/h）≥ 房间体积（m³）× 5；房间通风差，或机型带离子等电子净化技术时 × 7。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.nea.gov.sg/our-services/public-cleanliness/environmental-cleaning-guidelines/guidelines/list-of-portable-air-cleaners-against-covid-19-virus-aerosols" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
+          <div class="panel-foot"><span data-i18n="purNote">按 NEA 公式估算：所需烟雾 CADR（m³/h）≥ 房间体积（m³）× 5；房间通风差，或机型带离子等电子净化技术时 × 7。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久；曲线另外假设关窗后每小时仍从缝隙漏进约 0.5 次换气（典型住宅），所以室内会停在一个底线上。</span><span class="foot-links"><a class="text-button" href="https://www.nea.gov.sg/our-services/public-cleanliness/environmental-cleaning-guidelines/guidelines/list-of-portable-air-cleaners-against-covid-19-virus-aerosols" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
         </section>
 
         <section data-toc="tocResources" class="panel resources-panel" id="resources">
