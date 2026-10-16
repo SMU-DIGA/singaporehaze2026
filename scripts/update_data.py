@@ -215,7 +215,7 @@ def main():
             seen.add(title_key)
             result['news'].append(item)
     result['news'] = result['news'][:24]
-    next_run = now.replace(minute=17, second=0, microsecond=0)
+    next_run = now.replace(minute=5, second=0, microsecond=0)
     while next_run <= now:
         next_run += dt.timedelta(hours=1)
     result.update({'generatedAt': now.isoformat(), 'nextUpdateAt': next_run.isoformat(),

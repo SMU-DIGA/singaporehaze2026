@@ -4,7 +4,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6 };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
-// The scheduled GitHub Action commits fresh snapshots here every hour. Reading it directly
+// The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
 const REPO_DATA = 'https://raw.githubusercontent.com/SMU-DIGA/singaporehaze2026/main/public/data/latest.json';
 const icons = {
