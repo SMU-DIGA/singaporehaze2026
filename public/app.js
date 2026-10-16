@@ -453,6 +453,7 @@ function setPlace(place) {
 // Frame both the person's location and the region reading that applies to it.
 function focusPlace(animate) {
   if (!live.map || !state.place) return;
+  if ($('#now').hidden) { live.shown = false; return; } // refit when the map's tab is shown
   const r = nearestRegion(state.place.lat, state.place.lon);
   const bounds = window.L.latLngBounds([[state.place.lat, state.place.lon], [r.lat, r.lon]]);
   live.map[animate ? 'flyToBounds' : 'fitBounds'](bounds, { padding: [70, 70], maxZoom: 14 });
@@ -529,6 +530,34 @@ function renderEscape() {
   }).join('');
 }
 
+// Tabs: the page is split into four panels; the URL hash names a tab or any section inside one.
+const TABS = ['now', 'plan', 'protect', 'updates'];
+function tabFor(id) {
+  if (TABS.includes(id)) return id;
+  return document.getElementById(id)?.closest('.tab-panel')?.id || 'now';
+}
+function showTab(tab, target) {
+  $$('.tab-panel').forEach(panel => { panel.hidden = panel.id !== tab; });
+  $$('nav [data-tab]').forEach(link => {
+    const on = link.dataset.tab === tab;
+    link.classList.toggle('active', on);
+    if (on) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+  });
+  // Leaflet measures its container, so a map first shown after being hidden must re-measure.
+  if (tab === 'now' && live.map) {
+    live.map.invalidateSize();
+    if (!live.shown) { live.shown = true; if (state.place) focusPlace(false); else live.map.fitBounds(MAIN_ISLAND); }
+  }
+  const section = target && !TABS.includes(target) ? document.getElementById(target) : null;
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+  else if (window.scrollY > $('#main').offsetTop) window.scrollTo({ top: 0 });
+}
+function route() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  showTab(tabFor(id || 'now'), id);
+}
+window.addEventListener('hashchange', route);
+
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
   if (!response.ok || !(response.headers.get('content-type') || '').match(/json|text\/plain/)) throw new Error('Unavailable');
@@ -567,14 +596,14 @@ $('#news-tabs').addEventListener('click', ev => { const button = ev.target.close
 $('#news-search').addEventListener('input', ev => { state.query = ev.target.value; state.limit = 6; renderNews(); });
 $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews(); });
 $('#audience').addEventListener('change', renderAdvice);
-const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
-$$('#overview,#forecast,#hours,#rules,#distribution,#purifier,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
 // New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
 renderStatic();
 renderPurifier();
+route();
 initMap();
+live.shown = !$('#now').hidden;
 load();
 try {
   const saved = localStorage.getItem('haze-postal');
