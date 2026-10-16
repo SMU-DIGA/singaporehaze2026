@@ -24,6 +24,7 @@ const icons = {
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6 M12 7h.01"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
   home: '<path d="m3 10 9-7 9 7 M5 9v12h14V9 M9 21v-8h6v8"/>',
+  forecast: '<path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18 M5 6.5h14 M5 17.5h14"/>',
 };
 $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[el.dataset.icon] || icons.info}</svg>`; });
@@ -95,7 +96,7 @@ function renderSummary() {
   if (Object.entries(d.sources || {}).some(([key, value]) => ['psi', 'pm25', 'news', 'advisories', 'cna'].includes(key) && !value.ok)) warnings.push(t('warnSources'));
   $('#data-warning').hidden = warnings.length === 0; $('#data-warning').textContent = warnings.join(' ');
 
-  const labels = { psi: 'srcPsi', pm25: 'srcPm', advisories: 'srcAdv', news: 'srcNews', cna: 'srcCna' };
+  const labels = { psi: 'srcPsi', pm25: 'srcPm', advisories: 'srcAdv', news: 'srcNews', cna: 'srcCna', forecast_nea: 'srcFcNea', forecast_model: 'srcFcModel', forecast_weather: 'srcFcWeather' };
   $('#source-status').innerHTML = `<strong>${e(t('statusHead', { time: sgt(fmt(d.generatedAt)) }))}</strong><ul>` + Object.entries(labels).map(([k, label]) => `<li><span>${e(t(label))}</span><span class="${d.sources?.[k]?.ok ? 'ok' : 'fail'}">${e(t(d.sources?.[k]?.ok ? 'statusOk' : 'statusFail'))}</span></li>`).join('') + '</ul>';
   renderAdvice();
 }
@@ -177,7 +178,39 @@ function renderAdvice() {
   $('#personal-advice').style.setProperty('--c', bandOf(max).color);
   $('#advice-note').textContent = Number.isFinite(max) ? t('adviceNote', { value: `PSI ${max}` }) : '';
 }
-function render() { renderSummary(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
+function renderForecast() {
+  const f = state.data?.forecast;
+  $('#forecast').hidden = !f?.psi;
+  if (!f?.psi) return;
+  const { low, high } = f.psi, top = bandOf(high), bottom = bandOf(low);
+  const day = fmt(`${f.targetDate}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined });
+  $('#fc-sub').textContent = t('fcSub', { date: day, time: sgt(clock(f.issuedAt)) });
+  const level = { high: 'fcHigh', medium: 'fcMedium', low: 'fcLow' }[f.confidence] || 'fcLow';
+  $('#fc-confidence').textContent = t('fcConfidence', { level: t(level) });
+  $('#fc-confidence').dataset.level = f.confidence;
+  $('#fc-range').innerHTML = `${low === high ? low : `${low}–${high}`}<span class="unit">PSI</span>`;
+  $('#fc-band').textContent = bottom.index === top.index ? top.label : `${bottom.label} – ${top.label}`;
+  $('#fc-band').style.color = top.color; $('#fc-band').style.background = `${top.color}1a`;
+  $('#fc-advice').textContent = t('fcAdvice', { advice: activity(high, 'general', getLanguage()) });
+  $('#fc-regions').innerHTML = regions.filter(r => Number.isFinite(f.regions?.[r.id])).map(r => { const b = bandOf(f.regions[r.id]); return `<div><span>${e(regionName(r))}</span><b style="color:${b.color}">${f.regions[r.id]}</b></div>`; }).join('');
+  const signed = n => (n > 0 ? `+${n}` : `${n}`);
+  const range = x => `PSI ${x.low === x.high ? x.low : `${x.low}–${x.high}`}`;
+  const w = f.weather;
+  const signals = [
+    f.official
+      ? [t('fcOfficial'), t('fcOfficialValue', { text: f.official.text, low: f.official.low, high: f.official.high }), t('fcOfficialNote', { time: sgt(fmt(f.official.publishedAt)) }), 'official']
+      : [t('fcOfficial'), t('fcOfficialPending'), t('fcOfficialPendingNote'), 'pending'],
+    f.model ? [t('fcModel'), range(f.model), t('fcModelNote', { pm: f.model.pm25, bias: f.model.bias })] : [t('fcModel'), t('fcModelMissing'), '', 'pending'],
+    f.trend && [t('fcTrend'), range(f.trend), t('fcTrendNote', { change: signed(f.trend.change24h) })],
+    w ? [t('fcWeather'), t('fcWeatherValue', { dir: w.windDirection, speed: w.windSpeed ? `${w.windSpeed.low}–${w.windSpeed.high}` : '—' }), [w.text && `${w.text.replace(/[.。]?$/, '.')}`, t(w.southerly ? 'fcWeatherSouth' : 'fcWeatherNorth'), w.rain ? t('fcWeatherRain') : ''].filter(Boolean).join(' ')] : [t('fcWeather'), t('fcWeatherMissing'), '', 'pending'],
+  ].filter(Boolean);
+  $('#fc-signals').innerHTML = signals.map(([label, value, note, kind]) => `<li class="${kind || ''}"><span class="signal-label">${e(label)}</span><b>${e(value)}</b>${note ? `<small>${e(note)}</small>` : ''}</li>`).join('');
+  $('#fc-outlook').hidden = !f.official?.outlook;
+  if (f.official?.outlook) { $('#fc-outlook-text').textContent = f.official.outlook; $('#fc-outlook-link').href = safeUrl(f.official.url); }
+  const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
+  $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
+}
+function render() { renderSummary(); renderForecast(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
 
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
@@ -213,7 +246,7 @@ $('#news-search').addEventListener('input', ev => { state.query = ev.target.valu
 $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews(); });
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
-$$('#overview,#distribution,#advisories,#news,#guide').forEach(el => observer.observe(el));
+$$('#overview,#forecast,#distribution,#advisories,#news,#guide').forEach(el => observer.observe(el));
 // New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });

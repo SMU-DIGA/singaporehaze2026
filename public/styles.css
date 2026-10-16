@@ -183,6 +183,31 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .trend-insight p { font-size: 14px; color: var(--muted); margin: 4px 0 6px; }
 .trend-insight a, .subtle-link, .guide a { font-size: 14px; color: var(--link); font-weight: 500; }
 
+/* ---------- Tomorrow's outlook ---------- */
+.forecast-panel { margin-bottom: 24px; }
+.forecast-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 28px; padding: 0 22px 20px; }
+.forecast-label { font-size: 15px; font-weight: 500; color: var(--muted); }
+.forecast-main .stat-value { margin: 6px 0 10px; }
+.forecast-advice { font-size: 15px; margin-top: 12px; }
+.forecast-regions { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); text-align: center; }
+.forecast-regions span { display: block; font-size: 13px; color: var(--muted); }
+.forecast-regions b { font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.forecast-signals h3 { font-size: 15px; font-weight: 600; color: var(--muted); }
+.forecast-signals ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.forecast-signals li { display: grid; grid-template-columns: 150px minmax(0, 1fr); column-gap: 14px; padding: 10px 0; border-top: 1px solid var(--border); }
+.forecast-signals li:first-child { border-top: 0; }
+.signal-label { grid-row: span 2; font-size: 14px; color: var(--muted); }
+.forecast-signals b { font-size: 15px; font-weight: 600; }
+.forecast-signals small { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.forecast-signals li.pending b { color: var(--faint); font-weight: 500; }
+.forecast-outlook { margin: 12px 0 0; padding: 12px 14px; background: var(--panel-soft); border-radius: 8px; font-size: 14px; }
+.forecast-outlook blockquote { margin: 0; color: var(--text); }
+.forecast-outlook figcaption { margin-top: 6px; font-size: 13px; }
+.forecast-outlook a { color: var(--link); font-weight: 500; }
+#fc-confidence[data-level="high"] { color: #2e7d5b; background: #2e7d5b1a; }
+#fc-confidence[data-level="medium"] { color: #a07818; background: #b58b2d1a; }
+#fc-confidence[data-level="low"] { color: var(--muted); background: var(--panel-soft); }
+
 /* ---------- Advisories ---------- */
 .heading-icon .icon { vertical-align: -3px; color: var(--accent); margin-right: 8px; }
 .subtle-link { white-space: nowrap; }
@@ -282,6 +307,7 @@ body.dark .island-map { color: #6f8f7d; }
   .guide { grid-template-columns: 1fr; gap: 28px; }
   .alert { flex-wrap: wrap; }
   .alert > a { margin-left: 58px; }
+  .forecast-body { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 760px) {
   .sidebar { position: sticky; top: 0; width: 100%; padding: 12px 16px 0; inset: auto; }
@@ -322,6 +348,11 @@ body.dark .island-map { color: #6f8f7d; }
   .region-cell b { font-size: 20px; }
   .region-cell small { font-size: 12px; }
   .panel-foot { padding: 12px 16px; }
+  .forecast-body { padding: 0 16px 16px; }
+  .forecast-signals li { grid-template-columns: 1fr; }
+  .forecast-signals small { grid-column: 1; }
+  .signal-label { grid-row: auto; }
+  .forecast-regions b { font-size: 17px; }
   .chart-header { margin: 0 16px 8px; }
   .chart-box { padding: 4px 6px 0; }
   .trend-insight { margin: 0 16px 16px; }

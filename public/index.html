@@ -16,6 +16,7 @@
     <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">雾霾观察站</span><small data-i18n="brandSub">SINGAPORE HAZE WATCH</small></span></a>
     <nav data-i18n-attr="aria-label:navLabel" aria-label="主导航">
       <a class="active" href="#overview"><span data-icon="dashboard"></span><span data-i18n="navOverview">空气概览</span></a>
+      <a href="#forecast"><span data-icon="forecast"></span><span data-i18n="navForecast">明日预测</span></a>
       <a href="#distribution"><span data-icon="map"></span><span data-i18n="navMap">五区分布</span></a>
       <a href="#advisories"><span data-icon="shield"></span><span data-i18n="navAdvisories">政府公告</span></a>
       <a href="#news"><span data-icon="news"></span><span data-i18n="navNews">新闻动态</span></a>
@@ -65,6 +66,28 @@
         <article class="stat"><div class="stat-label"><span data-i18n="statPm">1 小时 PM2.5</span><span data-icon="particles"></span></div><div class="stat-value" id="pm-range">—</div><div class="stat-bottom"><span id="pm-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPmNote">五区读数范围</small></div></article>
         <article class="stat"><div class="stat-label"><span data-i18n="statWorst">读数最高区域</span><span data-icon="pin"></span></div><div class="stat-value region-value" id="worst-region">—</div><div class="stat-bottom"><span id="worst-value" class="badge">—</span><small data-i18n="statWorstNote">按 24 小时 PSI</small></div></article>
         <article class="stat"><div class="stat-label"><span data-i18n="statAqi">AQI（美国标准）</span><span data-icon="gauge"></span></div><div class="stat-value" id="aqi-range">—</div><div class="stat-bottom"><span id="aqi-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statAqiNote">由 PM2.5 换算</small></div></article>
+      </section>
+
+      <section class="panel forecast-panel" id="forecast" hidden>
+        <div class="panel-head">
+          <div><h2><span class="heading-icon" data-icon="forecast"></span><span data-i18n="fcTitle">明日空气预测</span></h2><p id="fc-sub"></p></div>
+          <span id="fc-confidence" class="badge"></span>
+        </div>
+        <div class="forecast-body">
+          <div class="forecast-main">
+            <div class="forecast-label" data-i18n="fcPsiLabel">预计 24 小时 PSI</div>
+            <div class="stat-value" id="fc-range">—</div>
+            <div class="stat-bottom"><span id="fc-band" class="badge"></span></div>
+            <p class="forecast-advice" id="fc-advice"></p>
+            <div class="forecast-regions" id="fc-regions"></div>
+          </div>
+          <div class="forecast-signals">
+            <h3 data-i18n="fcSignals">预测依据</h3>
+            <ul id="fc-signals"></ul>
+            <figure class="forecast-outlook" id="fc-outlook" hidden><blockquote lang="en" id="fc-outlook-text"></blockquote><figcaption><a id="fc-outlook-link" target="_blank" rel="noopener noreferrer"><span data-i18n="fcOutlookSource">NEA 雾霾通报原文</span> ↗</a></figcaption></figure>
+          </div>
+        </div>
+        <div class="panel-foot"><span id="fc-record"></span><span data-i18n="fcDisclaimer">本站算法估算，非 NEA 官方预报；安排活动请以 NEA 发布为准。</span></div>
       </section>
 
       <div class="visual-grid">
@@ -142,6 +165,7 @@
     <p data-i18n="dlgAqi"></p>
     <p data-i18n="dlgSchedule"></p>
     <p data-i18n="dlgNews"></p>
+    <p data-i18n="dlgForecast"></p>
     <div id="source-status"></div>
     <a class="button" href="https://github.com/SMU-DIGA/singaporehaze2026/commits/main/public/data/latest.json" target="_blank" rel="noopener noreferrer"><span data-i18n="dlgRuns">查看自动更新记录</span> ↗</a>
   </dialog>

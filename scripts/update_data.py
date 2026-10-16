@@ -8,11 +8,15 @@ import json
 import os
 from pathlib import Path
 import re
+import sys
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import forecast  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'public/data/latest.json'
@@ -215,6 +219,13 @@ def main():
             seen.add(title_key)
             result['news'].append(item)
     result['news'] = result['news'][:24]
+    outlook, forecast_statuses, forecast_errors = forecast.build(fetch, result, now)
+    statuses.update(forecast_statuses)
+    errors.extend(forecast_errors)
+    # A failed run keeps the previous outlook only while it still targets tomorrow.
+    if outlook or (result.get('forecast') or {}).get('targetDate') != (now.date() + dt.timedelta(days=1)).isoformat():
+        result['forecast'] = outlook
+    result['forecastLog'] = forecast.update_log(result.get('forecastLog'), outlook, histories['psi'], now)
     next_run = now.replace(minute=5, second=0, microsecond=0)
     while next_run <= now:
         next_run += dt.timedelta(hours=1)

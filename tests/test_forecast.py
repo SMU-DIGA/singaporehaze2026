@@ -1,0 +1,111 @@
+import datetime as dt
+import importlib.util
+import json
+from pathlib import Path
+import sys
+import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
+spec = importlib.util.spec_from_file_location('forecast', Path(__file__).resolve().parents[1] / 'scripts/forecast.py')
+forecast = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(forecast)
+
+SGT = forecast.SGT
+NOW = dt.datetime(2026, 10, 16, 19, 5, tzinfo=SGT)
+NEA_PAGE = ('<div>Haze Situation Update (16 October 2026) 16 Oct 2026 Share Air Quality Forecast '
+            '24-hr PSI Forecast: <b>Unhealthy to Low Very Unhealthy</b> Health Advisory Healthy persons ... '
+            'Singapore, 16 October 2026 – The 24-hr PSI forecast for 17 Oct 2026 is Unhealthy to Low Very Unhealthy . '
+            'Update on Hotspot and Haze Situation 2. Smoke drifted. 3. Tomorrow, winds will be southeasterly. '
+            '4. Over the weekend, showers. Activity Guidelines 5. ...</div>')
+ADVISORIES = [{'title': 'Haze Situation Update (16 October 2026)', 'url': 'https://www.nea.gov.sg/media/news/advisories/index/x',
+               'publishedAt': '2026-10-16T18:19:00+08:00'}]
+
+
+def history(kind, value, hours=72):
+    return [{'timestamp': (NOW.replace(minute=0) - dt.timedelta(hours=h)).isoformat(),
+             'values': {r: value for r in forecast.REGIONS}} for h in range(hours)]
+
+
+def snapshot(psi=150):
+    return {'psi': {'timestamp': NOW.replace(minute=0).isoformat(),
+                    'readings': {'psi_twenty_four_hourly': {r: psi for r in forecast.REGIONS}}},
+            'advisories': ADVISORIES, 'history': {'psi': history('psi', psi - 20), 'pm25': history('pm25', 80)}}
+
+
+def cams(value=40):
+    times = [(NOW.replace(hour=0, minute=0) + dt.timedelta(hours=h - 48)).strftime('%Y-%m-%dT%H:%M') for h in range(120)]
+    return json.dumps([{'hourly': {'time': times, 'pm2_5': [value] * len(times)}} for _ in forecast.REGIONS])
+
+
+OUTLOOK = json.dumps({'data': {'records': [{'forecasts': [{'timestamp': '2026-10-17T00:00:00+08:00',
+                      'forecast': {'summary': 'Afternoon thundery showers'}, 'wind': {'direction': 'SSE', 'speed': {'low': 5, 'high': 15}}}]}]}})
+
+
+def fake_fetch(url):
+    if url.startswith(forecast.CAMS):
+        return cams()
+    if url == forecast.OUTLOOK:
+        return OUTLOOK
+    return NEA_PAGE
+
+
+class ForecastTests(unittest.TestCase):
+    def test_nea_band_text_maps_to_psi_range(self):
+        self.assertEqual(forecast.band_range('Unhealthy'), (101, 200))
+        self.assertEqual(forecast.band_range('Unhealthy to Low Very Unhealthy'), (101, 234))
+        self.assertEqual(forecast.band_range('High Moderate'), (84, 100))
+        self.assertIsNone(forecast.band_range('Not a band'))
+
+    def test_pm25_sub_index_breakpoints(self):
+        self.assertEqual(forecast.psi_from_pm25(12), 50)
+        self.assertEqual(forecast.psi_from_pm25(55), 100)
+        self.assertEqual(forecast.psi_from_pm25(150), 200)
+        self.assertEqual(forecast.psi_from_pm25(1000), 500)
+
+    def test_official_forecast_parsed_from_haze_update(self):
+        official = forecast.official_forecast(lambda url: NEA_PAGE, ADVISORIES)
+        self.assertEqual((official['low'], official['high'], official['forDate']), (101, 234, '2026-10-17'))
+        self.assertEqual(official['outlook'], 'Tomorrow, winds will be southeasterly.')
+
+    def test_model_is_bias_corrected_against_nea_readings(self):
+        # NEA read 80 µg/m³ while the model said 40, so tomorrow's 40 is scaled to 80.
+        model = forecast.model_forecast(lambda url: cams(40), NOW.date() + dt.timedelta(days=1), history('pm25', 80), NOW)
+        self.assertEqual(model['central']['bias'], 2.0)
+        self.assertEqual(model['central']['pm25'], 80.0)
+        self.assertEqual(model['central']['psi'], round(forecast.psi_from_pm25(80)))
+
+    def test_blend_weights_official_forecast_and_reports_confidence(self):
+        result, statuses, errors = forecast.build(fake_fetch, snapshot(), NOW)
+        self.assertEqual(errors, [])
+        self.assertTrue(all(s['ok'] for s in statuses.values()))
+        self.assertEqual(result['targetDate'], '2026-10-17')
+        self.assertEqual(result['official']['text'], 'Unhealthy to Low Very Unhealthy')
+        self.assertTrue(result['weather']['rain'] and result['weather']['southerly'])
+        self.assertLessEqual(result['psi']['low'], result['psi']['high'])
+        self.assertEqual(result['confidence'], 'high')
+        self.assertEqual(set(result['regions']), set(forecast.REGIONS))
+
+    def test_stale_official_forecast_ignored_and_failures_degrade(self):
+        def fetch(url):
+            if url.startswith(forecast.CAMS):
+                raise OSError('offline')
+            return fake_fetch(url)
+        later = NOW + dt.timedelta(days=1)  # The 16 Oct update covers 17 Oct, not 18 Oct.
+        result, statuses, errors = forecast.build(fetch, snapshot(), later)
+        self.assertIsNone(result['official'])
+        self.assertIsNone(result['model'])
+        self.assertFalse(statuses['forecast_model']['ok'])
+        self.assertEqual(result['confidence'], 'low')
+        self.assertIn('forecast_model: OSError', errors)
+
+    def test_log_keeps_last_issue_per_day_and_scores_finished_days(self):
+        first = {'targetDate': '2026-10-15', 'issuedAt': 'a', 'psi': {'low': 100, 'high': 150}}
+        log = forecast.update_log([], first, [], NOW - dt.timedelta(days=2))
+        readings = [{'timestamp': f'2026-10-15T{h:02d}:00:00+08:00', 'values': {'north': 120, 'central': 160}} for h in range(24)]
+        log = forecast.update_log(log, None, readings, NOW)
+        self.assertEqual((log[0]['actualLow'], log[0]['actualHigh'], log[0]['hit']), (120, 160, True))
+        self.assertEqual(len(forecast.update_log([{'targetDate': f'2026-09-{d:02d}'} for d in range(1, 30)], None, [], NOW)), forecast.LOG_DAYS)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -46,6 +46,17 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 明日预测
+
+`scripts/forecast.py` 由 `update_data.py` 每小时调用，结果写入 `latest.json` 的 `forecast`，同时把每天最后一次预测记入 `forecastLog`（保留 14 天），次日用实测读数核对命中情况（实测当日最高 24 小时 PSI 落在预测区间 ±10% 内即算命中）。综合四个来源，任何一个缺失时都会降级运行：
+
+- **NEA 官方预报**：解析最新的 “Haze Situation Update” 中 “24-hr PSI Forecast: …” 的分级文字，按 NEA 分级换算为 PSI 区间（Low/Mid/High 取该级的三分之一），并摘录第 3 段的展望原文。只采用针对目标日期的预报，权重 60%。NEA 通常在傍晚约 18:20 发布。
+- **CAMS 大气模式**：Open-Meteo 免费接口提供的五区 PM2.5 逐小时预报。用近 48 小时 NEA 实测值与模式之比做偏差校正（限制在 0.33–3 倍之间），再用 NEA 的 PM2.5 分指数换算成 PSI。
+- **近期趋势**：当前读数加上过去 24 小时变化的一半。
+- **NEA 四日天气展望**：有降雨时乘以 0.92，非偏南风时乘以 0.85，只作用于趋势估算（模式本身已包含气象条件）。
+
+可信度：有官方预报且与本站估算区间重叠为“较高”；有官方预报但不重叠，或模式与趋势相差在 25% 以内为“中等”；其余为“较低”。
+
 ## 故障排查
 
 检查页面“数据来源与说明”、GitHub Actions 记录与 `/api/data` 的 `sources` / `errors`。`generatedAt` 表示采集时间；`psi.timestamp` / `pm25.timestamp` 表示官方观测时间；`publishedAt` 表示文章时间。源未提供文章时间时明确显示“媒体未提供发布时间”。不要以采集时间代替新鲜观测。

@@ -1,36 +1,36 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T18:00:35+08:00",
-    "timestamp": "2026-10-16T18:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T19:00:34+08:00",
+    "timestamp": "2026-10-16T19:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
         "north": 162,
-        "south": 182,
-        "west": 204,
-        "east": 203,
-        "central": 227
+        "south": 183,
+        "west": 202,
+        "east": 201,
+        "central": 225
       },
       "no2_one_hour_max": {
-        "north": 22,
-        "south": 37,
-        "west": 42,
-        "east": 49,
-        "central": 53
+        "north": 15,
+        "south": 45,
+        "west": 53,
+        "east": 46,
+        "central": 46
       },
       "pm10_twenty_four_hourly": {
-        "north": 144,
-        "south": 173,
-        "west": 187,
-        "east": 198,
-        "central": 214
+        "north": 142,
+        "south": 172,
+        "west": 185,
+        "east": 196,
+        "central": 212
       },
       "pm25_twenty_four_hourly": {
         "north": 114,
-        "south": 133,
-        "west": 153,
-        "east": 152,
-        "central": 177
+        "south": 134,
+        "west": 152,
+        "east": 151,
+        "central": 175
       },
       "so2_twenty_four_hourly": {
         "north": 6,
@@ -47,10 +47,10 @@
         "central": 2
       },
       "o3_eight_hour_max": {
-        "north": 121,
-        "south": 87,
-        "west": 48,
-        "east": 103,
+        "north": 122,
+        "south": 90,
+        "west": 52,
+        "east": 104,
         "central": 140
       },
       "co_sub_index": {
@@ -62,24 +62,24 @@
       },
       "o3_sub_index": {
         "north": 54,
-        "south": 37,
-        "west": 20,
+        "south": 38,
+        "west": 22,
         "east": 44,
-        "central": 78
+        "central": 79
       },
       "pm10_sub_index": {
-        "north": 97,
+        "north": 96,
         "south": 112,
-        "west": 119,
-        "east": 124,
-        "central": 132
+        "west": 118,
+        "east": 123,
+        "central": 131
       },
       "pm25_sub_index": {
         "north": 162,
-        "south": 182,
-        "west": 204,
-        "east": 203,
-        "central": 227
+        "south": 183,
+        "west": 202,
+        "east": 201,
+        "central": 225
       },
       "so2_sub_index": {
         "north": 4,
@@ -92,15 +92,15 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T18:00:35+08:00",
-    "timestamp": "2026-10-16T18:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T19:00:34+08:00",
+    "timestamp": "2026-10-16T19:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 143,
-        "south": 163,
-        "west": 134,
-        "east": 147,
-        "central": 191
+        "north": 94,
+        "south": 165,
+        "west": 128,
+        "east": 132,
+        "central": 175
       }
     }
   },
@@ -114,7 +114,7 @@
     },
     {
       "title": "Platform workers should not be penalised for delays during haze: Jasmin Lau",
-      "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-press-conference-6465216",
+      "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-press-conference-platform-workers-wfh-6465216",
       "source": "CNA",
       "publishedAt": null,
       "category": "singapore"
@@ -127,7 +127,7 @@
       "category": "singapore"
     },
     {
-      "title": "Haze may reach hazardous levels, says Grace Fu, as mask vending machines to be fully deployed by Oct 16",
+      "title": "Haze may reach hazardous PSI levels; mask vending machines to be fully deployed by Oct 16, says Grace Fu",
       "url": "https://www.channelnewsasia.com/singapore/haze-hazardous-air-quality-masks-grace-fu-6465121",
       "source": "CNA",
       "publishedAt": null,
@@ -2089,6 +2089,16 @@
           "east": 203,
           "central": 227
         }
+      },
+      {
+        "timestamp": "2026-10-16T19:00:00+08:00",
+        "values": {
+          "north": 162,
+          "south": 183,
+          "west": 202,
+          "east": 201,
+          "central": 225
+        }
       }
     ],
     "pm25": [
@@ -3961,47 +3971,69 @@
           "east": 147,
           "central": 191
         }
+      },
+      {
+        "timestamp": "2026-10-16T19:00:00+08:00",
+        "values": {
+          "north": 94,
+          "south": 165,
+          "west": 128,
+          "east": 132,
+          "central": 175
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-16T18:05:03.616134+08:00",
+  "generatedAt": "2026-10-16T19:01:35.621215+08:00",
   "nextUpdateAt": "2026-10-16T19:05:00+08:00",
   "sources": {
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
+    },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
-    },
-    "history_psi_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
+    },
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     },
-    "advisories": {
+    "forecast_nea": {
       "ok": true,
-      "checkedAt": "2026-10-16T18:05:03.616134+08:00"
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
+    },
+    "forecast_weather": {
+      "ok": true,
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
+    },
+    "forecast_model": {
+      "ok": true,
+      "checkedAt": "2026-10-16T19:01:35.621215+08:00"
     }
   },
   "errors": [],
@@ -4062,6 +4094,55 @@
       "source": "NEA",
       "publishedAt": "2026-10-09T18:30:00+08:00",
       "category": "government"
+    }
+  ],
+  "forecast": {
+    "targetDate": "2026-10-17",
+    "issuedAt": "2026-10-16T19:01:35.621215+08:00",
+    "psi": {
+      "low": 119,
+      "high": 165
+    },
+    "regions": {
+      "north": 119,
+      "south": 135,
+      "east": 149,
+      "west": 144,
+      "central": 165
+    },
+    "confidence": "low",
+    "official": null,
+    "trend": {
+      "low": 167,
+      "high": 225,
+      "change24h": 41
+    },
+    "model": {
+      "low": 71,
+      "high": 104,
+      "pm25": 47,
+      "bias": 1.68
+    },
+    "weather": {
+      "date": "2026-10-17",
+      "text": "Afternoon thundery showers",
+      "windDirection": "SSE",
+      "windSpeed": {
+        "low": 5,
+        "high": 15
+      },
+      "rain": true,
+      "southerly": true,
+      "factor": 0.92
+    }
+  },
+  "forecastLog": [
+    {
+      "targetDate": "2026-10-17",
+      "issuedAt": "2026-10-16T19:01:35.621215+08:00",
+      "low": 119,
+      "high": 165,
+      "official": false
     }
   ]
 }
