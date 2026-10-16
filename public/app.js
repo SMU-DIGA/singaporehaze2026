@@ -257,7 +257,7 @@ function renderForecast() {
   const w = f.weather;
   const signals = [
     f.official
-      ? [t('fcOfficial'), t('fcOfficialValue', { text: f.official.text, low: f.official.low, high: f.official.high }), t('fcOfficialNote', { time: sgt(fmt(f.official.publishedAt)) }), 'official']
+      ? [t('fcOfficial'), /^\d/.test(f.official.text) ? f.official.text : t('fcOfficialValue', { text: f.official.text, low: f.official.low, high: f.official.high }), t('fcOfficialNote', { time: sgt(fmt(f.official.publishedAt)) }), 'official']
       : [t('fcOfficial'), t('fcOfficialPending'), t('fcOfficialPendingNote'), 'pending'],
     f.model ? [t('fcModel'), range(f.model), t('fcModelNote', { pm: f.model.pm25, bias: f.model.bias })] : [t('fcModel'), t('fcModelMissing'), '', 'pending'],
     f.trend && [t('fcTrend'), range(f.trend), t('fcTrendNote', { change: signed(f.trend.change24h) })],
@@ -583,6 +583,8 @@ function tabFor(id) {
 }
 function showTab(tab, target) {
   $$('.tab-panel').forEach(panel => { panel.hidden = panel.id !== tab; });
+  // The title block and island alert belong to "Now"; other tabs start straight with their content.
+  $('#overview').hidden = tab !== 'now'; $('#alert').hidden = tab !== 'now';
   $$('nav [data-tab]').forEach(link => {
     const on = link.dataset.tab === tab;
     link.classList.toggle('active', on);
