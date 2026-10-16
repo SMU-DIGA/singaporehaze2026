@@ -1,13 +1,12 @@
-name: Update haze data every hour
+name: Deploy site (data refreshed by server cron)
 on:
-  schedule:
-    # Hourly at :17 SGT. NEA publishes PSI/PM2.5 hourly, and GitHub may delay or
-    # drop scheduled runs, so hourly keeps a missed run from leaving data hours old.
-    - cron: '17 * * * *'
+  # No GitHub schedule: scheduled runs were delayed or dropped. The server runs
+  # scripts/server_update.sh hourly and pushes public/data/latest.json; that push
+  # triggers the deploy below. workflow_dispatch still allows a manual refresh.
   workflow_dispatch:
   push:
     branches: [main]
-    paths-ignore: ['public/data/**', 'README.md']
+    paths-ignore: ['README.md']
 permissions:
   contents: write
   pages: write
@@ -17,6 +16,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   update:
+    # Fetch on GitHub only when run by hand; pushes just deploy what was pushed.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,7 +52,8 @@ jobs:
   # Requires Settings → Pages → Source: "GitHub Actions".
   deploy:
     needs: update
-    # Deploy even when an upstream source failed: the last valid data is still served.
+    # Deploy even when an upstream source failed (the last valid data is still
+    # served) or when update was skipped on a push.
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     environment:

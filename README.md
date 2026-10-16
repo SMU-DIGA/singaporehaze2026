@@ -36,9 +36,13 @@ node scripts/validate-artifact.mjs
 ## 定时更新
 
 1. **上线站点**：关联的 Sites 云任务按新加坡时间每三小时执行 `POST /api/refresh`，随后 `GET /api/data` 核实 `persistedAt` 一致。任务通过 `get_site` 在运行时取得 Sites 支持的服务凭证，源代码和任务提示中不保存凭证。站点关闭时也会更新。
-2. **GitHub 数据存档**：`.github/workflows/update.yml` 使用 `17 * * * *`，每小时第 17 分钟采集（NEA 每小时发布读数；GitHub 定时任务可能延迟或跳过，每小时运行可让单次漏跑最多晚约一小时），采集后提交 `public/data/latest.json`，随后 `deploy` 任务把 `public/` 作为网站根目录发布到 GitHub Pages（Settings → Pages → Source 需设为 “GitHub Actions”），网址为 https://smu-diga.github.io/singaporehaze2026/ ，旧的 `/public/` 链接会自动跳转。网页同时读取站点内的快照和 `raw.githubusercontent.com` 上的最新快照，取较新者，因此即使 Pages 构建延迟也能显示最新数据；页面打开期间每 15 分钟检查一次。支持手动执行，初次推送会触发。默认 `GITHUB_TOKEN` 需要 contents:write；可选 secret `DATA_GOV_SG_API_KEY` 用于提高官方 API 限额。
+2. **GitHub 数据存档**：GitHub 定时任务经常延迟或跳过，已停用。改由服务器 crontab 每小时第 17 分钟（新加坡时间）运行 `scripts/server_update.sh`：同步 `origin/main`，执行 `scripts/update_data.py` 和 Python 测试，有变化时提交 `public/data/latest.json` 并 push（日志在 `logs/server_update.log`，用 `flock` 防止重叠运行；可在 `.env` 中设置 `DATA_GOV_SG_API_KEY` 提高官方 API 限额）。push 会触发 `.github/workflows/update.yml` 的 `deploy` 任务，把 `public/` 作为网站根目录发布到 GitHub Pages（Settings → Pages → Source 需设为 “GitHub Actions”），网址为 https://smu-diga.github.io/singaporehaze2026/ ，旧的 `/public/` 链接会自动跳转。在 Actions 页面手动运行该 workflow 仍会在 GitHub 上采集一次。网页同时读取站点内的快照和 `raw.githubusercontent.com` 上的最新快照，取较新者，因此即使 Pages 构建延迟也能显示最新数据；页面打开期间每 15 分钟检查一次。
 
-云端计划任务和 GitHub Actions 可能排队延迟。GitHub 公共仓库的长期无活动可能暂停 scheduled workflows；上线站点使用独立 Sites 任务，不依赖此存档任务。GitHub 数据提交不会重新发布 Sites 代码。
+   ```cron
+   17 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh
+   ```
+
+云端计划任务和 GitHub Actions 可能排队延迟。上线站点使用独立 Sites 任务，不依赖此存档任务。GitHub 数据提交不会重新发布 Sites 代码。
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
