@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-16T20:12:51+08:00",
+    "updatedAt": "2026-10-16T20:22:51+08:00",
     "label": "16 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -165,9 +165,9 @@
         "lat": 1.31653,
         "lon": 103.89656,
         "hours": "Daily, 24 hours",
-        "note": "Level 7 Rooftop Garden",
-        "stock": "limited",
-        "working": true
+        "note": "Near Lobby A",
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Hong Kah North Zone '6' Residents' Network (RN)",
@@ -375,7 +375,7 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1462,6 +1462,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-16T20:15:02.031270+08:00",
+  "generatedAt": "2026-10-16T20:30:02.682421+08:00",
   "schemaVersion": 1
 }
