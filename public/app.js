@@ -269,7 +269,7 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderHistory(); renderEscape(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderHistory(); renderEscape(); renderAdvisories(); renderNews(); renderToc(); }
 
 // Compared with past years: per-year peaks and day counts, and the haze season overlaid by year.
 const yearColours = ['#9aa6a0', '#b58b2d', '#4f8a96', '#c9652f', '#8a5a96', '#2e9079'];
@@ -579,11 +579,33 @@ function renderEscape() {
 
 // Tabs: the page is split into four panels; the URL hash names a tab or any section inside one.
 const TABS = ['now', 'plan', 'protect', 'updates'];
+let currentTab = 'now';
+// Sidebar: a table of contents for the open tab, with the section in view highlighted.
+const tocIcons = { locate: 'pin', stats: 'dashboard', distribution: 'map', trend: 'forecast', history: 'gauge', forecast: 'clock', rules: 'info', escape: 'plane', purifier: 'home', resources: 'mask', guide: 'heart', advisories: 'shield', news: 'news' };
+const inView = new Set();
+const tocSpy = new IntersectionObserver(entries => {
+  for (const x of entries) x.isIntersecting ? inView.add(x.target.id) : inView.delete(x.target.id);
+  const links = $$('#toc-links a'), first = links.find(a => inView.has(a.dataset.target));
+  if (first) links.forEach(a => a.classList.toggle('active', a === first));
+}, { rootMargin: '-140px 0px -50% 0px' });
+function renderToc() {
+  const sections = $$(`#${currentTab} [data-toc]`).filter(el => !el.hidden);
+  tocSpy.disconnect(); inView.clear();
+  $('#toc-links').innerHTML = sections.map(el => `<a href="#${el.id}" data-target="${el.id}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[tocIcons[el.id]] || icons.info}</svg><span>${e(t(el.dataset.toc))}</span></a>`).join('');
+  sections.forEach(el => tocSpy.observe(el));
+  $('#toc-links a')?.classList.add('active');
+}
+// Phones: pin only the tab row of the top bar; the row above it scrolls away.
+function pinTabs() {
+  $('.topbar').style.top = matchMedia('(max-width: 760px)').matches ? `-${$('.tabs').offsetTop}px` : '';
+}
+window.addEventListener('resize', pinTabs);
 function tabFor(id) {
   if (TABS.includes(id)) return id;
   return document.getElementById(id)?.closest('.tab-panel')?.id || 'now';
 }
 function showTab(tab, target) {
+  currentTab = tab;
   $$('.tab-panel').forEach(panel => { panel.hidden = panel.id !== tab; });
   // The title block and island alert belong to "Now"; other tabs start straight with their content.
   $('#overview').hidden = tab !== 'now'; $('#alert').hidden = tab !== 'now';
@@ -597,6 +619,7 @@ function showTab(tab, target) {
     live.map.invalidateSize();
     if (!live.shown) { live.shown = true; if (state.place) focusPlace(false); else live.map.fitBounds(MAIN_ISLAND); }
   }
+  renderToc();
   const section = target && !TABS.includes(target) ? document.getElementById(target) : null;
   if (section) section.scrollIntoView({ behavior: 'smooth' });
   else if (window.scrollY > $('#main').offsetTop) window.scrollTo({ top: 0 });
@@ -650,6 +673,7 @@ setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
 renderStatic();
 renderPurifier();
+pinTabs();
 route();
 initMap();
 live.shown = !$('#now').hidden;

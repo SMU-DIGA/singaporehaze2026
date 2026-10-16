@@ -15,11 +15,9 @@
 
   <aside class="sidebar">
     <a class="brand" href="#now"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">雾霾观察站</span><small data-i18n="brandSub">SINGAPORE HAZE WATCH</small></span></a>
-    <nav data-i18n-attr="aria-label:navLabel" aria-label="主导航">
-      <a id="tab-now" data-tab="now" class="active" aria-current="page" href="#now"><span data-icon="dashboard"></span><span data-i18n="tabNow">现在</span></a>
-      <a id="tab-plan" data-tab="plan" href="#plan"><span data-icon="forecast"></span><span data-i18n="tabPlan">预测与安排</span></a>
-      <a id="tab-protect" data-tab="protect" href="#protect"><span data-icon="mask"></span><span data-i18n="tabProtect">防护与求助</span></a>
-      <a id="tab-updates" data-tab="updates" href="#updates"><span data-icon="news"></span><span data-i18n="tabNews">公告与新闻</span></a>
+    <nav class="toc" id="toc" data-i18n-attr="aria-label:tocTitle" aria-label="本页目录">
+      <p class="toc-title" data-i18n="tocTitle">本页目录</p>
+      <div id="toc-links"></div>
     </nav>
     <div class="sidebar-bottom">
       <div class="update-card"><strong><span class="pulse"></span><span data-i18n="updateCardTitle">每小时自动更新</span></strong><small data-i18n="updateCardText">数据来自 NEA 官方发布</small><small id="sidebar-next"></small></div>
@@ -30,6 +28,12 @@
   <div class="page">
     <header class="topbar">
       <span class="date" id="today"></span>
+      <nav class="tabs" role="tablist" data-i18n-attr="aria-label:navLabel" aria-label="主导航">
+        <a id="tab-now" data-tab="now" class="active" aria-current="page" href="#now"><span data-icon="dashboard"></span><span data-i18n="tabNow">现在</span></a>
+        <a id="tab-plan" data-tab="plan" href="#plan"><span data-icon="forecast"></span><span data-i18n="tabPlan">预测与安排</span></a>
+        <a id="tab-protect" data-tab="protect" href="#protect"><span data-icon="mask"></span><span data-i18n="tabProtect">防护与求助</span></a>
+        <a id="tab-updates" data-tab="updates" href="#updates"><span data-icon="news"></span><span data-i18n="tabNews">公告与新闻</span></a>
+      </nav>
       <div class="top-actions">
         <div class="segmented language-switch" role="group" data-i18n-attr="aria-label:languageLabel" aria-label="语言 / Language">
           <button data-language="zh" lang="zh-CN" class="selected" aria-pressed="true">中文</button>
@@ -61,7 +65,7 @@
       </div>
 
       <div class="tab-panel" id="now" role="tabpanel" aria-labelledby="tab-now">
-        <section class="panel locate-panel" id="locate" data-i18n-attr="aria-label:postalTitle" aria-label="我的空气">
+        <section data-toc="tocLocate" class="panel locate-panel" id="locate" data-i18n-attr="aria-label:postalTitle" aria-label="我的空气">
           <form class="postal-form" id="postal-form" novalidate>
             <label for="postal-input"><span class="heading-icon" data-icon="pin"></span><b data-i18n="postalTitle">我的空气</b><span data-i18n="postalLabel">输入邮编，查看你所在区域的空气质量</span></label>
             <div class="postal-row">
@@ -75,7 +79,7 @@
           <div class="my-air" id="my-air" hidden></div>
         </section>
 
-        <section class="stats" data-i18n-attr="aria-label:statsLabel" aria-label="全岛空气质量摘要">
+        <section id="stats" data-toc="tocStats" class="stats" data-i18n-attr="aria-label:statsLabel" aria-label="全岛空气质量摘要">
           <article class="stat"><div class="stat-label"><span data-i18n="statPsi">24 小时 PSI</span><span data-icon="wind"></span></div><div class="stat-value" id="psi-range">—</div><div class="stat-bottom"><span id="psi-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPsiNote">五区读数范围</small></div></article>
           <article class="stat"><div class="stat-label"><span data-i18n="statPm">1 小时 PM2.5</span><span data-icon="particles"></span></div><div class="stat-value" id="pm-range">—</div><div class="stat-bottom"><span id="pm-band" class="badge" data-i18n="reading">读取中</span><small data-i18n="statPmNote">五区读数范围</small></div></article>
           <article class="stat"><div class="stat-label"><span data-i18n="statWorst">读数最高区域</span><span data-icon="pin"></span></div><div class="stat-value region-value" id="worst-region">—</div><div class="stat-bottom"><span id="worst-value" class="badge">—</span><small data-i18n="statWorstNote">按 24 小时 PSI</small></div></article>
@@ -83,7 +87,7 @@
         </section>
 
         <div class="visual-grid">
-          <section class="panel map-panel" id="distribution">
+          <section data-toc="tocMap" class="panel map-panel" id="distribution">
             <div class="panel-head">
               <div><h2 data-i18n="mapTitle">五区空气质量</h2><p data-i18n="mapSub">点击区域查看趋势</p></div>
               <div class="segmented" id="metric-switch" role="group" data-i18n-attr="aria-label:mapMetric" aria-label="地图指标"><button class="selected" data-metric="psi" aria-pressed="true">PSI 24h</button><button data-metric="pm25" aria-pressed="false">PM2.5 1h</button><button data-metric="aqi" aria-pressed="false">AQI</button></div>
@@ -101,7 +105,7 @@
             <div class="panel-foot"><span><span data-i18n="mapSource">来源：NEA / data.gov.sg</span> · <span data-i18n="mapDisclaimer">区域位置示意，非逐街道测量</span></span><span class="foot-links"><a class="text-button" href="https://aqicn.org/map/singapore/cn/" target="_blank" rel="noopener noreferrer"><span data-i18n="aqicnLink">aqicn 站点地图</span> ↗</a><button class="text-button" id="map-info"><span data-i18n="aboutIndicators">指标说明</span> ⓘ</button></span></div>
           </section>
 
-          <section class="panel trend-panel">
+          <section id="trend" data-toc="tocTrend" class="panel trend-panel">
             <div class="panel-head">
               <div><h2 data-i18n="trendTitle">变化趋势</h2><p id="chart-subtitle"></p></div>
               <div class="segmented" id="period-switch" role="group"><button class="selected" data-period="24" aria-pressed="true" data-i18n="period24">24 小时</button><button data-period="48" aria-pressed="false" data-i18n="period48">48 小时</button><button data-period="168" aria-pressed="false" data-i18n="period168">7 天</button></div>
@@ -112,7 +116,7 @@
             <div class="trend-insight"><span data-icon="info"></span><div><strong data-i18n="insightTitle">两个指标怎么看？</strong><p data-i18n="insightText">PM2.5（1 小时）反映眼下的短时变化；PSI（24 小时）反映一天内的整体状况。安排第二天的活动，请参考 NEA 的 PSI 预报。</p><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="insightLink">NEA 指数说明</span> ↗</a></div></div>
           </section>
         </div>
-        <section class="panel history-panel" id="history" hidden>
+        <section data-toc="tocHistory" class="panel history-panel" id="history" hidden>
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="gauge"></span><span data-i18n="hisTitle">和往年比较</span></h2><p id="his-headline"></p></div>
           </div>
@@ -135,7 +139,7 @@
       </div>
 
       <div class="tab-panel" id="plan" role="tabpanel" hidden aria-labelledby="tab-plan">
-        <section class="panel forecast-panel" id="forecast" hidden>
+        <section data-toc="tocForecast" class="panel forecast-panel" id="forecast" hidden>
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="forecast"></span><span data-i18n="fcTitle">明日空气预测</span></h2><p id="fc-sub"></p></div>
             <span id="fc-confidence" class="badge"></span>
@@ -162,7 +166,7 @@
           <div class="panel-foot forecast-foot"><span id="fc-record"></span><span data-i18n="fcDisclaimer">本站算法估算，非 NEA 官方预报；安排活动请以 NEA 发布为准。</span><span data-i18n="hrsNote">CAMS 大气模式的逐小时预测，已按近 48 小时 NEA 实测校正，仅供参考；出门前请看 NEA 最新的 1 小时 PM2.5。建议按 NEA 的 1 小时 PM2.5 分级给出。</span></div>
         </section>
 
-        <section class="panel rules-panel" id="rules">
+        <section data-toc="tocRules" class="panel rules-panel" id="rules">
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="info"></span><span data-i18n="rulTitle">学校、工作和设施的官方措施</span></h2><p id="rules-sub"></p></div>
           </div>
@@ -170,7 +174,7 @@
           <div class="panel-foot"><span id="rules-note"></span></div>
         </section>
 
-        <section class="panel escape-panel" id="escape" hidden>
+        <section data-toc="tocEscape" class="panel escape-panel" id="escape" hidden>
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="plane"></span><span data-i18n="escTitle">想暂时离开？周边城市空气</span></h2><p id="esc-sub"></p></div>
           </div>
@@ -185,7 +189,7 @@
       </div>
 
       <div class="tab-panel" id="protect" role="tabpanel" hidden aria-labelledby="tab-protect">
-        <section class="panel purifier-panel" id="purifier">
+        <section data-toc="tocPurifier" class="panel purifier-panel" id="purifier">
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="home"></span><span data-i18n="purTitle">空气净化器要多大？</span></h2><p data-i18n="purSub">按房间大小估算需要的 CADR（洁净空气输送率），或者看看你的净化器够不够用。</p></div>
           </div>
@@ -212,7 +216,7 @@
           <div class="panel-foot"><span data-i18n="purNote">按美国 EPA 选购表估算：层高 2.44 米时，每平方英尺约需 0.65 CFM 的烟雾 CADR，层高更高时按比例增加。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
         </section>
 
-        <section class="panel resources-panel" id="resources">
+        <section data-toc="tocResources" class="panel resources-panel" id="resources">
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="mask"></span><span data-i18n="resTitle">防霾资源</span></h2><p data-i18n="resSub">免费口罩、补贴就医和避霾中心；地图上可打开对应图层。</p></div>
             <a class="subtle-link" href="https://www.gowhere.gov.sg/hazemask/" target="_blank" rel="noopener noreferrer"><span data-i18n="resGoWhere">HazeMaskGoWhere 实时库存</span> ↗</a>
@@ -251,7 +255,7 @@
           <div class="panel-foot"><span data-i18n="resFoot">口罩库存同步自政府 HazeMaskGoWhere，每 15 分钟检查一次；CC 位置来自 PA，综合诊所位置来自 HPB 公开数据（2023 年），新开的诊所可能未列出。</span></div>
         </section>
 
-        <section class="guide" id="guide">
+        <section data-toc="tocGuide" class="guide" id="guide">
           <div class="guide-intro">
             <h2 data-i18n="guideTitle">雾霾天的健康建议</h2>
             <p data-i18n="guideText">选择人群，查看当前 PSI 对应的 NEA 活动建议。</p>
@@ -269,7 +273,7 @@
       </div>
 
       <div class="tab-panel" id="updates" role="tabpanel" hidden aria-labelledby="tab-updates">
-        <section class="panel advisories-panel" id="advisories">
+        <section data-toc="tocAdvisories" class="panel advisories-panel" id="advisories">
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="shield"></span><span data-i18n="advTitle">政府公告</span></h2><p data-i18n="advSub">国家环境局（NEA）发布的最新雾霾公告。</p></div>
             <a class="subtle-link" href="https://www.nea.gov.sg/media/news" target="_blank" rel="noopener noreferrer"><span data-i18n="advAll">全部公告</span> ↗</a>
@@ -282,7 +286,7 @@
           </div>
         </section>
 
-        <section class="news-section" id="news">
+        <section data-toc="tocNews" class="news-section" id="news">
           <div class="section-head">
             <div><h2><span data-i18n="newsTitle">新闻动态</span><span class="count" id="news-count">0</span></h2><p data-i18n="newsSub">本地与区域雾霾报道，点击阅读原文。</p></div>
             <label class="search"><span data-icon="search"></span><input id="news-search" type="search" data-i18n-attr="placeholder:newsSearch;aria-label:newsSearchLabel" placeholder="搜索新闻…" aria-label="搜索新闻"></label>
