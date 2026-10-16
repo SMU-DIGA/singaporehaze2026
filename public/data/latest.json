@@ -1390,59 +1390,59 @@
       }
     ]
   },
-  "generatedAt": "2026-10-16T10:03:10.827319+08:00",
+  "generatedAt": "2026-10-16T10:09:09.950596+08:00",
   "nextUpdateAt": "2026-10-16T12:17:00+08:00",
   "sources": {
-    "news": {
+    "advisories": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
-    },
-    "cna": {
-      "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
-    },
-    "history_pm25_2026-10-15": {
-      "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
-    "advisories": {
+    "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00"
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
-    "history_pm25_2026-10-14": {
-      "ok": false,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00",
-      "error": "HTTPError"
+    "cna": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
     },
     "history_psi_2026-10-14": {
       "ok": false,
-      "checkedAt": "2026-10-16T10:03:10.827319+08:00",
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00",
+      "error": "HTTPError"
+    },
+    "history_pm25_2026-10-14": {
+      "ok": false,
+      "checkedAt": "2026-10-16T10:09:09.950596+08:00",
       "error": "HTTPError"
     }
   },
   "errors": [
-    "history_pm25_2026-10-14: HTTPError",
-    "history_psi_2026-10-14: HTTPError"
+    "history_psi_2026-10-14: HTTPError",
+    "history_pm25_2026-10-14: HTTPError"
   ],
   "schemaVersion": 1,
   "advisories": [
