@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#183b32">
-  <meta name="description" content="新加坡雾霾观察站 Singapore Haze Watch：五区官方 PSI 与 PM2.5、政府公告和新闻聚合，每三小时更新。Official PSI, PM2.5, advisories and news, updated every 3 hours.">
-  <title>雾霾观察站 · Singapore Haze Watch</title>
+  <meta name="description" content="新加坡狮城烟霾速报 SG Haze Now：五区官方 PSI 与 PM2.5、政府公告和新闻聚合，每三小时更新。Official PSI, PM2.5, advisories and news, updated every 3 hours.">
+  <title>狮城烟霾速报 · SG Haze Now</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,7 +13,7 @@
   <a class="skip" href="#main" data-i18n="skip">跳到主要内容</a>
 
   <aside class="sidebar">
-    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">雾霾观察站</span><small data-i18n="brandSub">SINGAPORE HAZE WATCH</small></span></a>
+    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">狮城烟霾速报</span><small data-i18n="brandSub">SG HAZE NOW</small></span></a>
     <nav data-i18n-attr="aria-label:navLabel" aria-label="主导航">
       <a class="active" href="#overview"><span data-icon="dashboard"></span><span data-i18n="navOverview">空气概览</span></a>
       <a href="#distribution"><span data-icon="map"></span><span data-i18n="navMap">五区分布</span></a>
@@ -43,7 +43,7 @@
     <main id="main">
       <section id="overview" class="intro">
         <div>
-          <h1 data-i18n="heroTitle">新加坡雾霾与空气质量</h1>
+          <h1 data-i18n="heroTitle">新加坡烟霾与空气质量</h1>
           <p data-i18n="heroText">官方 PSI 与 PM2.5 读数、政府公告和相关新闻，每 3 小时汇总一次。</p>
         </div>
         <div class="refresh-area">
@@ -93,7 +93,7 @@
 
       <section class="panel advisories-panel" id="advisories">
         <div class="panel-head">
-          <div><h2><span class="heading-icon" data-icon="shield"></span><span data-i18n="advTitle">政府公告</span></h2><p data-i18n="advSub">国家环境局（NEA）发布的最新雾霾公告。</p></div>
+          <div><h2><span class="heading-icon" data-icon="shield"></span><span data-i18n="advTitle">政府公告</span></h2><p data-i18n="advSub">国家环境局（NEA）发布的最新烟霾公告。</p></div>
           <a class="subtle-link" href="https://www.nea.gov.sg/media/news" target="_blank" rel="noopener noreferrer"><span data-i18n="advAll">全部公告</span> ↗</a>
         </div>
         <div id="advisory-list" class="advisory-list"></div>
@@ -106,7 +106,7 @@
 
       <section class="news-section" id="news">
         <div class="section-head">
-          <div><h2><span data-i18n="newsTitle">新闻动态</span><span class="count" id="news-count">0</span></h2><p data-i18n="newsSub">本地与区域雾霾报道，点击阅读原文。</p></div>
+          <div><h2><span data-i18n="newsTitle">新闻动态</span><span class="count" id="news-count">0</span></h2><p data-i18n="newsSub">本地与区域烟霾报道，点击阅读原文。</p></div>
           <label class="search"><span data-icon="search"></span><input id="news-search" type="search" data-i18n-attr="placeholder:newsSearch;aria-label:newsSearchLabel" placeholder="搜索新闻…" aria-label="搜索新闻"></label>
         </div>
         <div class="news-tabs" id="news-tabs" role="group"><button class="selected" data-filter="all" aria-pressed="true" data-i18n="newsAll">全部</button><button data-filter="singapore" aria-pressed="false" data-i18n="newsSg">新加坡</button><button data-filter="regional" aria-pressed="false" data-i18n="newsRegional">区域</button></div>
@@ -117,7 +117,7 @@
 
       <section class="guide" id="guide">
         <div class="guide-intro">
-          <h2 data-i18n="guideTitle">雾霾天的健康建议</h2>
+          <h2 data-i18n="guideTitle">烟霾天的健康建议</h2>
           <p data-i18n="guideText">选择人群，查看当前 PSI 对应的 NEA 活动建议。</p>
           <select id="audience" data-i18n-attr="aria-label:audienceLabel" aria-label="选择适用人群"><option value="general" data-i18n="audGeneral">一般健康人士</option><option value="vulnerable" data-i18n="audVulnerable">长者、孕妇与儿童</option><option value="chronic" data-i18n="audChronic">慢性心肺疾病患者</option></select>
           <p class="personal-advice" id="personal-advice"></p>
@@ -126,12 +126,12 @@
         </div>
         <div class="guide-items">
           <article><span data-icon="home"></span><div><h3 data-i18n="tipIndoorTitle">关注室内空气</h3><p data-i18n="tipIndoorText">关好门窗减少烟霾进入，可参考 NEA 的便携式空气净化器指引。</p><a href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="tipIndoorLink">室内空气指南</span> ↗</a></div></article>
-          <article><span data-icon="shield"></span><div><h3 data-i18n="tipWorkTitle">户外工作安排</h3><p data-i18n="tipWorkText">雇主应评估雾霾风险，依空气状况与员工健康调整户外工作。</p><a href="https://www.mom.gov.sg/haze/guidelines-on-protecting-employees-from-haze" target="_blank" rel="noopener noreferrer"><span data-i18n="tipWorkLink">MOM 工作防护指引</span> ↗</a></div></article>
-          <article><span data-icon="globe"></span><div><h3 data-i18n="tipSourceTitle">雾霾从哪里来</h3><p data-i18n="tipSourceText">关注东南亚火点、风向与跨境烟霾；卫星观测可能受云层影响。</p><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span data-i18n="tipSourceLink">ASMC 区域监测</span> ↗</a></div></article>
+          <article><span data-icon="shield"></span><div><h3 data-i18n="tipWorkTitle">户外工作安排</h3><p data-i18n="tipWorkText">雇主应评估烟霾风险，依空气状况与员工健康调整户外工作。</p><a href="https://www.mom.gov.sg/haze/guidelines-on-protecting-employees-from-haze" target="_blank" rel="noopener noreferrer"><span data-i18n="tipWorkLink">MOM 工作防护指引</span> ↗</a></div></article>
+          <article><span data-icon="globe"></span><div><h3 data-i18n="tipSourceTitle">烟霾从哪里来</h3><p data-i18n="tipSourceText">关注东南亚火点、风向与跨境烟霾；卫星观测可能受云层影响。</p><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span data-i18n="tipSourceLink">ASMC 区域监测</span> ↗</a></div></article>
         </div>
       </section>
 
-      <footer><a class="footer-brand" href="#overview">≈ <span data-i18n="brand">雾霾观察站</span></a><span data-i18n="footer">独立信息聚合站 · 非政府官方网站</span><button class="text-button" id="footer-sources"><span data-i18n="footerSources">数据来源与更新说明</span> ↗</button></footer>
+      <footer><a class="footer-brand" href="#overview">≈ <span data-i18n="brand">狮城烟霾速报</span></a><span data-i18n="footer">独立信息聚合站 · 非政府官方网站</span><button class="text-button" id="footer-sources"><span data-i18n="footerSources">数据来源与更新说明</span> ↗</button></footer>
     </main>
   </div>
 

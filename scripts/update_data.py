@@ -29,7 +29,7 @@ def government_news():
     result = []
     for item in payload.get('Data', []):
         title = html.unescape(re.sub(r'<[^>]*>', '', item.get('Title', '')))
-        if not re.search(r'haze|雾霾', title, re.I):
+        if not re.search(r'haze|烟霾|雾霾', title, re.I):
             continue
         section = 'advisories' if item.get('NewsOrAdvisory') == 'Advisory' else 'news'
         date_match = re.search(r'\d{10,}', item.get('DateOfArticle', ''))
@@ -138,7 +138,7 @@ def extract_links(markup, base, government=False):
 
 
 def rss_news():
-    query = '(Singapore haze OR 新加坡 雾霾) when:7d'
+    query = '(Singapore haze OR 新加坡 烟霾 OR 新加坡 雾霾) when:7d'
     url = 'https://news.google.com/rss/search?' + urllib.parse.urlencode({'q': query, 'hl': 'en-SG', 'gl': 'SG', 'ceid': 'SG:en'})
     root = ET.fromstring(fetch(url))
     result = []

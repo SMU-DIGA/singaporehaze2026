@@ -65,7 +65,7 @@ jobs:
           cp -R public _site
           # Keep old /public/ links working.
           mkdir -p _site/public
-          printf '%s\n' '<!doctype html><meta charset="utf-8"><title>Singapore Haze Watch</title><meta http-equiv="refresh" content="0;url=../"><script>location.replace("../" + location.search + location.hash)</script><a href="../">Singapore Haze Watch →</a>' > _site/public/index.html
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><title>SG Haze Now</title><meta http-equiv="refresh" content="0;url=../"><script>location.replace("../" + location.search + location.hash)</script><a href="../">SG Haze Now →</a>' > _site/public/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
