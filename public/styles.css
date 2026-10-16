@@ -66,7 +66,7 @@ nav a.active { background: #b8d59d; color: #17321f; font-weight: 600; }
 .sidebar-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
 .update-card { padding: 14px; background: #ffffff0a; border: 1px solid #ffffff1a; border-radius: 10px; font-size: 14px; }
 .update-card strong { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #eef4ea; }
-.update-card small { display: block; color: #a9bdae; font-size: 13px; line-height: 1.6; margin-top: 4px; }
+.update-card small { display: block; color: #a9bdae; font-size: 13px; line-height: 1.6; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pulse, .live-dot { display: inline-block; width: 8px; height: 8px; background: #a9cb92; border-radius: 50%; box-shadow: 0 0 0 4px #a9cb9226; flex-shrink: 0; }
 #sources-button { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #c4d4c9; padding: 10px 12px; border-radius: 8px; text-align: left; }
 #sources-button:hover { background: #ffffff12; color: #fff; }

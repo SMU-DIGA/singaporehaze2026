@@ -81,7 +81,8 @@ function renderSummary() {
   $('#updated').removeAttribute('data-i18n');
   $('#updated').textContent = t('collected', { time: sgt(fmt(d.generatedAt)) });
   const next = d.nextUpdateAt ? t('nextUpdate', { time: sgt(clock(d.nextUpdateAt)) }) : t('nextUpdateUnknown');
-  $('#next-update').textContent = next; $('#sidebar-next').textContent = next;
+  $('#next-update').textContent = next;
+  $('#sidebar-next').textContent = d.nextUpdateAt ? t('sidebarNext', { time: sgt(clock(d.nextUpdateAt)) }) : t('nextUpdateUnknown');
 
   $('#alert-title').removeAttribute('data-i18n'); $('#alert-text').removeAttribute('data-i18n');
   $('#alert').style.setProperty('--alert', bandOf(max).color);
