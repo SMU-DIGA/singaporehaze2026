@@ -29,7 +29,23 @@
       "pm25": 58.6,
       "tomorrowMax": 151,
       "dayAfterMax": 113,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 110,
+        "url": "https://kiwi.com/u/ng43p6",
+        "stops": 0,
+        "hours": 1.1,
+        "carriers": [
+          "AirAsia"
+        ],
+        "direct": {
+          "amount": 110,
+          "url": "https://kiwi.com/u/ng43p6"
+        }
+      }
     },
     {
       "iata": "PEN",
@@ -43,7 +59,23 @@
       "pm25": 36.9,
       "tomorrowMax": 90,
       "dayAfterMax": 81,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 89,
+        "url": "https://kiwi.com/u/k5ffvbc",
+        "stops": 0,
+        "hours": 1.2,
+        "carriers": [
+          "AirAsia"
+        ],
+        "direct": {
+          "amount": 89,
+          "url": "https://kiwi.com/u/k5ffvbc"
+        }
+      }
     },
     {
       "iata": "BKI",
@@ -57,7 +89,20 @@
       "pm25": 10.8,
       "tomorrowMax": 69,
       "dayAfterMax": 58,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 227,
+        "url": "https://kiwi.com/u/ht2yrsd",
+        "stops": 1,
+        "hours": 4.5,
+        "carriers": [
+          "Batik Air Malaysia"
+        ],
+        "direct": null
+      }
     },
     {
       "iata": "BKK",
@@ -71,7 +116,23 @@
       "pm25": 35.9,
       "tomorrowMax": 103,
       "dayAfterMax": 102,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 233,
+        "url": "https://kiwi.com/u/rypcx4",
+        "stops": 0,
+        "hours": 2.5,
+        "carriers": [
+          "Thai Lion Air"
+        ],
+        "direct": {
+          "amount": 233,
+          "url": "https://kiwi.com/u/rypcx4"
+        }
+      }
     },
     {
       "iata": "HKT",
@@ -85,7 +146,20 @@
       "pm25": 7.2,
       "tomorrowMax": 40,
       "dayAfterMax": 29,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 256,
+        "url": "https://kiwi.com/u/683smx",
+        "stops": 1,
+        "hours": 19.5,
+        "carriers": [
+          "Batik Air Malaysia"
+        ],
+        "direct": null
+      }
     },
     {
       "iata": "CNX",
@@ -99,7 +173,20 @@
       "pm25": 13.4,
       "tomorrowMax": 57,
       "dayAfterMax": 58,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 290,
+        "url": "https://kiwi.com/u/fkn3ct",
+        "stops": 1,
+        "hours": 10.8,
+        "carriers": [
+          "Thai Lion Air"
+        ],
+        "direct": null
+      }
     },
     {
       "iata": "SGN",
@@ -113,7 +200,23 @@
       "pm25": 30.4,
       "tomorrowMax": 111,
       "dayAfterMax": 80,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 160,
+        "url": "https://kiwi.com/u/tdrxsf",
+        "stops": 0,
+        "hours": 2.2,
+        "carriers": [
+          "Vietnam Airlines"
+        ],
+        "direct": {
+          "amount": 160,
+          "url": "https://kiwi.com/u/tdrxsf"
+        }
+      }
     },
     {
       "iata": "DAD",
@@ -127,7 +230,23 @@
       "pm25": 11.5,
       "tomorrowMax": 73,
       "dayAfterMax": 67,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 234,
+        "url": "https://kiwi.com/u/utd4m9",
+        "stops": 1,
+        "hours": 23.1,
+        "carriers": [
+          "Malaysia Airlines"
+        ],
+        "direct": {
+          "amount": 439,
+          "url": "https://kiwi.com/u/xq9puf"
+        }
+      }
     },
     {
       "iata": "HAN",
@@ -141,7 +260,23 @@
       "pm25": 30.4,
       "tomorrowMax": 100,
       "dayAfterMax": 98,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 226,
+        "url": "https://kiwi.com/u/4qxbts",
+        "stops": 2,
+        "hours": 22.4,
+        "carriers": [
+          "Vietnam Airlines"
+        ],
+        "direct": {
+          "amount": 287,
+          "url": "https://kiwi.com/u/cbq97z"
+        }
+      }
     },
     {
       "iata": "MNL",
@@ -155,7 +290,23 @@
       "pm25": 17.6,
       "tomorrowMax": 60,
       "dayAfterMax": 58,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 281,
+        "url": "https://kiwi.com/u/ju3zxp",
+        "stops": 0,
+        "hours": 3.8,
+        "carriers": [
+          "Philippine Airlines"
+        ],
+        "direct": {
+          "amount": 281,
+          "url": "https://kiwi.com/u/ju3zxp"
+        }
+      }
     },
     {
       "iata": "CEB",
@@ -169,7 +320,23 @@
       "pm25": 4.2,
       "tomorrowMax": 27,
       "dayAfterMax": 16,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 389,
+        "url": "https://kiwi.com/u/rkvmmv",
+        "stops": 1,
+        "hours": 10.8,
+        "carriers": [
+          "Cebu Pacific"
+        ],
+        "direct": {
+          "amount": 706,
+          "url": "https://kiwi.com/u/jf2bjz"
+        }
+      }
     },
     {
       "iata": "DPS",
@@ -183,7 +350,23 @@
       "pm25": 16.1,
       "tomorrowMax": 68,
       "dayAfterMax": 70,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 219,
+        "url": "https://kiwi.com/u/pn4z5v",
+        "stops": 1,
+        "hours": 6.0,
+        "carriers": [
+          "Batik Air"
+        ],
+        "direct": {
+          "amount": 345,
+          "url": "https://kiwi.com/u/26cfjw"
+        }
+      }
     },
     {
       "iata": "CGK",
@@ -197,7 +380,23 @@
       "pm25": 35.9,
       "tomorrowMax": 158,
       "dayAfterMax": 153,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 107,
+        "url": "https://kiwi.com/u/7qv74d",
+        "stops": 0,
+        "hours": 1.8,
+        "carriers": [
+          "TransNusa"
+        ],
+        "direct": {
+          "amount": 107,
+          "url": "https://kiwi.com/u/7qv74d"
+        }
+      }
     },
     {
       "iata": "HKG",
@@ -211,7 +410,20 @@
       "pm25": 35.7,
       "tomorrowMax": 87,
       "dayAfterMax": 70,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 362,
+        "url": "https://kiwi.com/u/62c62q",
+        "stops": 1,
+        "hours": 14.9,
+        "carriers": [
+          "Thai Airways"
+        ],
+        "direct": null
+      }
     },
     {
       "iata": "TPE",
@@ -225,7 +437,23 @@
       "pm25": 7.7,
       "tomorrowMax": 59,
       "dayAfterMax": 51,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 265,
+        "url": "https://kiwi.com/u/mzjnxp",
+        "stops": 1,
+        "hours": 11.2,
+        "carriers": [
+          "Batik Air Malaysia"
+        ],
+        "direct": {
+          "amount": 604,
+          "url": "https://kiwi.com/u/98q6nk"
+        }
+      }
     },
     {
       "iata": "PER",
@@ -239,10 +467,27 @@
       "pm25": 20.1,
       "tomorrowMax": 66,
       "dayAfterMax": 61,
-      "price": null
+      "price": {
+        "date": "2026-10-17",
+        "checkedAt": "2026-10-16T22:22:21.895609+08:00",
+        "source": "Kiwi.com",
+        "currency": "SGD",
+        "amount": 451,
+        "url": "https://kiwi.com/u/xuukcs",
+        "stops": 1,
+        "hours": 11.7,
+        "carriers": [
+          "Batik Air Malaysia"
+        ],
+        "direct": {
+          "amount": 660,
+          "url": "https://kiwi.com/u/564r59"
+        }
+      }
     }
   ],
-  "generatedAt": "2026-10-16T22:05:04.430155+08:00",
+  "generatedAt": "2026-10-16T22:22:21.895609+08:00",
   "source": "CAMS via Open-Meteo",
+  "priceErrors": [],
   "schemaVersion": 1
 }

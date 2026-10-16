@@ -43,5 +43,41 @@ class EscapeTests(unittest.TestCase):
             escape.build([location(None, {})] * len(escape.CITIES), NOW)
 
 
+def trip(price, stops, url):
+    return {'price': price, 'bookingUrl': url, 'totalDurationSeconds': 3600 * (2 + 3 * stops),
+            'outbound': {'stops': stops, 'segments': [{'carrierName': 'AirAsia'}] * (stops + 1)}}
+
+
+class FareTests(unittest.TestCase):
+    def test_cheapest_and_cheapest_direct(self):
+        search = {'currency': 'SGD', 'itineraries': [trip(233.4, 0, 'd1'), trip(211, 1, 'c1'), trip(250, 0, 'd2')]}
+        fare = escape.cheapest(search, '2026-10-17', NOW)
+        self.assertEqual((fare['amount'], fare['stops'], fare['url'], fare['hours']), (211, 1, 'c1', 5.0))
+        self.assertEqual(fare['direct'], {'amount': 233, 'url': 'd1'})
+        self.assertIsNone(escape.cheapest({'itineraries': []}, '2026-10-17', NOW)['amount'])
+
+    def test_recent_fares_reused_and_failures_keep_same_day_fare(self):
+        result = escape.build(PAYLOAD, NOW)
+        recent = {'date': '2026-10-17', 'checkedAt': (NOW - dt.timedelta(hours=1)).isoformat(), 'amount': 99}
+        stale = {'date': '2026-10-17', 'checkedAt': (NOW - dt.timedelta(hours=5)).isoformat(), 'amount': 88}
+        previous = {'cities': [{'iata': 'KUL', 'price': recent}, {'iata': 'PEN', 'price': stale}]}
+        calls = []
+
+        def search(iata, date):
+            calls.append(iata)
+            if iata == 'PEN':
+                raise OSError('offline')
+            return {'currency': 'SGD', 'itineraries': [trip(150, 0, 'u')]}
+        errors = escape.add_prices(result, previous, NOW, search=search, pause=0)
+        by = {c['iata']: c['price'] for c in result['cities']}
+        self.assertNotIn('KUL', calls)          # checked an hour ago: reused
+        self.assertNotIn('SIN', calls)          # no flights from Singapore to itself
+        self.assertEqual(by['KUL'], recent)
+        self.assertEqual(by['PEN'], stale)      # refresh failed: keep the same-day fare
+        self.assertEqual(errors, ['PEN: OSError'])
+        self.assertEqual(by['BKK']['amount'], 150)
+        self.assertEqual(len(calls), len(escape.CITIES) - 2)
+
+
 if __name__ == '__main__':
     unittest.main()

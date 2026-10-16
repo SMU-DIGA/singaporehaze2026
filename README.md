@@ -50,7 +50,7 @@ node scripts/validate-artifact.mjs
 
 `scripts/update_escape.py` 每小时（随整点任务）生成 `public/data/escape.json`：17 个周边城市（含新加坡作对照）现在的 AQI，以及明天和后天的最高 AQI。数据来自 Open-Meteo 的 CAMS 模式（`us_aqi_pm2_5`，美国标准，按 24 小时 PM2.5 计算；不用总 AQI，因为臭氧会把曼谷等城市拉高，和烟霾无关）。城市列表和大致飞行时间写在脚本的 `CITIES` 里。
 
-机票：页面给每个城市放 Trip.com、Google Flights 和 Skyscanner 的搜索链接，日期预填为明天。Trip.com 和 Google 都用反机器人验证拦截自动访问（robots.txt 也禁止抓搜索页），所以不抓取价格。`escape.json` 每个城市都留了 `price` 字段（`amount`、`currency`、`url`），以后接上合规的价格来源（如 SerpApi 或 Travelpayouts）后，页面会自动多出一列「机票」。
+机票：价格来自 Kiwi.com 官方公开的 MCP 服务器（`https://mcp.kiwi.com`，免费，不需要 key；脚本直接用 JSON-RPC 调用它的 `search-flight` 工具）。每个城市查明天单程经济舱 1 名成人的最低价，以及最便宜的直飞价；关闭了自助转机（`allow_self_transfer: false`），只算同一订单的行程。为了对这个免费服务客气一点，同一城市同一日期的价格 4 小时内不重复查询，查询之间间隔 1.5 秒，每天约 100 次。查询失败时保留同一天的旧价格。Trip.com、Google Flights 和 Skyscanner 的搜索链接保留作对照。Trip.com 和 Google 都用反机器人验证拦截自动访问，所以不从它们抓取。
 
 ## 防霾资源
 

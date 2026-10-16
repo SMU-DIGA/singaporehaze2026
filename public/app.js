@@ -424,6 +424,15 @@ $('#my-air').addEventListener('click', ev => {
 });
 
 // Nearby destinations: same-model AQI now and for the next two days, plus flight searches.
+const money = (amount, currency) => `${currency === 'SGD' ? 'S$' : `${currency} `}${amount}`;
+function fareHtml(fare) {
+  if (!fare) return '—';
+  if (!fare.amount) return `<small>${e(t('escNoFare'))}</small>`;
+  const link = (amount, url, text) => `<a href="${e(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${e(text || t('escPriceFrom', { price: money(amount, fare.currency) }))}</a>`;
+  const detail = [fare.stops === 0 ? t('escDirectShort') : t('escStops', { n: fare.stops }), Number.isFinite(fare.hours) ? t('escHours', { h: fare.hours }) : ''].filter(Boolean).join(' · ');
+  const direct = fare.direct && fare.stops !== 0 ? `<small>${link(fare.direct.amount, fare.direct.url, t('escDirect', { price: money(fare.direct.amount, fare.currency) }))}</small>` : '';
+  return `${link(fare.amount, fare.url)}<small>${e(detail)}</small>${direct}`;
+}
 function renderEscape() {
   const d = state.escape;
   $('#escape').hidden = !d?.cities?.length;
@@ -439,7 +448,7 @@ function renderEscape() {
   const rank = c => (Number.isFinite(c.tomorrowMax) ? c.tomorrowMax : Infinity);
   $('#esc-rows').innerHTML = [...d.cities].sort((a, b) => rank(a) - rank(b)).map(c => {
     const home = c.iata === 'SIN', links = flightLinks(c.iata, d.tomorrow);
-    const price = c.price?.amount ? `<a href="${e(safeUrl(c.price.url))}" target="_blank" rel="noopener noreferrer">${e(t('escPriceFrom', { price: `${c.price.currency === 'SGD' ? 'S$' : `${c.price.currency} `}${c.price.amount}` }))}</a>` : '—';
+    const price = fareHtml(c.price);
     return `<tr class="${home ? 'home' : ''}"><th scope="row"><span>${e(en() ? c.en : c.zh)}</span><small>${home ? e(t('escHere')) : `${e(en() ? c.zh : c.en)} · ${c.iata}`}</small></th>${cell(c.aqi, heads.now)}${cell(c.tomorrowMax, heads.tomorrow)}${cell(c.dayAfterMax, heads.after)}<td class="esc-time">${home ? '' : e(flightTime(c.flightMinutes, getLanguage()))}</td>${hasPrice ? `<td class="esc-price">${home ? '' : price}</td>` : ''}<td class="esc-links">${home ? '' : `<a href="${e(links.trip)}" target="_blank" rel="noopener noreferrer">Trip.com</a><a href="${e(links.google)}" target="_blank" rel="noopener noreferrer">Google</a><a href="${e(links.skyscanner)}" target="_blank" rel="noopener noreferrer">Skyscanner</a>`}</td></tr>`;
   }).join('');
 }
