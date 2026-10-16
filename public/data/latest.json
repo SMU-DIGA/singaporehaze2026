@@ -1,36 +1,36 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T12:30:34+08:00",
-    "timestamp": "2026-10-16T12:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T14:15:32+08:00",
+    "timestamp": "2026-10-16T14:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 153,
-        "south": 184,
-        "west": 202,
+        "north": 155,
+        "south": 186,
+        "west": 204,
         "east": 205,
-        "central": 226
+        "central": 228
       },
       "no2_one_hour_max": {
-        "north": 25,
-        "south": 69,
-        "west": 24,
-        "east": 30,
-        "central": 30
+        "north": 8,
+        "south": 40,
+        "west": 55,
+        "east": 32,
+        "central": 28
       },
       "pm10_twenty_four_hourly": {
-        "north": 136,
-        "south": 169,
-        "west": 183,
-        "east": 198,
-        "central": 211
+        "north": 138,
+        "south": 174,
+        "west": 186,
+        "east": 200,
+        "central": 214
       },
       "pm25_twenty_four_hourly": {
-        "north": 106,
-        "south": 135,
-        "west": 151,
-        "east": 154,
-        "central": 175
+        "north": 107,
+        "south": 137,
+        "west": 154,
+        "east": 155,
+        "central": 178
       },
       "so2_twenty_four_hourly": {
         "north": 7,
@@ -47,39 +47,39 @@
         "central": 2
       },
       "o3_eight_hour_max": {
-        "north": 33,
-        "south": 13,
-        "west": 14,
-        "east": 27,
-        "central": 28
+        "north": 66,
+        "south": 36,
+        "west": 26,
+        "east": 52,
+        "central": 69
       },
       "co_sub_index": {
         "north": 21,
         "south": 19,
-        "west": 20,
+        "west": 19,
         "east": 19,
-        "central": 21
+        "central": 20
       },
       "o3_sub_index": {
-        "north": 14,
-        "south": 6,
-        "west": 6,
-        "east": 11,
-        "central": 12
+        "north": 28,
+        "south": 15,
+        "west": 11,
+        "east": 22,
+        "central": 29
       },
       "pm10_sub_index": {
-        "north": 93,
-        "south": 110,
-        "west": 117,
-        "east": 124,
-        "central": 131
+        "north": 94,
+        "south": 112,
+        "west": 118,
+        "east": 125,
+        "central": 132
       },
       "pm25_sub_index": {
-        "north": 153,
-        "south": 184,
-        "west": 202,
+        "north": 155,
+        "south": 186,
+        "west": 204,
         "east": 205,
-        "central": 226
+        "central": 228
       },
       "so2_sub_index": {
         "north": 4,
@@ -92,19 +92,26 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T12:30:34+08:00",
-    "timestamp": "2026-10-16T12:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T14:15:32+08:00",
+    "timestamp": "2026-10-16T14:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 152,
-        "south": 194,
-        "west": 157,
-        "east": 168,
-        "central": 177
+        "north": 96,
+        "south": 133,
+        "west": 163,
+        "east": 152,
+        "central": 181
       }
     }
   },
   "news": [
+    {
+      "title": "Haze prompts closure of all outdoor and non-air-conditioned ActiveSG facilities",
+      "url": "https://www.channelnewsasia.com/singapore/activesg-outdoor-facilities-closed-haze-6465086",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "NTU student creates website that estimates how many cigarettes’ worth of haze you've breathed in",
       "url": "https://www.channelnewsasia.com/living/singapore-haze-tracker-ntu-student-6464691",
@@ -120,7 +127,7 @@
       "category": "singapore"
     },
     {
-      "title": "Singapore haze: Air quality very unhealthy in three regions; PM2.5 readings high across the country",
+      "title": "Singapore haze: Air quality very unhealthy in three regions; PM2.5 readings high in much of the country",
       "url": "https://www.channelnewsasia.com/singapore/haze-oct-16-psi-pm-25-6459416",
       "source": "CNA",
       "publishedAt": null,
@@ -192,13 +199,6 @@
     {
       "title": "Indonesia to use dry ice to clear haze from forest fires",
       "url": "https://www.channelnewsasia.com/asia/indonesia-test-dry-ice-seeding-combat-haze-air-quality-visibility-6461586",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "regional"
-    },
-    {
-      "title": "'Very dangerous': Timor-Leste shuts schools over Indonesia haze",
-      "url": "https://www.channelnewsasia.com/asia/timor-leste-shuts-schools-indonesia-haze-6461526",
       "source": "CNA",
       "publishedAt": null,
       "category": "regional"
@@ -2015,6 +2015,26 @@
           "east": 205,
           "central": 226
         }
+      },
+      {
+        "timestamp": "2026-10-16T13:00:00+08:00",
+        "values": {
+          "north": 155,
+          "south": 185,
+          "west": 203,
+          "east": 205,
+          "central": 226
+        }
+      },
+      {
+        "timestamp": "2026-10-16T14:00:00+08:00",
+        "values": {
+          "north": 155,
+          "south": 186,
+          "west": 204,
+          "east": 205,
+          "central": 228
+        }
       }
     ],
     "pm25": [
@@ -3827,47 +3847,67 @@
           "east": 168,
           "central": 177
         }
+      },
+      {
+        "timestamp": "2026-10-16T13:00:00+08:00",
+        "values": {
+          "north": 135,
+          "south": 160,
+          "west": 162,
+          "east": 162,
+          "central": 169
+        }
+      },
+      {
+        "timestamp": "2026-10-16T14:00:00+08:00",
+        "values": {
+          "north": 96,
+          "south": 133,
+          "west": 163,
+          "east": 152,
+          "central": 181
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-16T12:41:14.786940+08:00",
-  "nextUpdateAt": "2026-10-16T13:17:00+08:00",
+  "generatedAt": "2026-10-16T14:18:26.022116+08:00",
+  "nextUpdateAt": "2026-10-16T15:17:00+08:00",
   "sources": {
-    "news": {
+    "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
-    },
-    "psi": {
-      "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
-    },
-    "history_pm25_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
-    },
-    "cna": {
-      "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     },
-    "history_pm25_2026-10-15": {
+    "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
+    },
+    "history_pm25_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
+    },
+    "history_pm25_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     },
     "advisories": {
       "ok": true,
-      "checkedAt": "2026-10-16T12:41:14.786940+08:00"
+      "checkedAt": "2026-10-16T14:18:26.022116+08:00"
     }
   },
   "errors": [],
