@@ -207,6 +207,1206 @@
   "history": {
     "psi": [
       {
+        "timestamp": "2026-10-09T00:00:00+08:00",
+        "values": {
+          "north": 99,
+          "central": 142,
+          "east": 115,
+          "south": 112,
+          "west": 142
+        }
+      },
+      {
+        "timestamp": "2026-10-09T01:00:00+08:00",
+        "values": {
+          "south": 115,
+          "east": 118,
+          "north": 100,
+          "west": 144,
+          "central": 144
+        }
+      },
+      {
+        "timestamp": "2026-10-09T02:00:00+08:00",
+        "values": {
+          "east": 121,
+          "central": 147,
+          "north": 102,
+          "west": 145,
+          "south": 118
+        }
+      },
+      {
+        "timestamp": "2026-10-09T03:00:00+08:00",
+        "values": {
+          "central": 150,
+          "south": 123,
+          "north": 103,
+          "west": 147,
+          "east": 123
+        }
+      },
+      {
+        "timestamp": "2026-10-09T04:00:00+08:00",
+        "values": {
+          "south": 127,
+          "central": 152,
+          "west": 149,
+          "east": 127,
+          "north": 105
+        }
+      },
+      {
+        "timestamp": "2026-10-09T05:00:00+08:00",
+        "values": {
+          "central": 156,
+          "north": 107,
+          "south": 131,
+          "west": 152,
+          "east": 131
+        }
+      },
+      {
+        "timestamp": "2026-10-09T06:00:00+08:00",
+        "values": {
+          "west": 155,
+          "south": 135,
+          "north": 109,
+          "east": 134,
+          "central": 159
+        }
+      },
+      {
+        "timestamp": "2026-10-09T07:00:00+08:00",
+        "values": {
+          "south": 139,
+          "east": 137,
+          "central": 163,
+          "north": 111,
+          "west": 158
+        }
+      },
+      {
+        "timestamp": "2026-10-09T08:00:00+08:00",
+        "values": {
+          "west": 161,
+          "central": 166,
+          "south": 145,
+          "east": 140,
+          "north": 113
+        }
+      },
+      {
+        "timestamp": "2026-10-09T09:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 143,
+          "north": 115,
+          "south": 150,
+          "west": 164
+        }
+      },
+      {
+        "timestamp": "2026-10-09T10:00:00+08:00",
+        "values": {
+          "west": 166,
+          "central": 173,
+          "south": 154,
+          "north": 117,
+          "east": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-09T11:00:00+08:00",
+        "values": {
+          "west": 168,
+          "east": 151,
+          "north": 119,
+          "south": 157,
+          "central": 177
+        }
+      },
+      {
+        "timestamp": "2026-10-09T12:00:00+08:00",
+        "values": {
+          "west": 170,
+          "east": 155,
+          "central": 181,
+          "south": 160,
+          "north": 123
+        }
+      },
+      {
+        "timestamp": "2026-10-09T13:00:00+08:00",
+        "values": {
+          "south": 162,
+          "central": 184,
+          "west": 174,
+          "north": 127,
+          "east": 157
+        }
+      },
+      {
+        "timestamp": "2026-10-09T14:00:00+08:00",
+        "values": {
+          "south": 164,
+          "east": 159,
+          "central": 186,
+          "west": 177,
+          "north": 130
+        }
+      },
+      {
+        "timestamp": "2026-10-09T15:00:00+08:00",
+        "values": {
+          "east": 161,
+          "north": 131,
+          "central": 189,
+          "west": 180,
+          "south": 166
+        }
+      },
+      {
+        "timestamp": "2026-10-09T16:00:00+08:00",
+        "values": {
+          "central": 191,
+          "east": 163,
+          "north": 132,
+          "south": 167,
+          "west": 183
+        }
+      },
+      {
+        "timestamp": "2026-10-09T17:00:00+08:00",
+        "values": {
+          "west": 186,
+          "central": 192,
+          "east": 164,
+          "south": 168,
+          "north": 134
+        }
+      },
+      {
+        "timestamp": "2026-10-09T18:00:00+08:00",
+        "values": {
+          "central": 192,
+          "east": 166,
+          "north": 135,
+          "south": 167,
+          "west": 187
+        }
+      },
+      {
+        "timestamp": "2026-10-09T19:00:00+08:00",
+        "values": {
+          "central": 192,
+          "east": 168,
+          "north": 136,
+          "south": 166,
+          "west": 187
+        }
+      },
+      {
+        "timestamp": "2026-10-09T20:00:00+08:00",
+        "values": {
+          "east": 170,
+          "west": 186,
+          "south": 166,
+          "central": 192,
+          "north": 135
+        }
+      },
+      {
+        "timestamp": "2026-10-09T21:00:00+08:00",
+        "values": {
+          "central": 190,
+          "east": 169,
+          "north": 135,
+          "south": 164,
+          "west": 186
+        }
+      },
+      {
+        "timestamp": "2026-10-09T22:00:00+08:00",
+        "values": {
+          "north": 134,
+          "south": 161,
+          "west": 183,
+          "east": 167,
+          "central": 189
+        }
+      },
+      {
+        "timestamp": "2026-10-09T23:00:00+08:00",
+        "values": {
+          "south": 158,
+          "central": 186,
+          "north": 134,
+          "west": 180,
+          "east": 164
+        }
+      },
+      {
+        "timestamp": "2026-10-10T00:00:00+08:00",
+        "values": {
+          "central": 183,
+          "east": 162,
+          "north": 133,
+          "south": 155,
+          "west": 178
+        }
+      },
+      {
+        "timestamp": "2026-10-10T01:00:00+08:00",
+        "values": {
+          "central": 181,
+          "east": 161,
+          "north": 132,
+          "south": 152,
+          "west": 174
+        }
+      },
+      {
+        "timestamp": "2026-10-10T02:00:00+08:00",
+        "values": {
+          "central": 180,
+          "east": 159,
+          "north": 130,
+          "south": 150,
+          "west": 172
+        }
+      },
+      {
+        "timestamp": "2026-10-10T03:00:00+08:00",
+        "values": {
+          "central": 179,
+          "east": 158,
+          "north": 129,
+          "south": 148,
+          "west": 169
+        }
+      },
+      {
+        "timestamp": "2026-10-10T04:00:00+08:00",
+        "values": {
+          "central": 178,
+          "east": 157,
+          "north": 128,
+          "south": 147,
+          "west": 168
+        }
+      },
+      {
+        "timestamp": "2026-10-10T05:00:00+08:00",
+        "values": {
+          "central": 177,
+          "east": 156,
+          "north": 127,
+          "south": 145,
+          "west": 166
+        }
+      },
+      {
+        "timestamp": "2026-10-10T06:00:00+08:00",
+        "values": {
+          "central": 176,
+          "east": 156,
+          "north": 126,
+          "south": 143,
+          "west": 164
+        }
+      },
+      {
+        "timestamp": "2026-10-10T07:00:00+08:00",
+        "values": {
+          "central": 176,
+          "east": 157,
+          "north": 125,
+          "south": 141,
+          "west": 162
+        }
+      },
+      {
+        "timestamp": "2026-10-10T08:00:00+08:00",
+        "values": {
+          "central": 175,
+          "east": 156,
+          "north": 125,
+          "south": 138,
+          "west": 161
+        }
+      },
+      {
+        "timestamp": "2026-10-10T09:00:00+08:00",
+        "values": {
+          "central": 174,
+          "east": 156,
+          "north": 124,
+          "south": 135,
+          "west": 160
+        }
+      },
+      {
+        "timestamp": "2026-10-10T10:00:00+08:00",
+        "values": {
+          "central": 174,
+          "east": 156,
+          "north": 124,
+          "south": 135,
+          "west": 160
+        }
+      },
+      {
+        "timestamp": "2026-10-10T11:00:00+08:00",
+        "values": {
+          "central": 173,
+          "east": 156,
+          "north": 123,
+          "south": 135,
+          "west": 161
+        }
+      },
+      {
+        "timestamp": "2026-10-10T12:00:00+08:00",
+        "values": {
+          "central": 171,
+          "east": 154,
+          "north": 122,
+          "south": 134,
+          "west": 161
+        }
+      },
+      {
+        "timestamp": "2026-10-10T13:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 153,
+          "north": 121,
+          "south": 132,
+          "west": 159
+        }
+      },
+      {
+        "timestamp": "2026-10-10T14:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 152,
+          "north": 120,
+          "south": 131,
+          "west": 157
+        }
+      },
+      {
+        "timestamp": "2026-10-10T15:00:00+08:00",
+        "values": {
+          "central": 171,
+          "east": 152,
+          "north": 121,
+          "south": 130,
+          "west": 156
+        }
+      },
+      {
+        "timestamp": "2026-10-10T16:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 153,
+          "north": 120,
+          "south": 130,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-10T17:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 153,
+          "north": 119,
+          "south": 129,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-10T18:00:00+08:00",
+        "values": {
+          "central": 168,
+          "east": 152,
+          "north": 118,
+          "south": 129,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-10T19:00:00+08:00",
+        "values": {
+          "central": 168,
+          "east": 150,
+          "north": 118,
+          "south": 128,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-10T20:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 148,
+          "north": 119,
+          "south": 127,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-10T21:00:00+08:00",
+        "values": {
+          "central": 165,
+          "east": 147,
+          "north": 119,
+          "south": 127,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-10T22:00:00+08:00",
+        "values": {
+          "central": 164,
+          "east": 146,
+          "north": 119,
+          "south": 126,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-10T23:00:00+08:00",
+        "values": {
+          "central": 163,
+          "east": 145,
+          "north": 119,
+          "south": 125,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-11T00:00:00+08:00",
+        "values": {
+          "central": 162,
+          "east": 144,
+          "north": 119,
+          "south": 123,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T01:00:00+08:00",
+        "values": {
+          "central": 160,
+          "east": 143,
+          "north": 119,
+          "south": 122,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T02:00:00+08:00",
+        "values": {
+          "central": 159,
+          "east": 142,
+          "north": 119,
+          "south": 121,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T03:00:00+08:00",
+        "values": {
+          "central": 158,
+          "east": 142,
+          "north": 120,
+          "south": 121,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T04:00:00+08:00",
+        "values": {
+          "central": 157,
+          "east": 142,
+          "north": 120,
+          "south": 121,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T05:00:00+08:00",
+        "values": {
+          "central": 155,
+          "east": 141,
+          "north": 119,
+          "south": 119,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T06:00:00+08:00",
+        "values": {
+          "central": 154,
+          "east": 140,
+          "north": 119,
+          "south": 117,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T07:00:00+08:00",
+        "values": {
+          "central": 153,
+          "east": 140,
+          "north": 119,
+          "south": 116,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T08:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 139,
+          "north": 118,
+          "south": 115,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T09:00:00+08:00",
+        "values": {
+          "central": 151,
+          "east": 138,
+          "north": 118,
+          "south": 115,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-11T10:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 136,
+          "north": 118,
+          "south": 115,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-11T11:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 135,
+          "north": 117,
+          "south": 114,
+          "west": 150
+        }
+      },
+      {
+        "timestamp": "2026-10-11T12:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 135,
+          "north": 116,
+          "south": 114,
+          "west": 150
+        }
+      },
+      {
+        "timestamp": "2026-10-11T13:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 135,
+          "north": 116,
+          "south": 115,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-11T14:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 135,
+          "north": 115,
+          "south": 114,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-11T15:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 134,
+          "north": 114,
+          "south": 114,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T16:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 133,
+          "north": 113,
+          "south": 114,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T17:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 132,
+          "north": 113,
+          "south": 114,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T18:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 131,
+          "north": 112,
+          "south": 113,
+          "west": 155
+        }
+      },
+      {
+        "timestamp": "2026-10-11T19:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 132,
+          "north": 112,
+          "south": 113,
+          "west": 155
+        }
+      },
+      {
+        "timestamp": "2026-10-11T20:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 133,
+          "north": 110,
+          "south": 113,
+          "west": 155
+        }
+      },
+      {
+        "timestamp": "2026-10-11T21:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 133,
+          "north": 109,
+          "south": 114,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-11T22:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 135,
+          "north": 108,
+          "south": 115,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-11T23:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 136,
+          "north": 108,
+          "south": 115,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-12T00:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 137,
+          "north": 107,
+          "south": 116,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-12T01:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 139,
+          "north": 107,
+          "south": 118,
+          "west": 150
+        }
+      },
+      {
+        "timestamp": "2026-10-12T02:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 139,
+          "north": 107,
+          "south": 118,
+          "west": 149
+        }
+      },
+      {
+        "timestamp": "2026-10-12T03:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 139,
+          "north": 106,
+          "south": 117,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T04:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 138,
+          "north": 106,
+          "south": 116,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T05:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 138,
+          "north": 105,
+          "south": 117,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T06:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 137,
+          "north": 105,
+          "south": 118,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T07:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 135,
+          "north": 105,
+          "south": 118,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T08:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 134,
+          "north": 104,
+          "south": 118,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T09:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 133,
+          "north": 104,
+          "south": 117,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T10:00:00+08:00",
+        "values": {
+          "central": 145,
+          "east": 132,
+          "north": 103,
+          "south": 115,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T11:00:00+08:00",
+        "values": {
+          "central": 145,
+          "east": 132,
+          "north": 103,
+          "south": 116,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T12:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 133,
+          "north": 103,
+          "south": 115,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T13:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 133,
+          "north": 104,
+          "south": 115,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-12T14:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 133,
+          "north": 106,
+          "south": 117,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T15:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 135,
+          "north": 109,
+          "south": 117,
+          "west": 149
+        }
+      },
+      {
+        "timestamp": "2026-10-12T16:00:00+08:00",
+        "values": {
+          "central": 151,
+          "east": 136,
+          "north": 112,
+          "south": 117,
+          "west": 149
+        }
+      },
+      {
+        "timestamp": "2026-10-12T17:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 138,
+          "north": 114,
+          "south": 118,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-12T18:00:00+08:00",
+        "values": {
+          "central": 154,
+          "east": 139,
+          "north": 116,
+          "south": 121,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-12T19:00:00+08:00",
+        "values": {
+          "central": 155,
+          "east": 139,
+          "north": 118,
+          "south": 122,
+          "west": 155
+        }
+      },
+      {
+        "timestamp": "2026-10-12T20:00:00+08:00",
+        "values": {
+          "central": 155,
+          "east": 140,
+          "north": 120,
+          "south": 122,
+          "west": 157
+        }
+      },
+      {
+        "timestamp": "2026-10-12T21:00:00+08:00",
+        "values": {
+          "central": 156,
+          "east": 141,
+          "north": 123,
+          "south": 123,
+          "west": 161
+        }
+      },
+      {
+        "timestamp": "2026-10-12T22:00:00+08:00",
+        "values": {
+          "central": 157,
+          "east": 142,
+          "north": 124,
+          "south": 122,
+          "west": 164
+        }
+      },
+      {
+        "timestamp": "2026-10-12T23:00:00+08:00",
+        "values": {
+          "central": 159,
+          "east": 144,
+          "north": 125,
+          "south": 123,
+          "west": 166
+        }
+      },
+      {
+        "timestamp": "2026-10-13T00:00:00+08:00",
+        "values": {
+          "central": 161,
+          "east": 144,
+          "north": 126,
+          "south": 125,
+          "west": 167
+        }
+      },
+      {
+        "timestamp": "2026-10-13T01:00:00+08:00",
+        "values": {
+          "central": 162,
+          "east": 144,
+          "north": 126,
+          "south": 127,
+          "west": 169
+        }
+      },
+      {
+        "timestamp": "2026-10-13T02:00:00+08:00",
+        "values": {
+          "central": 163,
+          "east": 145,
+          "north": 126,
+          "south": 128,
+          "west": 170
+        }
+      },
+      {
+        "timestamp": "2026-10-13T03:00:00+08:00",
+        "values": {
+          "central": 164,
+          "east": 145,
+          "north": 127,
+          "south": 129,
+          "west": 172
+        }
+      },
+      {
+        "timestamp": "2026-10-13T04:00:00+08:00",
+        "values": {
+          "central": 164,
+          "east": 147,
+          "north": 126,
+          "south": 131,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T05:00:00+08:00",
+        "values": {
+          "central": 165,
+          "east": 147,
+          "north": 126,
+          "south": 131,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T06:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 148,
+          "north": 126,
+          "south": 131,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T07:00:00+08:00",
+        "values": {
+          "central": 167,
+          "east": 150,
+          "north": 126,
+          "south": 134,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T08:00:00+08:00",
+        "values": {
+          "central": 168,
+          "east": 151,
+          "north": 127,
+          "south": 134,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T09:00:00+08:00",
+        "values": {
+          "central": 169,
+          "east": 154,
+          "north": 127,
+          "south": 134,
+          "west": 172
+        }
+      },
+      {
+        "timestamp": "2026-10-13T10:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 155,
+          "north": 128,
+          "south": 134,
+          "west": 172
+        }
+      },
+      {
+        "timestamp": "2026-10-13T11:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 156,
+          "north": 129,
+          "south": 134,
+          "west": 174
+        }
+      },
+      {
+        "timestamp": "2026-10-13T12:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 155,
+          "north": 128,
+          "south": 134,
+          "west": 174
+        }
+      },
+      {
+        "timestamp": "2026-10-13T13:00:00+08:00",
+        "values": {
+          "central": 168,
+          "east": 154,
+          "north": 126,
+          "south": 133,
+          "west": 174
+        }
+      },
+      {
+        "timestamp": "2026-10-13T14:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 153,
+          "north": 124,
+          "south": 133,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-13T15:00:00+08:00",
+        "values": {
+          "central": 163,
+          "east": 151,
+          "north": 121,
+          "south": 132,
+          "west": 172
+        }
+      },
+      {
+        "timestamp": "2026-10-13T16:00:00+08:00",
+        "values": {
+          "central": 160,
+          "east": 150,
+          "north": 117,
+          "south": 131,
+          "west": 169
+        }
+      },
+      {
+        "timestamp": "2026-10-13T17:00:00+08:00",
+        "values": {
+          "central": 157,
+          "east": 149,
+          "north": 115,
+          "south": 130,
+          "west": 165
+        }
+      },
+      {
+        "timestamp": "2026-10-13T18:00:00+08:00",
+        "values": {
+          "central": 155,
+          "east": 148,
+          "north": 113,
+          "south": 128,
+          "west": 162
+        }
+      },
+      {
+        "timestamp": "2026-10-13T19:00:00+08:00",
+        "values": {
+          "central": 153,
+          "east": 148,
+          "north": 111,
+          "south": 126,
+          "west": 160
+        }
+      },
+      {
+        "timestamp": "2026-10-13T20:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 147,
+          "north": 110,
+          "south": 126,
+          "west": 159
+        }
+      },
+      {
+        "timestamp": "2026-10-13T21:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 146,
+          "north": 108,
+          "south": 126,
+          "west": 156
+        }
+      },
+      {
+        "timestamp": "2026-10-13T22:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 145,
+          "north": 107,
+          "south": 126,
+          "west": 154
+        }
+      },
+      {
+        "timestamp": "2026-10-13T23:00:00+08:00",
+        "values": {
+          "central": 151,
+          "east": 144,
+          "north": 106,
+          "south": 126,
+          "west": 153
+        }
+      },
+      {
         "timestamp": "2026-10-14T00:00:00+08:00",
         "values": {
           "central": 149,
@@ -799,6 +1999,1206 @@
     ],
     "pm25": [
       {
+        "timestamp": "2026-10-09T00:00:00+08:00",
+        "values": {
+          "south": 146,
+          "east": 140,
+          "central": 160,
+          "north": 87,
+          "west": 135
+        }
+      },
+      {
+        "timestamp": "2026-10-09T01:00:00+08:00",
+        "values": {
+          "south": 138,
+          "central": 153,
+          "north": 95,
+          "west": 159,
+          "east": 137
+        }
+      },
+      {
+        "timestamp": "2026-10-09T02:00:00+08:00",
+        "values": {
+          "west": 171,
+          "north": 97,
+          "east": 132,
+          "central": 161,
+          "south": 141
+        }
+      },
+      {
+        "timestamp": "2026-10-09T03:00:00+08:00",
+        "values": {
+          "west": 162,
+          "north": 97,
+          "south": 132,
+          "central": 141,
+          "east": 114
+        }
+      },
+      {
+        "timestamp": "2026-10-09T04:00:00+08:00",
+        "values": {
+          "north": 91,
+          "west": 150,
+          "central": 141,
+          "south": 129,
+          "east": 132
+        }
+      },
+      {
+        "timestamp": "2026-10-09T05:00:00+08:00",
+        "values": {
+          "north": 87,
+          "west": 154,
+          "central": 142,
+          "south": 132,
+          "east": 128
+        }
+      },
+      {
+        "timestamp": "2026-10-09T06:00:00+08:00",
+        "values": {
+          "east": 117,
+          "north": 92,
+          "central": 140,
+          "south": 134,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-09T07:00:00+08:00",
+        "values": {
+          "central": 143,
+          "west": 145,
+          "east": 105,
+          "north": 92,
+          "south": 138
+        }
+      },
+      {
+        "timestamp": "2026-10-09T08:00:00+08:00",
+        "values": {
+          "north": 85,
+          "south": 146,
+          "west": 152,
+          "central": 137,
+          "east": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-09T09:00:00+08:00",
+        "values": {
+          "east": 114,
+          "central": 137,
+          "west": 126,
+          "north": 84,
+          "south": 137
+        }
+      },
+      {
+        "timestamp": "2026-10-09T10:00:00+08:00",
+        "values": {
+          "east": 126,
+          "north": 87,
+          "south": 111,
+          "central": 142,
+          "west": 114
+        }
+      },
+      {
+        "timestamp": "2026-10-09T11:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 138,
+          "north": 96,
+          "south": 105,
+          "west": 116
+        }
+      },
+      {
+        "timestamp": "2026-10-09T12:00:00+08:00",
+        "values": {
+          "east": 147,
+          "south": 104,
+          "central": 151,
+          "west": 117,
+          "north": 113
+        }
+      },
+      {
+        "timestamp": "2026-10-09T13:00:00+08:00",
+        "values": {
+          "central": 137,
+          "east": 122,
+          "north": 114,
+          "south": 112,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-09T14:00:00+08:00",
+        "values": {
+          "west": 144,
+          "south": 120,
+          "north": 92,
+          "east": 116,
+          "central": 131
+        }
+      },
+      {
+        "timestamp": "2026-10-09T15:00:00+08:00",
+        "values": {
+          "central": 145,
+          "north": 80,
+          "south": 106,
+          "west": 154,
+          "east": 118
+        }
+      },
+      {
+        "timestamp": "2026-10-09T16:00:00+08:00",
+        "values": {
+          "central": 145,
+          "north": 87,
+          "south": 92,
+          "west": 148,
+          "east": 108
+        }
+      },
+      {
+        "timestamp": "2026-10-09T17:00:00+08:00",
+        "values": {
+          "central": 131,
+          "east": 111,
+          "north": 91,
+          "south": 93,
+          "west": 134
+        }
+      },
+      {
+        "timestamp": "2026-10-09T18:00:00+08:00",
+        "values": {
+          "central": 123,
+          "east": 114,
+          "north": 80,
+          "south": 68,
+          "west": 110
+        }
+      },
+      {
+        "timestamp": "2026-10-09T19:00:00+08:00",
+        "values": {
+          "north": 69,
+          "central": 123,
+          "south": 83,
+          "west": 91,
+          "east": 113
+        }
+      },
+      {
+        "timestamp": "2026-10-09T20:00:00+08:00",
+        "values": {
+          "west": 96,
+          "east": 109,
+          "central": 129,
+          "north": 64,
+          "south": 78
+        }
+      },
+      {
+        "timestamp": "2026-10-09T21:00:00+08:00",
+        "values": {
+          "central": 119,
+          "north": 69,
+          "south": 63,
+          "west": 106,
+          "east": 75
+        }
+      },
+      {
+        "timestamp": "2026-10-09T22:00:00+08:00",
+        "values": {
+          "west": 93,
+          "east": 80,
+          "south": 65,
+          "north": 71,
+          "central": 107
+        }
+      },
+      {
+        "timestamp": "2026-10-09T23:00:00+08:00",
+        "values": {
+          "central": 98,
+          "east": 74,
+          "north": 67,
+          "south": 75,
+          "west": 77
+        }
+      },
+      {
+        "timestamp": "2026-10-10T00:00:00+08:00",
+        "values": {
+          "central": 100,
+          "south": 77,
+          "west": 88,
+          "north": 61,
+          "east": 89
+        }
+      },
+      {
+        "timestamp": "2026-10-10T01:00:00+08:00",
+        "values": {
+          "central": 109,
+          "east": 104,
+          "north": 70,
+          "south": 67,
+          "west": 87
+        }
+      },
+      {
+        "timestamp": "2026-10-10T02:00:00+08:00",
+        "values": {
+          "central": 125,
+          "east": 96,
+          "north": 71,
+          "south": 96,
+          "west": 104
+        }
+      },
+      {
+        "timestamp": "2026-10-10T03:00:00+08:00",
+        "values": {
+          "central": 121,
+          "east": 101,
+          "north": 65,
+          "south": 91,
+          "west": 112
+        }
+      },
+      {
+        "timestamp": "2026-10-10T04:00:00+08:00",
+        "values": {
+          "central": 118,
+          "east": 106,
+          "north": 66,
+          "south": 87,
+          "west": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-10T05:00:00+08:00",
+        "values": {
+          "central": 123,
+          "east": 110,
+          "north": 69,
+          "south": 91,
+          "west": 108
+        }
+      },
+      {
+        "timestamp": "2026-10-10T06:00:00+08:00",
+        "values": {
+          "central": 124,
+          "east": 116,
+          "north": 62,
+          "south": 86,
+          "west": 103
+        }
+      },
+      {
+        "timestamp": "2026-10-10T07:00:00+08:00",
+        "values": {
+          "central": 124,
+          "east": 112,
+          "north": 69,
+          "south": 89,
+          "west": 104
+        }
+      },
+      {
+        "timestamp": "2026-10-10T08:00:00+08:00",
+        "values": {
+          "central": 115,
+          "east": 108,
+          "north": 78,
+          "south": 83,
+          "west": 111
+        }
+      },
+      {
+        "timestamp": "2026-10-10T09:00:00+08:00",
+        "values": {
+          "central": 119,
+          "east": 110,
+          "north": 80,
+          "south": 81,
+          "west": 111
+        }
+      },
+      {
+        "timestamp": "2026-10-10T10:00:00+08:00",
+        "values": {
+          "central": 135,
+          "east": 121,
+          "north": 78,
+          "south": 100,
+          "west": 118
+        }
+      },
+      {
+        "timestamp": "2026-10-10T11:00:00+08:00",
+        "values": {
+          "central": 130,
+          "east": 126,
+          "north": 84,
+          "south": 104,
+          "west": 128
+        }
+      },
+      {
+        "timestamp": "2026-10-10T12:00:00+08:00",
+        "values": {
+          "central": 118,
+          "east": 105,
+          "north": 86,
+          "south": 85,
+          "west": 119
+        }
+      },
+      {
+        "timestamp": "2026-10-10T13:00:00+08:00",
+        "values": {
+          "central": 114,
+          "east": 101,
+          "north": 78,
+          "south": 60,
+          "west": 106
+        }
+      },
+      {
+        "timestamp": "2026-10-10T14:00:00+08:00",
+        "values": {
+          "central": 133,
+          "east": 107,
+          "north": 79,
+          "south": 96,
+          "west": 105
+        }
+      },
+      {
+        "timestamp": "2026-10-10T15:00:00+08:00",
+        "values": {
+          "central": 151,
+          "east": 115,
+          "north": 89,
+          "south": 101,
+          "west": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-10T16:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 118,
+          "north": 83,
+          "south": 89,
+          "west": 117
+        }
+      },
+      {
+        "timestamp": "2026-10-10T17:00:00+08:00",
+        "values": {
+          "central": 111,
+          "east": 117,
+          "north": 67,
+          "south": 58,
+          "west": 92
+        }
+      },
+      {
+        "timestamp": "2026-10-10T18:00:00+08:00",
+        "values": {
+          "central": 92,
+          "east": 92,
+          "north": 58,
+          "south": 64,
+          "west": 100
+        }
+      },
+      {
+        "timestamp": "2026-10-10T19:00:00+08:00",
+        "values": {
+          "central": 107,
+          "east": 73,
+          "north": 63,
+          "south": 72,
+          "west": 98
+        }
+      },
+      {
+        "timestamp": "2026-10-10T20:00:00+08:00",
+        "values": {
+          "central": 100,
+          "east": 60,
+          "north": 76,
+          "south": 55,
+          "west": 85
+        }
+      },
+      {
+        "timestamp": "2026-10-10T21:00:00+08:00",
+        "values": {
+          "central": 82,
+          "east": 51,
+          "north": 79,
+          "south": 52,
+          "west": 98
+        }
+      },
+      {
+        "timestamp": "2026-10-10T22:00:00+08:00",
+        "values": {
+          "central": 81,
+          "east": 59,
+          "north": 77,
+          "south": 48,
+          "west": 93
+        }
+      },
+      {
+        "timestamp": "2026-10-10T23:00:00+08:00",
+        "values": {
+          "central": 80,
+          "east": 57,
+          "north": 68,
+          "south": 43,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-11T00:00:00+08:00",
+        "values": {
+          "central": 75,
+          "east": 62,
+          "north": 60,
+          "south": 42,
+          "west": 109
+        }
+      },
+      {
+        "timestamp": "2026-10-11T01:00:00+08:00",
+        "values": {
+          "central": 75,
+          "east": 73,
+          "north": 64,
+          "south": 46,
+          "west": 102
+        }
+      },
+      {
+        "timestamp": "2026-10-11T02:00:00+08:00",
+        "values": {
+          "central": 87,
+          "east": 80,
+          "north": 75,
+          "south": 82,
+          "west": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-11T03:00:00+08:00",
+        "values": {
+          "central": 96,
+          "east": 96,
+          "north": 73,
+          "south": 85,
+          "west": 109
+        }
+      },
+      {
+        "timestamp": "2026-10-11T04:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 105,
+          "north": 67,
+          "south": 78,
+          "west": 98
+        }
+      },
+      {
+        "timestamp": "2026-10-11T05:00:00+08:00",
+        "values": {
+          "central": 93,
+          "east": 86,
+          "north": 58,
+          "south": 52,
+          "west": 92
+        }
+      },
+      {
+        "timestamp": "2026-10-11T06:00:00+08:00",
+        "values": {
+          "central": 100,
+          "east": 97,
+          "north": 68,
+          "south": 47,
+          "west": 103
+        }
+      },
+      {
+        "timestamp": "2026-10-11T07:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 103,
+          "north": 56,
+          "south": 64,
+          "west": 108
+        }
+      },
+      {
+        "timestamp": "2026-10-11T08:00:00+08:00",
+        "values": {
+          "central": 88,
+          "east": 88,
+          "north": 67,
+          "south": 55,
+          "west": 114
+        }
+      },
+      {
+        "timestamp": "2026-10-11T09:00:00+08:00",
+        "values": {
+          "central": 87,
+          "east": 93,
+          "north": 69,
+          "south": 71,
+          "west": 88
+        }
+      },
+      {
+        "timestamp": "2026-10-11T10:00:00+08:00",
+        "values": {
+          "central": 100,
+          "east": 84,
+          "north": 68,
+          "south": 98,
+          "west": 98
+        }
+      },
+      {
+        "timestamp": "2026-10-11T11:00:00+08:00",
+        "values": {
+          "central": 115,
+          "east": 97,
+          "north": 64,
+          "south": 78,
+          "west": 100
+        }
+      },
+      {
+        "timestamp": "2026-10-11T12:00:00+08:00",
+        "values": {
+          "central": 117,
+          "east": 101,
+          "north": 66,
+          "south": 96,
+          "west": 119
+        }
+      },
+      {
+        "timestamp": "2026-10-11T13:00:00+08:00",
+        "values": {
+          "central": 123,
+          "east": 111,
+          "north": 71,
+          "south": 91,
+          "west": 122
+        }
+      },
+      {
+        "timestamp": "2026-10-11T14:00:00+08:00",
+        "values": {
+          "central": 131,
+          "east": 106,
+          "north": 71,
+          "south": 68,
+          "west": 130
+        }
+      },
+      {
+        "timestamp": "2026-10-11T15:00:00+08:00",
+        "values": {
+          "central": 128,
+          "east": 92,
+          "north": 67,
+          "south": 93,
+          "west": 134
+        }
+      },
+      {
+        "timestamp": "2026-10-11T16:00:00+08:00",
+        "values": {
+          "central": 116,
+          "east": 88,
+          "north": 65,
+          "south": 90,
+          "west": 137
+        }
+      },
+      {
+        "timestamp": "2026-10-11T17:00:00+08:00",
+        "values": {
+          "central": 107,
+          "east": 81,
+          "north": 50,
+          "south": 57,
+          "west": 113
+        }
+      },
+      {
+        "timestamp": "2026-10-11T18:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 81,
+          "north": 53,
+          "south": 39,
+          "west": 111
+        }
+      },
+      {
+        "timestamp": "2026-10-11T19:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 100,
+          "north": 52,
+          "south": 68,
+          "west": 98
+        }
+      },
+      {
+        "timestamp": "2026-10-11T20:00:00+08:00",
+        "values": {
+          "central": 106,
+          "east": 70,
+          "north": 42,
+          "south": 69,
+          "west": 79
+        }
+      },
+      {
+        "timestamp": "2026-10-11T21:00:00+08:00",
+        "values": {
+          "central": 80,
+          "east": 66,
+          "north": 47,
+          "south": 62,
+          "west": 80
+        }
+      },
+      {
+        "timestamp": "2026-10-11T22:00:00+08:00",
+        "values": {
+          "central": 72,
+          "east": 88,
+          "north": 52,
+          "south": 79,
+          "west": 67
+        }
+      },
+      {
+        "timestamp": "2026-10-11T23:00:00+08:00",
+        "values": {
+          "central": 78,
+          "east": 85,
+          "north": 57,
+          "south": 55,
+          "west": 74
+        }
+      },
+      {
+        "timestamp": "2026-10-12T00:00:00+08:00",
+        "values": {
+          "central": 74,
+          "east": 101,
+          "north": 57,
+          "south": 65,
+          "west": 87
+        }
+      },
+      {
+        "timestamp": "2026-10-12T01:00:00+08:00",
+        "values": {
+          "central": 94,
+          "east": 101,
+          "north": 59,
+          "south": 70,
+          "west": 84
+        }
+      },
+      {
+        "timestamp": "2026-10-12T02:00:00+08:00",
+        "values": {
+          "central": 106,
+          "east": 94,
+          "north": 62,
+          "south": 85,
+          "west": 87
+        }
+      },
+      {
+        "timestamp": "2026-10-12T03:00:00+08:00",
+        "values": {
+          "central": 98,
+          "east": 88,
+          "north": 60,
+          "south": 63,
+          "west": 91
+        }
+      },
+      {
+        "timestamp": "2026-10-12T04:00:00+08:00",
+        "values": {
+          "central": 107,
+          "east": 84,
+          "north": 57,
+          "south": 68,
+          "west": 94
+        }
+      },
+      {
+        "timestamp": "2026-10-12T05:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 82,
+          "north": 56,
+          "south": 70,
+          "west": 90
+        }
+      },
+      {
+        "timestamp": "2026-10-12T06:00:00+08:00",
+        "values": {
+          "central": 84,
+          "east": 75,
+          "north": 57,
+          "south": 77,
+          "west": 94
+        }
+      },
+      {
+        "timestamp": "2026-10-12T07:00:00+08:00",
+        "values": {
+          "central": 84,
+          "east": 67,
+          "north": 55,
+          "south": 55,
+          "west": 105
+        }
+      },
+      {
+        "timestamp": "2026-10-12T08:00:00+08:00",
+        "values": {
+          "central": 78,
+          "east": 66,
+          "north": 54,
+          "south": 66,
+          "west": 112
+        }
+      },
+      {
+        "timestamp": "2026-10-12T09:00:00+08:00",
+        "values": {
+          "central": 80,
+          "east": 66,
+          "north": 53,
+          "south": 44,
+          "west": 106
+        }
+      },
+      {
+        "timestamp": "2026-10-12T10:00:00+08:00",
+        "values": {
+          "central": 82,
+          "east": 66,
+          "north": 52,
+          "south": 54,
+          "west": 91
+        }
+      },
+      {
+        "timestamp": "2026-10-12T11:00:00+08:00",
+        "values": {
+          "central": 110,
+          "east": 93,
+          "north": 53,
+          "south": 82,
+          "west": 93
+        }
+      },
+      {
+        "timestamp": "2026-10-12T12:00:00+08:00",
+        "values": {
+          "central": 134,
+          "east": 110,
+          "north": 88,
+          "south": 89,
+          "west": 111
+        }
+      },
+      {
+        "timestamp": "2026-10-12T13:00:00+08:00",
+        "values": {
+          "central": 156,
+          "east": 116,
+          "north": 93,
+          "south": 91,
+          "west": 124
+        }
+      },
+      {
+        "timestamp": "2026-10-12T14:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 119,
+          "north": 117,
+          "south": 101,
+          "west": 149
+        }
+      },
+      {
+        "timestamp": "2026-10-12T15:00:00+08:00",
+        "values": {
+          "central": 151,
+          "east": 126,
+          "north": 127,
+          "south": 97,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-12T16:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 119,
+          "north": 123,
+          "south": 94,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-12T17:00:00+08:00",
+        "values": {
+          "central": 143,
+          "east": 115,
+          "north": 116,
+          "south": 87,
+          "west": 156
+        }
+      },
+      {
+        "timestamp": "2026-10-12T18:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 108,
+          "north": 92,
+          "south": 97,
+          "west": 157
+        }
+      },
+      {
+        "timestamp": "2026-10-12T19:00:00+08:00",
+        "values": {
+          "central": 115,
+          "east": 93,
+          "north": 95,
+          "south": 94,
+          "west": 135
+        }
+      },
+      {
+        "timestamp": "2026-10-12T20:00:00+08:00",
+        "values": {
+          "central": 112,
+          "east": 100,
+          "north": 90,
+          "south": 78,
+          "west": 125
+        }
+      },
+      {
+        "timestamp": "2026-10-12T21:00:00+08:00",
+        "values": {
+          "central": 105,
+          "east": 99,
+          "north": 107,
+          "south": 70,
+          "west": 171
+        }
+      },
+      {
+        "timestamp": "2026-10-12T22:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 106,
+          "north": 90,
+          "south": 70,
+          "west": 138
+        }
+      },
+      {
+        "timestamp": "2026-10-12T23:00:00+08:00",
+        "values": {
+          "central": 120,
+          "east": 116,
+          "north": 75,
+          "south": 78,
+          "west": 127
+        }
+      },
+      {
+        "timestamp": "2026-10-13T00:00:00+08:00",
+        "values": {
+          "central": 123,
+          "east": 110,
+          "north": 73,
+          "south": 103,
+          "west": 121
+        }
+      },
+      {
+        "timestamp": "2026-10-13T01:00:00+08:00",
+        "values": {
+          "central": 124,
+          "east": 111,
+          "north": 66,
+          "south": 116,
+          "west": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-13T02:00:00+08:00",
+        "values": {
+          "central": 125,
+          "east": 106,
+          "north": 70,
+          "south": 100,
+          "west": 115
+        }
+      },
+      {
+        "timestamp": "2026-10-13T03:00:00+08:00",
+        "values": {
+          "central": 113,
+          "east": 102,
+          "north": 67,
+          "south": 95,
+          "west": 130
+        }
+      },
+      {
+        "timestamp": "2026-10-13T04:00:00+08:00",
+        "values": {
+          "central": 118,
+          "east": 114,
+          "north": 50,
+          "south": 110,
+          "west": 117
+        }
+      },
+      {
+        "timestamp": "2026-10-13T05:00:00+08:00",
+        "values": {
+          "central": 114,
+          "east": 92,
+          "north": 53,
+          "south": 84,
+          "west": 102
+        }
+      },
+      {
+        "timestamp": "2026-10-13T06:00:00+08:00",
+        "values": {
+          "central": 110,
+          "east": 99,
+          "north": 55,
+          "south": 76,
+          "west": 97
+        }
+      },
+      {
+        "timestamp": "2026-10-13T07:00:00+08:00",
+        "values": {
+          "central": 104,
+          "east": 101,
+          "north": 54,
+          "south": 107,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-13T08:00:00+08:00",
+        "values": {
+          "central": 102,
+          "east": 102,
+          "north": 63,
+          "south": 65,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-13T09:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 119,
+          "north": 66,
+          "south": 50,
+          "west": 97
+        }
+      },
+      {
+        "timestamp": "2026-10-13T10:00:00+08:00",
+        "values": {
+          "central": 106,
+          "east": 110,
+          "north": 64,
+          "south": 55,
+          "west": 94
+        }
+      },
+      {
+        "timestamp": "2026-10-13T11:00:00+08:00",
+        "values": {
+          "central": 115,
+          "east": 101,
+          "north": 72,
+          "south": 82,
+          "west": 125
+        }
+      },
+      {
+        "timestamp": "2026-10-13T12:00:00+08:00",
+        "values": {
+          "central": 118,
+          "east": 100,
+          "north": 64,
+          "south": 89,
+          "west": 127
+        }
+      },
+      {
+        "timestamp": "2026-10-13T13:00:00+08:00",
+        "values": {
+          "central": 108,
+          "east": 89,
+          "north": 65,
+          "south": 81,
+          "west": 123
+        }
+      },
+      {
+        "timestamp": "2026-10-13T14:00:00+08:00",
+        "values": {
+          "central": 100,
+          "east": 90,
+          "north": 54,
+          "south": 85,
+          "west": 122
+        }
+      },
+      {
+        "timestamp": "2026-10-13T15:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 90,
+          "north": 59,
+          "south": 88,
+          "west": 119
+        }
+      },
+      {
+        "timestamp": "2026-10-13T16:00:00+08:00",
+        "values": {
+          "central": 73,
+          "east": 90,
+          "north": 47,
+          "south": 72,
+          "west": 76
+        }
+      },
+      {
+        "timestamp": "2026-10-13T17:00:00+08:00",
+        "values": {
+          "central": 82,
+          "east": 84,
+          "north": 51,
+          "south": 62,
+          "west": 77
+        }
+      },
+      {
+        "timestamp": "2026-10-13T18:00:00+08:00",
+        "values": {
+          "central": 86,
+          "east": 87,
+          "north": 51,
+          "south": 40,
+          "west": 90
+        }
+      },
+      {
+        "timestamp": "2026-10-13T19:00:00+08:00",
+        "values": {
+          "central": 88,
+          "east": 95,
+          "north": 57,
+          "south": 62,
+          "west": 86
+        }
+      },
+      {
+        "timestamp": "2026-10-13T20:00:00+08:00",
+        "values": {
+          "central": 88,
+          "east": 86,
+          "north": 60,
+          "south": 72,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-13T21:00:00+08:00",
+        "values": {
+          "central": 97,
+          "east": 79,
+          "north": 62,
+          "south": 54,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-13T22:00:00+08:00",
+        "values": {
+          "central": 98,
+          "east": 83,
+          "north": 63,
+          "south": 77,
+          "west": 106
+        }
+      },
+      {
+        "timestamp": "2026-10-13T23:00:00+08:00",
+        "values": {
+          "central": 89,
+          "east": 93,
+          "north": 59,
+          "south": 90,
+          "west": 101
+        }
+      },
+      {
         "timestamp": "2026-10-14T00:00:00+08:00",
         "values": {
           "central": 83,
@@ -1390,60 +3790,87 @@
       }
     ]
   },
-  "generatedAt": "2026-10-16T10:21:26.009378+08:00",
+  "generatedAt": "2026-10-16T10:31:28.532987+08:00",
   "nextUpdateAt": "2026-10-16T12:17:00+08:00",
   "sources": {
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
     "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
-    },
-    "psi": {
-      "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
-    "history_pm25_2026-10-16": {
+    "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_pm25_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
     "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
-    "advisories": {
+    "history_pm25_2026-10-13": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
-    "history_psi_2026-10-14": {
-      "ok": false,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00",
-      "error": "HTTPError"
+    "history_psi_2026-10-13": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     },
-    "history_pm25_2026-10-14": {
-      "ok": false,
-      "checkedAt": "2026-10-16T10:21:26.009378+08:00",
-      "error": "HTTPError"
+    "history_psi_2026-10-12": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_pm25_2026-10-11": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_psi_2026-10-11": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_psi_2026-10-10": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_psi_2026-10-09": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_pm25_2026-10-10": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_pm25_2026-10-09": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
+    },
+    "history_pm25_2026-10-12": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:31:28.532987+08:00"
     }
   },
-  "errors": [
-    "history_psi_2026-10-14: HTTPError",
-    "history_pm25_2026-10-14: HTTPError"
-  ],
+  "errors": [],
   "schemaVersion": 1,
   "advisories": [
     {
