@@ -49,7 +49,7 @@ const sgt = text => `${text} SGT`;
 
 function renderStatic() {
   localize();
-  $('#today').textContent = new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' }).format(new Date());
+  $('#today').textContent = new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', year: 'numeric', month: en() ? 'short' : 'long', day: 'numeric', weekday: 'short' }).format(new Date());
   for (const option of $$('#region-select option')) { const r = regions.find(x => x.id === option.value); if (r) option.textContent = regionName(r); }
 }
 $('.language-switch').addEventListener('click', ev => {
