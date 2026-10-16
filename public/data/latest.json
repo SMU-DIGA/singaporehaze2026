@@ -1,40 +1,40 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T20:00:35+08:00",
-    "timestamp": "2026-10-16T20:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T21:00:35+08:00",
+    "timestamp": "2026-10-16T21:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 159,
-        "south": 183,
-        "west": 200,
-        "east": 198,
-        "central": 222
+        "north": 156,
+        "south": 181,
+        "west": 198,
+        "east": 195,
+        "central": 219
       },
       "no2_one_hour_max": {
-        "north": 19,
-        "south": 27,
-        "west": 38,
-        "east": 30,
-        "central": 46
+        "north": 21,
+        "south": 25,
+        "west": 28,
+        "east": 48,
+        "central": 43
       },
       "pm10_twenty_four_hourly": {
-        "north": 138,
-        "south": 171,
-        "west": 183,
-        "east": 193,
-        "central": 208
+        "north": 135,
+        "south": 169,
+        "west": 182,
+        "east": 190,
+        "central": 204
       },
       "pm25_twenty_four_hourly": {
-        "north": 111,
-        "south": 134,
-        "west": 150,
-        "east": 148,
-        "central": 172
+        "north": 108,
+        "south": 133,
+        "west": 149,
+        "east": 145,
+        "central": 168
       },
       "so2_twenty_four_hourly": {
         "north": 6,
-        "south": 5,
+        "south": 4,
         "west": 7,
         "east": 5,
         "central": 7
@@ -47,39 +47,39 @@
         "central": 2
       },
       "o3_eight_hour_max": {
-        "north": 123,
-        "south": 91,
-        "west": 53,
-        "east": 99,
-        "central": 135
+        "north": 118,
+        "south": 88,
+        "west": 50,
+        "east": 88,
+        "central": 120
       },
       "co_sub_index": {
         "north": 19,
         "south": 19,
-        "west": 18,
+        "west": 17,
         "east": 17,
         "central": 18
       },
       "o3_sub_index": {
-        "north": 56,
-        "south": 39,
-        "west": 23,
-        "east": 42,
-        "central": 72
+        "north": 50,
+        "south": 37,
+        "west": 21,
+        "east": 37,
+        "central": 52
       },
       "pm10_sub_index": {
-        "north": 94,
-        "south": 111,
-        "west": 117,
-        "east": 122,
-        "central": 129
+        "north": 92,
+        "south": 110,
+        "west": 116,
+        "east": 120,
+        "central": 127
       },
       "pm25_sub_index": {
-        "north": 159,
-        "south": 183,
-        "west": 200,
-        "east": 198,
-        "central": 222
+        "north": 156,
+        "south": 181,
+        "west": 198,
+        "east": 195,
+        "central": 219
       },
       "so2_sub_index": {
         "north": 4,
@@ -92,19 +92,47 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T20:00:35+08:00",
-    "timestamp": "2026-10-16T20:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T21:00:35+08:00",
+    "timestamp": "2026-10-16T21:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 44,
-        "south": 141,
-        "west": 130,
-        "east": 119,
-        "central": 148
+        "north": 66,
+        "south": 117,
+        "west": 125,
+        "east": 113,
+        "central": 136
       }
     }
   },
   "news": [
+    {
+      "title": "Haze: Malaysia's palm oil industry steps up efforts to protect crops, reputation",
+      "url": "https://www.channelnewsasia.com/watch/haze-malaysias-palm-oil-industry-steps-up-efforts-protect-crops-reputation-6466111",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Haze: At least 4 people killed while battling blaze in Indonesia's Java",
+      "url": "https://www.channelnewsasia.com/watch/haze-least-4-people-killed-while-battling-blaze-in-indonesias-java-6465991",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Haze: Singapore's air quality expected to fluctuate, may reach hazardous levels, says Grace Fu",
+      "url": "https://www.channelnewsasia.com/watch/haze-singapores-air-quality-expected-fluctuate-may-reach-hazardous-levels-says-grace-fu-6465986",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Malaysia's palm oil industry steps up fire prevention efforts as 'Godzilla' El Nino fuels haze woes",
+      "url": "https://www.channelnewsasia.com/asia/haze-malaysia-indonesia-palm-oil-plantation-fires-el-nino-6465896",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "regional"
+    },
     {
       "title": "Singapore to send haze prevention notices to 7 companies in Indonesia responsible for fires",
       "url": "https://www.channelnewsasia.com/singapore/haze-indonesia-companies-fire-grace-fu-6465556",
@@ -169,7 +197,7 @@
       "category": "singapore"
     },
     {
-      "title": "Singapore haze: Air quality very unhealthy in three regions, PM2.5 readings high in two",
+      "title": "Singapore haze: Air quality very unhealthy in central region",
       "url": "https://www.channelnewsasia.com/singapore/haze-oct-16-psi-pm-25-6459416",
       "source": "CNA",
       "publishedAt": null,
@@ -183,39 +211,18 @@
       "category": "singapore"
     },
     {
-      "title": "Singapore looking into which companies responsible for haze-causing fires, may take legal action: PM Wong",
-      "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-companies-fires-legal-action-pm-wong-6463101",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "CNA Explains: Can cloud seeding help clear Singapore's haze?",
-      "url": "https://www.channelnewsasia.com/watch/cna-explains-can-cloud-seeding-help-clear-singapores-haze-6462926",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Clinics in Singapore see uptick in patients with haze-related conditions",
-      "url": "https://www.channelnewsasia.com/watch/clinics-in-singapore-see-uptick-in-patients-haze-related-conditions-6462826",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "A hive of activity at CCs as residents collect free masks, seek respite in haze shelters",
-      "url": "https://www.channelnewsasia.com/watch/hive-activity-ccs-residents-collect-free-masks-seek-respite-in-haze-shelters-6462866",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
       "title": "Smooth for some, frustrating for others as N95 mask distribution gets underway amid haze in Singapore - CNA",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNMVRaZ1prLW43YW1taTRYMnh5UURGT0VlYkxyYUZOZERkMUhzT0E4TjRra3ZFMjVlMzVCc3NSQ1FRZjJxMGhwX0VRWVB5aXhCRGVrdGcwak9xdGhidVJBSTgxSF9NUHVRZ1k4VHY2d29WQnQxLXpHODRMQm1FNDgzaEN4V3o2eVJDWXh1bnlIeVRQOG5LRWYtR3NxSC1xVEdNeTJXRFZqZlBKNk45Z1h3?oc=5",
       "source": "CNA",
       "publishedAt": "2026-10-15T12:15:00+00:00",
       "category": "singapore"
+    },
+    {
+      "title": "Desperate to clear toxic haze, Indonesia douses its skies with dry ice - BBC",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE14bzl5dmY5M1RKVVljY2FxOUR6ZkYxMzBaZWhnV0laVlFhUFY4OUlWdjF6amdMNV9udjFIWFVGblp4RE13dktsZk1ieFZ4dmVzRkxBRVp3bDhkSlE?oc=5",
+      "source": "BBC",
+      "publishedAt": "2026-10-15T03:59:56+00:00",
+      "category": "regional"
     }
   ],
   "history": {
@@ -2109,6 +2116,16 @@
           "east": 198,
           "central": 222
         }
+      },
+      {
+        "timestamp": "2026-10-16T21:00:00+08:00",
+        "values": {
+          "north": 156,
+          "south": 181,
+          "west": 198,
+          "east": 195,
+          "central": 219
+        }
       }
     ],
     "pm25": [
@@ -4001,64 +4018,84 @@
           "east": 119,
           "central": 148
         }
+      },
+      {
+        "timestamp": "2026-10-16T21:00:00+08:00",
+        "values": {
+          "north": 66,
+          "south": 117,
+          "west": 125,
+          "east": 113,
+          "central": 136
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-16T20:05:01.906268+08:00",
-  "nextUpdateAt": "2026-10-16T21:05:00+08:00",
+  "generatedAt": "2026-10-16T21:05:02.447003+08:00",
+  "nextUpdateAt": "2026-10-16T22:05:00+08:00",
   "sources": {
-    "pm25": {
-      "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
-    },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+    },
+    "pm25": {
+      "ok": true,
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
-    },
-    "advisories": {
-      "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "forecast_nea": {
-      "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "ok": false,
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00",
+      "error": "ValueError"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-16T20:05:01.906268+08:00"
+      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
     }
   },
-  "errors": [],
+  "errors": [
+    "forecast_nea: ValueError"
+  ],
   "schemaVersion": 1,
   "advisories": [
+    {
+      "title": "Haze Situation Update (16 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-16-october-2026",
+      "source": "NEA",
+      "publishedAt": "2026-10-16T18:19:00+08:00",
+      "category": "government"
+    },
     {
       "title": "Haze Situation Update (15 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-15-october-2026",
@@ -4107,49 +4144,42 @@
       "source": "NEA",
       "publishedAt": "2026-10-09T18:56:22+08:00",
       "category": "government"
-    },
-    {
-      "title": "Haze Situation Update (9 October 2026)",
-      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-9-october-2026",
-      "source": "NEA",
-      "publishedAt": "2026-10-09T18:30:00+08:00",
-      "category": "government"
     }
   ],
   "forecast": {
     "targetDate": "2026-10-17",
-    "issuedAt": "2026-10-16T20:05:01.906268+08:00",
+    "issuedAt": "2026-10-16T21:05:02.447003+08:00",
     "psi": {
-      "low": 117,
-      "high": 162
+      "low": 115,
+      "high": 160
     },
     "regions": {
-      "north": 117,
-      "south": 135,
-      "east": 146,
-      "west": 144,
-      "central": 162
+      "north": 115,
+      "south": 134,
+      "east": 144,
+      "west": 142,
+      "central": 160
     },
     "confidence": "low",
     "official": null,
     "trend": {
-      "low": 163,
-      "high": 221,
-      "change24h": 36
+      "low": 158,
+      "high": 215,
+      "change24h": 31
     },
     "model": {
       "low": 71,
-      "high": 104,
+      "high": 105,
       "pm25": 47,
-      "bias": 1.68
+      "bias": 1.7
     },
     "weather": {
       "date": "2026-10-17",
       "text": "Afternoon thundery showers",
       "windDirection": "SSE",
       "windSpeed": {
-        "low": 5,
-        "high": 15
+        "high": 15,
+        "low": 5
       },
       "rain": true,
       "southerly": true,
@@ -4159,9 +4189,9 @@
   "forecastLog": [
     {
       "targetDate": "2026-10-17",
-      "issuedAt": "2026-10-16T20:05:01.906268+08:00",
-      "low": 117,
-      "high": 162,
+      "issuedAt": "2026-10-16T21:05:02.447003+08:00",
+      "low": 115,
+      "high": 160,
       "official": false
     }
   ]
