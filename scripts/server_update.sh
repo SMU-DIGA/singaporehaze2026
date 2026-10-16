@@ -4,7 +4,10 @@
 # and pushes to main; the push triggers the GitHub Pages deploy workflow.
 #
 # crontab: 5 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh
+#          */15 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh resources
+# The second line only refreshes mask stock and other map resources.
 set -uo pipefail
+MODE="${1:-all}"
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 PYTHON="${PYTHON:-/mnt/raid/data/rainwangphy/miniconda3/bin/python3}"
@@ -16,7 +19,7 @@ exec >>"$LOG_DIR/server_update.log" 2>&1
 exec 9>"$LOG_DIR/.server_update.lock"
 flock -n 9 || { echo "$(date '+%F %T') previous run still active, skipping"; exit 0; }
 
-echo "=== $(date '+%F %T %Z') start"
+echo "=== $(date '+%F %T %Z') start ($MODE)"
 cd "$ROOT" || exit 1
 
 # Optional: DATA_GOV_SG_API_KEY=... in .env raises the official API rate limit.
@@ -27,20 +30,24 @@ git fetch -q origin main && git merge -q --ff-only origin/main || {
   exit 1
 }
 
-"$PYTHON" scripts/update_data.py
-refresh=$?
+refresh=0
+if [ "$MODE" = all ]; then
+  "$PYTHON" scripts/update_data.py
+  refresh=$?
+fi
+"$PYTHON" scripts/update_resources.py
 
 if ! "$PYTHON" -m unittest discover -s tests -p 'test_*.py' -q; then
   echo "tests failed; not committing"
-  git checkout -- public/data/latest.json
+  git checkout -- public/data/latest.json public/data/resources.json
   exit 1
 fi
 
-git add public/data/latest.json
+git add public/data/latest.json public/data/resources.json
 if git diff --staged --quiet; then
   echo "no data change"
 else
-  git commit -q -m "data: refresh Singapore haze snapshot"
+  git commit -q -m "data: refresh Singapore haze $([ "$MODE" = all ] && echo snapshot || echo resources)"
   for attempt in 1 2 3; do
     git push -q origin HEAD:main && { echo "pushed $(git rev-parse --short HEAD)"; break; }
     echo "push failed (attempt $attempt); rebasing on origin/main"

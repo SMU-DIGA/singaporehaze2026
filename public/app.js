@@ -1,12 +1,12 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, postalCode, inSingapore, SG_BOUNDS } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, layers: { masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
-const REPO_DATA = 'https://raw.githubusercontent.com/SMU-DIGA/singaporehaze2026/main/public/data/latest.json';
+const REPO_DATA = 'https://raw.githubusercontent.com/SMU-DIGA/singaporehaze2026/main/public/data/';
 const icons = {
   dashboard: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
   map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z M9 3v16 M15 5v16"/>',
@@ -25,6 +25,7 @@ const icons = {
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
   home: '<path d="m3 10 9-7 9 7 M5 9v12h14V9 M9 21v-8h6v8"/>',
   forecast: '<path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/>',
+  mask: '<path d="M4 9c3-1.3 5.3-2 8-2s5 .7 8 2v3.5c0 3-3.8 5.5-8 5.5s-8-2.5-8-5.5Z"/><path d="M4 10.5H2.5 M20 10.5h1.5 M8.5 11h7 M8.5 14h7"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18 M5 6.5h14 M5 17.5h14"/>',
 };
 $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[el.dataset.icon] || icons.info}</svg>`; });
@@ -63,7 +64,7 @@ dialog.addEventListener('click', ev => { if (ev.target === dialog) { const r = d
 // Live map: OneMap tiles via Leaflet. If Leaflet fails to load, the schematic SVG stays in place.
 const ONEMAP_ATTRIBUTION = '<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" alt="" style="height:20px;width:20px;vertical-align:middle">&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>';
 const tileUrl = () => `https://www.onemap.gov.sg/maps/tiles/${document.body.classList.contains('dark') ? 'Night' : 'Default'}/{z}/{x}/{y}.png`;
-const live = { map: null, tiles: null, markers: {}, you: null };
+const live = { map: null, tiles: null, markers: {}, you: null, layers: {} };
 const MAIN_ISLAND = [[1.23, 103.62], [1.47, 104.01]];
 function initMap() {
   const L = window.L;
@@ -246,6 +247,67 @@ function renderForecast() {
 }
 function render() { renderSummary(); renderMyAir(); renderForecast(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
 
+// Haze resources: N95 machines (stock mirrored from HazeMaskGoWhere), Community Clubs and polyclinics.
+const stockColors = { available: '#2e9079', limited: '#b58b2d', out: '#b74d67', unknown: '#8b949e', offline: '#8b949e' };
+const layerStyle = { ccs: { radius: 5, fillColor: '#7a62b8' }, polyclinics: { radius: 6, fillColor: '#2563eb' } };
+const stockOf = item => (item.working === false ? 'offline' : item.stock || 'unknown');
+const stockLabel = item => t({ available: 'stockAvailable', limited: 'stockLimited', out: 'stockOut', unknown: 'stockUnknown', offline: 'stockOffline' }[stockOf(item)]);
+const directions = item => `https://www.google.com/maps/dir/?api=1&destination=${+item.lat},${+item.lon}`;
+const metres = m => (m < 1000 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1)} km`);
+function popupHtml(kind, item) {
+  const lines = [`<strong>${e(item.name)}</strong>`, `<span>${e([item.address, item.postal].filter(Boolean).join(' · '))}</span>`];
+  if (kind === 'masks') {
+    lines.push(`<b style="color:${stockColors[stockOf(item)]}">${e(stockLabel(item))}</b>`);
+    if (item.hours) lines.push(`<span>${e(t('popupHours', { hours: item.hours }))}</span>`);
+    if (item.note) lines.push(`<span>${e(item.note)}</span>`);
+  } else lines.push(`<span>${e(t(kind === 'ccs' ? 'popupCc' : 'popupClinic'))}</span>`);
+  lines.push(`<a href="${directions(item)}" target="_blank" rel="noopener noreferrer">${e(t('popupDirections'))} ↗</a>`);
+  return `<div class="res-popup">${lines.join('')}</div>`;
+}
+function renderResourceLayers() {
+  const L = window.L, res = state.resources;
+  if (!live.map || !res) return;
+  for (const group of Object.values(live.layers)) group.remove();
+  live.layers = {};
+  for (const kind of ['ccs', 'polyclinics', 'masks']) {
+    const items = res[kind]?.items || [];
+    live.layers[kind] = L.layerGroup(items.map(item => {
+      const style = kind === 'masks' ? { radius: 7, fillColor: stockColors[stockOf(item)] } : layerStyle[kind];
+      return L.circleMarker([item.lat, item.lon], { color: '#fff', weight: 2, fillOpacity: 1, ...style }).bindPopup(popupHtml(kind, item)).bindTooltip(e(item.name));
+    }));
+    if (state.layers[kind]) live.layers[kind].addTo(live.map);
+  }
+  $('#map-layers').hidden = false;
+  $$('#map-layers [data-layer]').forEach(b => b.setAttribute('aria-pressed', !!state.layers[b.dataset.layer]));
+}
+function renderResources() {
+  const masks = state.resources?.masks;
+  const items = masks?.items || [];
+  const count = key => items.filter(x => stockOf(x) === key).length;
+  $('#mask-stock').textContent = !items.length ? t('maskStockNone')
+    : stale(masks.updatedAt, Date.now(), 3) ? t('maskStockStale')
+    : t('maskStock', { n: items.length, available: count('available'), limited: count('limited'), unavailable: count('out') + count('offline'), time: sgt(fmt(masks.updatedAt)) });
+  renderResourceLayers();
+}
+$('#map-layers').addEventListener('click', ev => {
+  const button = ev.target.closest('[data-layer]'); if (!button) return;
+  const kind = button.dataset.layer;
+  state.layers[kind] = !state.layers[kind];
+  button.setAttribute('aria-pressed', state.layers[kind]);
+  if (live.layers[kind]) state.layers[kind] ? live.layers[kind].addTo(live.map) : live.layers[kind].remove();
+});
+function nearbyHtml(place) {
+  const res = state.resources;
+  if (!res) return '';
+  const row = (kind, item, detail) => `<li><i class="dot" style="--c:${kind === 'masks' ? stockColors[stockOf(item)] : layerStyle[kind].fillColor}"></i><span><b>${e(item.name)}</b><small>${e(detail)}</small></span><a href="${directions(item)}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('popupDirections'))}: ${e(item.name)}">${e(metres(item.metres))} ↗</a></li>`;
+  const groups = [
+    ['nearbyMasks', nearest(place, res.masks?.items, 3).map(item => row('masks', item, stockLabel(item)))],
+    ['nearbyCc', nearest(place, res.ccs?.items, 1).map(item => row('ccs', item, item.address))],
+    ['nearbyClinic', nearest(place, res.polyclinics?.items, 1).map(item => row('polyclinics', item, item.address))],
+  ].filter(([, rows]) => rows.length);
+  return groups.length ? `<div class="nearby"><h4>${e(t('nearbyTitle'))}</h4>${groups.map(([title, rows]) => `<p>${e(t(title))}</p><ul>${rows.join('')}</ul>`).join('')}</div>` : '';
+}
+
 // "Air where you are": postal code (or device location) → closest NEA region.
 // Lookups go from the browser straight to OneMap; nothing is sent to this site.
 const ONEMAP_SEARCH = 'https://www.onemap.gov.sg/api/common/elastic/search';
@@ -257,8 +319,9 @@ async function lookupPostal(code) {
   const hit = ((await response.json()).results || []).find(r => r.POSTAL === code);
   if (!hit) return null;
   const known = value => value && value !== 'NIL';
-  const street = [hit.BLK_NO, hit.ROAD_NAME].filter(known).join(' ');
-  return { lat: +hit.LATITUDE, lon: +hit.LONGITUDE, postal: code, label: `${titleCase(street || hit.BUILDING)} · ${code}` };
+  // Block numbers such as 6A keep their case; road and building names are title-cased.
+  const street = [hit.BLK_NO, known(hit.ROAD_NAME) && titleCase(hit.ROAD_NAME)].filter(known).join(' ');
+  return { lat: +hit.LATITUDE, lon: +hit.LONGITUDE, postal: code, label: `${street || titleCase(hit.BUILDING)} · ${code}` };
 }
 function setPlace(place) {
   state.place = place;
@@ -293,7 +356,8 @@ function renderMyAir() {
   const cell = (label, value, metric, unitText) => { const b = bandOf(value, metric); return `<div><span>${e(label)}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}<small>${unitText}</small></b><em style="color:${b.color}">${e(b.label)}</em></div>`; };
   $('#my-air').innerHTML = `<div class="my-air-head"><div><h3>${e(place.label || t('geoHere'))}</h3><p>${e(t('myRegion', { region: regionName(r) }))}</p></div><div class="my-air-actions"><button class="text-button" data-action="map">${e(t('myShowMap'))}</button><button class="text-button" data-action="clear">${e(t('myClear'))}</button></div></div>`
     + `<div class="my-air-values">${cell(t('statPsi'), psi, 'psi', 'PSI')}${cell(t('statPm'), readings(d, 'pm25')[r.id], 'pm25', 'µg/m³')}${cell('AQI', readings(d, 'aqi')[r.id], 'aqi', 'AQI')}${Number.isFinite(tomorrow) ? cell(t('myTomorrow'), tomorrow, 'psi', 'PSI') : ''}</div>`
-    + `<p class="my-air-advice">${e(t('myAdvice', { advice: activity(psi, 'general', getLanguage()) }))}</p><p class="my-air-note">${e(t('myNote'))}</p>`;
+    + `<p class="my-air-advice">${e(t('myAdvice', { advice: activity(psi, 'general', getLanguage()) }))}</p><p class="my-air-note">${e(t('myNote'))}</p>`
+    + nearbyHtml(place);
 }
 function rememberPostal(code) { try { if (code) localStorage.setItem('haze-postal', code); else localStorage.removeItem('haze-postal'); } catch {} }
 async function checkPostal(input) {
@@ -332,19 +396,24 @@ async function fetchJson(url) {
   if (data.schemaVersion !== 1) throw new Error('Invalid data format');
   return data;
 }
+// Prefer whichever copy is newer: the deployed file or the repository's latest commit.
+async function fetchNewest(file) {
+  const local = new URL(`./data/${file}`, import.meta.url); local.searchParams.set('t', Date.now());
+  const candidates = (await Promise.allSettled([fetchJson(local), fetchJson(`${REPO_DATA}${file}?t=${Date.now()}`)])).filter(r => r.status === 'fulfilled').map(r => r.value);
+  if (!candidates.length) throw new Error('Data unavailable');
+  return candidates.sort((a, b) => (Date.parse(b.generatedAt) || 0) - (Date.parse(a.generatedAt) || 0))[0];
+}
 async function fetchLatest() {
   const staticHost = location.hostname.endsWith('github.io') || ['localhost', '127.0.0.1', ''].includes(location.hostname);
   // Hosted worker supplies durable snapshots from its own scheduled refresh.
   if (!staticHost) { try { return await fetchJson(`./api/data?t=${Date.now()}`); } catch {} }
-  const local = new URL('./data/latest.json', import.meta.url); local.searchParams.set('t', Date.now());
-  const candidates = (await Promise.allSettled([fetchJson(local), fetchJson(`${REPO_DATA}?t=${Date.now()}`)])).filter(r => r.status === 'fulfilled').map(r => r.value);
-  if (!candidates.length) throw new Error('Data unavailable');
-  return candidates.sort((a, b) => (Date.parse(b.generatedAt) || 0) - (Date.parse(a.generatedAt) || 0))[0];
+  return fetchNewest('latest.json');
 }
 async function load() {
   $('#refresh').disabled = true;
   try {
-    state.data = await fetchLatest(); render();
+    const [data, resources] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources)]);
+    state.data = data; state.resources = resources; render(); renderResources();
   } catch {
     $('#data-warning').hidden = false; $('#data-warning').textContent = t('warnOffline');
     if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').removeAttribute('data-i18n'); $('#updated').textContent = t('loadFailed'); }

@@ -1,0 +1,1467 @@
+{
+  "masks": {
+    "updatedAt": "2026-10-16T20:02:51+08:00",
+    "label": "16 Oct 2026",
+    "source": "https://www.gowhere.gov.sg/hazemask/",
+    "items": [
+      {
+        "name": "Ang Mo Kio Bus Interchange 1",
+        "address": "57 Ang Mo Kio Avenue 8",
+        "postal": "567751",
+        "lat": 1.369389,
+        "lon": 103.848478,
+        "hours": "Daily, unavailable between 1 am - 5 am",
+        "note": "Opposite Boarding Berth B4",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Ang Mo Kio Bus Interchange 2",
+        "address": "57 Ang Mo Kio Avenue 8",
+        "postal": "567751",
+        "lat": 1.369389,
+        "lon": 103.848478,
+        "hours": "Daily, unavailable between 1 am - 5 am",
+        "note": "Opposite Boarding Berth B4",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Bedok Bus Interchange",
+        "address": "12 Bedok North Drive",
+        "postal": "465492",
+        "lat": 1.324736,
+        "lon": 103.929256,
+        "hours": "Daily, 24 hours",
+        "note": "Near Boarding Berth B6",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Bishan Bus Interchange",
+        "address": "514 Bishan Street 13",
+        "postal": "570514",
+        "lat": 1.350117,
+        "lon": 103.849763,
+        "hours": "Daily, 24 hours",
+        "note": "Beside Passenger Service Office",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Boon Lay MRT Station",
+        "address": "301 Boon Lay Way",
+        "postal": "649846",
+        "lat": 1.338604,
+        "lon": 103.706065,
+        "hours": "Daily, 24 hours",
+        "note": "Next to Entrance/Exit F",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Boon Lay Social Service Office (SSO)",
+        "address": "500 Corporation Road, #01-01",
+        "postal": "649808",
+        "lat": 1.345422,
+        "lon": 103.716519,
+        "hours": "Daily, 24 hours",
+        "note": "Next to SSO office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Bukit Batok Bus Interchange",
+        "address": "631 Bukit Batok Central",
+        "postal": "650631",
+        "lat": 1.349719,
+        "lon": 103.750969,
+        "hours": "Daily, 24 hours",
+        "note": "Near Passenger Service Office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Bukit Merah Bus Interchange",
+        "address": "3591 Bukit Merah Central",
+        "postal": "159840",
+        "lat": 1.28204,
+        "lon": 103.81721,
+        "hours": "Daily, 24 hours",
+        "note": "Between Berth B2 and B3",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Bukit Merah Social Service Office (SSO)",
+        "address": "3779 Jalan Bukit Merah, #01-01 Community Hub",
+        "postal": "159462",
+        "lat": 1.284213,
+        "lon": 103.815565,
+        "hours": "Daily, 24 hours",
+        "note": "Outside Community Hub entrance",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Bukit Panjang Public Transport Hub",
+        "address": "15 Petir Road",
+        "postal": "678270",
+        "lat": 1.378431,
+        "lon": 103.762843,
+        "hours": "Daily, 24 hours",
+        "note": "Next to lift at Bus Interchange and SMRT@Vendshop",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Clementi Bus Interchange",
+        "address": "441 Commonwealth Avenue West",
+        "postal": "120441",
+        "lat": 1.314967,
+        "lon": 103.76427,
+        "hours": "Daily, unavailable between 1 am - 5 am",
+        "note": "Near Boarding Berth B4 and exit door",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Clementi Social Service Office (SSO)",
+        "address": "358 Clementi Avenue 2, #01-285",
+        "postal": "120358",
+        "lat": 1.313586,
+        "lon": 103.769084,
+        "hours": "Daily, 24 hours",
+        "note": "Near lift lobby B; next to SSO",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Former Ang Mo Kio Social Service Office (SSO)",
+        "address": "6A Ang Mo Kio Street 53, 3G Centre",
+        "postal": "569208",
+        "lat": 1.371713,
+        "lon": 103.849139,
+        "hours": "Daily, 24 hours",
+        "note": "Outside SSO main office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Former Sembawang Social Service Office (SSO)",
+        "address": "315 Sembawang Vis, #01-173",
+        "postal": "750315",
+        "lat": 1.446866,
+        "lon": 103.820609,
+        "hours": "Daily, 24 hours",
+        "note": "Near lift lobby A and B",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Geylang Serai Community Centre (CC)",
+        "address": "1 Engku Aman Turn, Wisma Geylang Serai",
+        "postal": "408528",
+        "lat": 1.31653,
+        "lon": 103.89656,
+        "hours": "Daily, 24 hours",
+        "note": "Level 7 Rooftop Garden",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Hong Kah North Zone '6' Residents' Network (RN)",
+        "address": "369 Bukit Batok Street 31, #01-505",
+        "postal": "650369",
+        "lat": 1.360029,
+        "lon": 103.751072,
+        "hours": "Daily, 24 hours",
+        "note": "Near RN offce",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Hougang Bus Interchange",
+        "address": "840 Hougang Central",
+        "postal": "538757",
+        "lat": 1.370895,
+        "lon": 103.893158,
+        "hours": "Daily, 24 hours",
+        "note": "Near Boarding Berth 1",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Hougang Social Service Office (SSO)",
+        "address": "662 Hougang Avenue 4",
+        "postal": "530662",
+        "lat": 1.374377,
+        "lon": 103.882875,
+        "hours": "Daily, 24 hours",
+        "note": "Near lift lobby B",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Jalan Besar Social Service Office (SSO)",
+        "address": "69 Jellicoe Road, #01-03",
+        "postal": "208737",
+        "lat": 1.308004,
+        "lon": 103.861787,
+        "hours": "Daily, 24 hours",
+        "note": "Near SSO entrance",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Jurong East Bus Interchange",
+        "address": "17A Jurong Gateway Road",
+        "postal": "608513",
+        "lat": 1.331864,
+        "lon": 103.740927,
+        "hours": "Daily, 24 hours",
+        "note": "Beside Passenger Service Office",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Kampong Chai Chee Community Club (CC)",
+        "address": "11 Bedok North Street 1",
+        "postal": "469662",
+        "lat": 1.326624,
+        "lon": 103.931806,
+        "hours": "Daily, 24 hours",
+        "note": "Beside CC office; opposite public toilets",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Kreta Ayer Social Service Office (SSO)",
+        "address": "28A Kreta Ayer Road, #01-03",
+        "postal": "088995",
+        "lat": 1.281208,
+        "lon": 103.84302,
+        "hours": "Daily, 24 hours",
+        "note": "Next to CC office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Punggol Bus Interchange",
+        "address": "70A Punggol Place",
+        "postal": "828865",
+        "lat": 1.404278,
+        "lon": 103.902304,
+        "hours": "Daily, 24 hours",
+        "note": "Outside public toilets",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Punggol Social Service Office (SSO)",
+        "address": "ServiceSG Centre, 1 Punggol Drive, #01-01 One Punggol",
+        "postal": "828629",
+        "lat": 1.408299,
+        "lon": 103.905104,
+        "hours": "Daily, 24 hours",
+        "note": "Outside ServiceSG Centre",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Queenstown Social Service Office (SSO)",
+        "address": "40 Margaret Drive, #02-01",
+        "postal": "140040",
+        "lat": 1.296458,
+        "lon": 103.806208,
+        "hours": "Daily, 24 hours",
+        "note": "Level 1 Lift Lobby (below SSO office)",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Sengkang Community Club (CC)",
+        "address": "2 Sengkang Square, #01-01 Sengkang Community Hub",
+        "postal": "545025",
+        "lat": 1.392786,
+        "lon": 103.893906,
+        "hours": "Daily, 24 hours",
+        "note": "Near CC office entrance",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Serangoon MRT Station",
+        "address": "21 Serangoon Central",
+        "postal": "556082",
+        "lat": 1.351048,
+        "lon": 103.87107,
+        "hours": "Daily, unavailable between 12.40 am - 5.40 am",
+        "note": "Between Circle Line Exit E and G (beside NEX entrance)",
+        "stock": "unknown",
+        "working": false
+      },
+      {
+        "name": "Serangoon Social Service Office (SSO)",
+        "address": "Blk 332 Serangoon Avenue 3, #01-257",
+        "postal": "550332",
+        "lat": 1.351017,
+        "lon": 103.870185,
+        "hours": "Daily, 24 hours",
+        "note": "Near SSO entrance",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Tampines Bus Interchange",
+        "address": "512 Tampines Central 1",
+        "postal": "520512",
+        "lat": 1.354367,
+        "lon": 103.943675,
+        "hours": "Daily, 24 hours",
+        "note": "Near Boarding Berth 10",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Tampines Social Service Office (SSO)",
+        "address": "Our Tampines Hub, 1 Tampines Walk #01-21",
+        "postal": "528523",
+        "lat": 1.353547,
+        "lon": 103.940381,
+        "hours": "Daily, 24 hours",
+        "note": "Level 4 near Lobby B",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Toa Payoh Central Zone '2' Residents' Network (RN)",
+        "address": "179 Toa Payoh Central #01-462",
+        "postal": "310179",
+        "lat": 1.333901,
+        "lon": 103.850093,
+        "hours": "Daily, 24 hours",
+        "note": "Near RN office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Toa Payoh MRT Station",
+        "address": "510 Lorong 6 Toa Payoh",
+        "postal": "319398",
+        "lat": 1.332629,
+        "lon": 103.847502,
+        "hours": "Daily, 24 hours",
+        "note": "Outside station entrance/exit",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Woodgrove Zone '8' Residents' Network (RN)",
+        "address": "363 Woodlands Ave 5 #01-440",
+        "postal": "730363",
+        "lat": 1.433928,
+        "lon": 103.785928,
+        "hours": "Daily, 24 hours",
+        "note": "Next to RC office",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Woodlands Bus Interchange",
+        "address": "30 Woodlands Avenue 2",
+        "postal": "738343",
+        "lat": 1.436814,
+        "lon": 103.785326,
+        "hours": "Daily, unavailable between 12:30 am - 3:30 am",
+        "note": "Near Boarding Berth B6",
+        "stock": "limited",
+        "working": true
+      },
+      {
+        "name": "Yio Chu Kang Bus Interchange",
+        "address": "3002 Ang Mo Kio Avenue 8",
+        "postal": "567728",
+        "lat": 1.382809,
+        "lon": 103.844818,
+        "hours": "Daily, 24 hours",
+        "note": "Near bus interchange entrance/exit",
+        "stock": "unknown",
+        "working": false
+      },
+      {
+        "name": "Yishun Bus Interchange",
+        "address": "920 Yishun Avenue 2",
+        "postal": "769100",
+        "lat": 1.427903,
+        "lon": 103.836178,
+        "hours": "Daily, unavailable between 1 am - 5 am",
+        "note": "Opposite Boarding Berth B2",
+        "stock": "available",
+        "working": true
+      },
+      {
+        "name": "Yishun Social Service Office (SSO)",
+        "address": "746 Yishun Street 72",
+        "postal": "760746",
+        "lat": 1.42892,
+        "lon": 103.833476,
+        "hours": "Daily, 24 hours",
+        "note": "Next to bicycle parking lot",
+        "stock": "available",
+        "working": true
+      }
+    ]
+  },
+  "ccs": {
+    "fetchedAt": "2026-10-16T20:05:37.243638+08:00",
+    "dataset": "d_9de02d3fb33d96da1855f4fbef549a0f",
+    "items": [
+      {
+        "name": "ACE The Place CC",
+        "address": "120 Woodlands Avenue 1",
+        "postal": "739069",
+        "lat": 1.427493,
+        "lon": 103.792241
+      },
+      {
+        "name": "Aljunied CC",
+        "address": "110 Hougang Avenue 1",
+        "postal": "530110",
+        "lat": 1.354658,
+        "lon": 103.889546
+      },
+      {
+        "name": "Anchorvale CC",
+        "address": "59 Anchorvale Road",
+        "postal": "544965",
+        "lat": 1.397128,
+        "lon": 103.886666
+      },
+      {
+        "name": "Ang Mo Kio CC",
+        "address": "795 Ang Mo Kio Avenue 1",
+        "postal": "569976",
+        "lat": 1.366833,
+        "lon": 103.840668
+      },
+      {
+        "name": "Ayer Rajah CC",
+        "address": "150 Pandan Gardens",
+        "postal": "609335",
+        "lat": 1.320799,
+        "lon": 103.74754
+      },
+      {
+        "name": "Bedok CC",
+        "address": "850 New Upper Changi Road",
+        "postal": "467352",
+        "lat": 1.324247,
+        "lon": 103.936048
+      },
+      {
+        "name": "Bidadari CC",
+        "address": "11 Bidadari Park Drive",
+        "postal": "367803",
+        "lat": 1.338731,
+        "lon": 103.87167
+      },
+      {
+        "name": "Bishan CC",
+        "address": "51 Bishan Street 13",
+        "postal": "579799",
+        "lat": 1.349512,
+        "lon": 103.850509
+      },
+      {
+        "name": "Boon Lay CC",
+        "address": "10 Boon Lay Place",
+        "postal": "649882",
+        "lat": 1.348323,
+        "lon": 103.71138
+      },
+      {
+        "name": "Braddell Heights CC",
+        "address": "50 Serangoon Avenue 2",
+        "postal": "556129",
+        "lat": 1.351612,
+        "lon": 103.870368
+      },
+      {
+        "name": "Brickland-Tenggah CC",
+        "address": "811A Choa Chu Kang Avenue 7",
+        "postal": "681811",
+        "lat": 1.373731,
+        "lon": 103.74593
+      },
+      {
+        "name": "Buangkok CC",
+        "address": "70 Compassvale Bow",
+        "postal": "544692",
+        "lat": 1.383152,
+        "lon": 103.892296
+      },
+      {
+        "name": "Buangkok-Fernvale South CO c/o Fernvale CC",
+        "address": "21 Sengkang West Ave",
+        "postal": "797650",
+        "lat": 1.391726,
+        "lon": 103.877
+      },
+      {
+        "name": "Bukit Batok CC (Temp office)",
+        "address": "119 Bukit Batok West Ave 6",
+        "postal": "650119",
+        "lat": 1.350422,
+        "lon": 103.746804
+      },
+      {
+        "name": "Bukit Batok CC (U/C)",
+        "address": "21 Bukit Batok Central",
+        "postal": "659959",
+        "lat": 1.349898,
+        "lon": 103.747549
+      },
+      {
+        "name": "Bukit Batok East CC",
+        "address": "23 Bukit Batok East Avenue 4",
+        "postal": "659841",
+        "lat": 1.348987,
+        "lon": 103.758196
+      },
+      {
+        "name": "Bukit Panjang CC",
+        "address": "8 Pending Road",
+        "postal": "678295",
+        "lat": 1.376451,
+        "lon": 103.770559
+      },
+      {
+        "name": "Bukit Timah CC",
+        "address": "20 Toh Yi Drive",
+        "postal": "596569",
+        "lat": 1.340534,
+        "lon": 103.771576
+      },
+      {
+        "name": "Buona Vista CC",
+        "address": "36 Holland Drive",
+        "postal": "270036",
+        "lat": 1.309259,
+        "lon": 103.792619
+      },
+      {
+        "name": "Cairnhill CC",
+        "address": "1 Anthony Road",
+        "postal": "229944",
+        "lat": 1.310434,
+        "lon": 103.838865
+      },
+      {
+        "name": "Canberra CC",
+        "address": "2 Sembawang Crescent",
+        "postal": "757632",
+        "lat": 1.445044,
+        "lon": 103.819474
+      },
+      {
+        "name": "Changi CO c/o Pasir Ris East CC",
+        "address": "1 Pasir Ris Dr 4",
+        "postal": "519457",
+        "lat": 1.368801,
+        "lon": 103.959182
+      },
+      {
+        "name": "Changi Simei CC",
+        "address": "10 Simei Street 2",
+        "postal": "529915",
+        "lat": 1.344936,
+        "lon": 103.955111
+      },
+      {
+        "name": "Cheng San CC",
+        "address": "6 Ang Mo Kio Street 53",
+        "postal": "569205",
+        "lat": 1.371915,
+        "lon": 103.849375
+      },
+      {
+        "name": "Chong Pang CC (Temp Office)",
+        "address": "126 Yishun Street 11",
+        "postal": "760126",
+        "lat": 1.433509,
+        "lon": 103.830012
+      },
+      {
+        "name": "Chua Chu Kang CC",
+        "address": "35 Teck Whye Avenue",
+        "postal": "688892",
+        "lat": 1.381155,
+        "lon": 103.751904
+      },
+      {
+        "name": "Ci Yuan CC",
+        "address": "51 Hougang Avenue 9",
+        "postal": "538776",
+        "lat": 1.375149,
+        "lon": 103.882894
+      },
+      {
+        "name": "Clementi CC",
+        "address": "220 Clementi Avenue 4",
+        "postal": "129880",
+        "lat": 1.318815,
+        "lon": 103.768154
+      },
+      {
+        "name": "Dover CC",
+        "address": "1 Dover Road",
+        "postal": "130001",
+        "lat": 1.30253,
+        "lon": 103.783272
+      },
+      {
+        "name": "Eunos CC",
+        "address": "180 Bedok Reservoir Road",
+        "postal": "479220",
+        "lat": 1.332553,
+        "lon": 103.915144
+      },
+      {
+        "name": "Fengshan CC",
+        "address": "20 Bedok North Street 2",
+        "postal": "469644",
+        "lat": 1.330708,
+        "lon": 103.936614
+      },
+      {
+        "name": "Fernvale CC",
+        "address": "21 Sengkang West Avenue",
+        "postal": "797650",
+        "lat": 1.391726,
+        "lon": 103.877
+      },
+      {
+        "name": "Fuchun CC",
+        "address": "1 Woodlands Street 31",
+        "postal": "738581",
+        "lat": 1.429587,
+        "lon": 103.77485
+      },
+      {
+        "name": "Gek Poh Ville CC (Temp office)",
+        "address": "760 Jurong West Street 74",
+        "postal": "640760",
+        "lat": 1.349425,
+        "lon": 103.699782
+      },
+      {
+        "name": "Gek Poh Ville CC (U/C)",
+        "address": "1 Jurong West Street 74",
+        "postal": "649149",
+        "lat": 1.34869,
+        "lon": 103.698726
+      },
+      {
+        "name": "Geylang Serai CC",
+        "address": "1 Engku Aman Turn",
+        "postal": "408528",
+        "lat": 1.316528,
+        "lon": 103.896555
+      },
+      {
+        "name": "Geylang West CC",
+        "address": "1205 Upper Boon Keng Road",
+        "postal": "387311",
+        "lat": 1.315691,
+        "lon": 103.872388
+      },
+      {
+        "name": "Henderson CC",
+        "address": "500 Bukit Merah View",
+        "postal": "159682",
+        "lat": 1.28601,
+        "lon": 103.823315
+      },
+      {
+        "name": "Hillview CC",
+        "address": "1 Hillview Rise",
+        "postal": "667970",
+        "lat": 1.361967,
+        "lon": 103.764266
+      },
+      {
+        "name": "Hong Kah North CC",
+        "address": "30 Bukit Batok Street 31",
+        "postal": "659440",
+        "lat": 1.359059,
+        "lon": 103.749457
+      },
+      {
+        "name": "Hougang CC",
+        "address": "35 Hougang Avenue 3",
+        "postal": "538840",
+        "lat": 1.364757,
+        "lon": 103.892622
+      },
+      {
+        "name": "Hwi Yoh CC",
+        "address": "535 Serangoon North Avenue 4",
+        "postal": "550535",
+        "lat": 1.3736,
+        "lon": 103.873891
+      },
+      {
+        "name": "Jalan Besar CC",
+        "address": "69 Jellicoe Road",
+        "postal": "208737",
+        "lat": 1.308004,
+        "lon": 103.861787
+      },
+      {
+        "name": "Joo Chiat CC",
+        "address": "405 Joo Chiat Road",
+        "postal": "427633",
+        "lat": 1.307457,
+        "lon": 103.904169
+      },
+      {
+        "name": "Jurong Green CC",
+        "address": "6 Jurong West Avenue 1",
+        "postal": "649520",
+        "lat": 1.350556,
+        "lon": 103.725342
+      },
+      {
+        "name": "Jurong Spring CC",
+        "address": "8 Jurong West Street 52",
+        "postal": "649296",
+        "lat": 1.34833,
+        "lon": 103.718156
+      },
+      {
+        "name": "Kaki Bukit CC",
+        "address": "670 Bedok North Street 3",
+        "postal": "469627",
+        "lat": 1.333382,
+        "lon": 103.926846
+      },
+      {
+        "name": "Kallang CC",
+        "address": "45 Boon Keng Road",
+        "postal": "339771",
+        "lat": 1.317803,
+        "lon": 103.862373
+      },
+      {
+        "name": "Kampong Chai Chee CC",
+        "address": "11 Bedok North Street 1",
+        "postal": "469662",
+        "lat": 1.326985,
+        "lon": 103.931621
+      },
+      {
+        "name": "Kampong Glam CC",
+        "address": "385 Beach Road",
+        "postal": "199581",
+        "lat": 1.302795,
+        "lon": 103.863598
+      },
+      {
+        "name": "Kampong Kembangan CC (Temp Office)",
+        "address": "109 Lengkong Tiga",
+        "postal": "410109",
+        "lat": 1.324581,
+        "lon": 103.910698
+      },
+      {
+        "name": "Kampong Ubi CC",
+        "address": "10 Jalan Ubi",
+        "postal": "409075",
+        "lat": 1.317846,
+        "lon": 103.90075
+      },
+      {
+        "name": "Katong CC",
+        "address": "51 Kampong Arang Road",
+        "postal": "438178",
+        "lat": 1.300591,
+        "lon": 103.884749
+      },
+      {
+        "name": "Keat Hong CC",
+        "address": "2 Choa Chu Kang Loop",
+        "postal": "689687",
+        "lat": 1.384065,
+        "lon": 103.744924
+      },
+      {
+        "name": "Kebun Baru CC",
+        "address": "216 Ang Mo Kio Avenue 4",
+        "postal": "569897",
+        "lat": 1.373007,
+        "lon": 103.837612
+      },
+      {
+        "name": "Kim Seng CC (U/C)",
+        "address": "570 Havelock Road",
+        "postal": "169640",
+        "lat": 1.289683,
+        "lon": 103.830706
+      },
+      {
+        "name": "Kolam Ayer CC",
+        "address": "1 Geylang Bahru Lane",
+        "postal": "339631",
+        "lat": 1.324154,
+        "lon": 103.869693
+      },
+      {
+        "name": "Kreta Ayer CC",
+        "address": "28A Kreta Ayer Road",
+        "postal": "88995",
+        "lat": 1.281193,
+        "lon": 103.843013
+      },
+      {
+        "name": "Leng Kee CC",
+        "address": "400 Lengkok Bahru",
+        "postal": "159049",
+        "lat": 1.289787,
+        "lon": 103.814448
+      },
+      {
+        "name": "Limbang CO c/o Yew Tee CC",
+        "address": "20 Choa Chu Kang Street 52",
+        "postal": "689286",
+        "lat": 1.394918,
+        "lon": 103.744728
+      },
+      {
+        "name": "MacPherson CC",
+        "address": "400 Paya Lebar Way",
+        "postal": "379131",
+        "lat": 1.323537,
+        "lon": 103.884481
+      },
+      {
+        "name": "Marine Parade CC (Temp Office)",
+        "address": "67 Marine Drive",
+        "postal": "440067",
+        "lat": 1.304457,
+        "lon": 103.909603
+      },
+      {
+        "name": "Marsiling CC (Temp Office)",
+        "address": "2 Marsiling Drive",
+        "postal": "730002",
+        "lat": 1.439938,
+        "lon": 103.776695
+      },
+      {
+        "name": "Marymount CC",
+        "address": "191 Sin Ming Avenue",
+        "postal": "575738",
+        "lat": 1.362138,
+        "lon": 103.841286
+      },
+      {
+        "name": "Mountbatten CC",
+        "address": "87 Jalan Satu",
+        "postal": "390087",
+        "lat": 1.309235,
+        "lon": 103.886827
+      },
+      {
+        "name": "Nanyang CC",
+        "address": "60 Jurong West Street 91",
+        "postal": "649040",
+        "lat": 1.342364,
+        "lon": 103.69232
+      },
+      {
+        "name": "Naval Base CO @ Canberra CC",
+        "address": "2 Sembawang Crescent",
+        "postal": "757632",
+        "lat": 1.445044,
+        "lon": 103.819474
+      },
+      {
+        "name": "Nee Soon Central CC",
+        "address": "1 Northpoint Drive",
+        "postal": "768019",
+        "lat": 1.428036,
+        "lon": 103.836092
+      },
+      {
+        "name": "Nee Soon East CC",
+        "address": "1 Yishun Avenue 9",
+        "postal": "768893",
+        "lat": 1.431021,
+        "lon": 103.838488
+      },
+      {
+        "name": "Nee Soon Link CC",
+        "address": "413 Yishun Ring Road",
+        "postal": "760413",
+        "lat": 1.425036,
+        "lon": 103.846399
+      },
+      {
+        "name": "Nee Soon South CC",
+        "address": "30 Yishun Street 81",
+        "postal": "768455",
+        "lat": 1.415187,
+        "lon": 103.834766
+      },
+      {
+        "name": "Pasir Ris Central CC",
+        "address": "536 Pasir Ris Drive 1",
+        "postal": "510536",
+        "lat": 1.370631,
+        "lon": 103.949828
+      },
+      {
+        "name": "Pasir Ris East CC",
+        "address": "1 Pasir Ris Drive 4",
+        "postal": "519457",
+        "lat": 1.368801,
+        "lon": 103.959182
+      },
+      {
+        "name": "Pasir Ris Elias CC",
+        "address": "93 Pasir Ris Drive 3",
+        "postal": "519498",
+        "lat": 1.378429,
+        "lon": 103.942476
+      },
+      {
+        "name": "Paya Lebar Kovan CC",
+        "address": "207 Hougang Street 21",
+        "postal": "530207",
+        "lat": 1.357799,
+        "lon": 103.886092
+      },
+      {
+        "name": "Pek Kio CC",
+        "address": "21 Gloucester Road",
+        "postal": "219458",
+        "lat": 1.313059,
+        "lon": 103.851374
+      },
+      {
+        "name": "Potong Pasir CC",
+        "address": "6 Potong Pasir Avenue 2",
+        "postal": "358361",
+        "lat": 1.332536,
+        "lon": 103.867037
+      },
+      {
+        "name": "Punggol 21 CC",
+        "address": "80 Punggol Field",
+        "postal": "828815",
+        "lat": 1.393606,
+        "lon": 103.913464
+      },
+      {
+        "name": "Punggol CC",
+        "address": "3 Hougang Avenue 6",
+        "postal": "538808",
+        "lat": 1.374379,
+        "lon": 103.891815
+      },
+      {
+        "name": "Punggol Coast CO @ One Punggol CC",
+        "address": "1 Punggol Drive",
+        "postal": "828629",
+        "lat": 1.408522,
+        "lon": 103.905034
+      },
+      {
+        "name": "Punggol North CC",
+        "address": "88 Punggol Way",
+        "postal": "829913",
+        "lat": 1.414774,
+        "lon": 103.910614
+      },
+      {
+        "name": "Punggol West CC",
+        "address": "259C Punggol Field",
+        "postal": "823259",
+        "lat": 1.404516,
+        "lon": 103.895665
+      },
+      {
+        "name": "Queenstown CC",
+        "address": "365 Commonwealth Avenue",
+        "postal": "149732",
+        "lat": 1.29915,
+        "lon": 103.801305
+      },
+      {
+        "name": "Radin Mas CC",
+        "address": "51 Telok Blangah Crescent",
+        "postal": "98917",
+        "lat": 1.275931,
+        "lon": 103.819753
+      },
+      {
+        "name": "Rivervale CC",
+        "address": "2 Rivervale Close",
+        "postal": "544583",
+        "lat": 1.385153,
+        "lon": 103.90232
+      },
+      {
+        "name": "Sembawang Central CO @ Sembawang CC (Temp Office)",
+        "address": "117B Canberra Crescent",
+        "postal": "752117",
+        "lat": 1.444573,
+        "lon": 103.829993
+      },
+      {
+        "name": "Sembawang Central CO @ Sembawang CC (U/C)",
+        "address": "2125 Sembawang Road 21KM",
+        "postal": "758528",
+        "lat": 1.451701,
+        "lon": 103.828807
+      },
+      {
+        "name": "Sengkang CC",
+        "address": "2 Sengkang Square",
+        "postal": "545025",
+        "lat": 1.392786,
+        "lon": 103.893906
+      },
+      {
+        "name": "Senja-Cashew CC",
+        "address": "101 Bukit Panjang Road",
+        "postal": "679910",
+        "lat": 1.381587,
+        "lon": 103.76466
+      },
+      {
+        "name": "Siglap CC",
+        "address": "151 Bedok South Road",
+        "postal": "460151",
+        "lat": 1.317292,
+        "lon": 103.946742
+      },
+      {
+        "name": "Siglap South CC",
+        "address": "6 Palm Road",
+        "postal": "456441",
+        "lat": 1.313159,
+        "lon": 103.930623
+      },
+      {
+        "name": "Taman Jurong CC",
+        "address": "1 Yung Sheng Road",
+        "postal": "618495",
+        "lat": 1.335307,
+        "lon": 103.721626
+      },
+      {
+        "name": "Tampines Boulevard CO c/o Tampines Central CC",
+        "address": "1 Tampines Walk",
+        "postal": "528523",
+        "lat": 1.353496,
+        "lon": 103.939684
+      },
+      {
+        "name": "Tampines Central CC",
+        "address": "1 Tampines Walk",
+        "postal": "528523",
+        "lat": 1.353496,
+        "lon": 103.939684
+      },
+      {
+        "name": "Tampines Changkat CC",
+        "address": "13 Tampines Street 11",
+        "postal": "529453",
+        "lat": 1.34585,
+        "lon": 103.94755
+      },
+      {
+        "name": "Tampines East CC",
+        "address": "10 Tampines Street 23",
+        "postal": "529341",
+        "lat": 1.353357,
+        "lon": 103.95462
+      },
+      {
+        "name": "Tampines North CC",
+        "address": "2 Tampines Street 41",
+        "postal": "529204",
+        "lat": 1.357365,
+        "lon": 103.946603
+      },
+      {
+        "name": "Tampines West CC",
+        "address": "5 Tampines Avenue 3",
+        "postal": "529705",
+        "lat": 1.348751,
+        "lon": 103.935633
+      },
+      {
+        "name": "Tanglin CC",
+        "address": "245 Whitley Road",
+        "postal": "297829",
+        "lat": 1.323384,
+        "lon": 103.826877
+      },
+      {
+        "name": "Tanjong Pagar CC",
+        "address": "101 Cantonment Road",
+        "postal": "89774",
+        "lat": 1.276167,
+        "lon": 103.841584
+      },
+      {
+        "name": "Teck Ghee CC",
+        "address": "861 Ang Mo Kio Avenue 10",
+        "postal": "569734",
+        "lat": 1.363089,
+        "lon": 103.853536
+      },
+      {
+        "name": "Telok Blangah CC",
+        "address": "450 Telok Blangah Street 31",
+        "postal": "108943",
+        "lat": 1.274863,
+        "lon": 103.807875
+      },
+      {
+        "name": "Tengah CC",
+        "address": "119 Plantation Crescent",
+        "postal": "690119",
+        "lat": 1.356752,
+        "lon": 103.7345
+      },
+      {
+        "name": "The Frontier CC",
+        "address": "60 Jurong West Central 3",
+        "postal": "648346",
+        "lat": 1.34047,
+        "lon": 103.704453
+      },
+      {
+        "name": "The Serangoon CC",
+        "address": "10 Serangoon North Avenue 2",
+        "postal": "555877",
+        "lat": 1.370055,
+        "lon": 103.873928
+      },
+      {
+        "name": "Thomson CC",
+        "address": "194 Upper Thomson Road",
+        "postal": "574339",
+        "lat": 1.351254,
+        "lon": 103.836262
+      },
+      {
+        "name": "Tiong Bahru CC",
+        "address": "67A Eu Chin Street",
+        "postal": "169715",
+        "lat": 1.283453,
+        "lon": 103.831883
+      },
+      {
+        "name": "Toa Payoh Central CC",
+        "address": "93 Toa Payoh Central",
+        "postal": "319194",
+        "lat": 1.334935,
+        "lon": 103.850205
+      },
+      {
+        "name": "Toa Payoh East CC",
+        "address": "160 Lorong 6 Toa Payoh",
+        "postal": "319380",
+        "lat": 1.336275,
+        "lon": 103.8547
+      },
+      {
+        "name": "Toa Payoh South CC",
+        "address": "1999 Lorong 8 Toa Payoh",
+        "postal": "319258",
+        "lat": 1.33489,
+        "lon": 103.859379
+      },
+      {
+        "name": "Toa Payoh West CC",
+        "address": "200 Lorong 2 Toa Payoh",
+        "postal": "319642",
+        "lat": 1.335383,
+        "lon": 103.844831
+      },
+      {
+        "name": "Ulu Pandan CC",
+        "address": "170 Ghim Moh Road",
+        "postal": "279621",
+        "lat": 1.312009,
+        "lon": 103.789211
+      },
+      {
+        "name": "West Coast CC",
+        "address": "2 Clementi West Street 2",
+        "postal": "129605",
+        "lat": 1.302646,
+        "lon": 103.764832
+      },
+      {
+        "name": "Whampoa CC",
+        "address": "300 Whampoa Drive",
+        "postal": "327737",
+        "lat": 1.32464,
+        "lon": 103.856979
+      },
+      {
+        "name": "Woodgrove CC",
+        "address": "353 Woodlands Ave 1",
+        "postal": "730353",
+        "lat": 1.431771,
+        "lon": 103.785007
+      },
+      {
+        "name": "Woodlands CC",
+        "address": "1 Woodlands Street 81",
+        "postal": "738526",
+        "lat": 1.43973,
+        "lon": 103.788235
+      },
+      {
+        "name": "Woodlands Galaxy CC",
+        "address": "31 Woodlands Avenue 6",
+        "postal": "738991",
+        "lat": 1.439042,
+        "lon": 103.802611
+      },
+      {
+        "name": "Yew Tee CC",
+        "address": "20 Choa Chu Kang Street 52",
+        "postal": "689286",
+        "lat": 1.394918,
+        "lon": 103.744728
+      },
+      {
+        "name": "Yio Chu Kang CC",
+        "address": "50 Ang Mo Kio Street 61",
+        "postal": "569163",
+        "lat": 1.381517,
+        "lon": 103.841428
+      },
+      {
+        "name": "Yuhua CC",
+        "address": "90 Boon Lay Way",
+        "postal": "609958",
+        "lat": 1.339973,
+        "lon": 103.737066
+      },
+      {
+        "name": "Zhenghua CC",
+        "address": "1 Segar Road",
+        "postal": "677738",
+        "lat": 1.386807,
+        "lon": 103.771521
+      },
+      {
+        "name": "imPAct@Hong Lim Green",
+        "address": "20 Upper Pickering Street",
+        "postal": "58284",
+        "lat": 1.286329,
+        "lon": 103.846479
+      }
+    ]
+  },
+  "polyclinics": {
+    "fetchedAt": "2026-10-16T20:05:37.243638+08:00",
+    "dataset": "d_3ca2a28059588f297908b32da4ac3cbe",
+    "items": [
+      {
+        "name": "Ang Mo Kio Polyclinic",
+        "address": "21 Ang Mo Kio Central 2",
+        "postal": "569666",
+        "lat": 1.374311,
+        "lon": 103.845608
+      },
+      {
+        "name": "Bedok Polyclinic",
+        "address": "212 Bedok North Street 1",
+        "postal": "460212",
+        "lat": 1.325941,
+        "lon": 103.93164
+      },
+      {
+        "name": "Bukit Batok Polyclinic",
+        "address": "50 Bukit Batok West Ave 3",
+        "postal": "659164",
+        "lat": 1.352015,
+        "lon": 103.747822
+      },
+      {
+        "name": "Bukit Merah Polyclinic",
+        "address": "163 Bukit Merah Central",
+        "postal": "150163",
+        "lat": 1.283881,
+        "lon": 103.81694
+      },
+      {
+        "name": "Bukit Panjang Polyclinic",
+        "address": "50 Woodlands Road",
+        "postal": "677726",
+        "lat": 1.382713,
+        "lon": 103.760166
+      },
+      {
+        "name": "Choa Chu Kang Polyclinic",
+        "address": "2 Teck Whye Crescent",
+        "postal": "688846",
+        "lat": 1.382341,
+        "lon": 103.750777
+      },
+      {
+        "name": "Clementi Polyclinic",
+        "address": "451 Clementi Avenue 3",
+        "postal": "120451",
+        "lat": 1.312481,
+        "lon": 103.765477
+      },
+      {
+        "name": "Eunos Polyclinic",
+        "address": "1 Chin Cheng Ave",
+        "postal": "429400",
+        "lat": 1.317328,
+        "lon": 103.905711
+      },
+      {
+        "name": "Geylang Polyclinic",
+        "address": "21 Geylang East Central",
+        "postal": "389707",
+        "lat": 1.319494,
+        "lon": 103.887166
+      },
+      {
+        "name": "Hougang Polyclinic",
+        "address": "89 Hougang Avenue 4",
+        "postal": "538829",
+        "lat": 1.370018,
+        "lon": 103.888996
+      },
+      {
+        "name": "Jurong Polyclinic",
+        "address": "190 Jurong East Avenue 1",
+        "postal": "609788",
+        "lat": 1.34972,
+        "lon": 103.730718
+      },
+      {
+        "name": "Kallang Polyclinic",
+        "address": "701 Serangoon Road",
+        "postal": "328263",
+        "lat": 1.316693,
+        "lon": 103.858687
+      },
+      {
+        "name": "Khatib Polyclinic",
+        "address": "690 Yishun Ring Roadd",
+        "postal": "769567",
+        "lat": 1.418251,
+        "lon": 103.834346
+      },
+      {
+        "name": "Marine Parade Polyclinic",
+        "address": "80 Marine Parade Central",
+        "postal": "440080",
+        "lat": 1.302482,
+        "lon": 103.907739
+      },
+      {
+        "name": "Outram Polyclinic",
+        "address": "3 Health Promotion Board Building",
+        "postal": "168937",
+        "lat": 1.279331,
+        "lon": 103.838315
+      },
+      {
+        "name": "Pasir Ris Polyclinic",
+        "address": "1 Pasir Ris Drive 4",
+        "postal": "519457",
+        "lat": 1.368587,
+        "lon": 103.959205
+      },
+      {
+        "name": "Pioneer Polyclinic",
+        "address": "26 Jurong West Street 61",
+        "postal": "648201",
+        "lat": 1.338562,
+        "lon": 103.698979
+      },
+      {
+        "name": "Punggol Polyclinic",
+        "address": "681 Punggol Drive",
+        "postal": "820681",
+        "lat": 1.402878,
+        "lon": 103.913196
+      },
+      {
+        "name": "Queenstown Polyclinic",
+        "address": "580 Stirling Road",
+        "postal": "148958",
+        "lat": 1.298475,
+        "lon": 103.800958
+      },
+      {
+        "name": "Sembawang Polyclinic",
+        "address": "21 Canberra Link",
+        "postal": "756973",
+        "lat": 1.448263,
+        "lon": 103.822764
+      },
+      {
+        "name": "SengKang Polyclinic",
+        "address": "2 Sengkang Square",
+        "postal": "545025",
+        "lat": 1.392786,
+        "lon": 103.893906
+      },
+      {
+        "name": "Tampines North Polyclinic",
+        "address": "35 Tampines Street 61",
+        "postal": "528566",
+        "lat": 1.363311,
+        "lon": 103.937556
+      },
+      {
+        "name": "Tampines Polyclinic",
+        "address": "1 Tampines Street 41",
+        "postal": "529203",
+        "lat": 1.35731,
+        "lon": 103.945849
+      },
+      {
+        "name": "Toa Payoh Polyclinic",
+        "address": "2003 Toa Payoh Lorong 8",
+        "postal": "319260",
+        "lat": 1.33448,
+        "lon": 103.858956
+      },
+      {
+        "name": "Woodlands Polyclinic",
+        "address": "10 Woodlands Street 31",
+        "postal": "738579",
+        "lat": 1.430893,
+        "lon": 103.775213
+      },
+      {
+        "name": "Yishun Polyclinic",
+        "address": "2 Yishun Ave 9",
+        "postal": "768898",
+        "lat": 1.430359,
+        "lon": 103.839191
+      }
+    ]
+  },
+  "errors": [],
+  "generatedAt": "2026-10-16T20:05:37.243638+08:00",
+  "schemaVersion": 1
+}

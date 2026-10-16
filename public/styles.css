@@ -134,7 +134,7 @@ body.dark .data-warning { background: #3d321f; border-color: #665337; color: #f0
 
 /* Map */
 .map-wrap { position: relative; background: var(--map); margin: 0 20px; border-radius: 10px; overflow: hidden; }
-.map-corner { position: absolute; top: 12px; left: 14px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); z-index: 700; background: color-mix(in srgb, var(--panel) 80%, transparent); padding: 3px 10px; border-radius: 99px; }
+.map-corner { position: absolute; top: 12px; left: 14px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); z-index: 450; background: color-mix(in srgb, var(--panel) 80%, transparent); padding: 3px 10px; border-radius: 99px; }
 /* Live map (Leaflet + OneMap); the schematic SVG is the fallback */
 .live-map { display: none; height: 380px; }
 .map-wrap.live .live-map { display: block; }
@@ -162,6 +162,14 @@ body.dark .leaflet-control-attribution a { color: var(--link); }
 .marker:hover circle:nth-child(3), .marker:focus-visible circle:nth-child(3), .marker.active circle:nth-child(3) { stroke-width: 4; }
 .marker text { font-family: var(--font); pointer-events: none; }
 .region-label { fill: #2f4a3c; paint-order: stroke; stroke: var(--map); stroke-width: 4px; }
+.map-layers { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 12px 16px 0; }
+.map-layers button { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--muted); }
+.map-layers button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c, #8b949e); flex-shrink: 0; }
+.dot.mask { background: #2e9079; } .dot.cc { background: #7a62b8; } .dot.clinic { background: #2563eb; }
+.res-popup { display: flex; flex-direction: column; gap: 3px; font: 13px/1.5 var(--font); min-width: 180px; }
+.res-popup strong { font-size: 14px; }
+.res-popup a { color: #2f6b4f; font-weight: 600; margin-top: 4px; }
 .map-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 16px; padding: 14px 16px; font-size: 13px; color: var(--text); }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; }
 .legend-item i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
@@ -223,6 +231,27 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .my-air-values em { font-style: normal; font-size: 13px; font-weight: 600; }
 .my-air-advice { margin-top: 12px; font-size: 15px; }
 .my-air-note { margin-top: 4px; font-size: 13px; color: var(--muted); }
+
+.nearby { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border); }
+.nearby h4 { font-size: 15px; font-weight: 650; }
+.nearby > p { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.nearby ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.nearby li { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.nearby li > span { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.nearby li b { font-size: 14px; font-weight: 600; line-height: 1.4; }
+.nearby li small { font-size: 13px; color: var(--muted); }
+.nearby li a { font-size: 13px; font-weight: 600; color: var(--link); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ---------- Resources ---------- */
+.resources-panel { margin-bottom: 24px; }
+.resources-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 0 22px 20px; }
+.resource-card { background: var(--panel-soft); border-radius: 10px; padding: 16px 18px; font-size: 14px; line-height: 1.6; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.resource-card h3 { font-size: 16px; font-weight: 650; }
+.resource-card ul { margin: 0; padding-left: 18px; }
+.resource-card li { margin: 3px 0; }
+.resource-card > a { margin-top: auto; padding-top: 4px; color: var(--link); font-weight: 600; font-size: 14px; }
+.resource-note { color: var(--muted); font-size: 13px; }
+.mask-stock { font-weight: 600; color: var(--accent); }
 
 /* ---------- Tomorrow's outlook ---------- */
 .forecast-panel { margin-bottom: 24px; }
@@ -349,6 +378,7 @@ body.dark .island-map { color: #6f8f7d; }
   .alert { flex-wrap: wrap; }
   .alert > a { margin-left: 58px; }
   .forecast-body { grid-template-columns: 1fr; gap: 20px; }
+  .resources-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
   .sidebar { position: sticky; top: 0; width: 100%; padding: 12px 16px 0; inset: auto; }
@@ -395,6 +425,7 @@ body.dark .island-map { color: #6f8f7d; }
   .signal-label { grid-row: auto; }
   .forecast-regions b { font-size: 17px; }
   .live-map { height: 340px; }
+  .resources-grid { padding: 0 16px 16px; }
   .locate-panel { padding: 16px; }
   #postal-input { flex: 1 1 160px; width: auto; }
   .my-air-values { grid-template-columns: repeat(2, minmax(0, 1fr)); }

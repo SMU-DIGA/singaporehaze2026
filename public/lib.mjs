@@ -16,6 +16,15 @@ export function nearestRegion(lat, lon) {
   const distance = r => (r.lat - lat) ** 2 + ((r.lon - lon) * Math.cos(lat * Math.PI / 180)) ** 2;
   return regions.reduce((best, r) => (distance(r) < distance(best) ? r : best));
 }
+// Great-circle distance in metres.
+export function distance(a, b) {
+  const rad = Math.PI / 180, dLat = (b.lat - a.lat) * rad, dLon = (b.lon - a.lon) * rad;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dLon / 2) ** 2;
+  return 2 * 6371000 * Math.asin(Math.sqrt(h));
+}
+export function nearest(place, items = [], count = 1) {
+  return items.map(item => ({ ...item, metres: distance(place, item) })).sort((x, y) => x.metres - y.metres).slice(0, count);
+}
 export function postalCode(input) {
   const code = String(input ?? '').replace(/\s/g, '');
   return /^\d{6}$/.test(code) ? code : null;

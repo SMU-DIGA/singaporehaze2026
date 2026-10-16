@@ -46,6 +46,25 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 防霾资源
+
+`scripts/update_resources.py` 生成 `public/data/resources.json`，地图上的资源图层和「我的空气」里的「附近资源」都读这个文件：
+
+- **N95 口罩发放机**：镜像政府 HazeMaskGoWhere 的数据文件（`gowhere.gov.sg/hazemask/data/data.webhook.json`），包含坐标、开放时间、库存（有货、少量、缺货）和机器是否运作。该文件不允许浏览器跨域读取，所以由服务器抓取。
+- **民众俱乐部（CC）**：data.gov.sg 上 PA 的 Community Club 数据集（`d_9de02d3fb33d96da1855f4fbef549a0f`），只保留 `DESCRIPTION` 为 CC 的点。
+- **综合诊所**：data.gov.sg 上 HPB 的筛查中心数据集（`d_3ca2a28059588f297908b32da4ac3cbe`），只保留名称含 Polyclinic 的点；数据是 2023 年的，新开的诊所可能没有。
+- CC 和综合诊所每 7 天重新下载一次。只有内容变化时才重写文件，所以频繁运行也不会产生空提交。
+- 派发资格、补贴和避霾中心的说明文字摘自 NEA 10 月 14 日的雾霾通报和 MOH 10 月 11 日的公告，政策有变化时需要手动更新 `public/locale.mjs`。
+
+服务器上有两条 crontab：
+
+```cron
+5 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh
+*/15 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh resources
+```
+
+第二条只刷新资源（主要是口罩库存）。两条共用同一个锁，不会同时运行。
+
 ## 地图与邮编查询
 
 - 地图用 Leaflet 1.9.4（cdnjs，带 SRI 校验）加 OneMap 底图（深色模式用 Night 样式），须保留 OneMap 和 Singapore Land Authority 的署名。五区圆点画在 NEA PSI 接口 `regionMetadata` 给出的各区代表点上。Leaflet 加载失败时，回退为原来的示意图。

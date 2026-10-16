@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore } from '../public/lib.mjs';
+import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest } from '../public/lib.mjs';
 test('PSI boundaries follow NEA categories, including missing data', () => {
   for (const [n, i] of [[0, 0], [50, 0], [51, 1], [100, 1], [101, 2], [200, 2], [201, 3], [300, 3], [301, 4]]) assert.equal(band(n).index, i);
   assert.equal(band(undefined).index, -1);
@@ -57,4 +57,11 @@ test('postal codes map to the closest NEA region', () => {
   assert.equal(postalCode('abcdef'), null);
   assert.equal(inSingapore(1.35, 103.82), true);
   assert.equal(inSingapore(1.55, 103.75), false); // Johor
+});
+test('nearby resources are ranked by real distance', () => {
+  const yishun = { lat: 1.4289, lon: 103.8335 };
+  assert.ok(Math.abs(distance(yishun, { lat: 1.4289, lon: 103.8435 }) - 1112) < 5); // 0.01° of longitude near the equator
+  const items = [{ name: 'far', lat: 1.30, lon: 103.85 }, { name: 'near', lat: 1.43, lon: 103.835 }, { name: 'mid', lat: 1.40, lon: 103.83 }];
+  assert.deepEqual(nearest(yishun, items, 2).map(x => x.name), ['near', 'mid']);
+  assert.deepEqual(nearest(yishun, undefined), []);
 });
