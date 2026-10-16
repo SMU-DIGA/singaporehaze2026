@@ -13,8 +13,25 @@
 <body>
   <a class="skip" href="#main" data-i18n="skip">跳到主要内容</a>
 
-  <aside class="sidebar">
+  <header class="topbar">
     <a class="brand" href="#now"><span class="brand-mark" aria-hidden="true">≈</span><span><span data-i18n="brand">雾霾观察站</span><small data-i18n="brandSub">SINGAPORE HAZE WATCH</small></span></a>
+    <nav class="tabs" role="tablist" data-i18n-attr="aria-label:navLabel" aria-label="主导航">
+      <a id="tab-now" data-tab="now" class="active" aria-current="page" href="#now"><span data-icon="dashboard"></span><span data-i18n="tabNow">现在</span></a>
+      <a id="tab-plan" data-tab="plan" href="#plan"><span data-icon="forecast"></span><span data-i18n="tabPlan">预测与安排</span></a>
+      <a id="tab-protect" data-tab="protect" href="#protect"><span data-icon="mask"></span><span data-i18n="tabProtect">防护与求助</span></a>
+      <a id="tab-updates" data-tab="updates" href="#updates"><span data-icon="news"></span><span data-i18n="tabNews">公告与新闻</span></a>
+    </nav>
+    <div class="top-actions">
+      <div class="segmented language-switch" role="group" data-i18n-attr="aria-label:languageLabel" aria-label="语言 / Language">
+        <button data-language="zh" lang="zh-CN" class="selected" aria-pressed="true">中文</button>
+        <button data-language="en" lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button id="theme" class="icon-button" data-i18n-attr="aria-label:themeLabel" aria-label="切换深色模式"><span data-icon="sun"></span></button>
+      <a class="external-top" href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="neaSite">NEA 官网</span> ↗</a>
+    </div>
+  </header>
+  <aside class="sidebar">
+    <span class="date" id="today"></span>
     <nav class="toc" id="toc" data-i18n-attr="aria-label:tocTitle" aria-label="本页目录">
       <p class="toc-title" data-i18n="tocTitle">本页目录</p>
       <div id="toc-links"></div>
@@ -26,23 +43,6 @@
   </aside>
 
   <div class="page">
-    <header class="topbar">
-      <span class="date" id="today"></span>
-      <nav class="tabs" role="tablist" data-i18n-attr="aria-label:navLabel" aria-label="主导航">
-        <a id="tab-now" data-tab="now" class="active" aria-current="page" href="#now"><span data-icon="dashboard"></span><span data-i18n="tabNow">现在</span></a>
-        <a id="tab-plan" data-tab="plan" href="#plan"><span data-icon="forecast"></span><span data-i18n="tabPlan">预测与安排</span></a>
-        <a id="tab-protect" data-tab="protect" href="#protect"><span data-icon="mask"></span><span data-i18n="tabProtect">防护与求助</span></a>
-        <a id="tab-updates" data-tab="updates" href="#updates"><span data-icon="news"></span><span data-i18n="tabNews">公告与新闻</span></a>
-      </nav>
-      <div class="top-actions">
-        <div class="segmented language-switch" role="group" data-i18n-attr="aria-label:languageLabel" aria-label="语言 / Language">
-          <button data-language="zh" lang="zh-CN" class="selected" aria-pressed="true">中文</button>
-          <button data-language="en" lang="en" aria-pressed="false">EN</button>
-        </div>
-        <button id="theme" class="icon-button" data-i18n-attr="aria-label:themeLabel" aria-label="切换深色模式"><span data-icon="sun"></span></button>
-        <a class="external-top" href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="neaSite">NEA 官网</span> ↗</a>
-      </div>
-    </header>
 
     <main id="main">
       <section id="overview" class="intro">
