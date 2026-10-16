@@ -1,7 +1,7 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T10:00:35+08:00",
+    "updatedTimestamp": "2026-10-16T10:15:33+08:00",
     "timestamp": "2026-10-16T10:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
@@ -92,7 +92,7 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T10:00:35+08:00",
+    "updatedTimestamp": "2026-10-16T10:15:33+08:00",
     "timestamp": "2026-10-16T10:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
@@ -106,7 +106,7 @@
   },
   "news": [
     {
-      "title": "haze: Air quality very unhealthy in central region; PM2.5 reading high",
+      "title": "Singapore haze: Air quality very unhealthy in three regions, PM2.5 readings high in two",
       "url": "https://www.channelnewsasia.com/singapore/haze-oct-16-psi-pm-25-6459416",
       "source": "CNA",
       "publishedAt": null,
@@ -120,7 +120,7 @@
       "category": "singapore"
     },
     {
-      "title": "looking into which companies responsible for haze-causing fires, may take legal action: PM Wong",
+      "title": "Singapore looking into which companies responsible for haze-causing fires, may take legal action: PM Wong",
       "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-companies-fires-legal-action-pm-wong-6463101",
       "source": "CNA",
       "publishedAt": null,
@@ -1390,53 +1390,53 @@
       }
     ]
   },
-  "generatedAt": "2026-10-16T10:09:09.950596+08:00",
+  "generatedAt": "2026-10-16T10:21:26.009378+08:00",
   "nextUpdateAt": "2026-10-16T12:17:00+08:00",
   "sources": {
-    "advisories": {
+    "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
-    },
-    "news": {
-      "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
-    },
-    "history_psi_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+    },
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00"
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00"
     },
     "history_psi_2026-10-14": {
       "ok": false,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00",
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00",
       "error": "HTTPError"
     },
     "history_pm25_2026-10-14": {
       "ok": false,
-      "checkedAt": "2026-10-16T10:09:09.950596+08:00",
+      "checkedAt": "2026-10-16T10:21:26.009378+08:00",
       "error": "HTTPError"
     }
   },
@@ -1450,63 +1450,63 @@
       "title": "Haze Situation Update (15 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-15-october-2026",
       "source": "NEA",
-      "publishedAt": "15 Oct 2026",
+      "publishedAt": "2026-10-15T18:19:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (14 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-14-october-2026",
       "source": "NEA",
-      "publishedAt": "14 Oct 2026",
+      "publishedAt": "2026-10-14T18:19:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (13 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-13-october-2026",
       "source": "NEA",
-      "publishedAt": "13 Oct 2026",
+      "publishedAt": "2026-10-13T18:19:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (12 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-12-october-2026",
       "source": "NEA",
-      "publishedAt": "12 Oct 2026",
+      "publishedAt": "2026-10-12T18:19:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (11 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-11-october-2026",
       "source": "NEA",
-      "publishedAt": "11 Oct 2026",
+      "publishedAt": "2026-10-11T18:19:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (10 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-10-october-2026",
       "source": "NEA",
-      "publishedAt": "10 Oct 2026",
+      "publishedAt": "2026-10-10T19:07:00+08:00",
       "category": "government"
     },
     {
       "title": "Singapore Ready To Step Up Haze Response",
       "url": "https://www.nea.gov.sg/media/news/news/index/singapore-ready-to-step-up-haze-response",
       "source": "NEA",
-      "publishedAt": "9 Oct 2026",
+      "publishedAt": "2026-10-09T18:56:22+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (9 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-9-october-2026",
       "source": "NEA",
-      "publishedAt": "9 Oct 2026",
+      "publishedAt": "2026-10-09T18:30:00+08:00",
       "category": "government"
     },
     {
       "title": "Haze Situation Update (8 October 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-8-october-2026",
       "source": "NEA",
-      "publishedAt": "8 Oct 2026",
+      "publishedAt": "2026-10-08T19:11:00+08:00",
       "category": "government"
     }
   ]
