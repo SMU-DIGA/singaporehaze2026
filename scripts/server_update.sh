@@ -3,7 +3,7 @@
 # too late or skipped). Fetches the latest data, commits public/data/latest.json
 # and pushes to main; the push triggers the GitHub Pages deploy workflow.
 #
-# crontab: 17 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh
+# crontab: 5 * * * * /home/rainwangphy/singaporehaze2026/scripts/server_update.sh
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
