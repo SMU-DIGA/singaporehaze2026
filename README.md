@@ -46,6 +46,10 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 官方措施
+
+`public/rules.mjs` 列出各部门按 24 小时 PSI 分级触发的措施（MOE 中小学、ECDA 学前教育、MOM 雇主、SportSG 体育设施、PA 避霾中心），中英文各一份，只收录在各部门官方页面核实过的内容（核对日期写在 `checked`）。每条规定标明依据的是「次日预报」（MOE、SportSG）还是「当前读数」（ECDA、MOM、PA）。页面按当前最高读数和明日预报区间（优先用 NEA 官方区间；区间跨两档时两档都标出）高亮适用的一档。政策变化时需要手动更新这个文件。
+
 ## 出门时间与净化器计算器
 
 - **什么时候出门**：`scripts/forecast.py` 在算明日预测时，把 CAMS 逐小时 PM2.5 按各区近 48 小时的 NEA 实测比值校正，从下一小时到明天 23 点写入 `forecast.hourly`。页面按区域（默认用户邮编所在区域）画出每小时柱状图，找出 6–21 点开始、平均最低的连续 2 小时作为最佳时段，并按 NEA 1 小时 PM2.5 分级（haze.gov.sg 的个人指引）给出健康人士和易感人群的建议。

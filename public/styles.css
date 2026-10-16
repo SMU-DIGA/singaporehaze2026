@@ -258,6 +258,20 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .resource-note { color: var(--muted); font-size: 13px; }
 .mask-stock { font-weight: 600; color: var(--accent); }
 
+/* ---------- Official measures ---------- */
+.rules-panel { margin-bottom: 24px; }
+.rules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 0 22px 20px; }
+.rule-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.rule-card h3 { font-size: 16px; font-weight: 650; }
+.rule-basis { font-size: 12px; color: var(--muted); }
+.rule-card ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.rule-card li { padding: 8px 10px; border-left: 3px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius: 0 6px 6px 0; opacity: .6; }
+.rule-card li.active { opacity: 1; border-left-color: var(--c); background: color-mix(in srgb, var(--c) 8%, transparent); }
+.rule-card .tier { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 650; color: var(--c); }
+.rule-card .tier em { font-style: normal; font-size: 11px; font-weight: 650; color: #fff; background: var(--c); border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+.rule-card li p { font-size: 13px; line-height: 1.55; margin-top: 2px; }
+.rule-card > a { margin-top: auto; padding-top: 4px; font-size: 13px; font-weight: 600; color: var(--link); }
+
 /* ---------- When to go out ---------- */
 .hours-panel { margin-bottom: 24px; }
 .hours-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px 28px; padding: 0 22px 8px; }
@@ -490,6 +504,7 @@ body.dark .island-map { color: #6f8f7d; }
   /* Phones: one card per city instead of a wide table. */
   .escape-table-wrap { padding: 0 16px 8px; }
   .hours-days, .purifier-body { padding: 0 16px 8px; }
+  .rules-grid { padding: 0 16px 16px; }
   .hours-days { grid-template-columns: 1fr; }
   .purifier-tips { margin: 8px 16px 16px; }
   .hour-strip { gap: 2px; }

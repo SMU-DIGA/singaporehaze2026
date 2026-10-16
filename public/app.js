@@ -1,5 +1,6 @@
 import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks, pm25Band, bestWindow, cadrNeeded, cleaningTime } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t, list } from './locale.mjs';
+import { rules, TIERS, tierOf, checked as rulesChecked } from './rules.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
@@ -268,7 +269,32 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
+
+// Official measures: which PSI band each agency's rules are in, now and (for forecast-based ones) tomorrow.
+function renderRules() {
+  const pv = validValues(readings(state.data, 'psi'));
+  const now = pv.length ? Math.max(...pv) : NaN;
+  const f = state.data?.forecast, range = f?.official || f?.psi;
+  const nowTier = Number.isFinite(now) ? tierOf(now) : -1;
+  // A forecast range can straddle two bands; mark every band it touches.
+  const tomorrowTiers = range ? TIERS.map((tier, i) => (range.high >= tier.min && range.low <= tier.max ? i : -1)).filter(i => i >= 0) : [];
+  const forecastText = range ? `PSI ${range.low}–${range.high}` : '—';
+  $('#rules-sub').textContent = t('rulSub', { now: Number.isFinite(now) ? `PSI ${now}` : '—', forecast: forecastText });
+  $('#rules-note').textContent = t('rulNote', { date: fmt(`${rulesChecked}T12:00:00+08:00`, { year: 'numeric', hour: undefined, minute: undefined }) });
+  const bandName = i => { const b = bandOf(TIERS[i].min); return `${b.label} ${TIERS[i].max === Infinity ? `>${TIERS[i].min - 1}` : `${TIERS[i].min}–${TIERS[i].max}`}`; };
+  $('#rules-grid').innerHTML = rules.map(rule => {
+    const text = rule[getLanguage()] || rule.zh;
+    const basis = rule.basis === 'forecast' ? `${t('rulForecast')} · ${forecastText}` : `${t('rulReading')} · ${Number.isFinite(now) ? `PSI ${now}` : '—'}`;
+    const rows = TIERS.map((tier, i) => {
+      const active = rule.basis === 'forecast' ? tomorrowTiers.includes(i) : nowTier === i;
+      const tag = active ? `<em>${e(t(rule.basis === 'forecast' ? 'rulTomorrow' : 'rulNow'))}</em>` : '';
+      const b = bandOf(tier.min);
+      return `<li class="${active ? 'active' : ''}" style="--c:${b.color}"><span class="tier">${e(bandName(i))}${tag}</span><p>${e(text.tiers[i] || t('rulNone'))}</p></li>`;
+    }).join('');
+    return `<article class="rule-card"><h3>${e(text.agency)}</h3><p class="rule-basis">${e(basis)}</p><ul>${rows}</ul><a href="${e(rule.url)}" target="_blank" rel="noopener noreferrer">${e(t('rulSource'))} ↗</a></article>`;
+  }).join('');
+}
 
 // When to go out: bias-corrected hourly PM2.5 for one region, today and tomorrow.
 const hoursRegion = () => state.hoursRegion || (state.place ? nearestRegion(state.place.lat, state.place.lon).id : state.region !== 'all' ? state.region : 'central');
@@ -542,7 +568,7 @@ $('#news-search').addEventListener('input', ev => { state.query = ev.target.valu
 $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews(); });
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
-$$('#overview,#forecast,#hours,#distribution,#purifier,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
+$$('#overview,#forecast,#hours,#rules,#distribution,#purifier,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
 // New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });

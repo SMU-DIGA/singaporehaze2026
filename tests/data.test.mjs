@@ -98,3 +98,14 @@ test('air cleaner sizing matches the EPA chart', () => {
   assert.equal(t.minutes90, 14);
   assert.equal(cleaningTime(0, 12), null);
 });
+test('official measures: bands and complete bilingual rules', async () => {
+  const { rules, TIERS, tierOf } = await import('../public/rules.mjs');
+  for (const [psi, tier] of [[100, -1], [101, 0], [200, 0], [201, 1], [300, 1], [301, 2], [450, 2]]) assert.equal(tierOf(psi), tier);
+  for (const rule of rules) {
+    assert.match(rule.url, /^https:\/\/www\.[a-z.]+\.gov\.sg\//);
+    assert.ok(['forecast', 'reading'].includes(rule.basis));
+    for (const lang of ['zh', 'en']) assert.equal(rule[lang].tiers.length, TIERS.length);
+    // A rule exists in both languages or in neither.
+    rule.zh.tiers.forEach((text, i) => assert.equal(text === null, rule.en.tiers[i] === null));
+  }
+});

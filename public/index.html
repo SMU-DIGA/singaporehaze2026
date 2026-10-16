@@ -18,6 +18,7 @@
     <nav data-i18n-attr="aria-label:navLabel" aria-label="主导航">
       <a class="active" href="#overview"><span data-icon="dashboard"></span><span data-i18n="navOverview">空气概览</span></a>
       <a href="#forecast"><span data-icon="forecast"></span><span data-i18n="navForecast">明日预测</span></a>
+      <a href="#rules"><span data-icon="info"></span><span data-i18n="navRules">官方措施</span></a>
       <a href="#distribution"><span data-icon="map"></span><span data-i18n="navMap">五区分布</span></a>
       <a href="#resources"><span data-icon="mask"></span><span data-i18n="navResources">防霾资源</span></a>
       <a href="#escape"><span data-icon="plane"></span><span data-i18n="navEscape">周边城市</span></a>
@@ -115,6 +116,14 @@
         <div class="hours-days" id="hours-days"></div>
         <div class="hours-legend" id="hours-legend"></div>
         <div class="panel-foot"><span data-i18n="hrsNote">CAMS 大气模式的逐小时预测，已按近 48 小时 NEA 实测校正，仅供参考；出门前请看 NEA 最新的 1 小时 PM2.5。建议按 NEA 的 1 小时 PM2.5 分级给出。</span></div>
+      </section>
+
+      <section class="panel rules-panel" id="rules">
+        <div class="panel-head">
+          <div><h2><span class="heading-icon" data-icon="info"></span><span data-i18n="rulTitle">学校、工作和设施的官方措施</span></h2><p id="rules-sub"></p></div>
+        </div>
+        <div class="rules-grid" id="rules-grid"></div>
+        <div class="panel-foot"><span id="rules-note"></span></div>
       </section>
 
       <div class="visual-grid">
