@@ -1,0 +1,44 @@
+name: Update haze data every 3 hours
+on:
+  schedule:
+    # 00:17, 03:17, 06:17, 09:17, 12:17, 15:17, 18:17, 21:17 SGT
+    - cron: '17 1-23/3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ['public/data/**', 'README.md']
+permissions:
+  contents: write
+concurrency:
+  group: haze-data
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Aggregate official readings, advisories and news
+        id: refresh
+        continue-on-error: true
+        env:
+          DATA_GOV_SG_API_KEY: ${{ secrets.DATA_GOV_SG_API_KEY }}
+        run: python3 scripts/update_data.py
+      - name: Test data pipeline and dashboard logic
+        run: |
+          node --test tests/*.test.mjs
+          python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Commit refreshed snapshot
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data/latest.json
+          if ! git diff --staged --quiet; then
+            git commit -m "data: refresh Singapore haze snapshot"
+            git push origin HEAD:main
+          fi
+      - name: Report critical upstream failures
+        if: steps.refresh.outcome == 'failure'
+        run: exit 1

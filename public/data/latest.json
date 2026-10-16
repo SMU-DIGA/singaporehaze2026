@@ -1,0 +1,1508 @@
+{
+  "psi": {
+    "date": "2026-10-16",
+    "updatedTimestamp": "2026-10-16T10:00:35+08:00",
+    "timestamp": "2026-10-16T10:00:00+08:00",
+    "readings": {
+      "psi_twenty_four_hourly": {
+        "north": 150,
+        "south": 183,
+        "west": 201,
+        "east": 202,
+        "central": 226
+      },
+      "no2_one_hour_max": {
+        "north": 21,
+        "south": 36,
+        "west": 39,
+        "east": 37,
+        "central": 41
+      },
+      "pm10_twenty_four_hourly": {
+        "north": 131,
+        "south": 168,
+        "west": 183,
+        "east": 194,
+        "central": 212
+      },
+      "pm25_twenty_four_hourly": {
+        "north": 102,
+        "south": 134,
+        "west": 151,
+        "east": 151,
+        "central": 175
+      },
+      "so2_twenty_four_hourly": {
+        "north": 7,
+        "south": 5,
+        "west": 7,
+        "east": 4,
+        "central": 7
+      },
+      "co_eight_hour_max": {
+        "north": 2,
+        "south": 2,
+        "west": 2,
+        "east": 2,
+        "central": 2
+      },
+      "o3_eight_hour_max": {
+        "north": 22,
+        "south": 7,
+        "west": 7,
+        "east": 9,
+        "central": 8
+      },
+      "co_sub_index": {
+        "north": 21,
+        "south": 19,
+        "west": 20,
+        "east": 19,
+        "central": 20
+      },
+      "o3_sub_index": {
+        "north": 9,
+        "south": 3,
+        "west": 3,
+        "east": 4,
+        "central": 4
+      },
+      "pm10_sub_index": {
+        "north": 91,
+        "south": 109,
+        "west": 117,
+        "east": 122,
+        "central": 132
+      },
+      "pm25_sub_index": {
+        "north": 150,
+        "south": 183,
+        "west": 201,
+        "east": 202,
+        "central": 226
+      },
+      "so2_sub_index": {
+        "north": 4,
+        "south": 3,
+        "west": 4,
+        "east": 3,
+        "central": 4
+      }
+    }
+  },
+  "pm25": {
+    "date": "2026-10-16",
+    "updatedTimestamp": "2026-10-16T10:00:35+08:00",
+    "timestamp": "2026-10-16T10:00:00+08:00",
+    "readings": {
+      "pm25_one_hourly": {
+        "north": 96,
+        "south": 121,
+        "west": 158,
+        "east": 141,
+        "central": 164
+      }
+    }
+  },
+  "news": [
+    {
+      "title": "haze: Air quality very unhealthy in central region; PM2.5 reading high",
+      "url": "https://www.channelnewsasia.com/singapore/haze-oct-16-psi-pm-25-6459416",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Assoc Prof Eugene Tan on enforcement under the Transboundary Haze Pollution Act",
+      "url": "https://www.channelnewsasia.com/watch/assoc-prof-eugene-tan-enforcement-under-transboundary-haze-pollution-act-6463031",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "looking into which companies responsible for haze-causing fires, may take legal action: PM Wong",
+      "url": "https://www.channelnewsasia.com/singapore/haze-singapore-indonesia-companies-fires-legal-action-pm-wong-6463101",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "CNA Explains: Can cloud seeding help clear Singapore's haze?",
+      "url": "https://www.channelnewsasia.com/watch/cna-explains-can-cloud-seeding-help-clear-singapores-haze-6462926",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Clinics in Singapore see uptick in patients with haze-related conditions",
+      "url": "https://www.channelnewsasia.com/watch/clinics-in-singapore-see-uptick-in-patients-haze-related-conditions-6462826",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "A hive of activity at CCs as residents collect free masks, seek respite in haze shelters",
+      "url": "https://www.channelnewsasia.com/watch/hive-activity-ccs-residents-collect-free-masks-seek-respite-in-haze-shelters-6462866",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Haze in Singapore: Retailers impose purchase limits on masks, pledge not to raise prices",
+      "url": "https://www.channelnewsasia.com/watch/haze-in-singapore-retailers-impose-purchase-limits-masks-pledge-not-raise-prices-6462856",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "CNA Explains: How Indonesia is using dry ice to break down haze",
+      "url": "https://www.channelnewsasia.com/watch/cna-explains-how-indonesia-using-dry-ice-break-down-haze-6462376",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Smooth for some, frustrating for others as N95 mask distribution gets underway amid haze in Singapore",
+      "url": "https://www.channelnewsasia.com/singapore/n95-masks-distribution-vending-machines-community-clubs-haze-6462106",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Prabowo approves foreign help to tackle fires causing regional haze, says Indonesian foreign minister",
+      "url": "https://www.channelnewsasia.com/asia/indonesia-haze-prabowo-approves-foreign-help-6462316",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "regional"
+    },
+    {
+      "title": "Indonesia to use dry ice to clear haze from forest fires",
+      "url": "https://www.channelnewsasia.com/asia/indonesia-test-dry-ice-seeding-combat-haze-air-quality-visibility-6461586",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "regional"
+    },
+    {
+      "title": "'Very dangerous': Timor-Leste shuts schools over Indonesia haze",
+      "url": "https://www.channelnewsasia.com/asia/timor-leste-shuts-schools-indonesia-haze-6461526",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "regional"
+    },
+    {
+      "title": "BigBang concert organisers issue haze advisory ahead of weekend shows in Singapore",
+      "url": "https://www.channelnewsasia.com/entertainment/bigbang-singapore-concert-haze-advisory-6461461",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Malaysia raises threshold for haze-related school closures",
+      "url": "https://www.channelnewsasia.com/asia/malaysia-raises-limits-school-closure-haze-api-6460991",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "regional"
+    }
+  ],
+  "history": {
+    "psi": [
+      {
+        "timestamp": "2026-10-14T00:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 144,
+          "north": 105,
+          "south": 126,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-14T01:00:00+08:00",
+        "values": {
+          "central": 147,
+          "east": 144,
+          "north": 105,
+          "south": 125,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-14T02:00:00+08:00",
+        "values": {
+          "central": 146,
+          "east": 143,
+          "north": 105,
+          "south": 125,
+          "west": 150
+        }
+      },
+      {
+        "timestamp": "2026-10-14T03:00:00+08:00",
+        "values": {
+          "central": 145,
+          "east": 143,
+          "north": 106,
+          "south": 125,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-14T04:00:00+08:00",
+        "values": {
+          "central": 144,
+          "east": 143,
+          "north": 106,
+          "south": 124,
+          "west": 147
+        }
+      },
+      {
+        "timestamp": "2026-10-14T05:00:00+08:00",
+        "values": {
+          "central": 143,
+          "east": 143,
+          "north": 106,
+          "south": 123,
+          "west": 146
+        }
+      },
+      {
+        "timestamp": "2026-10-14T06:00:00+08:00",
+        "values": {
+          "central": 143,
+          "east": 142,
+          "north": 107,
+          "south": 123,
+          "west": 145
+        }
+      },
+      {
+        "timestamp": "2026-10-14T07:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 142,
+          "north": 107,
+          "south": 122,
+          "west": 145
+        }
+      },
+      {
+        "timestamp": "2026-10-14T08:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 141,
+          "north": 107,
+          "south": 122,
+          "west": 145
+        }
+      },
+      {
+        "timestamp": "2026-10-14T09:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 139,
+          "north": 106,
+          "south": 124,
+          "west": 144
+        }
+      },
+      {
+        "timestamp": "2026-10-14T10:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 139,
+          "north": 106,
+          "south": 125,
+          "west": 144
+        }
+      },
+      {
+        "timestamp": "2026-10-14T11:00:00+08:00",
+        "values": {
+          "central": 141,
+          "east": 140,
+          "north": 106,
+          "south": 125,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-14T12:00:00+08:00",
+        "values": {
+          "central": 142,
+          "east": 142,
+          "north": 106,
+          "south": 127,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-14T13:00:00+08:00",
+        "values": {
+          "central": 144,
+          "east": 145,
+          "north": 107,
+          "south": 131,
+          "west": 146
+        }
+      },
+      {
+        "timestamp": "2026-10-14T14:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 149,
+          "north": 110,
+          "south": 134,
+          "west": 153
+        }
+      },
+      {
+        "timestamp": "2026-10-14T15:00:00+08:00",
+        "values": {
+          "central": 154,
+          "east": 154,
+          "north": 114,
+          "south": 138,
+          "west": 160
+        }
+      },
+      {
+        "timestamp": "2026-10-14T16:00:00+08:00",
+        "values": {
+          "central": 160,
+          "east": 159,
+          "north": 118,
+          "south": 143,
+          "west": 168
+        }
+      },
+      {
+        "timestamp": "2026-10-14T17:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 164,
+          "north": 121,
+          "south": 148,
+          "west": 175
+        }
+      },
+      {
+        "timestamp": "2026-10-14T18:00:00+08:00",
+        "values": {
+          "central": 172,
+          "east": 169,
+          "north": 124,
+          "south": 152,
+          "west": 182
+        }
+      },
+      {
+        "timestamp": "2026-10-14T19:00:00+08:00",
+        "values": {
+          "central": 178,
+          "east": 172,
+          "north": 125,
+          "south": 157,
+          "west": 190
+        }
+      },
+      {
+        "timestamp": "2026-10-14T20:00:00+08:00",
+        "values": {
+          "central": 183,
+          "east": 173,
+          "north": 126,
+          "south": 159,
+          "west": 197
+        }
+      },
+      {
+        "timestamp": "2026-10-14T21:00:00+08:00",
+        "values": {
+          "central": 184,
+          "east": 174,
+          "north": 127,
+          "south": 161,
+          "west": 203
+        }
+      },
+      {
+        "timestamp": "2026-10-14T22:00:00+08:00",
+        "values": {
+          "central": 184,
+          "east": 174,
+          "north": 127,
+          "south": 161,
+          "west": 204
+        }
+      },
+      {
+        "timestamp": "2026-10-14T23:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 174,
+          "north": 127,
+          "south": 160,
+          "west": 205
+        }
+      },
+      {
+        "timestamp": "2026-10-15T00:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 174,
+          "north": 127,
+          "south": 160,
+          "west": 206
+        }
+      },
+      {
+        "timestamp": "2026-10-15T01:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 173,
+          "north": 127,
+          "south": 160,
+          "west": 207
+        }
+      },
+      {
+        "timestamp": "2026-10-15T02:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 173,
+          "north": 127,
+          "south": 159,
+          "west": 207
+        }
+      },
+      {
+        "timestamp": "2026-10-15T03:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 172,
+          "north": 125,
+          "south": 158,
+          "west": 207
+        }
+      },
+      {
+        "timestamp": "2026-10-15T04:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 171,
+          "north": 125,
+          "south": 158,
+          "west": 206
+        }
+      },
+      {
+        "timestamp": "2026-10-15T05:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 171,
+          "north": 125,
+          "south": 157,
+          "west": 206
+        }
+      },
+      {
+        "timestamp": "2026-10-15T06:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 171,
+          "north": 125,
+          "south": 157,
+          "west": 206
+        }
+      },
+      {
+        "timestamp": "2026-10-15T07:00:00+08:00",
+        "values": {
+          "central": 184,
+          "east": 170,
+          "north": 124,
+          "south": 157,
+          "west": 206
+        }
+      },
+      {
+        "timestamp": "2026-10-15T08:00:00+08:00",
+        "values": {
+          "central": 184,
+          "east": 170,
+          "north": 125,
+          "south": 157,
+          "west": 207
+        }
+      },
+      {
+        "timestamp": "2026-10-15T09:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 171,
+          "north": 125,
+          "south": 158,
+          "west": 208
+        }
+      },
+      {
+        "timestamp": "2026-10-15T10:00:00+08:00",
+        "values": {
+          "central": 189,
+          "east": 171,
+          "north": 126,
+          "south": 161,
+          "west": 209
+        }
+      },
+      {
+        "timestamp": "2026-10-15T11:00:00+08:00",
+        "values": {
+          "central": 193,
+          "east": 170,
+          "north": 127,
+          "south": 163,
+          "west": 211
+        }
+      },
+      {
+        "timestamp": "2026-10-15T12:00:00+08:00",
+        "values": {
+          "central": 194,
+          "east": 170,
+          "north": 128,
+          "south": 163,
+          "west": 212
+        }
+      },
+      {
+        "timestamp": "2026-10-15T13:00:00+08:00",
+        "values": {
+          "central": 194,
+          "east": 170,
+          "north": 128,
+          "south": 162,
+          "west": 210
+        }
+      },
+      {
+        "timestamp": "2026-10-15T14:00:00+08:00",
+        "values": {
+          "central": 192,
+          "east": 168,
+          "north": 127,
+          "south": 160,
+          "west": 203
+        }
+      },
+      {
+        "timestamp": "2026-10-15T15:00:00+08:00",
+        "values": {
+          "central": 188,
+          "east": 165,
+          "north": 125,
+          "south": 158,
+          "west": 196
+        }
+      },
+      {
+        "timestamp": "2026-10-15T16:00:00+08:00",
+        "values": {
+          "central": 187,
+          "east": 163,
+          "north": 123,
+          "south": 156,
+          "west": 192
+        }
+      },
+      {
+        "timestamp": "2026-10-15T17:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 161,
+          "north": 122,
+          "south": 156,
+          "west": 188
+        }
+      },
+      {
+        "timestamp": "2026-10-15T18:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 160,
+          "north": 121,
+          "south": 157,
+          "west": 184
+        }
+      },
+      {
+        "timestamp": "2026-10-15T19:00:00+08:00",
+        "values": {
+          "central": 185,
+          "east": 160,
+          "north": 121,
+          "south": 157,
+          "west": 180
+        }
+      },
+      {
+        "timestamp": "2026-10-15T20:00:00+08:00",
+        "values": {
+          "central": 186,
+          "east": 163,
+          "north": 123,
+          "south": 157,
+          "west": 175
+        }
+      },
+      {
+        "timestamp": "2026-10-15T21:00:00+08:00",
+        "values": {
+          "central": 190,
+          "east": 167,
+          "north": 125,
+          "south": 159,
+          "west": 173
+        }
+      },
+      {
+        "timestamp": "2026-10-15T22:00:00+08:00",
+        "values": {
+          "central": 194,
+          "east": 170,
+          "north": 128,
+          "south": 162,
+          "west": 174
+        }
+      },
+      {
+        "timestamp": "2026-10-15T23:00:00+08:00",
+        "values": {
+          "central": 198,
+          "east": 174,
+          "north": 130,
+          "south": 165,
+          "west": 176
+        }
+      },
+      {
+        "timestamp": "2026-10-16T00:00:00+08:00",
+        "values": {
+          "central": 203,
+          "east": 176,
+          "north": 132,
+          "south": 167,
+          "west": 178
+        }
+      },
+      {
+        "timestamp": "2026-10-16T01:00:00+08:00",
+        "values": {
+          "central": 206,
+          "east": 178,
+          "north": 134,
+          "south": 168,
+          "west": 180
+        }
+      },
+      {
+        "timestamp": "2026-10-16T02:00:00+08:00",
+        "values": {
+          "central": 210,
+          "east": 180,
+          "north": 136,
+          "south": 169,
+          "west": 182
+        }
+      },
+      {
+        "timestamp": "2026-10-16T03:00:00+08:00",
+        "values": {
+          "central": 213,
+          "east": 183,
+          "north": 139,
+          "south": 171,
+          "west": 184
+        }
+      },
+      {
+        "timestamp": "2026-10-16T04:00:00+08:00",
+        "values": {
+          "central": 216,
+          "east": 186,
+          "north": 141,
+          "south": 173,
+          "west": 187
+        }
+      },
+      {
+        "timestamp": "2026-10-16T05:00:00+08:00",
+        "values": {
+          "central": 219,
+          "east": 189,
+          "north": 143,
+          "south": 176,
+          "west": 190
+        }
+      },
+      {
+        "timestamp": "2026-10-16T06:00:00+08:00",
+        "values": {
+          "central": 221,
+          "east": 192,
+          "north": 145,
+          "south": 178,
+          "west": 193
+        }
+      },
+      {
+        "timestamp": "2026-10-16T07:00:00+08:00",
+        "values": {
+          "central": 224,
+          "east": 195,
+          "north": 146,
+          "south": 180,
+          "west": 195
+        }
+      },
+      {
+        "timestamp": "2026-10-16T08:00:00+08:00",
+        "values": {
+          "north": 148,
+          "south": 183,
+          "west": 197,
+          "east": 198,
+          "central": 226
+        }
+      },
+      {
+        "timestamp": "2026-10-16T09:00:00+08:00",
+        "values": {
+          "north": 149,
+          "south": 183,
+          "west": 199,
+          "east": 200,
+          "central": 227
+        }
+      },
+      {
+        "timestamp": "2026-10-16T10:00:00+08:00",
+        "values": {
+          "north": 150,
+          "south": 183,
+          "west": 201,
+          "east": 202,
+          "central": 226
+        }
+      }
+    ],
+    "pm25": [
+      {
+        "timestamp": "2026-10-14T00:00:00+08:00",
+        "values": {
+          "central": 83,
+          "east": 98,
+          "north": 61,
+          "south": 91,
+          "west": 95
+        }
+      },
+      {
+        "timestamp": "2026-10-14T01:00:00+08:00",
+        "values": {
+          "central": 88,
+          "east": 104,
+          "north": 67,
+          "south": 100,
+          "west": 87
+        }
+      },
+      {
+        "timestamp": "2026-10-14T02:00:00+08:00",
+        "values": {
+          "central": 92,
+          "east": 99,
+          "north": 68,
+          "south": 103,
+          "west": 93
+        }
+      },
+      {
+        "timestamp": "2026-10-14T03:00:00+08:00",
+        "values": {
+          "central": 94,
+          "east": 101,
+          "north": 71,
+          "south": 89,
+          "west": 93
+        }
+      },
+      {
+        "timestamp": "2026-10-14T04:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 98,
+          "north": 69,
+          "south": 90,
+          "west": 81
+        }
+      },
+      {
+        "timestamp": "2026-10-14T05:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 90,
+          "north": 54,
+          "south": 67,
+          "west": 84
+        }
+      },
+      {
+        "timestamp": "2026-10-14T06:00:00+08:00",
+        "values": {
+          "central": 96,
+          "east": 91,
+          "north": 60,
+          "south": 74,
+          "west": 82
+        }
+      },
+      {
+        "timestamp": "2026-10-14T07:00:00+08:00",
+        "values": {
+          "central": 95,
+          "east": 93,
+          "north": 59,
+          "south": 77,
+          "west": 86
+        }
+      },
+      {
+        "timestamp": "2026-10-14T08:00:00+08:00",
+        "values": {
+          "central": 96,
+          "east": 80,
+          "north": 57,
+          "south": 69,
+          "west": 94
+        }
+      },
+      {
+        "timestamp": "2026-10-14T09:00:00+08:00",
+        "values": {
+          "central": 98,
+          "east": 78,
+          "north": 59,
+          "south": 83,
+          "west": 74
+        }
+      },
+      {
+        "timestamp": "2026-10-14T10:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 104,
+          "north": 60,
+          "south": 77,
+          "west": 100
+        }
+      },
+      {
+        "timestamp": "2026-10-14T11:00:00+08:00",
+        "values": {
+          "central": 107,
+          "east": 126,
+          "north": 61,
+          "south": 92,
+          "west": 109
+        }
+      },
+      {
+        "timestamp": "2026-10-14T12:00:00+08:00",
+        "values": {
+          "central": 137,
+          "east": 137,
+          "north": 72,
+          "south": 137,
+          "west": 111
+        }
+      },
+      {
+        "timestamp": "2026-10-14T13:00:00+08:00",
+        "values": {
+          "central": 139,
+          "east": 160,
+          "north": 88,
+          "south": 173,
+          "west": 195
+        }
+      },
+      {
+        "timestamp": "2026-10-14T14:00:00+08:00",
+        "values": {
+          "central": 206,
+          "east": 195,
+          "north": 125,
+          "south": 159,
+          "west": 284
+        }
+      },
+      {
+        "timestamp": "2026-10-14T15:00:00+08:00",
+        "values": {
+          "central": 218,
+          "east": 208,
+          "north": 140,
+          "south": 177,
+          "west": 288
+        }
+      },
+      {
+        "timestamp": "2026-10-14T16:00:00+08:00",
+        "values": {
+          "central": 219,
+          "east": 202,
+          "north": 139,
+          "south": 190,
+          "west": 251
+        }
+      },
+      {
+        "timestamp": "2026-10-14T17:00:00+08:00",
+        "values": {
+          "central": 217,
+          "east": 197,
+          "north": 133,
+          "south": 159,
+          "west": 234
+        }
+      },
+      {
+        "timestamp": "2026-10-14T18:00:00+08:00",
+        "values": {
+          "central": 226,
+          "east": 190,
+          "north": 111,
+          "south": 148,
+          "west": 257
+        }
+      },
+      {
+        "timestamp": "2026-10-14T19:00:00+08:00",
+        "values": {
+          "central": 229,
+          "east": 164,
+          "north": 96,
+          "south": 166,
+          "west": 269
+        }
+      },
+      {
+        "timestamp": "2026-10-14T20:00:00+08:00",
+        "values": {
+          "central": 203,
+          "east": 113,
+          "north": 79,
+          "south": 129,
+          "west": 274
+        }
+      },
+      {
+        "timestamp": "2026-10-14T21:00:00+08:00",
+        "values": {
+          "central": 125,
+          "east": 97,
+          "north": 72,
+          "south": 88,
+          "west": 203
+        }
+      },
+      {
+        "timestamp": "2026-10-14T22:00:00+08:00",
+        "values": {
+          "central": 105,
+          "east": 89,
+          "north": 65,
+          "south": 88,
+          "west": 146
+        }
+      },
+      {
+        "timestamp": "2026-10-14T23:00:00+08:00",
+        "values": {
+          "central": 101,
+          "east": 92,
+          "north": 65,
+          "south": 74,
+          "west": 124
+        }
+      },
+      {
+        "timestamp": "2026-10-15T00:00:00+08:00",
+        "values": {
+          "central": 98,
+          "east": 98,
+          "north": 63,
+          "south": 88,
+          "west": 113
+        }
+      },
+      {
+        "timestamp": "2026-10-15T01:00:00+08:00",
+        "values": {
+          "central": 93,
+          "east": 94,
+          "north": 63,
+          "south": 89,
+          "west": 104
+        }
+      },
+      {
+        "timestamp": "2026-10-15T02:00:00+08:00",
+        "values": {
+          "central": 85,
+          "east": 89,
+          "north": 62,
+          "south": 81,
+          "west": 97
+        }
+      },
+      {
+        "timestamp": "2026-10-15T03:00:00+08:00",
+        "values": {
+          "central": 88,
+          "east": 80,
+          "north": 42,
+          "south": 77,
+          "west": 86
+        }
+      },
+      {
+        "timestamp": "2026-10-15T04:00:00+08:00",
+        "values": {
+          "central": 94,
+          "east": 78,
+          "north": 56,
+          "south": 80,
+          "west": 76
+        }
+      },
+      {
+        "timestamp": "2026-10-15T05:00:00+08:00",
+        "values": {
+          "central": 91,
+          "east": 81,
+          "north": 60,
+          "south": 58,
+          "west": 82
+        }
+      },
+      {
+        "timestamp": "2026-10-15T06:00:00+08:00",
+        "values": {
+          "central": 89,
+          "east": 86,
+          "north": 52,
+          "south": 64,
+          "west": 83
+        }
+      },
+      {
+        "timestamp": "2026-10-15T07:00:00+08:00",
+        "values": {
+          "central": 82,
+          "east": 83,
+          "north": 54,
+          "south": 67,
+          "west": 84
+        }
+      },
+      {
+        "timestamp": "2026-10-15T08:00:00+08:00",
+        "values": {
+          "central": 84,
+          "east": 77,
+          "north": 60,
+          "south": 80,
+          "west": 99
+        }
+      },
+      {
+        "timestamp": "2026-10-15T09:00:00+08:00",
+        "values": {
+          "central": 133,
+          "east": 92,
+          "north": 67,
+          "south": 107,
+          "west": 104
+        }
+      },
+      {
+        "timestamp": "2026-10-15T10:00:00+08:00",
+        "values": {
+          "central": 197,
+          "east": 114,
+          "north": 76,
+          "south": 135,
+          "west": 130
+        }
+      },
+      {
+        "timestamp": "2026-10-15T11:00:00+08:00",
+        "values": {
+          "central": 182,
+          "east": 108,
+          "north": 89,
+          "south": 156,
+          "west": 161
+        }
+      },
+      {
+        "timestamp": "2026-10-15T12:00:00+08:00",
+        "values": {
+          "central": 161,
+          "east": 137,
+          "north": 99,
+          "south": 138,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-15T13:00:00+08:00",
+        "values": {
+          "central": 152,
+          "east": 146,
+          "north": 98,
+          "south": 134,
+          "west": 139
+        }
+      },
+      {
+        "timestamp": "2026-10-15T14:00:00+08:00",
+        "values": {
+          "central": 144,
+          "east": 156,
+          "north": 93,
+          "south": 123,
+          "west": 121
+        }
+      },
+      {
+        "timestamp": "2026-10-15T15:00:00+08:00",
+        "values": {
+          "central": 148,
+          "east": 145,
+          "north": 99,
+          "south": 129,
+          "west": 142
+        }
+      },
+      {
+        "timestamp": "2026-10-15T16:00:00+08:00",
+        "values": {
+          "central": 181,
+          "east": 147,
+          "north": 95,
+          "south": 140,
+          "west": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-15T17:00:00+08:00",
+        "values": {
+          "central": 205,
+          "east": 161,
+          "north": 102,
+          "south": 157,
+          "west": 155
+        }
+      },
+      {
+        "timestamp": "2026-10-15T18:00:00+08:00",
+        "values": {
+          "central": 208,
+          "east": 160,
+          "north": 95,
+          "south": 173,
+          "west": 163
+        }
+      },
+      {
+        "timestamp": "2026-10-15T19:00:00+08:00",
+        "values": {
+          "central": 221,
+          "east": 176,
+          "north": 98,
+          "south": 157,
+          "west": 166
+        }
+      },
+      {
+        "timestamp": "2026-10-15T20:00:00+08:00",
+        "values": {
+          "central": 221,
+          "east": 175,
+          "north": 111,
+          "south": 140,
+          "west": 168
+        }
+      },
+      {
+        "timestamp": "2026-10-15T21:00:00+08:00",
+        "values": {
+          "central": 217,
+          "east": 182,
+          "north": 125,
+          "south": 144,
+          "west": 156
+        }
+      },
+      {
+        "timestamp": "2026-10-15T22:00:00+08:00",
+        "values": {
+          "central": 207,
+          "east": 172,
+          "north": 128,
+          "south": 155,
+          "west": 160
+        }
+      },
+      {
+        "timestamp": "2026-10-15T23:00:00+08:00",
+        "values": {
+          "central": 194,
+          "east": 166,
+          "north": 118,
+          "south": 133,
+          "west": 169
+        }
+      },
+      {
+        "timestamp": "2026-10-16T00:00:00+08:00",
+        "values": {
+          "central": 191,
+          "east": 150,
+          "north": 101,
+          "south": 128,
+          "west": 159
+        }
+      },
+      {
+        "timestamp": "2026-10-16T01:00:00+08:00",
+        "values": {
+          "central": 170,
+          "east": 139,
+          "north": 107,
+          "south": 112,
+          "west": 152
+        }
+      },
+      {
+        "timestamp": "2026-10-16T02:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 144,
+          "north": 111,
+          "south": 119,
+          "west": 145
+        }
+      },
+      {
+        "timestamp": "2026-10-16T03:00:00+08:00",
+        "values": {
+          "central": 166,
+          "east": 141,
+          "north": 105,
+          "south": 123,
+          "west": 141
+        }
+      },
+      {
+        "timestamp": "2026-10-16T04:00:00+08:00",
+        "values": {
+          "central": 160,
+          "east": 140,
+          "north": 107,
+          "south": 110,
+          "west": 134
+        }
+      },
+      {
+        "timestamp": "2026-10-16T05:00:00+08:00",
+        "values": {
+          "central": 161,
+          "east": 160,
+          "north": 101,
+          "south": 127,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-16T06:00:00+08:00",
+        "values": {
+          "central": 150,
+          "east": 160,
+          "north": 99,
+          "south": 113,
+          "west": 148
+        }
+      },
+      {
+        "timestamp": "2026-10-16T07:00:00+08:00",
+        "values": {
+          "central": 149,
+          "east": 146,
+          "north": 93,
+          "south": 125,
+          "west": 143
+        }
+      },
+      {
+        "timestamp": "2026-10-16T08:00:00+08:00",
+        "values": {
+          "north": 96,
+          "south": 135,
+          "west": 146,
+          "east": 143,
+          "central": 142
+        }
+      },
+      {
+        "timestamp": "2026-10-16T09:00:00+08:00",
+        "values": {
+          "north": 92,
+          "south": 119,
+          "west": 149,
+          "east": 135,
+          "central": 151
+        }
+      },
+      {
+        "timestamp": "2026-10-16T10:00:00+08:00",
+        "values": {
+          "north": 96,
+          "south": 121,
+          "west": 158,
+          "east": 141,
+          "central": 164
+        }
+      }
+    ]
+  },
+  "generatedAt": "2026-10-16T10:01:05.191088+08:00",
+  "nextUpdateAt": "2026-10-16T12:17:00+08:00",
+  "sources": {
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "cna": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_pm25_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_psi_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_psi_2026-10-14": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_pm25_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "history_pm25_2026-10-14": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "psi": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    },
+    "pm25": {
+      "ok": true,
+      "checkedAt": "2026-10-16T10:01:05.191088+08:00"
+    }
+  },
+  "errors": [],
+  "schemaVersion": 1,
+  "advisories": [
+    {
+      "title": "Haze Situation Update (15 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-15-october-2026",
+      "source": "NEA",
+      "publishedAt": "15 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (14 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-14-october-2026",
+      "source": "NEA",
+      "publishedAt": "14 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (13 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-13-october-2026",
+      "source": "NEA",
+      "publishedAt": "13 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (12 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-12-october-2026",
+      "source": "NEA",
+      "publishedAt": "12 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (11 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-11-october-2026",
+      "source": "NEA",
+      "publishedAt": "11 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (10 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-10-october-2026",
+      "source": "NEA",
+      "publishedAt": "10 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Singapore Ready To Step Up Haze Response",
+      "url": "https://www.nea.gov.sg/media/news/news/index/singapore-ready-to-step-up-haze-response",
+      "source": "NEA",
+      "publishedAt": "9 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (9 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-9-october-2026",
+      "source": "NEA",
+      "publishedAt": "9 Oct 2026",
+      "category": "government"
+    },
+    {
+      "title": "Haze Situation Update (8 October 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-8-october-2026",
+      "source": "NEA",
+      "publishedAt": "8 Oct 2026",
+      "category": "government"
+    }
+  ]
+}
