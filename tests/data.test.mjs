@@ -36,3 +36,13 @@ test('band labels and advice are available in English', () => {
   assert.match(activity(201, 'chronic', 'en'), /Avoid outdoor activity/);
   assert.equal(band(120, 'psi', 'en').color, band(120).color);
 });
+test('AQI follows the US EPA PM2.5 table used by aqicn.org', async () => {
+  const { aqiFromPm25, readings: read, history } = await import('../public/lib.mjs');
+  for (const [c, aqi] of [[0, 0], [12, 50], [35.4, 100], [55.4, 150], [96, 172], [164, 214], [250.4, 300], [600, 500]]) assert.equal(aqiFromPm25(c), aqi);
+  assert.ok(Number.isNaN(aqiFromPm25(undefined)));
+  assert.equal(band(214, 'aqi').label, '重度污染');
+  assert.equal(band(120, 'aqi', 'en').label, 'Unhealthy for sensitive groups');
+  const data = { pm25: { readings: { pm25_one_hourly: { central: 164 } } }, history: { pm25: [{ timestamp: 't', values: { central: 96 } }] } };
+  assert.equal(read(data, 'aqi').central, 214);
+  assert.equal(history(data, 'aqi')[0].values.central, 172);
+});

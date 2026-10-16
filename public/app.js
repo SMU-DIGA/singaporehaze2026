@@ -1,4 +1,4 @@
-import { regions, band, readings, validValues, stale, safeUrl, escapeHtml as e, activity } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -19,6 +19,7 @@ const icons = {
   wind: '<path d="M3 8h12a3 3 0 1 0-3-3 M3 12h16a3 3 0 1 1-3 3 M3 16h5a3 3 0 1 1-3 3"/>',
   particles: '<circle cx="8" cy="8" r="3"/><circle cx="18" cy="6" r="2"/><circle cx="16" cy="17" r="4"/><circle cx="5" cy="17" r="2"/>',
   pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-6"/><circle cx="12" cy="18" r="1"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6 M12 7h.01"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
@@ -30,7 +31,10 @@ $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0
 const en = () => getLanguage() === 'en';
 const regionName = r => (en() ? r.en : r.zh);
 const bandOf = (value, metric = 'psi') => band(value, metric, getLanguage());
-const unit = metric => (metric === 'psi' ? 'PSI' : 'µg/m³');
+const unit = metric => ({ psi: 'PSI', pm25: 'µg/m³', aqi: 'AQI' })[metric];
+// AQI is derived from the PM2.5 readings, so it shares their observation time.
+const observedAt = metric => state.data?.[metric === 'aqi' ? 'pm25' : metric]?.timestamp;
+const metricName = metric => t({ psi: 'metricPsi', pm25: 'metricPm', aqi: 'metricAqi' }[metric]);
 const fmt = (date, options = {}) => {
   const d = new Date(date);
   return Number.isFinite(+d) ? new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false, ...options }).format(d) : t('timeUnknown');
@@ -62,12 +66,13 @@ function setBadge(id, value, metric) {
 }
 function renderSummary() {
   const d = state.data, psi = readings(d, 'psi'), pm = readings(d, 'pm25');
-  const pv = validValues(psi), mv = validValues(pm);
+  const pv = validValues(psi), mv = validValues(pm), av = validValues(readings(d, 'aqi'));
   const range = values => (values.length ? (Math.min(...values) === Math.max(...values) ? `${values[0]}` : `${Math.min(...values)}–${Math.max(...values)}`) : '—');
   $('#psi-range').innerHTML = `${range(pv)}<span class="unit">PSI</span>`;
   $('#pm-range').innerHTML = `${range(mv)}<span class="unit">µg/m³</span>`;
   const max = pv.length ? Math.max(...pv) : NaN;
-  setBadge('#psi-band', max, 'psi'); setBadge('#pm-band', mv.length ? Math.max(...mv) : NaN, 'pm25');
+  $('#aqi-range').innerHTML = `${range(av)}<span class="unit">AQI</span>`;
+  setBadge('#psi-band', max, 'psi'); setBadge('#pm-band', mv.length ? Math.max(...mv) : NaN, 'pm25'); setBadge('#aqi-band', av.length ? Math.max(...av) : NaN, 'aqi');
   const worst = regions.filter(r => Number.isFinite(psi[r.id])).sort((a, b) => psi[b.id] - psi[a.id])[0];
   $('#worst-region').textContent = worst ? regionName(worst) : t('noData');
   $('#worst-value').textContent = worst ? `PSI ${psi[worst.id]}` : '—';
@@ -77,7 +82,6 @@ function renderSummary() {
   $('#updated').textContent = t('collected', { time: sgt(fmt(d.generatedAt)) });
   const next = d.nextUpdateAt ? t('nextUpdate', { time: sgt(clock(d.nextUpdateAt)) }) : t('nextUpdateUnknown');
   $('#next-update').textContent = next; $('#sidebar-next').textContent = next;
-  $('#schedule-next').removeAttribute('data-i18n'); $('#schedule-next').textContent = next;
 
   $('#alert-title').removeAttribute('data-i18n'); $('#alert-text').removeAttribute('data-i18n');
   $('#alert').style.setProperty('--alert', bandOf(max).color);
@@ -96,13 +100,17 @@ function renderSummary() {
 }
 function renderMap() {
   const values = readings(state.data, state.metric);
-  const observed = state.data?.[state.metric]?.timestamp;
+  const observed = observedAt(state.metric);
   $('#map-observed').textContent = observed ? t('mapObserved', { time: sgt(fmt(observed)) }) : 'NEA';
   $('#map-markers').innerHTML = regions.map(r => {
     const value = values[r.id], b = bandOf(value, state.metric), shown = Number.isFinite(value) ? value : '—';
     return `<g class="marker${state.region === r.id ? ' active' : ''}" tabindex="0" role="button" aria-label="${e(t('regionAria', { region: regionName(r), value: shown, band: b.label }))}" data-region="${r.id}" transform="translate(${r.x} ${r.y})"><title>${e(regionName(r))}: ${shown} ${unit(state.metric)} · ${e(b.label)}</title><circle r="31" fill="${b.color}1f"/><circle r="25" fill="var(--panel)" stroke="${b.color}" stroke-width="2.5"/><text text-anchor="middle" y="7" fill="${b.color}" font-size="20" font-weight="700">${shown}</text><text class="region-label" text-anchor="middle" y="46" font-size="14" font-weight="600">${e(regionName(r))}</text></g>`;
   }).join('');
-  const limits = state.metric === 'psi' ? [[0, '0–50'], [51, '51–100'], [101, '101–200'], [201, '201–300'], [301, '>300']] : [[0, '0–55'], [56, '56–150'], [151, '151–250'], [251, '≥251']];
+  const limits = {
+    psi: [[0, '0–50'], [51, '51–100'], [101, '101–200'], [201, '201–300'], [301, '>300']],
+    pm25: [[0, '0–55'], [56, '56–150'], [151, '151–250'], [251, '≥251']],
+    aqi: [[0, '0–50'], [51, '51–100'], [101, '101–150'], [151, '151–200'], [201, '201–300'], [301, '>300']],
+  }[state.metric];
   $('#map-legend').innerHTML = limits.map(([value, label]) => { const b = bandOf(value, state.metric); return `<span class="legend-item" style="--c:${b.color}"><i></i>${e(b.label)} <span class="legend-range">${label}</span></span>`; }).join('');
   $('#region-list').innerHTML = regions.map(r => { const value = values[r.id], b = bandOf(value, state.metric); return `<button class="region-cell ${state.region === r.id ? 'active' : ''}" data-region="${r.id}" aria-pressed="${state.region === r.id}"><span class="region-name">${e(regionName(r))}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${e(b.label)}</small></button>`; }).join('');
   $$('#map-markers [data-region], #region-list [data-region]').forEach(el => {
@@ -111,10 +119,10 @@ function renderMap() {
   });
 }
 function renderChart() {
-  const history = state.data?.history?.[state.metric] || [];
-  const end = Date.parse(state.data?.[state.metric]?.timestamp) || Date.now();
+  const series = history(state.data, state.metric);
+  const end = Date.parse(observedAt(state.metric)) || Date.now();
   const start = end - state.period * 3600000;
-  const points = history.filter(p => Date.parse(p.timestamp) >= start && Date.parse(p.timestamp) <= end);
+  const points = series.filter(p => Date.parse(p.timestamp) >= start && Date.parse(p.timestamp) <= end);
   const selected = state.region === 'all' ? regions : regions.filter(r => r.id === state.region);
   const valueList = points.flatMap(p => selected.map(r => p.values[r.id])).filter(Number.isFinite);
   // Round the axis to a readable step (e.g. 0/50/100/150… rather than 0/63/125/188…).
@@ -123,14 +131,17 @@ function renderChart() {
   const max = Math.ceil(top / step) * step, ticks = max / step;
   const x = time => 44 + (Date.parse(time) - start) / (end - start) * 496;
   const y = v => 215 - v / max * 185;
-  $('#chart-subtitle').textContent = t('trendSub', { hours: state.period, metric: t(state.metric === 'psi' ? 'metricPsi' : 'metricPm') });
+  const week = state.period === 168;
+  $('#chart-subtitle').textContent = t(week ? 'trendSubWeek' : 'trendSub', { hours: state.period, metric: metricName(state.metric) });
   $('#chart-region').removeAttribute('data-i18n');
   $('#chart-region').textContent = state.region === 'all' ? t('allRegions') : regionName(selected[0]);
   $('#chart-empty').hidden = valueList.length > 0;
   let svg = '';
   for (let i = 0; i <= ticks; i++) { const v = i * step; svg += `<line class="grid" x1="44" x2="540" y1="${y(v)}" y2="${y(v)}"/><text x="34" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`; }
-  for (let i = 0; i <= 4; i++) { const time = start + (end - start) * i / 4; svg += `<text x="${44 + i * 124}" y="244" text-anchor="${i === 0 ? 'start' : i === 4 ? 'end' : 'middle'}">${e(clock(time))}</text>`; }
-  if (state.metric === 'psi' && max >= 100) svg += `<line class="threshold" x1="44" x2="540" y1="${y(100)}" y2="${y(100)}"/><text class="threshold-label" x="537" y="${y(100) - 7}" text-anchor="end">PSI 100</text>`;
+  // Weekly view labels each day; shorter views label clock times.
+  const labels = week ? 7 : 4;
+  for (let i = 0; i <= labels; i++) { const time = start + (end - start) * i / labels; svg += `<text x="${44 + i * 496 / labels}" y="244" text-anchor="${i === 0 ? 'start' : i === labels ? 'end' : 'middle'}">${e(week ? fmt(time, { month: 'numeric', day: 'numeric', hour: undefined, minute: undefined }) : clock(time))}</text>`; }
+  if (state.metric !== 'pm25' && max >= 100) svg += `<line class="threshold" x1="44" x2="540" y1="${y(100)}" y2="${y(100)}"/><text class="threshold-label" x="537" y="${y(100) - 7}" text-anchor="end">${unit(state.metric)} 100</text>`;
   for (const r of selected) {
     let path = '', lastTime = 0;
     for (const p of points) {

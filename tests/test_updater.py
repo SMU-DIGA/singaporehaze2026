@@ -31,6 +31,17 @@ class UpdaterTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]['url'], 'https://www.nea.gov.sg/media/news/advisories/index/haze-update')
 
+    def test_history_backfills_week_and_skips_complete_days(self):
+        now = dt.datetime(2026, 10, 16, 12, tzinfo=updater.SGT)
+        full = [{'timestamp': f'2026-10-12T{h:02d}:00:00+08:00'} for h in range(24)]
+        jobs = updater.history_jobs(now, {'psi': full, 'pm25': full[:5]})
+        dates = {d for _, d in jobs}
+        self.assertEqual(len(dates), updater.HISTORY_DAYS)
+        self.assertNotIn(('psi', '2026-10-12'), jobs)
+        self.assertIn(('pm25', '2026-10-12'), jobs)
+        full_today = [{'timestamp': f'2026-10-16T{h:02d}:00:00+08:00'} for h in range(24)]
+        self.assertIn(('psi', '2026-10-16'), updater.history_jobs(now, {'psi': full_today}))
+
     def test_failed_upstream_retains_last_valid_reading_and_reports_failure(self):
         now = dt.datetime.now(updater.SGT).isoformat()
         previous = {'psi': {'timestamp': now, 'readings': {'psi_twenty_four_hourly': {r: 120 for r in updater.REGIONS}}}, 'pm25': {'timestamp': now, 'readings': {'pm25_one_hourly': {r: 80 for r in updater.REGIONS}}}, 'news': [], 'advisories': [], 'history': {}}

@@ -6,21 +6,41 @@ export const regions = [
   { id: 'central', zh: '中部', en: 'Central', x: 361, y: 195 },
 ];
 export const colors = ['#2e9079', '#b58b2d', '#da7540', '#b74d67', '#7c457e'];
+// AQI uses the US EPA category colours (darkened yellow so text stays readable), as on aqicn.org.
+const aqiColors = ['#009966', '#b8960c', '#e07a1f', '#cc0033', '#660099', '#7e0023'];
 const bandLabels = {
-  zh: { none: '暂无数据', psi: ['良好', '中等', '不健康', '非常不健康', '危险'], pm25: ['正常', '偏高', '高', '非常高'] },
-  en: { none: 'No data', psi: ['Good', 'Moderate', 'Unhealthy', 'Very unhealthy', 'Hazardous'], pm25: ['Normal', 'Elevated', 'High', 'Very high'] },
+  zh: { none: '暂无数据', psi: ['良好', '中等', '不健康', '非常不健康', '危险'], pm25: ['正常', '偏高', '高', '非常高'], aqi: ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染'] },
+  en: { none: 'No data', psi: ['Good', 'Moderate', 'Unhealthy', 'Very unhealthy', 'Hazardous'], pm25: ['Normal', 'Elevated', 'High', 'Very high'], aqi: ['Good', 'Moderate', 'Unhealthy for sensitive groups', 'Unhealthy', 'Very unhealthy', 'Hazardous'] },
 };
+const bandLimits = { psi: [50, 100, 200, 300], pm25: [55, 150, 250], aqi: [50, 100, 150, 200, 300] };
 export function band(value, metric = 'psi', lang = 'zh') {
   const text = bandLabels[lang] || bandLabels.zh;
   if (!Number.isFinite(value)) return { index: -1, label: text.none, color: '#8b949e' };
-  const limits = metric === 'psi' ? [50, 100, 200, 300] : [55, 150, 250];
-  const labels = text[metric === 'psi' ? 'psi' : 'pm25'];
+  const limits = bandLimits[metric] || bandLimits.psi;
   const index = limits.findIndex(n => value <= n);
   const i = index === -1 ? limits.length : index;
-  return { index: i, label: labels[i], color: colors[metric === 'pm25' && i > 0 ? i + 1 : i] };
+  const color = metric === 'aqi' ? aqiColors[i] : colors[metric === 'pm25' && i > 0 ? i + 1 : i];
+  return { index: i, label: text[metric in bandLimits ? metric : 'psi'][i], color };
 }
+// US EPA PM2.5 AQI breakpoints (pre-2024 table), applied to the hourly reading.
+// This is the convention aqicn.org uses, so values match its Singapore map.
+const AQI_BREAKPOINTS = [[0, 12, 0, 50], [12.1, 35.4, 51, 100], [35.5, 55.4, 101, 150], [55.5, 150.4, 151, 200], [150.5, 250.4, 201, 300], [250.5, 350.4, 301, 400], [350.5, 500.4, 401, 500]];
+export function aqiFromPm25(concentration) {
+  if (!Number.isFinite(concentration) || concentration < 0) return NaN;
+  const c = Math.floor(concentration * 10) / 10;
+  const bp = AQI_BREAKPOINTS.find(([, hi]) => c <= hi);
+  if (!bp) return 500;
+  const [lo, hi, aqiLo, aqiHi] = bp;
+  return Math.round((aqiHi - aqiLo) / (hi - lo) * (Math.max(c, lo) - lo) + aqiLo);
+}
+const mapValues = (values, fn) => Object.fromEntries(Object.entries(values || {}).map(([k, v]) => [k, fn(v)]));
 export function readings(data, metric) {
+  if (metric === 'aqi') return mapValues(readings(data, 'pm25'), aqiFromPm25);
   return data?.[metric]?.readings?.[metric === 'psi' ? 'psi_twenty_four_hourly' : 'pm25_one_hourly'] || {};
+}
+export function history(data, metric) {
+  if (metric === 'aqi') return (data?.history?.pm25 || []).map(p => ({ timestamp: p.timestamp, values: mapValues(p.values, aqiFromPm25) }));
+  return data?.history?.[metric] || [];
 }
 export function validValues(values) {
   return regions.map(r => values[r.id]).filter(Number.isFinite);

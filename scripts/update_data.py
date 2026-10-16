@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -20,6 +21,7 @@ REGIONS = ['north', 'south', 'east', 'west', 'central']
 API = 'https://api-open.data.gov.sg/v2/real-time/api/'
 NEA = 'https://www.nea.gov.sg/media/news'
 CNA = 'https://www.channelnewsasia.com/topic/haze'
+HISTORY_DAYS = 8  # 7-day trend plus the partial current day
 
 
 def government_news():
@@ -45,10 +47,12 @@ def fetch(url):
                 headers['x-api-key'] = os.environ['DATA_GOV_SG_API_KEY']
             with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=25) as r:
                 return r.read().decode('utf-8')
-        except Exception:
+        except Exception as exc:
             if attempt == 2:
                 raise
-            time.sleep(2 ** attempt)
+            # data.gov.sg rate-limits anonymous clients; back off longer on 429.
+            rate_limited = isinstance(exc, urllib.error.HTTPError) and exc.code == 429
+            time.sleep(15 * (attempt + 1) if rate_limited else 2 ** attempt)
 
 
 def api_items(kind, date=None):
@@ -66,6 +70,22 @@ def api_items(kind, date=None):
         seen.add(token)
         params['paginationToken'] = token
     return items
+
+
+def history_jobs(now, previous_history):
+    """Today and yesterday are always refreshed; older days only while incomplete."""
+    counts = {}
+    for kind in ('psi', 'pm25'):
+        for point in previous_history.get(kind, []):
+            key = (kind, point['timestamp'][:10])
+            counts[key] = counts.get(key, 0) + 1
+    jobs = []
+    for days in range(HISTORY_DAYS):
+        date = (now - dt.timedelta(days=days)).strftime('%Y-%m-%d')
+        for kind in ('psi', 'pm25'):
+            if days < 2 or counts.get((kind, date), 0) < 24:
+                jobs.append((kind, date))
+    return jobs
 
 
 def validate_reading(item, key):
@@ -150,10 +170,8 @@ def main():
         'news': rss_news,
         'cna': lambda: extract_links(fetch(CNA), CNA),
     }
-    for days in range(3):
-        date = (now - dt.timedelta(days=days)).strftime('%Y-%m-%d')
-        for kind in ('psi', 'pm25'):
-            jobs[f'history_{kind}_{date}'] = lambda k=kind, d=date: api_items(k, d)
+    for kind, date in history_jobs(now, previous.get('history', {})):
+        jobs[f'history_{kind}_{date}'] = lambda k=kind, d=date: api_items(k, d)
     histories = {'psi': [], 'pm25': []}
     cna = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
@@ -184,7 +202,7 @@ def main():
                 points[item['timestamp']] = {'timestamp': item['timestamp'], 'values': item['readings'][key]}
             except (ValueError, KeyError):
                 continue
-        cutoff = now - dt.timedelta(hours=72)
+        cutoff = now - dt.timedelta(days=HISTORY_DAYS)
         histories[kind] = sorted((p for t, p in points.items() if dt.datetime.fromisoformat(t) >= cutoff), key=lambda p: p['timestamp'])
     result['history'] = histories
     # Prefer direct publisher URLs; supplement with attributed RSS headlines.

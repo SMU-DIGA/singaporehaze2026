@@ -77,9 +77,12 @@ async function refresh(env) {
     ['advisories', advisories], ['cna', news],
   ];
   const histories = { psi: [], pm25: [] };
-  for (let offset = 0; offset < 3; offset++) {
+  // 8 days covers the 7-day trend. Today and yesterday always refresh; older days only while incomplete.
+  const counts = {};
+  for (const kind of ['psi', 'pm25']) for (const p of previous.history?.[kind] || []) { const key = `${kind}_${p.timestamp.slice(0, 10)}`; counts[key] = (counts[key] || 0) + 1; }
+  for (let offset = 0; offset < 8; offset++) {
     const date = new Date(+now + 8 * 3600000 - offset * 86400000).toISOString().slice(0, 10);
-    for (const kind of ['psi', 'pm25']) jobs.push([`history_${kind}_${date}`, async () => { const items = await official(kind, date); histories[kind].push(...items); return true; }]);
+    for (const kind of ['psi', 'pm25']) if (offset < 2 || (counts[`${kind}_${date}`] || 0) < 24) jobs.push([`history_${kind}_${date}`, async () => { const items = await official(kind, date); histories[kind].push(...items); return true; }]);
   }
   // Four requests at a time keeps within upstream limits and Worker subrequest limits.
   for (let offset = 0; offset < jobs.length; offset += 4) await Promise.all(jobs.slice(offset, offset + 4).map(async ([key, fn]) => {
@@ -92,7 +95,7 @@ async function refresh(env) {
     const key = kind === 'psi' ? 'psi_twenty_four_hourly' : 'pm25_one_hourly';
     const points = new Map((previous.history?.[kind] || []).map(p => [p.timestamp, p]));
     for (const item of histories[kind]) if (valid(item, key)) points.set(item.timestamp, { timestamp: item.timestamp, values: item.readings[key] });
-    next.history[kind] = [...points.values()].filter(p => Date.parse(p.timestamp) >= +now - 72 * 3600000).sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+    next.history[kind] = [...points.values()].filter(p => Date.parse(p.timestamp) >= +now - 8 * 86400000).sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
   }
   const nextRun = new Date(now); nextRun.setUTCMinutes(17, 0, 0);
   while (+nextRun <= +now || (nextRun.getUTCHours() + 8) % 3 !== 0) nextRun.setUTCHours(nextRun.getUTCHours() + 1);
