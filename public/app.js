@@ -15,6 +15,7 @@ const icons = {
   news: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8 M8 11h8 M8 15h3 M8 18h3"/><rect x="14" y="15" width="2" height="3"/>',
   heart: '<path d="M20 5c-3-3-7-1-8 1-1-2-5-4-8-1s-1 7 2 10l6 6 6-6c3-3 5-7 2-10Z"/>',
   database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5 M4 12c0 4 16 4 16 0"/>',
+  moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1.5 1.5 M17.5 17.5 19 19 M5 19l1.5-1.5 M17.5 6.5 19 5"/>',
   refresh: '<path d="M20 7v5h-5 M4 17v-5h5 M6.5 6.5A8 8 0 0 1 20 12 M4 12a8 8 0 0 0 13.5 5.5"/>',
   wind: '<path d="M3 8h12a3 3 0 1 0-3-3 M3 12h16a3 3 0 1 1-3 3 M3 16h5a3 3 0 1 1-3 3"/>',
@@ -49,6 +50,7 @@ const sgt = text => `${text} SGT`;
 
 function renderStatic() {
   localize();
+  syncTheme();
   $('#today').textContent = new Intl.DateTimeFormat(locale(), { timeZone: 'Asia/Singapore', year: 'numeric', month: en() ? 'short' : 'long', day: 'numeric', weekday: 'short' }).format(new Date());
   for (const option of $$('#region-select option')) { const r = regions.find(x => x.id === option.value); if (r) option.textContent = regionName(r); }
 }
@@ -59,8 +61,17 @@ $('.language-switch').addEventListener('click', ev => {
   renderPurifier();
 });
 
+// Theme button shows where a click goes: a moon in light mode, a sun in dark mode.
+function syncTheme() {
+  const dark = document.body.classList.contains('dark'), label = t(dark ? 'themeToLight' : 'themeToDark');
+  $('#theme').innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[dark ? 'sun' : 'moon']}</svg>`;
+  $('#theme').setAttribute('aria-label', label); $('#theme').title = label;
+}
 try { document.body.classList.toggle('dark', localStorage.getItem('haze-theme') === 'dark'); } catch {}
-$('#theme').addEventListener('click', () => { document.body.classList.toggle('dark'); live.tiles?.setUrl(tileUrl()); try { localStorage.setItem('haze-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {} });
+$('#theme').addEventListener('click', () => {
+  document.body.classList.toggle('dark'); syncTheme(); live.tiles?.setUrl(tileUrl());
+  try { localStorage.setItem('haze-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {}
+});
 const dialog = $('#sources-dialog');
 ['#sources-button', '#footer-sources', '#map-info'].forEach(id => $(id).addEventListener('click', () => dialog.showModal()));
 $('#close-dialog').addEventListener('click', () => dialog.close());
