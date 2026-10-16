@@ -61,20 +61,39 @@ def official_forecast(fetch, advisories):
         return None
     latest = max(updates, key=lambda a: a.get('publishedAt') or '')
     text = page_text(fetch(latest['url']))
-    m = re.search(r'24-hr PSI Forecast:\s*(.+?)\s+Health Advisory', text)
-    rng = band_range(m.group(1)) if m else None
-    if not rng:
+    # Since 16 Oct 2026 NEA states a number range ("PSI Forecast: 150 - 230 Unhealthy to Very
+    # Unhealthy"); earlier updates only named the bands ("24-hr PSI Forecast: Unhealthy").
+    m = re.search(r'PSI Forecast:\s*(?:(\d{1,3})\s*[-–]\s*(\d{1,3})\s+)?(.+?)\s+Health Advisory', text, re.I)
+    if not m:
         raise ValueError('No PSI forecast in NEA update')
-    date = re.search(r'PSI forecast for (\d{1,2} \w{3,9} \d{4})', text)
+    rng = (int(m.group(1)), int(m.group(2))) if m.group(1) else band_range(m.group(3))
+    if not rng:
+        raise ValueError('Unrecognised PSI forecast')
+    band_text = m.group(3).strip()
+    date = re.search(r'PSI forecast for (\d{1,2} \w{3,9} \d{4})', text, re.I)
     if date:
         day, month, year = date.group(1).split()
         for_date = dt.datetime.strptime(f'{day} {month[:3]} {year}', '%d %b %Y').date()
     else:
         for_date = dt.datetime.fromisoformat(latest['publishedAt']).date() + dt.timedelta(days=1)
-    outlook = re.search(r'\s3\.\s+(.+?)(?=\s(?:Activity Guidelines|\d\.)\s)', text)
-    return {'text': m.group(1), 'low': rng[0], 'high': rng[1], 'forDate': for_date.isoformat(),
-            'url': latest['url'], 'publishedAt': latest.get('publishedAt'),
-            'outlook': outlook.group(1)[:600] if outlook else None}
+    outlook = outlook_paragraph(text)
+    return {'text': f'{rng[0]}–{rng[1]} {band_text}' if m.group(1) else band_text, 'low': rng[0], 'high': rng[1],
+            'forDate': for_date.isoformat(), 'url': latest['url'], 'publishedAt': latest.get('publishedAt'),
+            'outlook': outlook[:600] if outlook else None}
+
+
+def outlook_paragraph(text):
+    """NEA's numbered paragraph about tomorrow's weather and smoke; its number varies."""
+    marks = list(re.finditer(r'\s(\d{1,2})\.\s', text))
+    paragraphs = []
+    for mark, following in zip(marks, marks[1:] + [None]):
+        chunk = text[mark.end():following.start() if following else len(text)]
+        paragraphs.append(chunk[:chunk.rfind('.') + 1].strip())  # drop a trailing section heading
+    for test in (r'\btomorrow\b', r'\bis forecast to\b'):
+        for paragraph in paragraphs:
+            if re.search(test, paragraph, re.I) and 'outdoor activities' not in paragraph:
+                return paragraph
+    return None
 
 
 def model_forecast(fetch, target, pm25_history, now):

@@ -67,6 +67,18 @@ class ForecastTests(unittest.TestCase):
         self.assertEqual((official['low'], official['high'], official['forDate']), (101, 234, '2026-10-17'))
         self.assertEqual(official['outlook'], 'Tomorrow, winds will be southeasterly.')
 
+    def test_numeric_forecast_format_from_16_october(self):
+        page = ('<p>Air Quality Forecast PSI Forecast: 150 - 230 Unhealthy to Very Unhealthy Health Advisory Healthy persons ... '
+                'Singapore, 16 October 2026 – The PSI forecast for 17 Oct 2026 is 150 – 230 (Unhealthy to Very Unhealthy) . '
+                '2. The PSI forecast and corresponding health advisories should be used for planning next day outdoor activities. '
+                '3. For immediate outdoor activities, please check the 1-hr PM2.5 readings. Update on Hotspot and Haze Situation '
+                '4. Showers fell over a few parts of Singapore. 5. For tomorrow, winds will shift to blow from the south. '
+                '6. On Sunday, showers are forecast. Activity Guidelines 7. The health impact ...</p>')
+        official = forecast.official_forecast(lambda url: page, ADVISORIES)
+        self.assertEqual((official['low'], official['high'], official['forDate']), (150, 230, '2026-10-17'))
+        self.assertEqual(official['text'], '150–230 Unhealthy to Very Unhealthy')
+        self.assertEqual(official['outlook'], 'For tomorrow, winds will shift to blow from the south.')
+
     def test_model_is_bias_corrected_against_nea_readings(self):
         # NEA read 80 µg/m³ while the model said 40, so tomorrow's 40 is scaled to 80.
         model = forecast.model_forecast(lambda url: cams(40), NOW.date() + dt.timedelta(days=1), history('pm25', 80), NOW)

@@ -4051,62 +4051,59 @@
       }
     ]
   },
-  "generatedAt": "2026-10-16T22:05:02.718348+08:00",
+  "generatedAt": "2026-10-16T22:06:58.297963+08:00",
   "nextUpdateAt": "2026-10-16T23:05:00+08:00",
   "sources": {
-    "advisories": {
+    "news": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
-    },
-    "psi": {
-      "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
-    "cna": {
+    "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
-    },
-    "history_pm25_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
-    "history_psi_2026-10-15": {
+    "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
     "history_pm25_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
-    "news": {
+    "history_psi_2026-10-15": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+    },
+    "cna": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
+    },
+    "forecast_nea": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
-    },
-    "forecast_nea": {
-      "ok": false,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00",
-      "error": "ValueError"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+      "checkedAt": "2026-10-16T22:06:58.297963+08:00"
     }
   },
-  "errors": [
-    "forecast_nea: ValueError"
-  ],
+  "errors": [],
   "schemaVersion": 1,
   "advisories": [
     {
@@ -4168,20 +4165,28 @@
   ],
   "forecast": {
     "targetDate": "2026-10-17",
-    "issuedAt": "2026-10-16T22:05:02.718348+08:00",
+    "issuedAt": "2026-10-16T22:06:58.297963+08:00",
     "psi": {
-      "low": 113,
-      "high": 157
+      "low": 135,
+      "high": 201
     },
     "regions": {
-      "north": 113,
-      "south": 132,
-      "east": 141,
-      "west": 141,
-      "central": 157
+      "north": 140,
+      "south": 165,
+      "east": 175,
+      "west": 175,
+      "central": 195
     },
-    "confidence": "low",
-    "official": null,
+    "confidence": "high",
+    "official": {
+      "text": "150–230 Unhealthy to Very Unhealthy",
+      "low": 150,
+      "high": 230,
+      "forDate": "2026-10-17",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-16-october-2026",
+      "publishedAt": "2026-10-16T18:19:00+08:00",
+      "outlook": "For tomorrow, some showers are expected over Singapore and the surrounding region, including over parts of Kalimantan. With the winds forecast to shift to blow from the southeast or south-southeast, the transport of smoke haze from Kalimantan to Singapore may be reduced. However, some smoke haze from Sumatra may drift towards Singapore."
+    },
     "trend": {
       "low": 154,
       "high": 208,
@@ -4209,10 +4214,10 @@
   "forecastLog": [
     {
       "targetDate": "2026-10-17",
-      "issuedAt": "2026-10-16T22:05:02.718348+08:00",
-      "low": 113,
-      "high": 157,
-      "official": false
+      "issuedAt": "2026-10-16T22:06:58.297963+08:00",
+      "low": 135,
+      "high": 201,
+      "official": true
     }
   ]
 }
