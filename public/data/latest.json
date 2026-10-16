@@ -1,36 +1,36 @@
 {
   "psi": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T21:00:35+08:00",
-    "timestamp": "2026-10-16T21:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T22:00:54+08:00",
+    "timestamp": "2026-10-16T22:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 156,
-        "south": 181,
-        "west": 198,
-        "east": 195,
-        "central": 219
+        "north": 154,
+        "south": 179,
+        "west": 196,
+        "east": 191,
+        "central": 215
       },
       "no2_one_hour_max": {
-        "north": 21,
-        "south": 25,
+        "north": 17,
+        "south": 41,
         "west": 28,
-        "east": 48,
-        "central": 43
+        "east": 50,
+        "central": 38
       },
       "pm10_twenty_four_hourly": {
-        "north": 135,
-        "south": 169,
-        "west": 182,
-        "east": 190,
-        "central": 204
+        "north": 131,
+        "south": 166,
+        "west": 179,
+        "east": 186,
+        "central": 200
       },
       "pm25_twenty_four_hourly": {
-        "north": 108,
-        "south": 133,
-        "west": 149,
-        "east": 145,
-        "central": 168
+        "north": 106,
+        "south": 130,
+        "west": 147,
+        "east": 142,
+        "central": 165
       },
       "so2_twenty_four_hourly": {
         "north": 6,
@@ -47,39 +47,39 @@
         "central": 2
       },
       "o3_eight_hour_max": {
-        "north": 118,
-        "south": 88,
-        "west": 50,
-        "east": 88,
-        "central": 120
+        "north": 100,
+        "south": 75,
+        "west": 46,
+        "east": 76,
+        "central": 99
       },
       "co_sub_index": {
         "north": 19,
         "south": 19,
         "west": 17,
         "east": 17,
-        "central": 18
+        "central": 17
       },
       "o3_sub_index": {
-        "north": 50,
-        "south": 37,
-        "west": 21,
-        "east": 37,
-        "central": 52
+        "north": 42,
+        "south": 32,
+        "west": 20,
+        "east": 32,
+        "central": 42
       },
       "pm10_sub_index": {
-        "north": 92,
-        "south": 110,
-        "west": 116,
-        "east": 120,
-        "central": 127
+        "north": 90,
+        "south": 108,
+        "west": 115,
+        "east": 119,
+        "central": 125
       },
       "pm25_sub_index": {
-        "north": 156,
-        "south": 181,
-        "west": 198,
-        "east": 195,
-        "central": 219
+        "north": 154,
+        "south": 179,
+        "west": 196,
+        "east": 191,
+        "central": 215
       },
       "so2_sub_index": {
         "north": 4,
@@ -92,19 +92,33 @@
   },
   "pm25": {
     "date": "2026-10-16",
-    "updatedTimestamp": "2026-10-16T21:00:35+08:00",
-    "timestamp": "2026-10-16T21:00:00+08:00",
+    "updatedTimestamp": "2026-10-16T22:00:54+08:00",
+    "timestamp": "2026-10-16T22:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 66,
-        "south": 117,
-        "west": 125,
-        "east": 113,
-        "central": 136
+        "north": 71,
+        "south": 100,
+        "west": 115,
+        "east": 88,
+        "central": 124
       }
     }
   },
   "news": [
+    {
+      "title": "Great Eastern Women’s Run cancelled due to worsening haze",
+      "url": "https://www.channelnewsasia.com/singapore/great-eastern-womens-run-cancelled-haze-air-quality-6466311",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
+    {
+      "title": "Singapore haze: 7 takeaways from press conference – from school contingency plans to mask supplies",
+      "url": "https://www.channelnewsasia.com/singapore/haze-key-takeaways-psi-air-quality-6465711",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "Haze: Malaysia's palm oil industry steps up efforts to protect crops, reputation",
       "url": "https://www.channelnewsasia.com/watch/haze-malaysias-palm-oil-industry-steps-up-efforts-protect-crops-reputation-6466111",
@@ -192,20 +206,6 @@
     {
       "title": "Singapore-listed First Resources, Bumitama Agri point to El Nino, say some fires began beyond their boundaries",
       "url": "https://www.channelnewsasia.com/singapore/haze-el-nino-first-resources-bumitama-agri-indonesia-6464761",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Singapore haze: Air quality very unhealthy in central region",
-      "url": "https://www.channelnewsasia.com/singapore/haze-oct-16-psi-pm-25-6459416",
-      "source": "CNA",
-      "publishedAt": null,
-      "category": "singapore"
-    },
-    {
-      "title": "Assoc Prof Eugene Tan on enforcement under the Transboundary Haze Pollution Act",
-      "url": "https://www.channelnewsasia.com/watch/assoc-prof-eugene-tan-enforcement-under-transboundary-haze-pollution-act-6463031",
       "source": "CNA",
       "publishedAt": null,
       "category": "singapore"
@@ -2126,6 +2126,16 @@
           "east": 195,
           "central": 219
         }
+      },
+      {
+        "timestamp": "2026-10-16T22:00:00+08:00",
+        "values": {
+          "north": 154,
+          "south": 179,
+          "west": 196,
+          "east": 191,
+          "central": 215
+        }
       }
     ],
     "pm25": [
@@ -4028,60 +4038,70 @@
           "east": 113,
           "central": 136
         }
+      },
+      {
+        "timestamp": "2026-10-16T22:00:00+08:00",
+        "values": {
+          "north": 71,
+          "south": 100,
+          "west": 115,
+          "east": 88,
+          "central": 124
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-16T21:05:02.447003+08:00",
-  "nextUpdateAt": "2026-10-16T22:05:00+08:00",
+  "generatedAt": "2026-10-16T22:05:02.718348+08:00",
+  "nextUpdateAt": "2026-10-16T23:05:00+08:00",
   "sources": {
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+    },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
-    },
-    "news": {
-      "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
-    },
-    "history_psi_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
-    },
-    "history_pm25_2026-10-16": {
-      "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
-    },
-    "history_psi_2026-10-15": {
-      "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
-    },
-    "history_pm25_2026-10-15": {
-      "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     },
-    "advisories": {
+    "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     },
-    "forecast_nea": {
-      "ok": false,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00",
-      "error": "ValueError"
+    "history_psi_2026-10-16": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+    },
+    "history_psi_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+    },
+    "history_pm25_2026-10-15": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
+    },
+    "forecast_nea": {
+      "ok": false,
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00",
+      "error": "ValueError"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-16T21:05:02.447003+08:00"
+      "checkedAt": "2026-10-16T22:05:02.718348+08:00"
     }
   },
   "errors": [
@@ -4148,30 +4168,30 @@
   ],
   "forecast": {
     "targetDate": "2026-10-17",
-    "issuedAt": "2026-10-16T21:05:02.447003+08:00",
+    "issuedAt": "2026-10-16T22:05:02.718348+08:00",
     "psi": {
-      "low": 115,
-      "high": 160
+      "low": 113,
+      "high": 157
     },
     "regions": {
-      "north": 115,
-      "south": 134,
-      "east": 144,
-      "west": 142,
-      "central": 160
+      "north": 113,
+      "south": 132,
+      "east": 141,
+      "west": 141,
+      "central": 157
     },
     "confidence": "low",
     "official": null,
     "trend": {
-      "low": 158,
-      "high": 215,
-      "change24h": 31
+      "low": 154,
+      "high": 208,
+      "change24h": 26
     },
     "model": {
-      "low": 71,
-      "high": 105,
-      "pm25": 47,
-      "bias": 1.7
+      "low": 72,
+      "high": 106,
+      "pm25": 48,
+      "bias": 1.73
     },
     "weather": {
       "date": "2026-10-17",
@@ -4189,9 +4209,9 @@
   "forecastLog": [
     {
       "targetDate": "2026-10-17",
-      "issuedAt": "2026-10-16T21:05:02.447003+08:00",
-      "low": 115,
-      "high": 160,
+      "issuedAt": "2026-10-16T22:05:02.718348+08:00",
+      "low": 113,
+      "high": 157,
       "official": false
     }
   ]
