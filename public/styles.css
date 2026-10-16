@@ -147,6 +147,8 @@ body.dark .data-warning { background: #3d321f; border-color: #665337; color: #f0
 .live-pin .pin span { margin-top: 5px; font-size: 13px; font-weight: 650; color: var(--text); text-shadow: 0 0 3px var(--panel), 0 0 3px var(--panel), 0 0 4px var(--panel); white-space: nowrap; }
 .live-pin:hover .pin b, .live-pin:focus-visible .pin b, .live-pin .pin.active b { border-width: 4.5px; }
 .you-pin span { display: block; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; border: 3px solid #fff; box-shadow: 0 0 0 7px #2563eb33, 0 1px 4px #0006; }
+.map-reset { display: grid !important; place-items: center; color: #333; }
+.map-reset .icon { width: 16px; height: 16px; stroke-width: 2; }
 body.dark .leaflet-bar a { background: var(--panel); color: var(--text); border-color: var(--border); }
 body.dark .leaflet-control-attribution { background: #1a2b25cc; color: var(--muted); }
 body.dark .leaflet-control-attribution a { color: var(--link); }
@@ -166,6 +168,7 @@ body.dark .leaflet-control-attribution a { color: var(--link); }
 .map-layers button { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--muted); }
 .map-layers button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c, #8b949e); flex-shrink: 0; }
+.dot.reading { background: none; border: 2.5px solid #da7540; }
 .dot.mask { background: #2e9079; } .dot.cc { background: #7a62b8; } .dot.clinic { background: #2563eb; }
 .res-popup { display: flex; flex-direction: column; gap: 3px; font: 13px/1.5 var(--font); min-width: 180px; }
 .res-popup strong { font-size: 14px; }
@@ -174,6 +177,8 @@ body.dark .leaflet-control-attribution a { color: var(--link); }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; }
 .legend-item i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
 .legend-range { color: var(--muted); font-variant-numeric: tabular-nums; }
+.stock-legend { padding-bottom: 0; }
+.legend-title { font-weight: 600; color: var(--muted); }
 .region-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 0 20px; padding: 12px 0 14px; border-top: 1px solid var(--border); }
 .region-cell { text-align: center; min-width: 0; padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; }
 .region-cell:hover { background: var(--panel-soft); }

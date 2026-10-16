@@ -2,7 +2,7 @@ import { regions, band, readings, history, validValues, stale, safeUrl, escapeHt
 import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, layers: { masks: true, ccs: false, polyclinics: false } };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -26,6 +26,7 @@ const icons = {
   home: '<path d="m3 10 9-7 9 7 M5 9v12h14V9 M9 21v-8h6v8"/>',
   forecast: '<path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/>',
   mask: '<path d="M4 9c3-1.3 5.3-2 8-2s5 .7 8 2v3.5c0 3-3.8 5.5-8 5.5s-8-2.5-8-5.5Z"/><path d="M4 10.5H2.5 M20 10.5h1.5 M8.5 11h7 M8.5 14h7"/>',
+  fit: '<path d="M4 9V4h5 M20 9V4h-5 M4 15v5h5 M20 15v5h-5"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18 M5 6.5h14 M5 17.5h14"/>',
 };
 $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[el.dataset.icon] || icons.info}</svg>`; });
@@ -52,6 +53,7 @@ function renderStatic() {
 $('.language-switch').addEventListener('click', ev => {
   const b = ev.target.closest('[data-language]'); if (!b) return;
   setLanguage(b.dataset.language); renderStatic(); if (state.data) render();
+  if (state.resources) renderResources(); // popups are built in the current language
 });
 
 try { document.body.classList.toggle('dark', localStorage.getItem('haze-theme') === 'dark'); } catch {}
@@ -64,7 +66,7 @@ dialog.addEventListener('click', ev => { if (ev.target === dialog) { const r = d
 // Live map: OneMap tiles via Leaflet. If Leaflet fails to load, the schematic SVG stays in place.
 const ONEMAP_ATTRIBUTION = '<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" alt="" style="height:20px;width:20px;vertical-align:middle">&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>';
 const tileUrl = () => `https://www.onemap.gov.sg/maps/tiles/${document.body.classList.contains('dark') ? 'Night' : 'Default'}/{z}/{x}/{y}.png`;
-const live = { map: null, tiles: null, markers: {}, you: null, layers: {} };
+const live = { map: null, tiles: null, markers: {}, readings: null, reset: null, you: null, layers: {} };
 const MAIN_ISLAND = [[1.23, 103.62], [1.47, 104.01]];
 function initMap() {
   const L = window.L;
@@ -73,17 +75,35 @@ function initMap() {
   // One-finger drags scroll the page on phones; pinch still zooms.
   live.map = L.map('live-map', { maxBounds: L.latLngBounds(SG_BOUNDS).pad(0.2), minZoom: 10, maxZoom: 18, zoomSnap: 0.25, zoomControl: false, scrollWheelZoom: false, dragging: !L.Browser.mobile }).fitBounds(MAIN_ISLAND);
   L.control.zoom({ position: 'topright' }).addTo(live.map);
+  // "Fit" control: back to the whole-island view the map opened with.
+  const Reset = L.Control.extend({
+    options: { position: 'topright' },
+    onAdd() {
+      const bar = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      live.reset = L.DomUtil.create('a', 'map-reset', bar);
+      live.reset.href = '#'; live.reset.setAttribute('role', 'button');
+      live.reset.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons.fit}</svg>`;
+      L.DomEvent.disableClickPropagation(bar);
+      L.DomEvent.on(live.reset, 'click', ev => { L.DomEvent.preventDefault(ev); live.map.closePopup(); live.map.fitBounds(MAIN_ISLAND, { animate: true }); });
+      return bar;
+    },
+  });
+  new Reset().addTo(live.map);
   live.map.attributionControl.setPrefix(false);
   live.tiles = L.tileLayer(tileUrl(), { minZoom: 10, maxZoom: 18, detectRetina: true, attribution: ONEMAP_ATTRIBUTION }).addTo(live.map);
+  live.readings = L.layerGroup();
+  if (state.layers.readings) live.readings.addTo(live.map);
+  $('#map-layers').hidden = false;
 }
 function renderLiveMap(values) {
   const L = window.L;
   if (!live.map) return;
+  live.reset.title = t('mapReset'); live.reset.setAttribute('aria-label', t('mapReset'));
   for (const r of regions) {
     const value = values[r.id], b = bandOf(value, state.metric), shown = Number.isFinite(value) ? value : '—';
     const label = t('regionAria', { region: regionName(r), value: shown, band: b.label });
     const icon = L.divIcon({ className: 'live-pin', iconSize: [64, 78], iconAnchor: [32, 26], html: `<div class="pin${state.region === r.id ? ' active' : ''}" style="--c:${b.color}"><b>${shown}</b><span>${e(regionName(r))}</span></div>` });
-    if (!live.markers[r.id]) live.markers[r.id] = L.marker([r.lat, r.lon], { icon, keyboard: true, riseOnHover: true }).addTo(live.map).on('click', () => selectRegion(r.id));
+    if (!live.markers[r.id]) live.markers[r.id] = L.marker([r.lat, r.lon], { icon, keyboard: true, riseOnHover: true }).addTo(live.readings).on('click', () => selectRegion(r.id));
     else live.markers[r.id].setIcon(icon);
     const el = live.markers[r.id].getElement();
     if (el) { el.title = label; el.setAttribute('aria-label', label); }
@@ -148,6 +168,7 @@ function renderMap() {
     aqi: [[0, '0–50'], [51, '51–100'], [101, '101–150'], [151, '151–200'], [201, '201–300'], [301, '>300']],
   }[state.metric];
   renderLiveMap(values);
+  if (live.map) renderLegends();
   $('#map-legend').innerHTML = limits.map(([value, label]) => { const b = bandOf(value, state.metric); return `<span class="legend-item" style="--c:${b.color}"><i></i>${e(b.label)} <span class="legend-range">${label}</span></span>`; }).join('');
   $('#region-list').innerHTML = regions.map(r => { const value = values[r.id], b = bandOf(value, state.metric); return `<button class="region-cell ${state.region === r.id ? 'active' : ''}" data-region="${r.id}" aria-pressed="${state.region === r.id}"><span class="region-name">${e(regionName(r))}</span><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${e(b.label)}</small></button>`; }).join('');
   $$('#map-markers [data-region], #region-list [data-region]').forEach(el => {
@@ -277,8 +298,16 @@ function renderResourceLayers() {
     }));
     if (state.layers[kind]) live.layers[kind].addTo(live.map);
   }
-  $('#map-layers').hidden = false;
-  $$('#map-layers [data-layer]').forEach(b => b.setAttribute('aria-pressed', !!state.layers[b.dataset.layer]));
+  $$('#map-layers [data-layer]').forEach(b => { b.hidden = !(b.dataset.layer === 'readings' || live.layers[b.dataset.layer]); b.setAttribute('aria-pressed', !!state.layers[b.dataset.layer]); });
+  renderLegends();
+}
+// Stock colours reuse green/amber/red, so never show them beside the air-quality legend unlabelled.
+function renderLegends() {
+  $('#map-legend').hidden = live.map ? !state.layers.readings : false;
+  const stock = $('#stock-legend');
+  stock.hidden = !(state.layers.masks && live.layers.masks);
+  stock.innerHTML = `<span class="legend-title">${e(t('layerMasks'))}</span>` + [['available', 'stockAvailable'], ['limited', 'stockLimited'], ['out', 'stockOut'], ['unknown', 'stockGrey']]
+    .map(([key, label]) => `<span class="legend-item" style="--c:${stockColors[key]}"><i></i>${e(t(label))}</span>`).join('');
 }
 function renderResources() {
   const masks = state.resources?.masks;
@@ -294,7 +323,11 @@ $('#map-layers').addEventListener('click', ev => {
   const kind = button.dataset.layer;
   state.layers[kind] = !state.layers[kind];
   button.setAttribute('aria-pressed', state.layers[kind]);
-  if (live.layers[kind]) state.layers[kind] ? live.layers[kind].addTo(live.map) : live.layers[kind].remove();
+  const group = kind === 'readings' ? live.readings : live.layers[kind];
+  if (group) state.layers[kind] ? group.addTo(live.map) : group.remove();
+  // Pins added while hidden have no element yet, so refresh their labels.
+  if (kind === 'readings' && state.layers.readings) renderMap();
+  renderLegends();
 });
 function nearbyHtml(place) {
   const res = state.resources;
