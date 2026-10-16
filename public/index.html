@@ -20,6 +20,7 @@
       <a href="#forecast"><span data-icon="forecast"></span><span data-i18n="navForecast">明日预测</span></a>
       <a href="#distribution"><span data-icon="map"></span><span data-i18n="navMap">五区分布</span></a>
       <a href="#resources"><span data-icon="mask"></span><span data-i18n="navResources">防霾资源</span></a>
+      <a href="#escape"><span data-icon="plane"></span><span data-i18n="navEscape">周边城市</span></a>
       <a href="#advisories"><span data-icon="shield"></span><span data-i18n="navAdvisories">政府公告</span></a>
       <a href="#news"><span data-icon="news"></span><span data-i18n="navNews">新闻动态</span></a>
       <a href="#guide"><span data-icon="heart"></span><span data-i18n="navGuide">健康建议</span></a>
@@ -174,6 +175,19 @@
           </article>
         </div>
         <div class="panel-foot"><span data-i18n="resFoot">口罩库存同步自政府 HazeMaskGoWhere，每 15 分钟检查一次；CC 位置来自 PA，综合诊所位置来自 HPB 公开数据（2023 年），新开的诊所可能未列出。</span></div>
+      </section>
+
+      <section class="panel escape-panel" id="escape" hidden>
+        <div class="panel-head">
+          <div><h2><span class="heading-icon" data-icon="plane"></span><span data-i18n="escTitle">想暂时离开？周边城市空气</span></h2><p id="esc-sub"></p></div>
+        </div>
+        <div class="escape-table-wrap">
+          <table class="escape-table">
+            <thead><tr><th data-i18n="escCity">城市</th><th data-i18n="escNow">现在</th><th id="esc-tomorrow-head"></th><th id="esc-after-head"></th><th data-i18n="escFlight">直飞约</th><th class="esc-price-col" data-i18n="escPrice" hidden>机票</th><th data-i18n="escSearch">查机票</th></tr></thead>
+            <tbody id="esc-rows"></tbody>
+          </table>
+        </div>
+        <div class="panel-foot"><span data-i18n="escNote">AQI 为美国标准，按 24 小时 PM2.5 计算，全部来自同一个大气模式（Copernicus CAMS，经 Open-Meteo），新加坡也在列表中，方便对比。模式在烟霾期间常低估新加坡的读数，请以 NEA 实测为准；目的地出发前请查看当地官方数据。飞行时间为常见直飞航班的大致时长。</span></div>
       </section>
 
       <section class="panel advisories-panel" id="advisories">

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest } from '../public/lib.mjs';
+import { band, stale, safeUrl, escapeHtml, activity, readings, nearestRegion, postalCode, inSingapore, distance, nearest, flightTime, flightLinks } from '../public/lib.mjs';
 test('PSI boundaries follow NEA categories, including missing data', () => {
   for (const [n, i] of [[0, 0], [50, 0], [51, 1], [100, 1], [101, 2], [200, 2], [201, 3], [300, 3], [301, 4]]) assert.equal(band(n).index, i);
   assert.equal(band(undefined).index, -1);
@@ -64,4 +64,16 @@ test('nearby resources are ranked by real distance', () => {
   const items = [{ name: 'far', lat: 1.30, lon: 103.85 }, { name: 'near', lat: 1.43, lon: 103.835 }, { name: 'mid', lat: 1.40, lon: 103.83 }];
   assert.deepEqual(nearest(yishun, items, 2).map(x => x.name), ['near', 'mid']);
   assert.deepEqual(nearest(yishun, undefined), []);
+});
+test('flight times and search links', () => {
+  assert.equal(flightTime(60), '约 1 小时');
+  assert.equal(flightTime(145), '约 2 小时 25 分');
+  assert.equal(flightTime(45), '约 45 分');
+  assert.equal(flightTime(145, 'en'), '~2h 25m');
+  assert.equal(flightTime(45, 'en'), '~45m');
+  assert.equal(flightTime(0), '');
+  const links = flightLinks('KUL', '2026-10-17');
+  assert.match(links.trip, /dcity=sin&acity=kul&ddate=2026-10-17/);
+  assert.equal(links.skyscanner, 'https://www.skyscanner.com.sg/transport/flights/sin/kul/261017/');
+  assert.match(links.google, /Flights%20to%20KUL%20from%20SIN%20on%202026-10-17/);
 });

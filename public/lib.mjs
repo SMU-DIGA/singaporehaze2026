@@ -25,6 +25,20 @@ export function distance(a, b) {
 export function nearest(place, items = [], count = 1) {
   return items.map(item => ({ ...item, metres: distance(place, item) })).sort((x, y) => x.metres - y.metres).slice(0, count);
 }
+export function flightTime(minutes, lang = 'zh') {
+  if (!Number.isFinite(minutes) || minutes <= 0) return '';
+  const h = Math.floor(minutes / 60), m = minutes % 60;
+  return lang === 'en' ? `~${h ? `${h}h` : ''}${m ? ` ${m}m` : ''}`.replace('~ ', '~') : `约 ${h ? `${h} 小时` : ''}${m ? ` ${m} 分` : ''}`.replace('约  ', '约 ');
+}
+// Flight searches open on the given date (YYYY-MM-DD), one way from Singapore.
+export function flightLinks(iata, date) {
+  const code = iata.toLowerCase(), compact = date.replaceAll('-', '').slice(2);
+  return {
+    trip: `https://www.trip.com/flights/showfarefirst?dcity=sin&acity=${code}&ddate=${date}&triptype=ow&class=y&quantity=1&locale=en-SG&curr=SGD`,
+    google: `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights to ${iata} from SIN on ${date} one way`)}&curr=SGD`,
+    skyscanner: `https://www.skyscanner.com.sg/transport/flights/sin/${code}/${compact}/`,
+  };
+}
 export function postalCode(input) {
   const code = String(input ?? '').replace(/\s/g, '');
   return /^\d{6}$/.test(code) ? code : null;

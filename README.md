@@ -46,6 +46,12 @@ node scripts/validate-artifact.mjs
 
 首次发布后使用 `scripts/verify_hosted.py <站点地址>`，从隐藏 stdin 输入平台服务 token，执行写入和持久化回读验证。脚本不会保存或打印 token。
 
+## 周边城市
+
+`scripts/update_escape.py` 每小时（随整点任务）生成 `public/data/escape.json`：17 个周边城市（含新加坡作对照）现在的 AQI，以及明天和后天的最高 AQI。数据来自 Open-Meteo 的 CAMS 模式（`us_aqi_pm2_5`，美国标准，按 24 小时 PM2.5 计算；不用总 AQI，因为臭氧会把曼谷等城市拉高，和烟霾无关）。城市列表和大致飞行时间写在脚本的 `CITIES` 里。
+
+机票：页面给每个城市放 Trip.com、Google Flights 和 Skyscanner 的搜索链接，日期预填为明天。Trip.com 和 Google 都用反机器人验证拦截自动访问（robots.txt 也禁止抓搜索页），所以不抓取价格。`escape.json` 每个城市都留了 `price` 字段（`amount`、`currency`、`url`），以后接上合规的价格来源（如 SerpApi 或 Travelpayouts）后，页面会自动多出一列「机票」。
+
 ## 防霾资源
 
 `scripts/update_resources.py` 生成 `public/data/resources.json`，地图上的资源图层和「我的空气」里的「附近资源」都读这个文件：

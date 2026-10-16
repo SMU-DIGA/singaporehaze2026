@@ -258,6 +258,23 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .resource-note { color: var(--muted); font-size: 13px; }
 .mask-stock { font-weight: 600; color: var(--accent); }
 
+/* ---------- Getting away ---------- */
+.escape-panel { margin-bottom: 24px; }
+.escape-table-wrap { padding: 0 22px 8px; overflow-x: auto; }
+.escape-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.escape-table th, .escape-table td { padding: 10px 12px; text-align: left; border-top: 1px solid var(--border); vertical-align: middle; }
+.escape-table thead th { border-top: 0; font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.escape-table tbody th span { display: block; font-size: 15px; font-weight: 600; }
+.escape-table tbody th small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
+.escape-table tr.home { background: var(--panel-soft); }
+.esc-aqi b { display: block; font-size: 18px; font-weight: 650; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.esc-aqi small { display: block; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.esc-time { color: var(--muted); white-space: nowrap; }
+.esc-price a { font-weight: 650; color: var(--link); white-space: nowrap; }
+.esc-links { white-space: nowrap; }
+.esc-links a { color: var(--link); font-weight: 500; font-size: 13px; }
+.esc-links a + a { margin-left: 12px; }
+
 /* ---------- Tomorrow's outlook ---------- */
 .forecast-panel { margin-bottom: 24px; }
 .forecast-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 28px; padding: 0 22px 20px; }
@@ -431,6 +448,20 @@ body.dark .island-map { color: #6f8f7d; }
   .forecast-regions b { font-size: 17px; }
   .live-map { height: 340px; }
   .resources-grid { padding: 0 16px 16px; }
+  /* Phones: one card per city instead of a wide table. */
+  .escape-table-wrap { padding: 0 16px 8px; }
+  .escape-table thead { display: none; }
+  .escape-table tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; padding: 12px 0; border-top: 1px solid var(--border); }
+  .escape-table tr.home { margin: 0 -16px; padding: 12px 16px; }
+  .escape-table tbody th, .escape-table tbody td { display: block; padding: 0; border: 0; }
+  .escape-table tbody th { grid-column: 1 / -1; }
+  .esc-aqi::before { content: attr(data-label); display: block; font-size: 12px; color: var(--muted); }
+  .esc-aqi small { white-space: normal; line-height: 1.3; }
+  .esc-time { grid-column: 1; align-self: center; font-size: 13px; }
+  .esc-price { grid-column: 2; align-self: center; }
+  .esc-links { grid-column: 2 / -1; text-align: right; align-self: center; }
+  .esc-price + .esc-links { grid-column: 3; }
+  .esc-time:empty, .esc-links:empty, .esc-price:empty { display: none; }
   .locate-panel { padding: 16px; }
   #postal-input { flex: 1 1 160px; width: auto; }
   .my-air-values { grid-template-columns: repeat(2, minmax(0, 1fr)); }

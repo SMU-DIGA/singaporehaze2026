@@ -1,8 +1,8 @@
-import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS } from './lib.mjs';
+import { regions, band, readings, history, validValues, stale, safeUrl, escapeHtml as e, activity, nearestRegion, nearest, postalCode, inSingapore, SG_BOUNDS, flightTime, flightLinks } from './lib.mjs';
 import { getLanguage, setLanguage, localize, locale, t } from './locale.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -27,6 +27,7 @@ const icons = {
   forecast: '<path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/>',
   mask: '<path d="M4 9c3-1.3 5.3-2 8-2s5 .7 8 2v3.5c0 3-3.8 5.5-8 5.5s-8-2.5-8-5.5Z"/><path d="M4 10.5H2.5 M20 10.5h1.5 M8.5 11h7 M8.5 14h7"/>',
   fit: '<path d="M4 9V4h5 M20 9V4h-5 M4 15v5h5 M20 15v5h-5"/>',
+  plane: '<path d="M10.5 13.5 4 11l1.5-1.5 7 .5 4.5-4.5c1-1 2.5-1.2 3-.7s.3 2-.7 3L14.8 12.3l.5 7L13.8 21l-2.5-6.5-3.3 3.3.3 2.2-1.3 1.3-1.3-3.5L2.2 16.5l1.3-1.3 2.2.3Z"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18 M5 6.5h14 M5 17.5h14"/>',
 };
 $$('[data-icon]').forEach(el => { el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[el.dataset.icon] || icons.info}</svg>`; });
@@ -266,7 +267,7 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderMyAir(); renderForecast(); renderMap(); renderChart(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
 
 // Haze resources: N95 machines (stock mirrored from HazeMaskGoWhere), Community Clubs and polyclinics.
 const stockColors = { available: '#2e9079', limited: '#b58b2d', out: '#b74d67', unknown: '#8b949e', offline: '#8b949e' };
@@ -422,6 +423,27 @@ $('#my-air').addEventListener('click', ev => {
   if (action === 'map') { $('#distribution').scrollIntoView({ behavior: 'smooth' }); focusPlace(true); }
 });
 
+// Nearby destinations: same-model AQI now and for the next two days, plus flight searches.
+function renderEscape() {
+  const d = state.escape;
+  $('#escape').hidden = !d?.cities?.length;
+  if (!d?.cities?.length) return;
+  const day = date => fmt(`${date}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined, month: undefined, day: undefined });
+  $('#esc-sub').textContent = t('escSub', { time: sgt(fmt(d.generatedAt)) });
+  const heads = { now: t('escNow'), tomorrow: t('escDayMax', { day: day(d.tomorrow) }), after: t('escDayMax', { day: day(d.dayAfter) }) };
+  $('#esc-tomorrow-head').textContent = heads.tomorrow; $('#esc-after-head').textContent = heads.after;
+  const hasPrice = d.cities.some(c => c.price?.amount);
+  $('.esc-price-col').hidden = !hasPrice;
+  // data-label carries the column name into the stacked phone layout.
+  const cell = (value, label) => { const b = bandOf(value, 'aqi'); return `<td class="esc-aqi" data-label="${e(label)}"><b style="color:${b.color}">${Number.isFinite(value) ? value : '—'}</b><small style="color:${b.color}">${e(b.label)}</small></td>`; };
+  const rank = c => (Number.isFinite(c.tomorrowMax) ? c.tomorrowMax : Infinity);
+  $('#esc-rows').innerHTML = [...d.cities].sort((a, b) => rank(a) - rank(b)).map(c => {
+    const home = c.iata === 'SIN', links = flightLinks(c.iata, d.tomorrow);
+    const price = c.price?.amount ? `<a href="${e(safeUrl(c.price.url))}" target="_blank" rel="noopener noreferrer">${e(t('escPriceFrom', { price: `${c.price.currency === 'SGD' ? 'S$' : `${c.price.currency} `}${c.price.amount}` }))}</a>` : '—';
+    return `<tr class="${home ? 'home' : ''}"><th scope="row"><span>${e(en() ? c.en : c.zh)}</span><small>${home ? e(t('escHere')) : `${e(en() ? c.zh : c.en)} · ${c.iata}`}</small></th>${cell(c.aqi, heads.now)}${cell(c.tomorrowMax, heads.tomorrow)}${cell(c.dayAfterMax, heads.after)}<td class="esc-time">${home ? '' : e(flightTime(c.flightMinutes, getLanguage()))}</td>${hasPrice ? `<td class="esc-price">${home ? '' : price}</td>` : ''}<td class="esc-links">${home ? '' : `<a href="${e(links.trip)}" target="_blank" rel="noopener noreferrer">Trip.com</a><a href="${e(links.google)}" target="_blank" rel="noopener noreferrer">Google</a><a href="${e(links.skyscanner)}" target="_blank" rel="noopener noreferrer">Skyscanner</a>`}</td></tr>`;
+  }).join('');
+}
+
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
   if (!response.ok || !(response.headers.get('content-type') || '').match(/json|text\/plain/)) throw new Error('Unavailable');
@@ -445,8 +467,8 @@ async function fetchLatest() {
 async function load() {
   $('#refresh').disabled = true;
   try {
-    const [data, resources] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources)]);
-    state.data = data; state.resources = resources; render(); renderResources();
+    const [data, resources, escape] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources), fetchNewest('escape.json').catch(() => state.escape)]);
+    state.data = data; state.resources = resources; state.escape = escape; render(); renderResources();
   } catch {
     $('#data-warning').hidden = false; $('#data-warning').textContent = t('warnOffline');
     if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').removeAttribute('data-i18n'); $('#updated').textContent = t('loadFailed'); }
@@ -461,7 +483,7 @@ $('#news-search').addEventListener('input', ev => { state.query = ev.target.valu
 $('#load-more').addEventListener('click', () => { state.limit += 6; renderNews(); });
 $('#audience').addEventListener('change', renderAdvice);
 const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) $$('nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`)); }, { rootMargin: '-10% 0px -65% 0px' });
-$$('#overview,#forecast,#distribution,#advisories,#news,#guide').forEach(el => observer.observe(el));
+$$('#overview,#forecast,#distribution,#resources,#escape,#advisories,#news,#guide').forEach(el => observer.observe(el));
 // New snapshots land every hour; check every 15 minutes while the tab is visible, and on return.
 setInterval(() => { if (document.visibilityState === 'visible') load(); }, 15 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && state.data?.nextUpdateAt && Date.now() > Date.parse(state.data.nextUpdateAt)) load(); });
