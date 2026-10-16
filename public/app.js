@@ -356,9 +356,11 @@ function renderHours() {
   const colourOf = v => bandOf(v, 'pm25');
   const hh = h => `${String(h).padStart(2, '0')}:00`;
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Singapore' }).format(new Date());
-  $('#hours-days').innerHTML = Object.entries(days).slice(0, 2).map(([date, hours]) => {
+  // Late at night today has no window left; show it only if it is all there is.
+  let shown = Object.entries(days).slice(0, 2).map(([date, hours]) => [date, hours, bestWindow(hours)]);
+  if (shown.length > 1) shown = shown.filter(([, , best]) => best);
+  $('#hours-days').innerHTML = shown.map(([date, hours, best]) => {
     const waking = hours.filter(h => h.hour >= 6);
-    const best = bestWindow(hours);
     const worst = waking.filter(h => Number.isFinite(h.value)).sort((a, b) => b.value - a.value)[0];
     const label = `${t(date === today ? 'hrsToday' : 'hrsTomorrow')} · ${fmt(`${date}T12:00:00+08:00`, { weekday: 'short', month: 'short', day: 'numeric', hour: undefined, minute: undefined })}`;
     let summary = `<p class="hours-none">${e(t('hrsNoWindow'))}</p>`;

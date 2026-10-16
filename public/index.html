@@ -148,23 +148,18 @@
               <p class="forecast-advice" id="fc-advice"></p>
               <div class="forecast-regions" id="fc-regions"></div>
             </div>
-            <div class="forecast-signals">
-              <h3 data-i18n="fcSignals">预测依据</h3>
-              <ul id="fc-signals"></ul>
-              <figure class="forecast-outlook" id="fc-outlook" hidden><blockquote lang="en" id="fc-outlook-text"></blockquote><figcaption><a id="fc-outlook-link" target="_blank" rel="noopener noreferrer"><span data-i18n="fcOutlookSource">NEA 雾霾通报原文</span> ↗</a></figcaption></figure>
+            <div class="forecast-hours" id="hours" hidden>
+              <div class="hours-head"><h3><span data-icon="clock"></span><span data-i18n="hrsTitle">什么时候出门</span></h3><div class="segmented" id="hours-region" role="group" data-i18n-attr="aria-label:regionSelect" aria-label="选择区域"></div></div>
+              <div class="hours-days" id="hours-days"></div>
+              <div class="hours-legend" id="hours-legend"></div>
             </div>
           </div>
-          <div class="panel-foot"><span id="fc-record"></span><span data-i18n="fcDisclaimer">本站算法估算，非 NEA 官方预报；安排活动请以 NEA 发布为准。</span></div>
-        </section>
-
-        <section class="panel hours-panel" id="hours" hidden>
-          <div class="panel-head">
-            <div><h2><span class="heading-icon" data-icon="clock"></span><span data-i18n="hrsTitle">什么时候出门</span></h2><p data-i18n="hrsSub">每小时 PM2.5 预测，找出今天和明天空气最好的时段。</p></div>
-            <div class="segmented" id="hours-region" role="group" data-i18n-attr="aria-label:regionSelect" aria-label="选择区域"></div>
+          <div class="forecast-signals">
+            <h3 data-i18n="fcSignals">预测依据</h3>
+            <ul id="fc-signals"></ul>
+            <figure class="forecast-outlook" id="fc-outlook" hidden><blockquote lang="en" id="fc-outlook-text"></blockquote><figcaption><a id="fc-outlook-link" target="_blank" rel="noopener noreferrer"><span data-i18n="fcOutlookSource">NEA 雾霾通报原文</span> ↗</a></figcaption></figure>
           </div>
-          <div class="hours-days" id="hours-days"></div>
-          <div class="hours-legend" id="hours-legend"></div>
-          <div class="panel-foot"><span data-i18n="hrsNote">CAMS 大气模式的逐小时预测，已按近 48 小时 NEA 实测校正，仅供参考；出门前请看 NEA 最新的 1 小时 PM2.5。建议按 NEA 的 1 小时 PM2.5 分级给出。</span></div>
+          <div class="panel-foot forecast-foot"><span id="fc-record"></span><span data-i18n="fcDisclaimer">本站算法估算，非 NEA 官方预报；安排活动请以 NEA 发布为准。</span><span data-i18n="hrsNote">CAMS 大气模式的逐小时预测，已按近 48 小时 NEA 实测校正，仅供参考；出门前请看 NEA 最新的 1 小时 PM2.5。建议按 NEA 的 1 小时 PM2.5 分级给出。</span></div>
         </section>
 
         <section class="panel rules-panel" id="rules">
@@ -190,6 +185,33 @@
       </div>
 
       <div class="tab-panel" id="protect" role="tabpanel" hidden aria-labelledby="tab-protect">
+        <section class="panel purifier-panel" id="purifier">
+          <div class="panel-head">
+            <div><h2><span class="heading-icon" data-icon="home"></span><span data-i18n="purTitle">空气净化器要多大？</span></h2><p data-i18n="purSub">按房间大小估算需要的 CADR（洁净空气输送率），或者看看你的净化器够不够用。</p></div>
+          </div>
+          <div class="purifier-body">
+            <form class="purifier-form" id="purifier-form" novalidate>
+              <label><span data-i18n="purArea">房间面积</span><span class="input-unit"><input id="pur-area" type="number" inputmode="decimal" min="1" max="500" step="0.5" value="12"><i>m²</i></span></label>
+              <div class="pur-presets" id="pur-presets">
+                <button type="button" data-area="10" data-i18n="purPresetSmall">小卧室 10 m²</button>
+                <button type="button" data-area="14" data-i18n="purPresetMaster">主卧 14 m²</button>
+                <button type="button" data-area="25" data-i18n="purPresetLiving">客厅 25 m²</button>
+              </div>
+              <label><span data-i18n="purHeight">层高</span><span class="input-unit"><input id="pur-height" type="number" inputmode="decimal" min="2" max="6" step="0.1" value="2.6"><i>m</i></span></label>
+              <label><span data-i18n="purHave">你的净化器 CADR（可选）</span><span class="input-unit"><input id="pur-cadr" type="number" inputmode="decimal" min="0" step="10" data-i18n-attr="placeholder:purHavePlaceholder" placeholder="例如 300"><i>m³/h</i></span></label>
+            </form>
+            <div class="purifier-result" id="purifier-result" aria-live="polite"></div>
+          </div>
+          <ul class="purifier-tips">
+            <li data-i18n="purTip1">看包装上针对烟雾（smoke）的 CADR，细颗粒物要看这一项。</li>
+            <li data-i18n="purTip2">标称 CADR 通常在最高档测得，低档时实际效果会差很多。</li>
+            <li data-i18n="purTip3">使用时关好门窗；房间越密闭，效果越好。</li>
+            <li data-i18n="purTip4">避免会产生臭氧的机型，例如带离子发生器、静电集尘或紫外线灯的机型（美国 EPA 建议）。</li>
+            <li data-i18n="purTip5">按说明书定期更换滤网；滤网堵塞后 CADR 会下降。</li>
+          </ul>
+          <div class="panel-foot"><span data-i18n="purNote">按美国 EPA 选购表估算：层高 2.44 米时，每平方英尺约需 0.65 CFM 的烟雾 CADR，层高更高时按比例增加。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
+        </section>
+
         <section class="panel resources-panel" id="resources">
           <div class="panel-head">
             <div><h2><span class="heading-icon" data-icon="mask"></span><span data-i18n="resTitle">防霾资源</span></h2><p data-i18n="resSub">免费口罩、补贴就医和避霾中心；地图上可打开对应图层。</p></div>
@@ -243,33 +265,6 @@
             <article><span data-icon="shield"></span><div><h3 data-i18n="tipWorkTitle">户外工作安排</h3><p data-i18n="tipWorkText">雇主应评估雾霾风险，依空气状况与员工健康调整户外工作。</p><a href="https://www.mom.gov.sg/haze/guidelines-on-protecting-employees-from-haze" target="_blank" rel="noopener noreferrer"><span data-i18n="tipWorkLink">MOM 工作防护指引</span> ↗</a></div></article>
             <article><span data-icon="globe"></span><div><h3 data-i18n="tipSourceTitle">雾霾从哪里来</h3><p data-i18n="tipSourceText">关注东南亚火点、风向与跨境烟霾；卫星观测可能受云层影响。</p><a href="https://asmc.asean.org/" target="_blank" rel="noopener noreferrer"><span data-i18n="tipSourceLink">ASMC 区域监测</span> ↗</a></div></article>
           </div>
-        </section>
-
-        <section class="panel purifier-panel" id="purifier">
-          <div class="panel-head">
-            <div><h2><span class="heading-icon" data-icon="home"></span><span data-i18n="purTitle">空气净化器要多大？</span></h2><p data-i18n="purSub">按房间大小估算需要的 CADR（洁净空气输送率），或者看看你的净化器够不够用。</p></div>
-          </div>
-          <div class="purifier-body">
-            <form class="purifier-form" id="purifier-form" novalidate>
-              <label><span data-i18n="purArea">房间面积</span><span class="input-unit"><input id="pur-area" type="number" inputmode="decimal" min="1" max="500" step="0.5" value="12"><i>m²</i></span></label>
-              <div class="pur-presets" id="pur-presets">
-                <button type="button" data-area="10" data-i18n="purPresetSmall">小卧室 10 m²</button>
-                <button type="button" data-area="14" data-i18n="purPresetMaster">主卧 14 m²</button>
-                <button type="button" data-area="25" data-i18n="purPresetLiving">客厅 25 m²</button>
-              </div>
-              <label><span data-i18n="purHeight">层高</span><span class="input-unit"><input id="pur-height" type="number" inputmode="decimal" min="2" max="6" step="0.1" value="2.6"><i>m</i></span></label>
-              <label><span data-i18n="purHave">你的净化器 CADR（可选）</span><span class="input-unit"><input id="pur-cadr" type="number" inputmode="decimal" min="0" step="10" data-i18n-attr="placeholder:purHavePlaceholder" placeholder="例如 300"><i>m³/h</i></span></label>
-            </form>
-            <div class="purifier-result" id="purifier-result" aria-live="polite"></div>
-          </div>
-          <ul class="purifier-tips">
-            <li data-i18n="purTip1">看包装上针对烟雾（smoke）的 CADR，细颗粒物要看这一项。</li>
-            <li data-i18n="purTip2">标称 CADR 通常在最高档测得，低档时实际效果会差很多。</li>
-            <li data-i18n="purTip3">使用时关好门窗；房间越密闭，效果越好。</li>
-            <li data-i18n="purTip4">避免会产生臭氧的机型，例如带离子发生器、静电集尘或紫外线灯的机型（美国 EPA 建议）。</li>
-            <li data-i18n="purTip5">按说明书定期更换滤网；滤网堵塞后 CADR 会下降。</li>
-          </ul>
-          <div class="panel-foot"><span data-i18n="purNote">按美国 EPA 选购表估算：层高 2.44 米时，每平方英尺约需 0.65 CFM 的烟雾 CADR，层高更高时按比例增加。「降低 90%」按密闭、混合均匀的理想房间计算，实际会更久。</span><span class="foot-links"><a class="text-button" href="https://www.haze.gov.sg/resources/portable-air-cleaners" target="_blank" rel="noopener noreferrer"><span data-i18n="purNeaList">NEA 适用净化器名单</span> ↗</a><a class="text-button" href="https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home" target="_blank" rel="noopener noreferrer"><span data-i18n="purEpa">EPA 选购指南</span> ↗</a></span></div>
         </section>
       </div>
 
