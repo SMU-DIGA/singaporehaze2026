@@ -3,7 +3,7 @@ import { getLanguage, setLanguage, localize, locale, t, list } from './locale.mj
 import { rules, TIERS, tierOf, checked as rulesChecked } from './rules.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
+const state = { data: null, metric: 'psi', period: 24, region: 'all', filter: 'all', query: '', limit: 6, place: null, resources: null, escape: null, history: null, hoursRegion: null, layers: { readings: true, masks: true, ccs: false, polyclinics: false } };
 const seriesColors = { north: '#4f7a45', south: '#4f8a96', east: '#b58b2d', west: '#c9652f', central: '#8a5a96' };
 // The server cron job commits fresh snapshots here every hour. Reading it directly
 // means the static site shows new data even before GitHub Pages finishes redeploying.
@@ -269,7 +269,52 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderEscape(); renderAdvisories(); renderNews(); }
+function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderHistory(); renderEscape(); renderAdvisories(); renderNews(); }
+
+// Compared with past years: per-year peaks and day counts, and the haze season overlaid by year.
+const yearColours = ['#9aa6a0', '#b58b2d', '#4f8a96', '#c9652f', '#8a5a96', '#2e9079'];
+function renderHistory() {
+  const h = state.history;
+  $('#history').hidden = !h?.years?.length;
+  if (!h?.years?.length) return;
+  const now = h.years[h.years.length - 1];
+  const day = date => fmt(`${date}T12:00:00+08:00`, { year: 'numeric', hour: undefined, minute: undefined });
+  const regionLabel = id => { const r = regions.find(x => x.id === id); return r ? regionName(r) : id; };
+  const past = h.years.filter(y => y.year !== now.year);
+  const since = [...past].reverse().find(y => y.peak >= now.peak);
+  const most = [...past].sort((a, b) => b.days100 - a.days100)[0];
+  const vars = { year: now.year, peak: now.peak, region: regionLabel(now.peakRegion), date: day(now.peakDate), days: now.days100 };
+  $('#his-headline').textContent = since
+    ? t('hisHeadSince', { ...vars, since: since.year, sincePeak: since.peak, maxYear: most.year, maxDays: most.days100 })
+    : t('hisHeadRecord', vars);
+  const top = Math.max(...h.years.map(y => y.peak));
+  $('#his-rows').innerHTML = [...h.years].reverse().map(y => {
+    const b = bandOf(y.peak);
+    const label = `${y.year}${y.partial ? ` <small>${e(t(y.year === now.year ? 'hisSoFar' : 'hisFrom'))}</small>` : ''}`;
+    const count = (n, limit) => `<td class="${n ? 'hot' : ''}" style="--c:${bandOf(limit + 1).color}">${n || '–'}</td>`;
+    return `<tr class="${y.year === now.year ? 'current' : ''}"><th scope="row">${label}</th><td class="his-peak" title="${e(`${regionLabel(y.peakRegion)} · ${day(y.peakDate)}`)}"><span style="--w:${Math.round(y.peak / top * 100)}%;--c:${b.color}"><i></i><b style="color:${b.color}">${y.peak}</b></span></td>${count(y.days100, 100)}${count(y.days200, 200)}${count(y.days300, 300)}</tr>`;
+  }).join('');
+  // Season overlay: x = day of the season, y = daily highest PSI.
+  const series = Object.entries(h.season || {}).sort(([a], [b]) => a - b);
+  const length = Math.max(...series.map(([, v]) => v.length));
+  const max = Math.ceil(Math.max(200, ...series.flatMap(([, v]) => v.filter(Number.isFinite))) / 50) * 50;
+  const x = i => 44 + i / (length - 1) * 496, y = v => 210 - v / max * 185;
+  let svg = '';
+  for (let v = 0; v <= max; v += 50) svg += `<line class="grid" x1="44" x2="540" y1="${y(v)}" y2="${y(v)}"/><text x="34" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  for (const limit of [100, 200, 300].filter(l => l < max)) svg += `<line class="threshold" x1="44" x2="540" y1="${y(limit)}" y2="${y(limit)}" style="stroke:${bandOf(limit + 1).color}"/>`;
+  const start = new Date(`2000-${h.seasonStart}T12:00:00+08:00`);
+  for (let m = 0; m < 4; m++) { const d = new Date(start); d.setMonth(start.getMonth() + m); const i = Math.round((d - start) / 86400000); svg += `<text x="${x(i)}" y="234" text-anchor="${m ? 'middle' : 'start'}">${e(new Intl.DateTimeFormat(locale(), { month: 'short' }).format(d))}</text>`; }
+  series.forEach(([year, values], k) => {
+    const current = +year === now.year, colour = current ? '#b74d67' : yearColours[k % yearColours.length];
+    let path = '';
+    values.forEach((v, i) => { if (Number.isFinite(v)) path += `${path && Number.isFinite(values[i - 1]) ? 'L' : 'M'}${x(i).toFixed(1)} ${y(v).toFixed(1)} `; });
+    svg += `<path class="series${current ? ' current' : ''}" d="${path}" stroke="${colour}"/>`;
+  });
+  $('#his-chart').innerHTML = svg;
+  $('#his-legend').innerHTML = series.map(([year], k) => `<span style="--c:${+year === now.year ? '#b74d67' : yearColours[k % yearColours.length]}" class="${+year === now.year ? 'current' : ''}"><i></i>${year}</span>`).join('');
+  $('#his-older').textContent = t('hisOlder', { items: (h.older || []).map(o => t('hisOlderItem', { date: day(o.date), value: o.value })).join(getLanguage() === 'en' ? '; ' : '；') });
+  $('#his-note').textContent = t('hisNote', { end: h.datasetEnd ? day(h.datasetEnd) : '—' });
+}
 
 // Official measures: which PSI band each agency's rules are in, now and (for forecast-based ones) tomorrow.
 function renderRules() {
@@ -581,8 +626,8 @@ async function fetchLatest() {
 async function load() {
   $('#refresh').disabled = true;
   try {
-    const [data, resources, escape] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources), fetchNewest('escape.json').catch(() => state.escape)]);
-    state.data = data; state.resources = resources; state.escape = escape; render(); renderResources();
+    const [data, resources, escape, history] = await Promise.all([fetchLatest(), fetchNewest('resources.json').catch(() => state.resources), fetchNewest('escape.json').catch(() => state.escape), fetchNewest('history.json').catch(() => state.history)]);
+    state.data = data; state.resources = resources; state.escape = escape; state.history = history; render(); renderResources();
   } catch {
     $('#data-warning').hidden = false; $('#data-warning').textContent = t('warnOffline');
     if (!state.data) { state.data = {}; renderMap(); renderChart(); renderAdvisories(); renderNews(); $('#updated').removeAttribute('data-i18n'); $('#updated').textContent = t('loadFailed'); }

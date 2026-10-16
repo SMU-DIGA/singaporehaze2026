@@ -112,6 +112,26 @@
             <div class="trend-insight"><span data-icon="info"></span><div><strong data-i18n="insightTitle">两个指标怎么看？</strong><p data-i18n="insightText">PM2.5（1 小时）反映眼下的短时变化；PSI（24 小时）反映一天内的整体状况。安排第二天的活动，请参考 NEA 的 PSI 预报。</p><a href="https://www.haze.gov.sg/" target="_blank" rel="noopener noreferrer"><span data-i18n="insightLink">NEA 指数说明</span> ↗</a></div></div>
           </section>
         </div>
+        <section class="panel history-panel" id="history" hidden>
+          <div class="panel-head">
+            <div><h2><span class="heading-icon" data-icon="gauge"></span><span data-i18n="hisTitle">和往年比较</span></h2><p id="his-headline"></p></div>
+          </div>
+          <div class="history-body">
+            <div class="history-chart">
+              <h3 data-i18n="hisSeason">雾霾季每日最高 24 小时 PSI（8–11 月）</h3>
+              <svg id="his-chart" viewBox="0 0 560 250" role="img" data-i18n-attr="aria-label:hisSeason" aria-label="雾霾季每日最高 24 小时 PSI"></svg>
+              <div class="chart-legend" id="his-legend"></div>
+            </div>
+            <div class="history-table-wrap">
+              <table class="history-table">
+                <thead><tr><th data-i18n="hisYear">年份</th><th data-i18n="hisPeak">最高 PSI</th><th data-i18n="hisDays100">不健康天数</th><th data-i18n="hisDays200">非常不健康</th><th data-i18n="hisDays300">危险</th></tr></thead>
+                <tbody id="his-rows"></tbody>
+              </table>
+            </div>
+          </div>
+          <p class="history-older" id="his-older"></p>
+          <div class="panel-foot"><span id="his-note"></span></div>
+        </section>
       </div>
 
       <div class="tab-panel" id="plan" role="tabpanel" hidden aria-labelledby="tab-plan">

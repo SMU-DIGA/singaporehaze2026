@@ -258,6 +258,35 @@ select { background: var(--panel); border: 1px solid var(--border); border-radiu
 .resource-note { color: var(--muted); font-size: 13px; }
 .mask-stock { font-weight: 600; color: var(--accent); }
 
+/* ---------- Compared with past years ---------- */
+.history-panel { margin-top: 24px; margin-bottom: 24px; }
+.history-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 28px; padding: 0 22px 8px; }
+.history-chart h3 { font-size: 14px; font-weight: 600; color: var(--muted); }
+#his-chart { width: 100%; height: auto; margin-top: 6px; }
+#his-chart text { font-size: 11px; fill: var(--faint); }
+#his-chart .grid { stroke: var(--border); }
+#his-chart .threshold { stroke-dasharray: 4 4; opacity: .7; }
+#his-chart .series { fill: none; stroke-width: 1.6; opacity: .8; }
+#his-chart .series.current { stroke-width: 3; opacity: 1; }
+#his-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; }
+#his-legend span { display: inline-flex; align-items: center; gap: 6px; }
+#his-legend i { width: 18px; height: 3px; border-radius: 2px; background: var(--c); }
+#his-legend .current { font-weight: 650; }
+.history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.history-table th, .history-table td { padding: 5px 6px; border-top: 1px solid var(--border); text-align: right; font-variant-numeric: tabular-nums; }
+.history-table thead th { border-top: 0; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.history-table th:first-child { text-align: left; }
+.history-table tbody th { font-weight: 600; white-space: nowrap; }
+.history-table tbody th small { font-weight: 400; color: var(--muted); }
+.history-table tr.current { background: var(--panel-soft); }
+.history-table td { color: var(--faint); }
+.history-table td.hot { color: var(--c); font-weight: 650; }
+.his-peak { width: 45%; }
+.his-peak span { display: flex; align-items: center; gap: 6px; }
+.his-peak i { display: block; height: 8px; width: var(--w); background: var(--c); opacity: .35; border-radius: 4px; }
+.his-peak b { font-weight: 650; }
+.history-older { padding: 4px 22px 12px; font-size: 13px; color: var(--muted); }
+
 /* ---------- Official measures ---------- */
 .rules-panel { margin-bottom: 24px; }
 .rules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 0 22px 20px; }
@@ -454,6 +483,7 @@ body.dark .island-map { color: #6f8f7d; }
   .forecast-body { grid-template-columns: 1fr; gap: 20px; }
   .resources-grid { grid-template-columns: 1fr; }
   .purifier-body { grid-template-columns: 1fr; }
+  .history-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
   .sidebar { position: sticky; top: 0; width: 100%; padding: 12px 16px 0; inset: auto; }
@@ -508,6 +538,8 @@ body.dark .island-map { color: #6f8f7d; }
   .escape-table-wrap { padding: 0 16px 8px; }
   .hours-days, .purifier-body { padding: 0 16px 8px; }
   .rules-grid { padding: 0 16px 16px; }
+  .history-body { padding: 0 16px 8px; }
+  .history-older { padding: 4px 16px 12px; }
   .hours-days { grid-template-columns: 1fr; }
   .purifier-tips { margin: 8px 16px 16px; }
   .hour-strip { gap: 2px; }

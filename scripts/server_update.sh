@@ -35,16 +35,17 @@ if [ "$MODE" = all ]; then
   "$PYTHON" scripts/update_data.py
   refresh=$?
   "$PYTHON" scripts/update_escape.py
+  "$PYTHON" scripts/update_history.py
 fi
 "$PYTHON" scripts/update_resources.py
 
 if ! "$PYTHON" -m unittest discover -s tests -p 'test_*.py' -q; then
   echo "tests failed; not committing"
-  git checkout -- public/data/latest.json public/data/resources.json public/data/escape.json
+  git checkout -- public/data/latest.json public/data/resources.json public/data/escape.json public/data/history.json data/psi-daily.json
   exit 1
 fi
 
-git add public/data/latest.json public/data/resources.json public/data/escape.json
+git add public/data/latest.json public/data/resources.json public/data/escape.json public/data/history.json data/psi-daily.json
 if git diff --staged --quiet; then
   echo "no data change"
 else
