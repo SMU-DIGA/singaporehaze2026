@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T21:22:51+08:00",
+    "updatedAt": "2026-10-17T21:42:50+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -320,8 +320,8 @@
         "lon": 103.943675,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 10",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Tampines Social Service Office (SSO)",
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T21:30:02.714661+08:00",
+  "generatedAt": "2026-10-17T21:45:02.417681+08:00",
   "schemaVersion": 1
 }
