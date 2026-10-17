@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T12:12:51+08:00",
+    "updatedAt": "2026-10-17T12:22:51+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,7 +12,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -166,8 +166,8 @@
         "lon": 103.89656,
         "hours": "Daily, 24 hours",
         "note": "Near Lobby A",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Hong Kah North Zone '6' Residents' Network (RN)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T12:15:02.829330+08:00",
+  "generatedAt": "2026-10-17T12:30:03.547695+08:00",
   "schemaVersion": 1
 }
