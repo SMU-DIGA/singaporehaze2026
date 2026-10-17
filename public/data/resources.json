@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T16:42:50+08:00",
+    "updatedAt": "2026-10-17T16:52:51+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -45,7 +45,7 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -89,7 +89,7 @@
         "lon": 103.81721,
         "hours": "Daily, 24 hours",
         "note": "Between Berth B2 and B3",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T16:45:03.084955+08:00",
+  "generatedAt": "2026-10-17T17:00:02.876059+08:00",
   "schemaVersion": 1
 }
