@@ -1,7 +1,7 @@
 {
   "psi": {
     "date": "2026-10-17",
-    "updatedTimestamp": "2026-10-17T11:00:50+08:00",
+    "updatedTimestamp": "2026-10-17T11:15:37+08:00",
     "timestamp": "2026-10-17T11:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
@@ -92,7 +92,7 @@
   },
   "pm25": {
     "date": "2026-10-17",
-    "updatedTimestamp": "2026-10-17T11:00:50+08:00",
+    "updatedTimestamp": "2026-10-17T11:15:37+08:00",
     "timestamp": "2026-10-17T11:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
@@ -4071,56 +4071,60 @@
       }
     ]
   },
-  "generatedAt": "2026-10-17T11:05:02.650245+08:00",
+  "generatedAt": "2026-10-17T11:19:56.067836+08:00",
   "nextUpdateAt": "2026-10-17T12:05:00+08:00",
   "sources": {
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
-    },
-    "advisories": {
-      "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
-    },
-    "history_pm25_2026-10-17": {
-      "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "history_psi_2026-10-17": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
+    },
+    "history_pm25_2026-10-17": {
+      "ok": true,
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "history_psi_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "history_pm25_2026-10-16": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "forecast_nea": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
+    },
+    "forecast_asmc": {
+      "ok": true,
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-17T11:05:02.650245+08:00"
+      "checkedAt": "2026-10-17T11:19:56.067836+08:00"
     }
   },
   "errors": [],
@@ -4185,7 +4189,7 @@
   ],
   "forecast": {
     "targetDate": "2026-10-18",
-    "issuedAt": "2026-10-17T11:05:02.650245+08:00",
+    "issuedAt": "2026-10-17T11:19:56.067836+08:00",
     "psi": {
       "low": 120,
       "high": 141
@@ -4220,7 +4224,37 @@
       },
       "rain": true,
       "southerly": true,
-      "factor": 0.92
+      "factor": 0.92,
+      "days": [
+        {
+          "date": "2026-10-18",
+          "text": "Afternoon thundery showers",
+          "windDirection": "SSE",
+          "rain": true,
+          "southerly": true
+        },
+        {
+          "date": "2026-10-19",
+          "text": "Afternoon thundery showers",
+          "windDirection": "SE",
+          "rain": true,
+          "southerly": true
+        },
+        {
+          "date": "2026-10-20",
+          "text": "Afternoon thundery showers",
+          "windDirection": "SE",
+          "rain": true,
+          "southerly": true
+        },
+        {
+          "date": "2026-10-21",
+          "text": "Afternoon thundery showers",
+          "windDirection": "ESE",
+          "rain": true,
+          "southerly": true
+        }
+      ]
     },
     "hourly": {
       "times": [
@@ -4453,6 +4487,80 @@
           92
         ]
       }
+    },
+    "longRange": {
+      "days": [
+        {
+          "date": "2026-10-18",
+          "low": 120,
+          "high": 141,
+          "source": "blend",
+          "weather": {
+            "text": "Afternoon thundery showers",
+            "windDirection": "SSE",
+            "rain": true,
+            "southerly": true
+          }
+        },
+        {
+          "date": "2026-10-19",
+          "low": 107,
+          "high": 133,
+          "source": "model",
+          "weather": {
+            "text": "Afternoon thundery showers",
+            "windDirection": "SE",
+            "rain": true,
+            "southerly": true
+          }
+        },
+        {
+          "date": "2026-10-20",
+          "low": 112,
+          "high": 132,
+          "source": "model",
+          "weather": {
+            "text": "Afternoon thundery showers",
+            "windDirection": "SE",
+            "rain": true,
+            "southerly": true
+          }
+        },
+        {
+          "date": "2026-10-21",
+          "low": 96,
+          "high": 113,
+          "source": "model",
+          "weather": {
+            "text": "Afternoon thundery showers",
+            "windDirection": "ESE",
+            "rain": true,
+            "southerly": true
+          }
+        }
+      ],
+      "betterFrom": null,
+      "asmc": {
+        "fetchedAt": "2026-10-17T11:19:56.067836+08:00",
+        "seasonal": {
+          "title": "Seasonal Forecast for October – December 2026",
+          "text": "Under El Niño conditions and below-normal rainfall expected across most of the southern ASEAN region, the hotspot and smoke haze situation is expected to remain escalated in the region. The risk of transboundary haze persists under prevailing southeasterly or southwesterly wind conditions. Increased showers under the inter-monsoon conditions towards the end of October could start to alleviate the hotspot and smoke haze situation over the region. Towards the end of the year, the northern ASEAN region is expected to enter its dry season, which could lead to a rise in hotspot and smoke haze activity, particularly over areas experiencing below-normal rainfall conditions.",
+          "url": "https://asmc.asean.org/asmc-seasonal-outlook/",
+          "escalated": true,
+          "easeFrom": {
+            "part": "end",
+            "month": 10,
+            "rain": true
+          }
+        },
+        "fortnight": {
+          "period": "12 – 25 October 2026",
+          "until": "2026-10-25",
+          "text": "Drier than usual conditions are predicted over most of the southern ASEAN region in the next fortnight (12 – 25 October).",
+          "tendency": "drier",
+          "url": "https://asmc.asean.org/subseasonal-weather-outlook-12-25-october-2026/"
+        }
+      }
     }
   },
   "forecastLog": [
@@ -4465,7 +4573,7 @@
     },
     {
       "targetDate": "2026-10-18",
-      "issuedAt": "2026-10-17T11:05:02.650245+08:00",
+      "issuedAt": "2026-10-17T11:19:56.067836+08:00",
       "low": 120,
       "high": 141,
       "official": false
