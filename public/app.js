@@ -23,6 +23,7 @@ const icons = {
   pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
   gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-6"/><circle cx="12" cy="18" r="1"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6 M12 7h.01"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
   home: '<path d="m3 10 9-7 9 7 M5 9v12h14V9 M9 21v-8h6v8"/>',
@@ -164,7 +165,7 @@ function renderSummary() {
   if (Object.entries(d.sources || {}).some(([key, value]) => ['psi', 'pm25', 'news', 'advisories', 'cna'].includes(key) && !value.ok)) warnings.push(t('warnSources'));
   $('#data-warning').hidden = warnings.length === 0; $('#data-warning').textContent = warnings.join(' ');
 
-  const labels = { psi: 'srcPsi', pm25: 'srcPm', advisories: 'srcAdv', news: 'srcNews', cna: 'srcCna', forecast_nea: 'srcFcNea', forecast_model: 'srcFcModel', forecast_weather: 'srcFcWeather' };
+  const labels = { psi: 'srcPsi', pm25: 'srcPm', advisories: 'srcAdv', news: 'srcNews', cna: 'srcCna', forecast_nea: 'srcFcNea', forecast_model: 'srcFcModel', forecast_weather: 'srcFcWeather', forecast_asmc: 'srcFcAsmc' };
   $('#source-status').innerHTML = `<strong>${e(t('statusHead', { time: sgt(fmt(d.generatedAt)) }))}</strong><ul>` + Object.entries(labels).map(([k, label]) => `<li><span>${e(t(label))}</span><span class="${d.sources?.[k]?.ok ? 'ok' : 'fail'}">${e(t(d.sources?.[k]?.ok ? 'statusOk' : 'statusFail'))}</span></li>`).join('') + '</ul>';
   renderAdvice();
 }
@@ -254,7 +255,8 @@ function renderForecast() {
   if (!f?.psi) return;
   const { low, high } = f.psi, top = bandOf(high), bottom = bandOf(low);
   const day = fmt(`${f.targetDate}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined });
-  $('#fc-sub').textContent = t('fcSub', { date: day, time: sgt(clock(f.issuedAt)) });
+  $('#fc-sub').textContent = t('fcSub', { time: sgt(clock(f.issuedAt)) });
+  $('#fc-day').textContent = t('fcTomorrow', { date: day });
   const level = { high: 'fcHigh', medium: 'fcMedium', low: 'fcLow' }[f.confidence] || 'fcLow';
   $('#fc-confidence').textContent = t('fcConfidence', { level: t(level) });
   $('#fc-confidence').dataset.level = f.confidence;
@@ -277,8 +279,45 @@ function renderForecast() {
   $('#fc-signals').innerHTML = signals.map(([label, value, note, kind]) => `<li class="${kind || ''}"><span class="signal-label">${e(label)}</span><b>${e(value)}</b>${note ? `<small>${e(note)}</small>` : ''}</li>`).join('');
   $('#fc-outlook').hidden = !f.official?.outlook;
   if (f.official?.outlook) { $('#fc-outlook-text').textContent = f.official.outlook; $('#fc-outlook-link').href = safeUrl(f.official.url); }
+  renderLongRange(f);
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
+}
+// The next few days and ASMC's fortnightly and seasonal outlooks: when might it get better?
+function renderLongRange(f) {
+  const long = f.longRange, days = long?.days || [];
+  $('#fc-long').hidden = days.length < 2;
+  if (days.length < 2) return;
+  const date = d => fmt(`${d}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined });
+  const nowHigh = Math.max(...validValues(readings(state.data, 'psi')));
+  const first = days[0].high, last = days[days.length - 1].high;
+  const head = long.betterFrom
+    ? (long.betterFrom === days[0].date && nowHigh <= 100 ? t('fcLongStay') : t('fcLongBetter', { date: date(long.betterFrom) }))
+    : t(last <= first * 0.85 ? 'fcLongEasing' : last >= first * 1.15 ? 'fcLongWorse' : 'fcLongFlat', { n: days.length });
+  $('#fc-long-head').textContent = head;
+  const cell = d => {
+    const b = bandOf(d.high), w = d.weather;
+    const weather = w ? `<small>${e(t(w.rain ? 'fcLongRain' : 'fcLongDry'))}${w.windDirection ? ` · ${e(w.windDirection)}` : ''}</small>` : '';
+    const day = fmt(`${d.date}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined, month: undefined, day: undefined });
+    return `<div class="long-day${d.source === 'blend' ? ' first' : ''}" style="--c:${b.color}"><span>${e(day)}</span><b>${d.low === d.high ? d.low : `${d.low}–${d.high}`}</b><i></i><em>${e(b.label)}</em>${weather}</div>`;
+  };
+  $('#fc-long-days').innerHTML = days.map(cell).join('');
+  const asmc = long.asmc || {}, today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Singapore' });
+  const parts = [];
+  const fn = asmc.fortnight;
+  if (fn && (!fn.until || fn.until >= today)) {
+    const tendency = { drier: 'fcAsmcDrier', wetter: 'fcAsmcWetter', normal: 'fcAsmcNormal' }[fn.tendency];
+    parts.push(`<div><span class="signal-label">${e(t('fcAsmcFortnight', { period: fn.period || '' }))}</span>${tendency ? `<b>${e(t(tendency))}</b>` : ''}<details${tendency ? '' : ' open'}><summary>${e(t('fcAsmcOriginal'))}</summary><blockquote lang="en">${e(fn.text)}</blockquote></details><a href="${e(safeUrl(fn.url))}" target="_blank" rel="noopener noreferrer">ASMC ↗</a></div>`);
+  }
+  const season = asmc.seasonal;
+  if (season) {
+    const ease = season.easeFrom, when = ease && t(`fcWhen_${ease.part}`, { month: en() ? new Date(2026, ease.month - 1, 1).toLocaleDateString('en-SG', { month: 'long' }) : ease.month });
+    const verdict = [season.escalated && t('fcAsmcEscalated'), ease && t(ease.rain ? 'fcAsmcEaseRain' : 'fcAsmcEase', { when })].filter(Boolean).join(en() ? ' ' : '');
+    const period = season.title ? ` · <span lang="en">${e(season.title.replace(/^Seasonal Forecast for /, ''))}</span>` : '';
+    parts.push(`<div><span class="signal-label">${e(t('fcAsmcSeason'))}${period}</span>${verdict ? `<b>${e(verdict)}</b>` : ''}<details${verdict ? '' : ' open'}><summary>${e(t('fcAsmcOriginal'))}</summary><blockquote lang="en">${e(season.text)}</blockquote></details><a href="${e(safeUrl(season.url))}" target="_blank" rel="noopener noreferrer">ASMC ↗</a></div>`);
+  }
+  $('#fc-long-asmc').innerHTML = parts.join('');
+  $('#fc-long-asmc').hidden = !parts.length;
 }
 function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderHistory(); renderEscape(); renderAdvisories(); renderNews(); renderToc(); }
 

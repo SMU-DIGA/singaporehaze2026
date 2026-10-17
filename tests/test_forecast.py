@@ -41,11 +41,27 @@ OUTLOOK = json.dumps({'data': {'records': [{'forecasts': [{'timestamp': '2026-10
                       'forecast': {'summary': 'Afternoon thundery showers'}, 'wind': {'direction': 'SSE', 'speed': {'low': 5, 'high': 15}}}]}]}})
 
 
+SUBSEASONAL = 'https://asmc.asean.org/subseasonal-weather-outlook-12-25-october-2026/'
+ASMC_HOME = ('<p>With the activation of Alert Level 3, the regional haze situation is updated twice a day.</p>'
+             '<h3>Seasonal Forecast for October &#8211; December 2026</h3><h4>Summary of Outlook</h4>'
+             '<p>In September 2026, Southwest Monsoon conditions prevailed.</p>'
+             '<p>Under El Niño conditions, the hotspot and smoke haze situation is expected to remain escalated. '
+             'Increased showers under the inter-monsoon conditions towards the end of October could start to alleviate it.</p>'
+             f'<p><a href="https://asmc.asean.org/asmc-seasonal-outlook/">Click here for details</a></p><a href="{SUBSEASONAL}">x</a>')
+ASMC_SUB = ('<title>Subseasonal Weather Outlook (12 – 25 October 2026) - ASMC</title>'
+            '<p>Drier than usual conditions are predicted over most of the southern ASEAN region in the next fortnight (12 – 25 October). '
+            'Drier than usual conditions are also predicted for northern Mainland Southeast Asia in Week 1.</p>')
+
+
 def fake_fetch(url):
     if url.startswith(forecast.CAMS):
         return cams()
     if url == forecast.OUTLOOK:
         return OUTLOOK
+    if url == forecast.ASMC:
+        return ASMC_HOME
+    if url == SUBSEASONAL:
+        return ASMC_SUB
     return NEA_PAGE
 
 
@@ -102,6 +118,37 @@ class ForecastTests(unittest.TestCase):
         self.assertEqual(set(result['regions']), set(forecast.REGIONS))
         self.assertEqual(set(result['hourly']['regions']), set(forecast.REGIONS))
         self.assertEqual(len(result['hourly']['times']), len(result['hourly']['regions']['north']))
+
+    def test_long_range_days_and_when_it_improves(self):
+        result, _, _ = forecast.build(fake_fetch, snapshot(), NOW)
+        long = result['longRange']
+        # Tomorrow comes from the blend; the day after from the bias-corrected model (CAMS 40 × 2 = 80 µg/m³).
+        self.assertEqual([d['source'] for d in long['days']], ['blend', 'model'])
+        self.assertEqual(long['days'][1]['date'], '2026-10-18')
+        self.assertEqual(long['days'][1]['high'], round(forecast.psi_from_pm25(80)))
+        self.assertEqual(long['days'][0]['weather']['windDirection'], 'SSE')
+        self.assertIsNone(long['betterFrom'])  # PSI ~150 throughout
+        days = forecast.long_range(NOW.date(), {'low': 120, 'high': 140}, {'north': {'days': {'2026-10-17': 90}}}, None, None)
+        self.assertEqual(days['betterFrom'], '2026-10-17')
+
+    def test_asmc_outlooks_parsed_and_cached(self):
+        asmc = forecast.asmc_outlook(fake_fetch, NOW)
+        self.assertTrue(asmc['seasonal']['text'].startswith('Under El Niño'))
+        self.assertEqual(asmc['seasonal']['title'], 'Seasonal Forecast for October – December 2026')
+        self.assertTrue(asmc['seasonal']['escalated'])
+        self.assertEqual(asmc['seasonal']['easeFrom'], {'part': 'end', 'month': 10, 'rain': True})
+        self.assertEqual(forecast.easing('Haze is expected to ease by the middle of November.')['easeFrom']['part'], 'middle')
+        self.assertNotIn('easeFrom', forecast.easing('Haze may rise towards the end of the year.'))
+        self.assertEqual(asmc['fortnight']['tendency'], 'drier')
+        self.assertEqual(asmc['fortnight']['until'], '2026-10-25')
+        self.assertIn('next fortnight', asmc['fortnight']['text'])
+        # A recent copy is reused rather than fetched again every hour.
+        calls = []
+        cached = {**snapshot(), 'forecast': {'longRange': {'asmc': asmc}}}
+        result, statuses, _ = forecast.build(lambda url: calls.append(url) or fake_fetch(url), cached, NOW + dt.timedelta(hours=1))
+        self.assertNotIn(forecast.ASMC, calls)
+        self.assertNotIn('forecast_asmc', statuses)
+        self.assertEqual(result['longRange']['asmc'], asmc)
 
     def test_stale_official_forecast_ignored_and_failures_degrade(self):
         def fetch(url):

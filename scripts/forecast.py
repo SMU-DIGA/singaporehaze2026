@@ -1,5 +1,7 @@
 """Next-day 24-hr PSI outlook: NEA's own forecast blended with a bias-corrected
-CAMS model run, recent persistence/trend and NEA's weather outlook.
+CAMS model run, recent persistence/trend and NEA's weather outlook. Further out,
+the same bias-corrected CAMS run gives a daily estimate for the next few days, and
+ASMC's fortnightly and seasonal outlooks say when the haze season may ease.
 
 Every signal is optional; the outlook degrades to whatever is available and
 reports how confident it is. Fetching is injected so tests can run offline.
@@ -18,6 +20,9 @@ COORDS = {'north': (1.418, 103.82), 'south': (1.29, 103.82), 'east': (1.35, 103.
           'west': (1.35, 103.70), 'central': (1.35, 103.82)}
 CAMS = 'https://air-quality-api.open-meteo.com/v1/air-quality?'
 OUTLOOK = 'https://api-open.data.gov.sg/v2/real-time/api/four-day-outlook'
+ASMC = 'https://asmc.asean.org/home/'
+ASMC_MAX_AGE = dt.timedelta(hours=12)  # ASMC outlooks change every fortnight or month
+LONG_DAYS = 4  # tomorrow plus three more days; CAMS runs about five days ahead
 # NEA PSI sub-index for 24-hr mean PM2.5 (µg/m³ ↔ PSI), linear between breakpoints.
 PM25_PSI = [(0, 0), (12, 50), (55, 100), (150, 200), (250, 300), (350, 400), (500, 500)]
 BANDS = {'good': (0, 50), 'moderate': (51, 100), 'unhealthy': (101, 200),
@@ -101,7 +106,7 @@ def model_forecast(fetch, target, pm25_history, now):
     lat = ','.join(str(COORDS[r][0]) for r in REGIONS)
     lon = ','.join(str(COORDS[r][1]) for r in REGIONS)
     query = urllib.parse.urlencode({'latitude': lat, 'longitude': lon, 'hourly': 'pm2_5', 'timezone': 'Asia/Singapore',
-                                    'past_days': 2, 'forecast_days': 3})
+                                    'past_days': 2, 'forecast_days': 5})
     payload = json.loads(fetch(CAMS + query))
     payload = payload if isinstance(payload, list) else [payload]
     observed = {p['timestamp'][:13]: p['values'] for p in pm25_history}
@@ -119,27 +124,85 @@ def model_forecast(fetch, target, pm25_history, now):
         pm = sum(ahead) / len(ahead) * bias
         # Bias-corrected hourly PM2.5 from the next hour to the end of the target day ("when to go out").
         upcoming = {t: round(v * bias) for t, v in series if now.strftime('%Y-%m-%dT%H') < t <= f'{target.isoformat()}T23'}
-        result[region] = {'psi': round(psi_from_pm25(pm)), 'pm25': round(pm, 1), 'bias': round(bias, 2), 'hourly': upcoming}
+        # Daily PSI for the days after the target, with the same correction (less reliable further out).
+        days = {}
+        for k in range(1, LONG_DAYS):
+            date = (target + dt.timedelta(days=k)).isoformat()
+            day = [v for t, v in series if t.startswith(date)]
+            if len(day) >= 18:
+                days[date] = round(psi_from_pm25(sum(day) / len(day) * bias))
+        result[region] = {'psi': round(psi_from_pm25(pm)), 'pm25': round(pm, 1), 'bias': round(bias, 2), 'hourly': upcoming, 'days': days}
     if not result:
         raise ValueError('Model run did not cover the target day')
     return result
 
 
 def weather_outlook(fetch, target):
+    """NEA's four-day outlook: the target day in full, and every day in brief under 'days'."""
     payload = json.loads(fetch(OUTLOOK))
+    days = {}
     for record in payload.get('data', {}).get('records', []):
         for day in record.get('forecasts', []):
-            if day.get('timestamp', '')[:10] == target.isoformat():
-                text = day.get('forecast', {}).get('summary') or day.get('forecast', {}).get('text', '')
-                wind = day.get('wind', {})
-                direction = wind.get('direction', '')
-                rain = bool(re.search(r'shower|rain|thunder', text, re.I))
-                # Smoke reaches Singapore from Sumatra (S/SW) and Kalimantan (SE) on southerly winds.
-                carries = 'S' in direction
-                factor = (0.92 if rain else 1.0) * (1.0 if carries or not direction else 0.85)
-                return {'date': target.isoformat(), 'text': text, 'windDirection': direction,
-                        'windSpeed': wind.get('speed'), 'rain': rain, 'southerly': carries, 'factor': round(factor, 2)}
-    raise ValueError('No outlook for target day')
+            text = day.get('forecast', {}).get('summary') or day.get('forecast', {}).get('text', '')
+            wind = day.get('wind', {})
+            direction = wind.get('direction', '')
+            # Smoke reaches Singapore from Sumatra (S/SW) and Kalimantan (SE) on southerly winds.
+            days[day.get('timestamp', '')[:10]] = {'text': text.strip(), 'windDirection': direction, 'windSpeed': wind.get('speed'),
+                                                   'rain': bool(re.search(r'shower|rain|thunder', text, re.I)), 'southerly': 'S' in direction}
+    if target.isoformat() not in days:
+        raise ValueError('No outlook for target day')
+    day = days[target.isoformat()]
+    factor = (0.92 if day['rain'] else 1.0) * (1.0 if day['southerly'] or not day['windDirection'] else 0.85)
+    brief = [{'date': d, **{k: v[k] for k in ('text', 'windDirection', 'rain', 'southerly')}} for d, v in sorted(days.items())]
+    return {'date': target.isoformat(), **day, 'factor': round(factor, 2), 'days': brief}
+
+
+MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+
+
+def easing(text):
+    """From ASMC's wording: is haze expected to stay high, and from when might rain ease it?
+    e.g. 'Increased showers ... towards the end of October could start to alleviate ...'"""
+    result = {'escalated': bool(re.search(r'remain (?:escalated|elevated)|persist', text, re.I))}
+    for sentence in re.split(r'(?<=\.)\s+', text):
+        when = re.search(r'the (end|middle|start|beginning) of (' + '|'.join(MONTHS) + ')', sentence, re.I)
+        if when and re.search(r'alleviat|eas(?:e|ing)|improv', sentence, re.I):
+            result['easeFrom'] = {'part': {'beginning': 'start'}.get(when.group(1).lower(), when.group(1).lower()),
+                                  'month': MONTHS.index(when.group(2).lower()) + 1,
+                                  'rain': bool(re.search(r'shower|rain', sentence, re.I))}
+            break
+    return result
+
+
+def asmc_outlook(fetch, now):
+    """ASMC's seasonal haze outlook (home page) and its latest fortnightly weather outlook."""
+    clean = lambda markup: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', markup))).strip()  # noqa: E731
+    home = fetch(ASMC)
+    result = {'fetchedAt': now.isoformat()}
+    start = home.find('Summary of Outlook')
+    if start >= 0:
+        title = re.findall(r'<h\d[^>]*>\s*(Seasonal Forecast for [^<]+?)\s*</h\d>', home[:start])
+        block = home[start:home.find('Click here for details', start) if 'Click here for details' in home[start:] else start + 20000]
+        haze = [clean(p) for p in re.findall(r'<p[^>]*>(.*?)</p>', block, re.S) if 'haze' in p.lower()]
+        if haze:
+            result['seasonal'] = {'title': clean(title[-1]) if title else None, 'text': haze[0][:700],
+                                  'url': 'https://asmc.asean.org/asmc-seasonal-outlook/', **easing(haze[0])}
+    link = re.search(r'href="(https://asmc\.asean\.org/subseasonal-weather-outlook-[^"]+)"', home)
+    if link:
+        page = fetch(link.group(1))
+        title = re.search(r'Subseasonal Weather Outlook \(([^)]+)\)', page)
+        sentence = next((s for p in re.findall(r'<p[^>]*>(.*?)</p>', page, re.S)
+                         for s in re.split(r'(?<=\.)\s+', clean(p)) if 'southern ASEAN' in s and 'fortnight' in s), None)
+        if sentence:
+            tendency = next((k for k, pattern in (('drier', r'^drier'), ('wetter', r'^wetter'), ('normal', r'near[- ]normal|near[- ]average'))
+                             if re.search(pattern, sentence, re.I)), None)
+            end = re.search(r'(\d{1,2}) (\w{3,9}) (\d{4})\s*$', title.group(1)) if title else None
+            until = dt.datetime.strptime(f'{end.group(1)} {end.group(2)[:3]} {end.group(3)}', '%d %b %Y').date().isoformat() if end else None
+            result['fortnight'] = {'period': title.group(1) if title else None, 'until': until, 'text': sentence,
+                                   'tendency': tendency, 'url': link.group(1)}
+    if 'seasonal' not in result and 'fortnight' not in result:
+        raise ValueError('No outlook on ASMC pages')
+    return result
 
 
 def trend_forecast(psi, psi_history):
@@ -174,7 +237,10 @@ def build(fetch, data, now):
         'forecast_model': lambda: model_forecast(fetch, target, data.get('history', {}).get('pm25', []), now),
         'forecast_weather': lambda: weather_outlook(fetch, target),
     }
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+    asmc = ((data.get('forecast') or {}).get('longRange') or {}).get('asmc')
+    if not asmc or now - dt.datetime.fromisoformat(asmc['fetchedAt']) >= ASMC_MAX_AGE:
+        jobs['forecast_asmc'] = lambda: asmc_outlook(fetch, now)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         futures = {pool.submit(fn): key for key, fn in jobs.items()}
         for future in concurrent.futures.as_completed(futures):
             key = futures[future]
@@ -232,8 +298,25 @@ def build(fetch, data, now):
                                  'bias': round(sum(v['bias'] for v in model.values()) / len(model), 2)},
         'weather': weather,
         'hourly': hourly_series(model),
+        'longRange': long_range(target, psi, model, weather, got.get('forecast_asmc') or asmc),
     }
     return forecast, statuses, errors
+
+
+def long_range(target, psi, model, weather, asmc):
+    """Tomorrow's blended range, then model-only days; the first day expected at PSI 100 or below."""
+    outlook = {d['date']: d for d in (weather or {}).get('days', [])}
+    days = [{'date': target.isoformat(), 'low': psi['low'], 'high': psi['high'], 'source': 'blend'}]
+    for k in range(1, LONG_DAYS):
+        date = (target + dt.timedelta(days=k)).isoformat()
+        values = [v['days'][date] for v in model.values() if date in v.get('days', {})]
+        if values:
+            days.append({'date': date, 'low': min(values), 'high': max(values), 'source': 'model'})
+    for day in days:
+        if day['date'] in outlook:
+            day['weather'] = {k: outlook[day['date']][k] for k in ('text', 'windDirection', 'rain', 'southerly')}
+    better = next((d['date'] for d in days if d['high'] <= 100), None)
+    return {'days': days, 'betterFrom': better, 'asmc': asmc}
 
 
 def hourly_series(model):

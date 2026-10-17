@@ -141,16 +141,24 @@
       <div class="tab-panel" id="plan" role="tabpanel" hidden aria-labelledby="tab-plan">
         <section data-toc="tocForecast" class="panel forecast-panel" id="forecast" hidden>
           <div class="panel-head">
-            <div><h2><span class="heading-icon" data-icon="forecast"></span><span data-i18n="fcTitle">明日空气预测</span></h2><p id="fc-sub"></p></div>
+            <div><h2><span class="heading-icon" data-icon="forecast"></span><span data-i18n="fcTitle">空气预测</span></h2><p id="fc-sub"></p></div>
             <span id="fc-confidence" class="badge"></span>
           </div>
           <div class="forecast-body">
             <div class="forecast-main">
+              <h3 class="forecast-sub-head"><span data-icon="forecast"></span><span id="fc-day"></span></h3>
               <div class="forecast-label" data-i18n="fcPsiLabel">预计 24 小时 PSI</div>
               <div class="stat-value" id="fc-range">—</div>
               <div class="stat-bottom"><span id="fc-band" class="badge"></span></div>
               <p class="forecast-advice" id="fc-advice"></p>
               <div class="forecast-regions" id="fc-regions"></div>
+            </div>
+            <div class="forecast-long" id="fc-long" hidden>
+              <h3 class="forecast-sub-head"><span data-icon="calendar"></span><span data-i18n="fcLongTitle">之后几天：什么时候会变好</span></h3>
+              <p class="long-headline" id="fc-long-head"></p>
+              <div class="long-days" id="fc-long-days"></div>
+              <p class="long-note" data-i18n="fcLongNote">第一天为综合估算；之后几天只来自校正后的 CAMS 大气模式，越远越不准。天气来自 NEA 四天展望。</p>
+              <div class="long-asmc" id="fc-long-asmc"></div>
             </div>
             <div class="forecast-hours" id="hours" hidden>
               <div class="hours-head"><h3><span data-icon="clock"></span><span data-i18n="hrsTitle">什么时候出门</span></h3><div class="segmented" id="hours-region" role="group" data-i18n-attr="aria-label:regionSelect" aria-label="选择区域"></div></div>
