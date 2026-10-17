@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T15:02:51+08:00",
+    "updatedAt": "2026-10-17T15:12:52+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -133,8 +133,8 @@
         "lon": 103.769084,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby B; next to SSO",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Former Ang Mo Kio Social Service Office (SSO)",
@@ -144,8 +144,8 @@
         "lon": 103.849139,
         "hours": "Daily, 24 hours",
         "note": "Outside SSO main office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Former Sembawang Social Service Office (SSO)",
@@ -155,7 +155,7 @@
         "lon": 103.820609,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby A and B",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -188,7 +188,7 @@
         "lon": 103.893158,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 1",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -265,7 +265,7 @@
         "lon": 103.905104,
         "hours": "Daily, 24 hours",
         "note": "Outside ServiceSG Centre",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T15:06:40.427493+08:00",
+  "generatedAt": "2026-10-17T15:15:02.281005+08:00",
   "schemaVersion": 1
 }
