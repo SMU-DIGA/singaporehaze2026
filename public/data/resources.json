@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T15:12:52+08:00",
+    "updatedAt": "2026-10-17T15:22:52+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -122,8 +122,8 @@
         "lon": 103.76427,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Near Boarding Berth B4 and exit door",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Clementi Social Service Office (SSO)",
@@ -243,7 +243,7 @@
         "lon": 103.84302,
         "hours": "Daily, 24 hours",
         "note": "Next to CC office",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -254,7 +254,7 @@
         "lon": 103.902304,
         "hours": "Daily, 24 hours",
         "note": "Outside public toilets",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -331,7 +331,7 @@
         "lon": 103.940381,
         "hours": "Daily, 24 hours",
         "note": "Level 4 near Lobby B",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -353,7 +353,7 @@
         "lon": 103.847502,
         "hours": "Daily, 24 hours",
         "note": "Outside station entrance/exit",
-        "stock": "limited",
+        "stock": "out",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T15:15:02.281005+08:00",
+  "generatedAt": "2026-10-17T15:30:01.959399+08:00",
   "schemaVersion": 1
 }
