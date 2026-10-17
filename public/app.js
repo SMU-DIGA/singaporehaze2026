@@ -283,41 +283,51 @@ function renderForecast() {
   const scored = (state.data.forecastLog || []).filter(x => typeof x.hit === 'boolean').slice(-7);
   $('#fc-record').textContent = scored.length ? t('fcRecord', { n: scored.length, hits: scored.filter(x => x.hit).length }) : t('fcRecordNone');
 }
-// The next few days and ASMC's fortnightly and seasonal outlooks: when might it get better?
+// When might it get better: the model's next few days, ASMC's fortnightly and seasonal
+// outlooks, how past haze episodes ended, and how long this one has lasted.
 function renderLongRange(f) {
-  const long = f.longRange, days = long?.days || [];
-  $('#fc-long').hidden = days.length < 2;
-  if (days.length < 2) return;
-  const date = d => fmt(`${d}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined });
+  const long = f.longRange || {}, days = long.days || [], asmc = long.asmc || {}, episodes = state.history?.episodes || [];
+  const md = d => fmt(`${d}T12:00:00+08:00`, { hour: undefined, minute: undefined, weekday: undefined });
+  const link = (url, label) => `<a href="${e(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${e(label)} ↗</a>`;
+  const rows = [];
   const nowHigh = Math.max(...validValues(readings(state.data, 'psi')));
-  const first = days[0].high, last = days[days.length - 1].high;
-  const head = long.betterFrom
-    ? (long.betterFrom === days[0].date && nowHigh <= 100 ? t('fcLongStay') : t('fcLongBetter', { date: date(long.betterFrom) }))
-    : t(last <= first * 0.85 ? 'fcLongEasing' : last >= first * 1.15 ? 'fcLongWorse' : 'fcLongFlat', { n: days.length });
-  $('#fc-long-head').textContent = head;
-  const cell = d => {
-    const b = bandOf(d.high), w = d.weather;
-    const weather = w ? `<small>${e(t(w.rain ? 'fcLongRain' : 'fcLongDry'))}${w.windDirection ? ` · ${e(w.windDirection)}` : ''}</small>` : '';
-    const day = fmt(`${d.date}T12:00:00+08:00`, { weekday: 'short', hour: undefined, minute: undefined, month: undefined, day: undefined });
-    return `<div class="long-day${d.source === 'blend' ? ' first' : ''}" style="--c:${b.color}"><span>${e(day)}</span><b>${d.low === d.high ? d.low : `${d.low}–${d.high}`}</b><i></i><em>${e(b.label)}</em>${weather}</div>`;
-  };
-  $('#fc-long-days').innerHTML = days.map(cell).join('');
-  const asmc = long.asmc || {}, today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Singapore' });
-  const parts = [];
-  const fn = asmc.fortnight;
+  if (days.length) {
+    const best = days.reduce((a, b) => (b.high < a.high ? b : a));
+    rows.push([t('easeNear', { n: days.length }), long.betterFrom ? t('easeNearBetter', { date: md(long.betterFrom) }) : t('easeNearStay'),
+      `${t('easeNearBest', { date: md(best.date), low: best.low, high: best.high })} · ${t('easeNearSource')}`]);
+  }
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Singapore' }), fn = asmc.fortnight;
   if (fn && (!fn.until || fn.until >= today)) {
-    const tendency = { drier: 'fcAsmcDrier', wetter: 'fcAsmcWetter', normal: 'fcAsmcNormal' }[fn.tendency];
-    parts.push(`<div><span class="signal-label">${e(t('fcAsmcFortnight', { period: fn.period || '' }))}</span>${tendency ? `<b>${e(t(tendency))}</b>` : ''}<details${tendency ? '' : ' open'}><summary>${e(t('fcAsmcOriginal'))}</summary><blockquote lang="en">${e(fn.text)}</blockquote></details><a href="${e(safeUrl(fn.url))}" target="_blank" rel="noopener noreferrer">ASMC ↗</a></div>`);
+    const verdict = { drier: 'easeDrier', wetter: 'easeWetter', normal: 'easeNormal' }[fn.tendency];
+    if (verdict) rows.push([t('easeFortnight'), t(verdict), `ASMC · <span lang="en">${e(fn.period || '')}</span> · ${link(fn.url, t('easeOriginal'))}`, true]);
   }
-  const season = asmc.seasonal;
-  if (season) {
-    const ease = season.easeFrom, when = ease && t(`fcWhen_${ease.part}`, { month: en() ? new Date(2026, ease.month - 1, 1).toLocaleDateString('en-SG', { month: 'long' }) : ease.month });
-    const verdict = [season.escalated && t('fcAsmcEscalated'), ease && t(ease.rain ? 'fcAsmcEaseRain' : 'fcAsmcEase', { when })].filter(Boolean).join(en() ? ' ' : '');
-    const period = season.title ? ` · <span lang="en">${e(season.title.replace(/^Seasonal Forecast for /, ''))}</span>` : '';
-    parts.push(`<div><span class="signal-label">${e(t('fcAsmcSeason'))}${period}</span>${verdict ? `<b>${e(verdict)}</b>` : ''}<details${verdict ? '' : ' open'}><summary>${e(t('fcAsmcOriginal'))}</summary><blockquote lang="en">${e(season.text)}</blockquote></details><a href="${e(safeUrl(season.url))}" target="_blank" rel="noopener noreferrer">ASMC ↗</a></div>`);
+  const season = asmc.seasonal, ease = season?.easeFrom;
+  const when = ease && t(`fcWhen_${ease.part}`, { month: en() ? new Date(2026, ease.month - 1, 1).toLocaleDateString('en-SG', { month: 'long' }) : ease.month });
+  if (ease) rows.push([t('easeFrom', { when }), t(ease.rain ? 'easeRain' : 'easeEase'), `${season.escalated ? `${e(t('easeEscalated'))} · ` : ''}${e(t('easeSeason'))} · ${link(season.url, t('easeOriginal'))}`, true]);
+  // Past episodes, by the year they ended: the longest ones first.
+  const past = Object.values(episodes.filter(x => !x.ongoing).reduce((by, x) => {
+    const y = x.end.slice(0, 4), had = by[y];
+    by[y] = { year: y, end: had && had.end > x.end ? had.end : x.end, days: (had?.days || 0) + x.unhealthyDays };
+    return by;
+  }, {})).filter(x => x.days >= 5).sort((a, b) => b.days - a.days).slice(0, 3);
+  if (past.length) {
+    const [top, ...rest] = past;
+    rows.push([t('easePast'), t('easePastTop', { year: top.year, date: md(top.end), days: top.days }),
+      [...rest.map(x => t('easePastMore', { year: x.year, date: md(x.end) })), t('easePastSource')].join(' · ')]);
   }
-  $('#fc-long-asmc').innerHTML = parts.join('');
-  $('#fc-long-asmc').hidden = !parts.length;
+  const now = episodes.find(x => x.ongoing);
+  if (now) {
+    const length = Math.round((Date.parse(`${today}T12:00:00+08:00`) - Date.parse(`${now.start}T12:00:00+08:00`)) / 864e5) + 1;
+    rows.push([t('easeNow'), t('easeNowLength', { date: md(now.start), days: length }), t('easeNowDetail', { days: now.unhealthyDays, peak: now.peak, date: md(now.peakDate) })]);
+  }
+  $('#fc-long').hidden = !rows.length;
+  if (!rows.length) return;
+  const head = nowHigh <= 100 && long.betterFrom === days[0]?.date ? t('easeHeadFine')
+    : long.betterFrom ? t('easeHeadSoon', { date: md(long.betterFrom) })
+    : ease ? t('easeHeadWhen', { when })
+    : t('easeHeadUnknown');
+  $('#fc-long-head').textContent = head;
+  $('#fc-ease').innerHTML = rows.map(([label, verdict, detail, html]) => `<li><span class="ease-label">${e(label)}</span><div><b>${e(verdict)}</b><small>${html ? detail : e(detail)}</small></div></li>`).join('');
 }
 function render() { renderSummary(); renderMyAir(); renderForecast(); renderHours(); renderRules(); renderMap(); renderChart(); renderHistory(); renderEscape(); renderAdvisories(); renderNews(); renderToc(); }
 

@@ -34,6 +34,17 @@ class HistoryTests(unittest.TestCase):
         history.merge(daily, '2026-10-16', {'north': True})
         self.assertEqual(daily['2026-10-16'], [229, 'central'])
 
+    def test_haze_episodes_join_close_days_and_drop_spikes(self):
+        daily = {'2015-09-06': [120, 'west'], '2015-09-10': [180, 'east'], '2015-09-20': [150, 'west'],
+                 '2015-11-20': [130, 'north'],  # a lone spike two months later
+                 '2026-10-10': [110, 'west'], '2026-10-12': [140, 'west'], '2026-10-15': [130, 'west'],
+                 '2026-10-13': [90, 'west'], '2026-10-16': [None, None]}
+        found = history.episodes(daily, dt.date(2026, 10, 16))
+        self.assertEqual([(e['start'], e['end'], e['unhealthyDays']) for e in found],
+                         [('2015-09-06', '2015-09-20', 3), ('2026-10-10', '2026-10-15', 3)])
+        self.assertEqual((found[0]['peak'], found[0]['peakDate'], found[0]['ongoing']), (180, '2015-09-10', False))
+        self.assertTrue(found[1]['ongoing'])
+
     def test_year_summary_and_season(self):
         daily = {'2015-09-24': [301, 'south'], '2015-09-25': [322, 'south'], '2015-10-01': [150, 'west'],
                  '2026-10-14': [205, 'west'], '2026-10-16': [229, 'central'], '2026-09-02': [None, None]}

@@ -35,6 +35,8 @@ CSV_MAX_AGE = dt.timedelta(days=7)
 API_DAYS_PER_RUN = 60
 SEASON = ('08-01', '11-30')  # the southwest-monsoon haze season, for the overlay chart
 NOTABLE = [2015, 2019, 2023]
+EPISODE_GAP = 10  # unhealthy days at most this far apart belong to one haze episode
+EPISODE_MIN_DAYS = 3  # fewer unhealthy days than this is a one-off spike, not an episode
 # Before April 2014 the PSI excluded PM2.5 and headlines used the 3-hour PSI, so these
 # are shown apart from the table rather than ranked against it.
 OLDER = [
@@ -121,6 +123,29 @@ def summarise(daily, today):
     return rows, season
 
 
+def episodes(daily, today):
+    """Haze episodes: runs of days above PSI 100 with gaps of at most EPISODE_GAP days.
+    An episode whose last unhealthy day is within two days of today is still ongoing."""
+    dates = sorted(dt.date.fromisoformat(d) for d, (v, _) in daily.items() if v is not None and v > 100)
+    runs, current = [], []
+    for date in dates:
+        if current and (date - current[-1]).days > EPISODE_GAP:
+            runs.append(current)
+            current = []
+        current.append(date)
+    if current:
+        runs.append(current)
+    result = []
+    for run in runs:
+        if len(run) < EPISODE_MIN_DAYS:
+            continue
+        peak = max(run, key=lambda d: daily[d.isoformat()][0])
+        result.append({'start': run[0].isoformat(), 'end': run[-1].isoformat(), 'unhealthyDays': len(run),
+                       'peak': daily[peak.isoformat()][0], 'peakDate': peak.isoformat(),
+                       'ongoing': (today - run[-1]).days <= 2})
+    return result
+
+
 def main():
     now = dt.datetime.now(SGT)
     today = now.date()
@@ -163,7 +188,8 @@ def main():
     CACHE.write_text(json.dumps(cache, separators=(',', ':')) + '\n')
     years, season = summarise(daily, today)
     result = {'generatedAt': now.isoformat(), 'dataset': DATASET, 'datasetEnd': csv_end, 'seasonStart': SEASON[0],
-              'years': years, 'season': {str(y): v for y, v in season.items()}, 'older': OLDER, 'errors': errors, 'schemaVersion': 1}
+              'years': years, 'season': {str(y): v for y, v in season.items()}, 'episodes': episodes(daily, today),
+              'older': OLDER, 'errors': errors, 'schemaVersion': 1}
     temporary = OUTPUT.with_suffix('.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, indent=1) + '\n')
     temporary.replace(OUTPUT)
