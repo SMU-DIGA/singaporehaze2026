@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-17T11:20:01.543767+08:00",
+ "generatedAt": "2026-10-17T11:30:21.159707+08:00",
  "dataset": "d_b4cf557f8750260d229c49fd768e11ed",
  "datasetEnd": "2026-09-01",
  "seasonStart": "08-01",
@@ -646,6 +646,56 @@
    null
   ]
  },
+ "episodes": [
+  {
+   "start": "2014-09-15",
+   "end": "2014-09-19",
+   "unhealthyDays": 3,
+   "peak": 107,
+   "peakDate": "2014-09-15",
+   "ongoing": false
+  },
+  {
+   "start": "2014-10-06",
+   "end": "2014-10-20",
+   "unhealthyDays": 5,
+   "peak": 125,
+   "peakDate": "2014-10-07",
+   "ongoing": false
+  },
+  {
+   "start": "2015-09-06",
+   "end": "2015-10-28",
+   "unhealthyDays": 46,
+   "peak": 322,
+   "peakDate": "2015-09-25",
+   "ongoing": false
+  },
+  {
+   "start": "2016-08-26",
+   "end": "2016-08-29",
+   "unhealthyDays": 4,
+   "peak": 143,
+   "peakDate": "2016-08-27",
+   "ongoing": false
+  },
+  {
+   "start": "2019-09-14",
+   "end": "2019-09-24",
+   "unhealthyDays": 9,
+   "peak": 154,
+   "peakDate": "2019-09-19",
+   "ongoing": false
+  },
+  {
+   "start": "2026-09-04",
+   "end": "2026-10-17",
+   "unhealthyDays": 31,
+   "peak": 229,
+   "peakDate": "2026-10-16",
+   "ongoing": true
+  }
+ ],
  "older": [
   {
    "year": 2013,
