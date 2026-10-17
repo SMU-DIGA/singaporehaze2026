@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T15:22:52+08:00",
+    "updatedAt": "2026-10-17T15:42:51+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,7 +12,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -122,8 +122,8 @@
         "lon": 103.76427,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Near Boarding Berth B4 and exit door",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Clementi Social Service Office (SSO)",
@@ -298,7 +298,7 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -309,7 +309,7 @@
         "lon": 103.870185,
         "hours": "Daily, 24 hours",
         "note": "Near SSO entrance",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -331,7 +331,7 @@
         "lon": 103.940381,
         "hours": "Daily, 24 hours",
         "note": "Level 4 near Lobby B",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T15:30:01.959399+08:00",
+  "generatedAt": "2026-10-17T15:45:02.863444+08:00",
   "schemaVersion": 1
 }
