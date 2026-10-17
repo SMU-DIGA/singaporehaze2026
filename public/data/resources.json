@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T20:22:51+08:00",
+    "updatedAt": "2026-10-17T20:42:51+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,7 +34,7 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -287,7 +287,7 @@
         "lon": 103.893906,
         "hours": "Daily, 24 hours",
         "note": "Near CC office entrance",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -331,7 +331,7 @@
         "lon": 103.940381,
         "hours": "Daily, 24 hours",
         "note": "Level 4 near Lobby B",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -386,8 +386,8 @@
         "lon": 103.844818,
         "hours": "Daily, 24 hours",
         "note": "Near bus interchange entrance/exit",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Yishun Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T20:30:02.732676+08:00",
+  "generatedAt": "2026-10-17T20:45:02.348637+08:00",
   "schemaVersion": 1
 }
