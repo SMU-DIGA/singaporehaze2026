@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T10:02:51+08:00",
+    "updatedAt": "2026-10-17T10:12:50+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -243,8 +243,8 @@
         "lon": 103.84302,
         "hours": "Daily, 24 hours",
         "note": "Next to CC office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Punggol Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T10:06:28.395545+08:00",
+  "generatedAt": "2026-10-17T10:15:02.450214+08:00",
   "schemaVersion": 1
 }
