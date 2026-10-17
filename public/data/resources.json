@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-17T08:42:51+08:00",
+    "updatedAt": "2026-10-17T08:52:51+08:00",
     "label": "17 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -408,7 +408,7 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       }
     ]
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-17T08:45:02.677805+08:00",
+  "generatedAt": "2026-10-17T09:00:03.817230+08:00",
   "schemaVersion": 1
 }
