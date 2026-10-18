@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-18T16:42:51+08:00",
+    "updatedAt": "2026-10-18T16:52:51+08:00",
     "label": "18 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -23,7 +23,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -78,8 +78,8 @@
         "lon": 103.750969,
         "hours": "Daily, 24 hours",
         "note": "Near Passenger Service Office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Merah Bus Interchange",
@@ -144,8 +144,8 @@
         "lon": 103.849139,
         "hours": "Daily, 24 hours",
         "note": "Outside SSO main office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Former Sembawang Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-18T16:45:02.352401+08:00",
+  "generatedAt": "2026-10-18T17:00:02.236207+08:00",
   "schemaVersion": 1
 }
