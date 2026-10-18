@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-18T12:52:52+08:00",
+    "updatedAt": "2026-10-18T13:02:52+08:00",
     "label": "18 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,7 +12,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -243,8 +243,8 @@
         "lon": 103.84302,
         "hours": "Daily, 24 hours",
         "note": "Next to CC office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Punggol Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-18T13:00:03.052465+08:00",
+  "generatedAt": "2026-10-18T13:05:06.245149+08:00",
   "schemaVersion": 1
 }
