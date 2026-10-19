@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-19T17:22:51+08:00",
+    "updatedAt": "2026-10-19T17:42:51+08:00",
     "label": "19 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,8 +12,8 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "limited",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Ang Mo Kio Bus Interchange 2",
@@ -23,7 +23,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "out",
+        "stock": "available",
         "working": true
       },
       {
@@ -34,7 +34,7 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -287,7 +287,7 @@
         "lon": 103.893906,
         "hours": "Daily, 24 hours",
         "note": "Near CC office entrance",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-19T17:30:03.195746+08:00",
+  "generatedAt": "2026-10-19T17:45:02.112274+08:00",
   "schemaVersion": 1
 }
