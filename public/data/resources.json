@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-19T12:52:51+08:00",
+    "updatedAt": "2026-10-19T13:02:52+08:00",
     "label": "19 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -298,7 +298,7 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -375,8 +375,8 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "limited",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yio Chu Kang Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-19T13:00:03.059600+08:00",
+  "generatedAt": "2026-10-19T13:05:09.437139+08:00",
   "schemaVersion": 1
 }
