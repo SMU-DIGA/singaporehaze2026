@@ -31,6 +31,15 @@ class UpdaterTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]['url'], 'https://www.nea.gov.sg/media/news/advisories/index/haze-update')
 
+    def test_rss_news_keeps_trusted_publishers_and_allows_quiet_feed(self):
+        def feed(*items):
+            body = ''.join(f'<item><title>{t}</title><link>https://news.google.com/x</link><pubDate>Thu, 15 Oct 2026 08:00:00 GMT</pubDate><source url="{u}">S</source></item>' for t, u in items)
+            return f'<rss><channel>{body}</channel></rss>'
+        with patch.object(updater, 'fetch', return_value=feed(('Haze explained - BBC', 'https://www.bbc.co.uk'), ('Haze deals', 'https://www.bloomberg.com'))):
+            self.assertEqual([i['title'] for i in updater.rss_news()], ['Haze explained - BBC'])
+        with patch.object(updater, 'fetch', return_value=feed(('Haze deals', 'https://www.bloomberg.com'))):
+            self.assertEqual(updater.rss_news(), [])
+
     def test_history_backfills_week_and_skips_complete_days(self):
         now = dt.datetime(2026, 10, 16, 12, tzinfo=updater.SGT)
         full = [{'timestamp': f'2026-10-12T{h:02d}:00:00+08:00'} for h in range(24)]

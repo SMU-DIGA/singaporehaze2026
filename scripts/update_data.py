@@ -146,7 +146,8 @@ def rss_news():
     url = 'https://news.google.com/rss/search?' + urllib.parse.urlencode({'q': query, 'hl': 'en-SG', 'gl': 'SG', 'ceid': 'SG:en'})
     root = ET.fromstring(fetch(url))
     result = []
-    trusted = ('channelnewsasia.com', 'straitstimes.com', 'zaobao.com', 'todayonline.com', 'bbc.com', 'reuters.com')
+    trusted = ('channelnewsasia.com', 'straitstimes.com', 'businesstimes.com.sg', 'zaobao.com', 'todayonline.com',
+               'bbc.com', 'bbc.co.uk', 'reuters.com')
     for node in root.findall('./channel/item'):
         source = node.find('source')
         host = urllib.parse.urlparse(source.get('url', '') if source is not None else '').hostname or ''
@@ -184,7 +185,8 @@ def main():
             key = futures[future]
             try:
                 value = future.result()
-                if not value:
+                # A valid feed with no matching headlines is a quiet news week, not an outage.
+                if not value and key != 'news':
                     raise ValueError('Source returned no usable content')
                 if key.startswith('history_'):
                     histories[key.split('_')[1]].extend(value)
