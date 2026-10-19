@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-19T16:22:52+08:00",
+    "updatedAt": "2026-10-19T16:42:51+08:00",
     "label": "19 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -45,7 +45,7 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -188,7 +188,7 @@
         "lon": 103.893158,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 1",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -199,8 +199,8 @@
         "lon": 103.882875,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby B",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Jalan Besar Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-19T16:30:02.918847+08:00",
+  "generatedAt": "2026-10-19T16:45:02.962013+08:00",
   "schemaVersion": 1
 }
