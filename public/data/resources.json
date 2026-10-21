@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-21T19:12:51+08:00",
+    "updatedAt": "2026-10-21T19:22:51+08:00",
     "label": "21 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -342,8 +342,8 @@
         "lon": 103.850093,
         "hours": "Daily, 24 hours",
         "note": "Near RN office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Toa Payoh MRT Station",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-21T19:15:02.211644+08:00",
+  "generatedAt": "2026-10-21T19:30:02.528007+08:00",
   "schemaVersion": 1
 }
