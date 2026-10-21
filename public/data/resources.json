@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-21T13:02:50+08:00",
+    "updatedAt": "2026-10-21T13:12:50+08:00",
     "label": "21 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -353,7 +353,7 @@
         "lon": 103.847502,
         "hours": "Daily, 24 hours",
         "note": "Outside station entrance/exit",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-21T13:05:13.630452+08:00",
+  "generatedAt": "2026-10-21T13:15:03.020530+08:00",
   "schemaVersion": 1
 }
