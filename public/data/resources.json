@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-21T09:02:51+08:00",
+    "updatedAt": "2026-10-21T09:12:51+08:00",
     "label": "21 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -45,8 +45,8 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Boon Lay MRT Station",
@@ -386,8 +386,8 @@
         "lon": 103.844818,
         "hours": "Daily, 24 hours",
         "note": "Near bus interchange entrance/exit",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Yishun Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-21T09:05:06.922340+08:00",
+  "generatedAt": "2026-10-21T09:15:03.440956+08:00",
   "schemaVersion": 1
 }
