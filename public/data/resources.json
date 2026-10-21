@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-21T15:42:51+08:00",
+    "updatedAt": "2026-10-21T15:52:52+08:00",
     "label": "21 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,7 +34,7 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-21T15:45:02.399752+08:00",
+  "generatedAt": "2026-10-21T16:00:01.971050+08:00",
   "schemaVersion": 1
 }
