@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-21T18:52:52+08:00",
+    "updatedAt": "2026-10-21T19:02:51+08:00",
     "label": "21 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -375,8 +375,8 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yio Chu Kang Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-21T19:00:02.486287+08:00",
+  "generatedAt": "2026-10-21T19:05:54.020890+08:00",
   "schemaVersion": 1
 }
