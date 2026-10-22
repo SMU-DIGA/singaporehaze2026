@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-22T11:00",
+  "observedAt": "2026-10-22T12:00",
   "tomorrow": "2026-10-23",
   "dayAfter": "2026-10-24",
   "cities": [
@@ -12,7 +12,7 @@
       "lon": 103.82,
       "flightMinutes": 0,
       "aqi": 78,
-      "pm25": 30.7,
+      "pm25": 33.4,
       "tomorrowMax": 109,
       "dayAfterMax": 151,
       "price": null
@@ -26,7 +26,7 @@
       "lon": 101.687,
       "flightMinutes": 60,
       "aqi": 137,
-      "pm25": 48.5,
+      "pm25": 54.1,
       "tomorrowMax": 150,
       "dayAfterMax": 131,
       "price": {
@@ -56,7 +56,7 @@
       "lon": 100.329,
       "flightMinutes": 85,
       "aqi": 67,
-      "pm25": 21.1,
+      "pm25": 22.0,
       "tomorrowMax": 66,
       "dayAfterMax": 53,
       "price": {
@@ -85,8 +85,8 @@
       "lat": 5.98,
       "lon": 116.073,
       "flightMinutes": 150,
-      "aqi": 23,
-      "pm25": 8.9,
+      "aqi": 24,
+      "pm25": 9.7,
       "tomorrowMax": 55,
       "dayAfterMax": 51,
       "price": {
@@ -115,8 +115,8 @@
       "lat": 13.756,
       "lon": 100.502,
       "flightMinutes": 145,
-      "aqi": 72,
-      "pm25": 33.9,
+      "aqi": 73,
+      "pm25": 36.9,
       "tomorrowMax": 130,
       "dayAfterMax": 125,
       "price": {
@@ -146,7 +146,7 @@
       "lon": 98.392,
       "flightMinutes": 95,
       "aqi": 41,
-      "pm25": 7.3,
+      "pm25": 7.1,
       "tomorrowMax": 38,
       "dayAfterMax": 20,
       "price": {
@@ -172,8 +172,8 @@
       "lat": 18.788,
       "lon": 98.985,
       "flightMinutes": 195,
-      "aqi": 68,
-      "pm25": 17.4,
+      "aqi": 69,
+      "pm25": 15.6,
       "tomorrowMax": 85,
       "dayAfterMax": 84,
       "price": {
@@ -203,7 +203,7 @@
       "lon": 106.63,
       "flightMinutes": 120,
       "aqi": 106,
-      "pm25": 27.9,
+      "pm25": 28.2,
       "tomorrowMax": 131,
       "dayAfterMax": 125,
       "price": {
@@ -232,8 +232,8 @@
       "lat": 16.054,
       "lon": 108.202,
       "flightMinutes": 165,
-      "aqi": 36,
-      "pm25": 14.1,
+      "aqi": 38,
+      "pm25": 15.8,
       "tomorrowMax": 73,
       "dayAfterMax": 85,
       "price": {
@@ -263,7 +263,7 @@
       "lon": 105.854,
       "flightMinutes": 210,
       "aqi": 127,
-      "pm25": 29.3,
+      "pm25": 32.9,
       "tomorrowMax": 130,
       "dayAfterMax": 111,
       "price": {
@@ -293,7 +293,7 @@
       "lon": 120.984,
       "flightMinutes": 215,
       "aqi": 78,
-      "pm25": 17.7,
+      "pm25": 18.2,
       "tomorrowMax": 74,
       "dayAfterMax": 78,
       "price": {
@@ -322,8 +322,8 @@
       "lat": 10.316,
       "lon": 123.885,
       "flightMinutes": 230,
-      "aqi": 48,
-      "pm25": 3.2,
+      "aqi": 46,
+      "pm25": 2.9,
       "tomorrowMax": 21,
       "dayAfterMax": 25,
       "price": {
@@ -353,7 +353,7 @@
       "lon": 115.217,
       "flightMinutes": 160,
       "aqi": 67,
-      "pm25": 13.9,
+      "pm25": 13.1,
       "tomorrowMax": 63,
       "dayAfterMax": 62,
       "price": {
@@ -382,8 +382,8 @@
       "lat": -6.2,
       "lon": 106.845,
       "flightMinutes": 105,
-      "aqi": 116,
-      "pm25": 24.0,
+      "aqi": 114,
+      "pm25": 25.1,
       "tomorrowMax": 160,
       "dayAfterMax": 182,
       "price": {
@@ -413,7 +413,7 @@
       "lon": 114.17,
       "flightMinutes": 235,
       "aqi": 91,
-      "pm25": 29.0,
+      "pm25": 30.3,
       "tomorrowMax": 116,
       "dayAfterMax": 126,
       "price": {
@@ -442,8 +442,8 @@
       "lat": 25.033,
       "lon": 121.565,
       "flightMinutes": 280,
-      "aqi": 55,
-      "pm25": 16.4,
+      "aqi": 56,
+      "pm25": 16.6,
       "tomorrowMax": 62,
       "dayAfterMax": 38,
       "price": {
@@ -473,7 +473,7 @@
       "lon": 115.86,
       "flightMinutes": 315,
       "aqi": 52,
-      "pm25": 12.3,
+      "pm25": 11.8,
       "tomorrowMax": 56,
       "dayAfterMax": 51,
       "price": {
@@ -495,7 +495,7 @@
       }
     }
   ],
-  "generatedAt": "2026-10-22T11:05:05.320477+08:00",
+  "generatedAt": "2026-10-22T12:05:05.225719+08:00",
   "source": "CAMS via Open-Meteo",
   "priceErrors": [],
   "schemaVersion": 1
