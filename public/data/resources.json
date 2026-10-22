@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-22T09:22:52+08:00",
+    "updatedAt": "2026-10-22T09:42:51+08:00",
     "label": "22 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -386,8 +386,8 @@
         "lon": 103.844818,
         "hours": "Daily, 24 hours",
         "note": "Near bus interchange entrance/exit",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Yishun Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-22T09:30:02.916357+08:00",
+  "generatedAt": "2026-10-22T09:45:03.322471+08:00",
   "schemaVersion": 1
 }
