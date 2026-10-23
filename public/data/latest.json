@@ -1,36 +1,36 @@
 {
   "psi": {
     "date": "2026-10-23",
-    "updatedTimestamp": "2026-10-23T20:00:44+08:00",
-    "timestamp": "2026-10-23T20:00:00+08:00",
+    "updatedTimestamp": "2026-10-23T21:01:12+08:00",
+    "timestamp": "2026-10-23T21:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 89,
-        "south": 92,
+        "north": 92,
+        "south": 94,
         "west": 110,
-        "east": 93,
-        "central": 107
+        "east": 95,
+        "central": 110
       },
       "no2_one_hour_max": {
-        "north": 26,
-        "south": 37,
-        "west": 32,
-        "east": 41,
-        "central": 40
+        "north": 20,
+        "south": 47,
+        "west": 41,
+        "east": 35,
+        "central": 41
       },
       "pm10_twenty_four_hourly": {
-        "north": 69,
-        "south": 65,
-        "west": 83,
-        "east": 73,
-        "central": 81
+        "north": 74,
+        "south": 69,
+        "west": 84,
+        "east": 76,
+        "central": 83
       },
       "pm25_twenty_four_hourly": {
-        "north": 46,
-        "south": 49,
+        "north": 48,
+        "south": 50,
         "west": 64,
-        "east": 49,
-        "central": 61
+        "east": 51,
+        "central": 64
       },
       "so2_twenty_four_hourly": {
         "north": 8,
@@ -42,44 +42,44 @@
       "co_eight_hour_max": {
         "north": 1,
         "south": 1,
-        "west": 2,
+        "west": 1,
         "east": 1,
         "central": 1
       },
       "o3_eight_hour_max": {
-        "north": 111,
-        "south": 52,
-        "west": 56,
-        "east": 82,
-        "central": 78
+        "north": 104,
+        "south": 47,
+        "west": 50,
+        "east": 78,
+        "central": 76
       },
       "co_sub_index": {
         "north": 12,
-        "south": 13,
+        "south": 14,
         "west": 15,
         "east": 12,
         "central": 10
       },
       "o3_sub_index": {
-        "north": 47,
-        "south": 22,
-        "west": 24,
-        "east": 35,
-        "central": 33
+        "north": 44,
+        "south": 20,
+        "west": 21,
+        "east": 33,
+        "central": 32
       },
       "pm10_sub_index": {
-        "north": 60,
-        "south": 58,
+        "north": 62,
+        "south": 60,
         "west": 67,
-        "east": 62,
-        "central": 66
+        "east": 64,
+        "central": 67
       },
       "pm25_sub_index": {
-        "north": 89,
-        "south": 92,
+        "north": 92,
+        "south": 94,
         "west": 110,
-        "east": 93,
-        "central": 107
+        "east": 95,
+        "central": 110
       },
       "so2_sub_index": {
         "north": 5,
@@ -92,19 +92,26 @@
   },
   "pm25": {
     "date": "2026-10-23",
-    "updatedTimestamp": "2026-10-23T20:00:44+08:00",
-    "timestamp": "2026-10-23T20:00:00+08:00",
+    "updatedTimestamp": "2026-10-23T21:01:12+08:00",
+    "timestamp": "2026-10-23T21:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 71,
-        "south": 74,
-        "west": 69,
-        "east": 79,
-        "central": 107
+        "north": 87,
+        "south": 71,
+        "west": 83,
+        "east": 78,
+        "central": 104
       }
     }
   },
   "news": [
+    {
+      "title": "Southeast Asia haze: US$13.2m in aid for West Kalimantan to be disbursed in 2 phases",
+      "url": "https://www.channelnewsasia.com/watch/southeast-asia-haze-us132m-in-aid-west-kalimantan-be-disbursed-in-2-phases-6486601",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "Haze skincare tips: How to protect your skin from dryness, irritation and breakouts",
       "url": "https://www.channelnewsasia.com/style-beauty/haze-skincare-tips-dry-skin-acne-irritation-6477476",
@@ -195,27 +202,10 @@
       "source": "The Business Times",
       "publishedAt": "2026-10-20T00:25:00+00:00",
       "category": "singapore"
-    },
-    {
-      "title": "SGX RegCo engages listed plantation firms over haze, warns of regulatory action - The Business Times",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPdktyTWdMeUJuUDZIdFZfczJrcGtpMDZZYUhhRzBqMkVqTExTTnhpd1FaUTBPYUc1SUhUZ0liN2VQVHJiV0M2c2FqYmJuamhFNUhMNUpiZS1ndkJfaGJ6cmJIakVLZEE0OFM3bzZYRHZyUmQtWHc5WTBNYUZfc08wVWdaVzJrdE5ydFRnSDJxSDAtZmMwaHAxbTAwaWg3ZzA0WWdfSms3N0VmOGxxUWg5WDhBSVlmN3FNa3lkTnFEeUItcmln?oc=5",
-      "source": "The Business Times",
-      "publishedAt": "2026-10-16T12:08:00+00:00",
-      "category": "singapore"
     }
   ],
   "history": {
     "psi": [
-      {
-        "timestamp": "2026-10-15T21:00:00+08:00",
-        "values": {
-          "central": 190,
-          "east": 167,
-          "north": 125,
-          "south": 159,
-          "west": 173
-        }
-      },
       {
         "timestamp": "2026-10-15T22:00:00+08:00",
         "values": {
@@ -2089,31 +2079,31 @@
       {
         "timestamp": "2026-10-23T17:00:00+08:00",
         "values": {
+          "central": 99,
+          "east": 87,
           "north": 83,
           "south": 87,
-          "west": 106,
-          "east": 87,
-          "central": 99
+          "west": 106
         }
       },
       {
         "timestamp": "2026-10-23T18:00:00+08:00",
         "values": {
+          "central": 102,
+          "east": 89,
           "north": 85,
           "south": 89,
-          "west": 108,
-          "east": 89,
-          "central": 102
+          "west": 108
         }
       },
       {
         "timestamp": "2026-10-23T19:00:00+08:00",
         "values": {
+          "central": 105,
+          "east": 91,
           "north": 87,
           "south": 91,
-          "west": 109,
-          "east": 91,
-          "central": 105
+          "west": 109
         }
       },
       {
@@ -2125,19 +2115,19 @@
           "east": 93,
           "central": 107
         }
+      },
+      {
+        "timestamp": "2026-10-23T21:00:00+08:00",
+        "values": {
+          "north": 92,
+          "south": 94,
+          "west": 110,
+          "east": 95,
+          "central": 110
+        }
       }
     ],
     "pm25": [
-      {
-        "timestamp": "2026-10-15T21:00:00+08:00",
-        "values": {
-          "central": 217,
-          "east": 182,
-          "north": 125,
-          "south": 144,
-          "west": 156
-        }
-      },
       {
         "timestamp": "2026-10-15T22:00:00+08:00",
         "values": {
@@ -4001,105 +3991,119 @@
       {
         "timestamp": "2026-10-23T16:00:00+08:00",
         "values": {
+          "central": 124,
+          "east": 85,
           "north": 99,
           "south": 69,
-          "west": 111,
-          "east": 85,
-          "central": 124
+          "west": 111
         }
       },
       {
         "timestamp": "2026-10-23T17:00:00+08:00",
         "values": {
+          "central": 109,
+          "east": 81,
           "north": 98,
           "south": 77,
-          "west": 107,
-          "east": 81,
-          "central": 109
+          "west": 107
         }
       },
       {
         "timestamp": "2026-10-23T18:00:00+08:00",
         "values": {
+          "central": 98,
+          "east": 80,
           "north": 80,
           "south": 70,
-          "west": 92,
-          "east": 80,
-          "central": 98
+          "west": 92
         }
       },
       {
         "timestamp": "2026-10-23T19:00:00+08:00",
         "values": {
+          "central": 92,
+          "east": 86,
           "north": 68,
           "south": 76,
-          "west": 69,
-          "east": 86,
-          "central": 92
+          "west": 69
         }
       },
       {
         "timestamp": "2026-10-23T20:00:00+08:00",
         "values": {
+          "central": 107,
+          "east": 79,
           "north": 71,
           "south": 74,
-          "west": 69,
-          "east": 79,
-          "central": 107
+          "west": 69
+        }
+      },
+      {
+        "timestamp": "2026-10-23T21:00:00+08:00",
+        "values": {
+          "north": 87,
+          "south": 71,
+          "west": 83,
+          "east": 78,
+          "central": 104
         }
       }
     ]
   },
-  "generatedAt": "2026-10-23T20:05:02.025119+08:00",
-  "nextUpdateAt": "2026-10-23T21:05:00+08:00",
+  "generatedAt": "2026-10-23T21:05:02.600847+08:00",
+  "nextUpdateAt": "2026-10-23T22:05:00+08:00",
   "sources": {
-    "advisories": {
+    "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "pm25": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "history_psi_2026-10-23": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "news": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "history_pm25_2026-10-23": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "history_psi_2026-10-22": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
-    },
-    "history_pm25_2026-10-22": {
-      "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "history_psi_2026-10-23": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "history_psi_2026-10-22": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "history_pm25_2026-10-22": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "history_pm25_2026-10-23": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     },
     "forecast_nea": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-23T20:05:02.025119+08:00"
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+    },
+    "forecast_asmc": {
+      "ok": true,
+      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
     }
   },
   "errors": [],
@@ -4164,16 +4168,16 @@
   ],
   "forecast": {
     "targetDate": "2026-10-24",
-    "issuedAt": "2026-10-23T20:05:02.025119+08:00",
+    "issuedAt": "2026-10-23T21:05:02.600847+08:00",
     "psi": {
       "low": 90,
-      "high": 126
+      "high": 127
     },
     "regions": {
-      "north": 99,
+      "north": 100,
       "south": 101,
       "east": 101,
-      "west": 110,
+      "west": 108,
       "central": 117
     },
     "confidence": "high",
@@ -4187,12 +4191,12 @@
       "outlook": "For tomorrow, showers are forecast over Singapore and the surrounding region, although some smoke haze may be transported towards Singapore from Sumatra under prevailing south-southeasterly or south-southwesterly winds ."
     },
     "trend": {
-      "low": 90,
-      "high": 110,
-      "change24h": 25
+      "low": 94,
+      "high": 114,
+      "change24h": 29
     },
     "model": {
-      "low": 87,
+      "low": 86,
       "high": 100,
       "pm25": 46,
       "bias": 0.92
@@ -4241,7 +4245,6 @@
     },
     "hourly": {
       "times": [
-        "2026-10-23T21",
         "2026-10-23T22",
         "2026-10-23T23",
         "2026-10-24T00",
@@ -4271,65 +4274,62 @@
       ],
       "regions": {
         "north": [
-          45,
-          36,
-          32,
-          28,
+          37,
+          33,
+          29,
           26,
-          24,
           24,
           25,
-          26,
-          28,
+          25,
+          27,
+          29,
           31,
-          39,
-          52,
-          51,
+          40,
+          53,
+          53,
+          48,
           47,
-          46,
-          49,
-          52,
-          54,
-          52,
-          52,
-          59,
-          67,
-          69,
-          73,
-          61,
-          41
-        ],
-        "south": [
-          64,
-          61,
-          59,
-          57,
-          57,
+          50,
+          53,
           55,
           54,
-          53,
+          54,
+          60,
+          69,
+          71,
+          75,
+          62,
+          42
+        ],
+        "south": [
+          60,
+          58,
+          57,
+          56,
+          54,
+          54,
           52,
-          50,
+          51,
+          49,
           47,
-          46,
           46,
           45,
           44,
-          48,
+          44,
+          47,
           48,
           45,
-          41,
+          40,
           35,
-          34,
-          32,
-          31,
-          31,
-          32,
           33,
-          31
+          32,
+          31,
+          31,
+          31,
+          33,
+          30
         ],
         "east": [
-          65,
           62,
           60,
           58,
@@ -4337,7 +4337,7 @@
           56,
           55,
           54,
-          53,
+          52,
           50,
           48,
           47,
@@ -4351,68 +4351,66 @@
           36,
           34,
           33,
-          32,
+          31,
           32,
           32,
           33,
           31
         ],
         "west": [
-          78,
-          78,
-          77,
-          75,
-          72,
-          70,
-          67,
+          76,
+          76,
+          74,
+          71,
+          68,
           66,
-          60,
-          54,
-          44,
-          37,
+          65,
+          59,
+          53,
+          43,
           36,
           35,
           34,
           33,
-          33,
+          32,
+          32,
           36,
-          37,
           36,
-          34,
+          36,
           33,
           33,
+          32,
           33,
-          33,
-          30,
-          26
+          32,
+          29,
+          25
         ],
         "central": [
-          81,
           77,
-          75,
+          74,
           72,
           72,
-          70,
           69,
+          68,
           67,
           65,
-          63,
+          62,
           60,
-          59,
           58,
           57,
+          57,
           56,
-          61,
+          60,
           61,
           57,
           51,
-          45,
+          44,
           42,
           41,
           39,
           39,
           40,
-          42,
+          41,
           39
         ]
       }
@@ -4422,7 +4420,7 @@
         {
           "date": "2026-10-24",
           "low": 90,
-          "high": 126,
+          "high": 127,
           "source": "blend",
           "weather": {
             "text": "Afternoon thundery showers",
@@ -4445,7 +4443,7 @@
         },
         {
           "date": "2026-10-26",
-          "low": 40,
+          "low": 39,
           "high": 54,
           "source": "model",
           "weather": {
@@ -4457,7 +4455,7 @@
         },
         {
           "date": "2026-10-27",
-          "low": 51,
+          "low": 50,
           "high": 57,
           "source": "model",
           "weather": {
@@ -4470,7 +4468,7 @@
       ],
       "betterFrom": "2026-10-25",
       "asmc": {
-        "fetchedAt": "2026-10-23T08:05:02.460435+08:00",
+        "fetchedAt": "2026-10-23T21:05:02.600847+08:00",
         "seasonal": {
           "title": "Seasonal Forecast for October – December 2026",
           "text": "Under El Niño conditions and below-normal rainfall expected across most of the southern ASEAN region, the hotspot and smoke haze situation is expected to remain escalated in the region. The risk of transboundary haze persists under prevailing southeasterly or southwesterly wind conditions. Increased showers under the inter-monsoon conditions towards the end of October could start to alleviate the hotspot and smoke haze situation over the region. Towards the end of the year, the northern ASEAN region is expected to enter its dry season, which could lead to a rise in hotspot and smoke haze activity, particularly over areas experiencing below-normal rainfall conditions.",
@@ -4562,9 +4560,9 @@
     },
     {
       "targetDate": "2026-10-24",
-      "issuedAt": "2026-10-23T20:05:02.025119+08:00",
+      "issuedAt": "2026-10-23T21:05:02.600847+08:00",
       "low": 90,
-      "high": 126,
+      "high": 127,
       "official": true
     }
   ]
