@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-23T12:42:50+08:00",
+    "updatedAt": "2026-10-23T12:52:52+08:00",
     "label": "23 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -111,7 +111,7 @@
         "lon": 103.762843,
         "hours": "Daily, 24 hours",
         "note": "Next to lift at Bus Interchange and SMRT@Vendshop",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -254,8 +254,8 @@
         "lon": 103.902304,
         "hours": "Daily, 24 hours",
         "note": "Outside public toilets",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Punggol Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-23T12:45:02.939556+08:00",
+  "generatedAt": "2026-10-23T13:00:03.063789+08:00",
   "schemaVersion": 1
 }
