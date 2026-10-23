@@ -1,36 +1,36 @@
 {
   "psi": {
     "date": "2026-10-23",
-    "updatedTimestamp": "2026-10-23T21:01:12+08:00",
-    "timestamp": "2026-10-23T21:00:00+08:00",
+    "updatedTimestamp": "2026-10-23T22:00:56+08:00",
+    "timestamp": "2026-10-23T22:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 92,
-        "south": 94,
-        "west": 110,
-        "east": 95,
-        "central": 110
+        "north": 95,
+        "south": 95,
+        "west": 112,
+        "east": 97,
+        "central": 112
       },
       "no2_one_hour_max": {
-        "north": 20,
-        "south": 47,
-        "west": 41,
-        "east": 35,
-        "central": 41
+        "north": 13,
+        "south": 39,
+        "west": 55,
+        "east": 37,
+        "central": 40
       },
       "pm10_twenty_four_hourly": {
-        "north": 74,
-        "south": 69,
-        "west": 84,
-        "east": 76,
-        "central": 83
+        "north": 77,
+        "south": 72,
+        "west": 86,
+        "east": 80,
+        "central": 85
       },
       "pm25_twenty_four_hourly": {
-        "north": 48,
-        "south": 50,
-        "west": 64,
-        "east": 51,
-        "central": 64
+        "north": 51,
+        "south": 51,
+        "west": 66,
+        "east": 53,
+        "central": 66
       },
       "so2_twenty_four_hourly": {
         "north": 8,
@@ -47,39 +47,39 @@
         "central": 1
       },
       "o3_eight_hour_max": {
-        "north": 104,
-        "south": 47,
-        "west": 50,
-        "east": 78,
-        "central": 76
+        "north": 97,
+        "south": 39,
+        "west": 43,
+        "east": 68,
+        "central": 69
       },
       "co_sub_index": {
         "north": 12,
-        "south": 14,
+        "south": 13,
         "west": 15,
         "east": 12,
         "central": 10
       },
       "o3_sub_index": {
-        "north": 44,
-        "south": 20,
-        "west": 21,
-        "east": 33,
-        "central": 32
+        "north": 41,
+        "south": 17,
+        "west": 18,
+        "east": 29,
+        "central": 29
       },
       "pm10_sub_index": {
-        "north": 62,
-        "south": 60,
-        "west": 67,
-        "east": 64,
-        "central": 67
+        "north": 64,
+        "south": 61,
+        "west": 69,
+        "east": 65,
+        "central": 68
       },
       "pm25_sub_index": {
-        "north": 92,
-        "south": 94,
-        "west": 110,
-        "east": 95,
-        "central": 110
+        "north": 95,
+        "south": 95,
+        "west": 112,
+        "east": 97,
+        "central": 112
       },
       "so2_sub_index": {
         "north": 5,
@@ -92,19 +92,26 @@
   },
   "pm25": {
     "date": "2026-10-23",
-    "updatedTimestamp": "2026-10-23T21:01:12+08:00",
-    "timestamp": "2026-10-23T21:00:00+08:00",
+    "updatedTimestamp": "2026-10-23T22:00:56+08:00",
+    "timestamp": "2026-10-23T22:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 87,
-        "south": 71,
-        "west": 83,
-        "east": 78,
-        "central": 104
+        "north": 89,
+        "south": 67,
+        "west": 90,
+        "east": 75,
+        "central": 96
       }
     }
   },
   "news": [
+    {
+      "title": "NEA issues notices to 10 Singapore-based firms for first time under haze law",
+      "url": "https://www.channelnewsasia.com/singapore/nea-haze-notices-companies-transboundary-pollution-6486086",
+      "source": "CNA",
+      "publishedAt": null,
+      "category": "singapore"
+    },
     {
       "title": "Southeast Asia haze: US$13.2m in aid for West Kalimantan to be disbursed in 2 phases",
       "url": "https://www.channelnewsasia.com/watch/southeast-asia-haze-us132m-in-aid-west-kalimantan-be-disbursed-in-2-phases-6486601",
@@ -206,16 +213,6 @@
   ],
   "history": {
     "psi": [
-      {
-        "timestamp": "2026-10-15T22:00:00+08:00",
-        "values": {
-          "central": 194,
-          "east": 170,
-          "north": 128,
-          "south": 162,
-          "west": 174
-        }
-      },
       {
         "timestamp": "2026-10-15T23:00:00+08:00",
         "values": {
@@ -2125,19 +2122,19 @@
           "east": 95,
           "central": 110
         }
+      },
+      {
+        "timestamp": "2026-10-23T22:00:00+08:00",
+        "values": {
+          "north": 95,
+          "south": 95,
+          "west": 112,
+          "east": 97,
+          "central": 112
+        }
       }
     ],
     "pm25": [
-      {
-        "timestamp": "2026-10-15T22:00:00+08:00",
-        "values": {
-          "central": 207,
-          "east": 172,
-          "north": 128,
-          "south": 155,
-          "west": 160
-        }
-      },
       {
         "timestamp": "2026-10-15T23:00:00+08:00",
         "values": {
@@ -4047,63 +4044,69 @@
           "east": 78,
           "central": 104
         }
+      },
+      {
+        "timestamp": "2026-10-23T22:00:00+08:00",
+        "values": {
+          "north": 89,
+          "south": 67,
+          "west": 90,
+          "east": 75,
+          "central": 96
+        }
       }
     ]
   },
-  "generatedAt": "2026-10-23T21:05:02.600847+08:00",
-  "nextUpdateAt": "2026-10-23T22:05:00+08:00",
+  "generatedAt": "2026-10-23T22:05:02.800688+08:00",
+  "nextUpdateAt": "2026-10-23T23:05:00+08:00",
   "sources": {
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
+    },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
-    },
-    "cna": {
-      "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
-    },
-    "news": {
-      "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "history_psi_2026-10-23": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
-    },
-    "history_psi_2026-10-22": {
-      "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
-    },
-    "history_pm25_2026-10-22": {
-      "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "history_pm25_2026-10-23": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
-    "advisories": {
+    "history_psi_2026-10-22": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
+    },
+    "news": {
+      "ok": true,
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
+    },
+    "history_pm25_2026-10-22": {
+      "ok": true,
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
+    },
+    "cna": {
+      "ok": true,
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "forecast_nea": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
-    },
-    "forecast_asmc": {
-      "ok": true,
-      "checkedAt": "2026-10-23T21:05:02.600847+08:00"
+      "checkedAt": "2026-10-23T22:05:02.800688+08:00"
     }
   },
   "errors": [],
@@ -4168,17 +4171,17 @@
   ],
   "forecast": {
     "targetDate": "2026-10-24",
-    "issuedAt": "2026-10-23T21:05:02.600847+08:00",
+    "issuedAt": "2026-10-23T22:05:02.800688+08:00",
     "psi": {
-      "low": 90,
-      "high": 127
+      "low": 91,
+      "high": 128
     },
     "regions": {
-      "north": 100,
-      "south": 101,
-      "east": 101,
+      "north": 104,
+      "south": 100,
+      "east": 102,
       "west": 108,
-      "central": 117
+      "central": 119
     },
     "confidence": "high",
     "official": {
@@ -4191,12 +4194,12 @@
       "outlook": "For tomorrow, showers are forecast over Singapore and the surrounding region, although some smoke haze may be transported towards Singapore from Sumatra under prevailing south-southeasterly or south-southwesterly winds ."
     },
     "trend": {
-      "low": 94,
-      "high": 114,
-      "change24h": 29
+      "low": 98,
+      "high": 118,
+      "change24h": 32
     },
     "model": {
-      "low": 86,
+      "low": 85,
       "high": 100,
       "pm25": 46,
       "bias": 0.92
@@ -4206,8 +4209,8 @@
       "text": "Afternoon thundery showers",
       "windDirection": "SSW",
       "windSpeed": {
-        "low": 10,
-        "high": 15
+        "high": 15,
+        "low": 10
       },
       "rain": true,
       "southerly": true,
@@ -4245,7 +4248,6 @@
     },
     "hourly": {
       "times": [
-        "2026-10-23T22",
         "2026-10-23T23",
         "2026-10-24T00",
         "2026-10-24T01",
@@ -4274,77 +4276,74 @@
       ],
       "regions": {
         "north": [
-          37,
           33,
-          29,
-          26,
-          24,
-          25,
-          25,
+          30,
           27,
-          29,
-          31,
-          40,
-          53,
-          53,
-          48,
-          47,
-          50,
-          53,
+          25,
+          25,
+          26,
+          27,
+          30,
+          32,
+          41,
+          54,
+          54,
+          49,
+          49,
+          51,
+          54,
+          56,
           55,
-          54,
-          54,
-          60,
-          69,
-          71,
-          75,
+          55,
           62,
-          42
+          70,
+          73,
+          77,
+          64,
+          43
         ],
         "south": [
+          58,
+          56,
+          55,
+          54,
+          53,
+          52,
+          50,
+          48,
+          46,
+          45,
+          44,
+          44,
+          43,
+          47,
+          47,
+          44,
+          40,
+          34,
+          33,
+          32,
+          30,
+          30,
+          31,
+          32,
+          30
+        ],
+        "east": [
           60,
           58,
           57,
           56,
-          54,
-          54,
-          52,
-          51,
-          49,
-          47,
-          46,
-          45,
-          44,
-          44,
-          47,
-          48,
-          45,
-          40,
-          35,
-          33,
-          32,
-          31,
-          31,
-          31,
-          33,
-          30
-        ],
-        "east": [
-          62,
-          60,
-          58,
-          58,
-          56,
           55,
-          54,
+          53,
           52,
           50,
           48,
           47,
           46,
-          46,
           45,
-          49,
+          45,
+          48,
           49,
           46,
           41,
@@ -4352,53 +4351,51 @@
           34,
           33,
           31,
-          32,
+          31,
           32,
           33,
           31
         ],
         "west": [
-          76,
-          76,
-          74,
-          71,
-          68,
-          66,
+          75,
+          73,
+          70,
+          67,
           65,
-          59,
-          53,
-          43,
+          64,
+          58,
+          52,
+          42,
           36,
           35,
-          34,
           33,
+          33,
+          31,
           32,
-          32,
+          35,
           36,
-          36,
-          36,
-          33,
+          35,
           33,
           32,
-          33,
           32,
+          32,
+          31,
           29,
           25
         ],
         "central": [
-          77,
           74,
           72,
-          72,
+          71,
           69,
           68,
-          67,
+          66,
           65,
           62,
-          60,
+          59,
           58,
           57,
-          57,
+          56,
           56,
           60,
           61,
@@ -4419,8 +4416,8 @@
       "days": [
         {
           "date": "2026-10-24",
-          "low": 90,
-          "high": 127,
+          "low": 91,
+          "high": 128,
           "source": "blend",
           "weather": {
             "text": "Afternoon thundery showers",
@@ -4560,9 +4557,9 @@
     },
     {
       "targetDate": "2026-10-24",
-      "issuedAt": "2026-10-23T21:05:02.600847+08:00",
-      "low": 90,
-      "high": 127,
+      "issuedAt": "2026-10-23T22:05:02.800688+08:00",
+      "low": 91,
+      "high": 128,
       "official": true
     }
   ]
