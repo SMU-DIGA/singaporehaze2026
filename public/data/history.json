@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T23:06:23.733924+08:00",
+ "generatedAt": "2026-10-24T00:06:37.334239+08:00",
  "dataset": "d_b4cf557f8750260d229c49fd768e11ed",
  "datasetEnd": "2026-10-01",
  "seasonStart": "08-01",
@@ -139,10 +139,10 @@
   {
    "year": 2026,
    "peak": 230,
-   "days100": 37,
+   "days100": 38,
    "days200": 4,
    "days300": 0,
-   "days": 296,
+   "days": 297,
    "peakDate": "2026-10-18",
    "peakRegion": "west",
    "partial": true
@@ -606,7 +606,7 @@
    140,
    122,
    116,
-   null,
+   120,
    null,
    null,
    null,
@@ -689,8 +689,8 @@
   },
   {
    "start": "2026-09-04",
-   "end": "2026-10-23",
-   "unhealthyDays": 37,
+   "end": "2026-10-24",
+   "unhealthyDays": 38,
    "peak": 230,
    "peakDate": "2026-10-18",
    "ongoing": true
