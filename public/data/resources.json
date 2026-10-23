@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-23T10:02:51+08:00",
+    "updatedAt": "2026-10-23T10:12:51+08:00",
     "label": "23 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -67,8 +67,8 @@
         "lon": 103.716519,
         "hours": "Daily, 24 hours",
         "note": "Next to SSO office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Bukit Batok Bus Interchange",
@@ -298,8 +298,8 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Serangoon Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-23T10:05:08.308897+08:00",
+  "generatedAt": "2026-10-23T10:15:03.255711+08:00",
   "schemaVersion": 1
 }
