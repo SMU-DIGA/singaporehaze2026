@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-24T14:52:52+08:00",
+    "updatedAt": "2026-10-24T15:02:52+08:00",
     "label": "24 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -298,8 +298,8 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Serangoon Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-24T15:00:02.738458+08:00",
+  "generatedAt": "2026-10-24T15:05:07.660167+08:00",
   "schemaVersion": 1
 }
