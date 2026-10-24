@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-24T10:22:51+08:00",
+    "updatedAt": "2026-10-24T10:42:51+08:00",
     "label": "24 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -188,7 +188,7 @@
         "lon": 103.893158,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 1",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -353,7 +353,7 @@
         "lon": 103.847502,
         "hours": "Daily, 24 hours",
         "note": "Outside station entrance/exit",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -375,8 +375,8 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "limited",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yio Chu Kang Bus Interchange",
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-24T10:30:03.176977+08:00",
+  "generatedAt": "2026-10-24T10:45:02.117090+08:00",
   "schemaVersion": 1
 }
