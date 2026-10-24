@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-25T00:22:51+08:00",
+    "updatedAt": "2026-10-25T00:42:51+08:00",
     "label": "24 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -408,8 +408,8 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       }
     ]
   },
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-25T00:30:02.666509+08:00",
+  "generatedAt": "2026-10-25T00:45:02.588424+08:00",
   "schemaVersion": 1
 }
