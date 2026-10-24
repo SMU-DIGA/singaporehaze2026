@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-24T12:02:51+08:00",
+    "updatedAt": "2026-10-24T12:12:51+08:00",
     "label": "24 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -166,8 +166,8 @@
         "lon": 103.89656,
         "hours": "Daily, 24 hours",
         "note": "Near Lobby A",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Hong Kah North Zone '6' Residents' Network (RN)",
@@ -298,7 +298,7 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-24T12:05:07.055180+08:00",
+  "generatedAt": "2026-10-24T12:15:01.994268+08:00",
   "schemaVersion": 1
 }
