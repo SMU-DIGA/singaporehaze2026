@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-24T17:00",
+  "observedAt": "2026-10-24T18:00",
   "tomorrow": "2026-10-25",
   "dayAfter": "2026-10-26",
   "cities": [
@@ -11,10 +11,10 @@
       "lat": 1.35,
       "lon": 103.82,
       "flightMinutes": 0,
-      "aqi": 154,
-      "pm25": 43.0,
-      "tomorrowMax": 141,
-      "dayAfterMax": 100,
+      "aqi": 153,
+      "pm25": 48.1,
+      "tomorrowMax": 140,
+      "dayAfterMax": 86,
       "price": null
     },
     {
@@ -25,25 +25,25 @@
       "lat": 3.139,
       "lon": 101.687,
       "flightMinutes": 60,
-      "aqi": 152,
-      "pm25": 32.9,
-      "tomorrowMax": 121,
-      "dayAfterMax": 96,
+      "aqi": 150,
+      "pm25": 42.4,
+      "tomorrowMax": 125,
+      "dayAfterMax": 92,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 94,
-        "url": "https://kiwi.com/u/mvu4cds",
+        "amount": 103,
+        "url": "https://kiwi.com/u/kdjcsm4",
         "stops": 0,
-        "hours": 1.1,
+        "hours": 1.0,
         "carriers": [
-          "AirAsia"
+          "Batik Air Malaysia"
         ],
         "direct": {
-          "amount": 94,
-          "url": "https://kiwi.com/u/mvu4cds"
+          "amount": 103,
+          "url": "https://kiwi.com/u/kdjcsm4"
         }
       }
     },
@@ -55,25 +55,25 @@
       "lat": 5.414,
       "lon": 100.329,
       "flightMinutes": 85,
-      "aqi": 60,
-      "pm25": 6.4,
-      "tomorrowMax": 57,
-      "dayAfterMax": 44,
+      "aqi": 58,
+      "pm25": 6.8,
+      "tomorrowMax": 55,
+      "dayAfterMax": 40,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 109,
-        "url": "https://kiwi.com/u/4c6zhr",
+        "amount": 102,
+        "url": "https://kiwi.com/u/pujpmd",
         "stops": 0,
-        "hours": 1.4,
+        "hours": 1.7,
         "carriers": [
-          "AirAsia"
+          "Scoot"
         ],
         "direct": {
-          "amount": 109,
-          "url": "https://kiwi.com/u/4c6zhr"
+          "amount": 102,
+          "url": "https://kiwi.com/u/pujpmd"
         }
       }
     },
@@ -85,17 +85,17 @@
       "lat": 5.98,
       "lon": 116.073,
       "flightMinutes": 150,
-      "aqi": 71,
-      "pm25": 17.9,
-      "tomorrowMax": 67,
-      "dayAfterMax": 52,
+      "aqi": 77,
+      "pm25": 22.3,
+      "tomorrowMax": 77,
+      "dayAfterMax": 61,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 161,
-        "url": "https://kiwi.com/u/mvcu9j",
+        "url": "https://kiwi.com/u/9bwtg6",
         "stops": 0,
         "hours": 2.5,
         "carriers": [
@@ -103,7 +103,7 @@
         ],
         "direct": {
           "amount": 161,
-          "url": "https://kiwi.com/u/mvcu9j"
+          "url": "https://kiwi.com/u/9bwtg6"
         }
       }
     },
@@ -115,25 +115,25 @@
       "lat": 13.756,
       "lon": 100.502,
       "flightMinutes": 145,
-      "aqi": 74,
-      "pm25": 10.7,
-      "tomorrowMax": 57,
-      "dayAfterMax": 56,
+      "aqi": 73,
+      "pm25": 13.5,
+      "tomorrowMax": 60,
+      "dayAfterMax": 65,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 245,
-        "url": "https://kiwi.com/u/hqnbvk",
+        "amount": 248,
+        "url": "https://kiwi.com/u/hkdz2v",
         "stops": 1,
-        "hours": 7.2,
+        "hours": 6.7,
         "carriers": [
           "Malaysia Airlines"
         ],
         "direct": {
-          "amount": 362,
-          "url": "https://kiwi.com/u/d45wbv"
+          "amount": 320,
+          "url": "https://kiwi.com/u/mw6xkj"
         }
       }
     },
@@ -146,16 +146,16 @@
       "lon": 98.392,
       "flightMinutes": 95,
       "aqi": 19,
-      "pm25": 2.4,
+      "pm25": 2.2,
       "tomorrowMax": 16,
-      "dayAfterMax": 9,
+      "dayAfterMax": 8,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 201,
-        "url": "https://kiwi.com/u/5d68d9",
+        "url": "https://kiwi.com/u/4bzj83",
         "stops": 0,
         "hours": 2.1,
         "carriers": [
@@ -163,7 +163,7 @@
         ],
         "direct": {
           "amount": 201,
-          "url": "https://kiwi.com/u/5d68d9"
+          "url": "https://kiwi.com/u/4bzj83"
         }
       }
     },
@@ -175,26 +175,23 @@
       "lat": 18.788,
       "lon": 98.985,
       "flightMinutes": 195,
-      "aqi": 58,
-      "pm25": 7.9,
-      "tomorrowMax": 56,
-      "dayAfterMax": 65,
+      "aqi": 56,
+      "pm25": 7.0,
+      "tomorrowMax": 57,
+      "dayAfterMax": 67,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 320,
-        "url": "https://kiwi.com/u/m34urx",
+        "url": "https://kiwi.com/u/rszvs9x",
         "stops": 1,
         "hours": 10.2,
         "carriers": [
           "AirAsia"
         ],
-        "direct": {
-          "amount": 333,
-          "url": "https://kiwi.com/u/cxp65u"
-        }
+        "direct": null
       }
     },
     {
@@ -205,25 +202,25 @@
       "lat": 10.823,
       "lon": 106.63,
       "flightMinutes": 120,
-      "aqi": 83,
-      "pm25": 27.4,
+      "aqi": 84,
+      "pm25": 30.9,
       "tomorrowMax": 84,
-      "dayAfterMax": 79,
+      "dayAfterMax": 77,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 219,
-        "url": "https://kiwi.com/u/gr3kwv",
+        "amount": 182,
+        "url": "https://kiwi.com/u/tysmxx",
         "stops": 0,
-        "hours": 2.1,
+        "hours": 2.2,
         "carriers": [
-          "VietJet Air"
+          "Vietnam Airlines"
         ],
         "direct": {
-          "amount": 219,
-          "url": "https://kiwi.com/u/gr3kwv"
+          "amount": 182,
+          "url": "https://kiwi.com/u/tysmxx"
         }
       }
     },
@@ -235,25 +232,25 @@
       "lat": 16.054,
       "lon": 108.202,
       "flightMinutes": 165,
-      "aqi": 78,
-      "pm25": 23.2,
-      "tomorrowMax": 84,
-      "dayAfterMax": 80,
+      "aqi": 73,
+      "pm25": 22.2,
+      "tomorrowMax": 81,
+      "dayAfterMax": 77,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 153,
-        "url": "https://kiwi.com/u/ksup2x",
+        "amount": 152,
+        "url": "https://kiwi.com/u/wbg79r",
         "stops": 0,
         "hours": 2.8,
         "carriers": [
           "VietJet Air"
         ],
         "direct": {
-          "amount": 153,
-          "url": "https://kiwi.com/u/ksup2x"
+          "amount": 152,
+          "url": "https://kiwi.com/u/wbg79r"
         }
       }
     },
@@ -266,24 +263,24 @@
       "lon": 105.854,
       "flightMinutes": 210,
       "aqi": 88,
-      "pm25": 26.0,
-      "tomorrowMax": 101,
-      "dayAfterMax": 128,
+      "pm25": 25.2,
+      "tomorrowMax": 107,
+      "dayAfterMax": 120,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 243,
-        "url": "https://kiwi.com/u/c6b8wjb",
-        "stops": 1,
-        "hours": 7.8,
+        "amount": 239,
+        "url": "https://kiwi.com/u/27p32nz",
+        "stops": 2,
+        "hours": 16.0,
         "carriers": [
           "Vietnam Airlines"
         ],
         "direct": {
           "amount": 380,
-          "url": "https://kiwi.com/u/grcfvzh"
+          "url": "https://kiwi.com/u/qj2tkv7"
         }
       }
     },
@@ -295,17 +292,17 @@
       "lat": 14.6,
       "lon": 120.984,
       "flightMinutes": 215,
-      "aqi": 90,
-      "pm25": 14.7,
-      "tomorrowMax": 87,
-      "dayAfterMax": 93,
+      "aqi": 89,
+      "pm25": 17.3,
+      "tomorrowMax": 89,
+      "dayAfterMax": 96,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 263,
-        "url": "https://kiwi.com/u/tpf3jc",
+        "url": "https://kiwi.com/u/pvbx9g",
         "stops": 0,
         "hours": 3.8,
         "carriers": [
@@ -313,7 +310,7 @@
         ],
         "direct": {
           "amount": 263,
-          "url": "https://kiwi.com/u/tpf3jc"
+          "url": "https://kiwi.com/u/pvbx9g"
         }
       }
     },
@@ -325,25 +322,25 @@
       "lat": 10.316,
       "lon": 123.885,
       "flightMinutes": 230,
-      "aqi": 18,
-      "pm25": 5.5,
-      "tomorrowMax": 41,
-      "dayAfterMax": 42,
+      "aqi": 19,
+      "pm25": 6.2,
+      "tomorrowMax": 49,
+      "dayAfterMax": 52,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 487,
-        "url": "https://kiwi.com/u/9mzsm4",
+        "amount": 507,
+        "url": "https://kiwi.com/u/qwzdsy",
         "stops": 1,
         "hours": 8.5,
         "carriers": [
           "Cebu Pacific"
         ],
         "direct": {
-          "amount": 636,
-          "url": "https://kiwi.com/u/xs6uk4j"
+          "amount": 635,
+          "url": "https://kiwi.com/u/2bjtqb"
         }
       }
     },
@@ -355,17 +352,17 @@
       "lat": -8.65,
       "lon": 115.217,
       "flightMinutes": 160,
-      "aqi": 55,
-      "pm25": 10.3,
-      "tomorrowMax": 59,
-      "dayAfterMax": 65,
+      "aqi": 53,
+      "pm25": 8.8,
+      "tomorrowMax": 58,
+      "dayAfterMax": 66,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 146,
-        "url": "https://kiwi.com/u/u3hfwd",
+        "url": "https://kiwi.com/u/xwt3gh",
         "stops": 0,
         "hours": 2.8,
         "carriers": [
@@ -373,7 +370,7 @@
         ],
         "direct": {
           "amount": 146,
-          "url": "https://kiwi.com/u/u3hfwd"
+          "url": "https://kiwi.com/u/xwt3gh"
         }
       }
     },
@@ -386,16 +383,16 @@
       "lon": 106.845,
       "flightMinutes": 105,
       "aqi": 153,
-      "pm25": 38.5,
-      "tomorrowMax": 164,
-      "dayAfterMax": 151,
+      "pm25": 49.8,
+      "tomorrowMax": 159,
+      "dayAfterMax": 134,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
         "amount": 154,
-        "url": "https://kiwi.com/u/x6ksmv",
+        "url": "https://kiwi.com/u/vcu45j",
         "stops": 0,
         "hours": 1.8,
         "carriers": [
@@ -403,7 +400,7 @@
         ],
         "direct": {
           "amount": 154,
-          "url": "https://kiwi.com/u/x6ksmv"
+          "url": "https://kiwi.com/u/vcu45j"
         }
       }
     },
@@ -415,26 +412,23 @@
       "lat": 22.32,
       "lon": 114.17,
       "flightMinutes": 235,
-      "aqi": 92,
-      "pm25": 34.8,
-      "tomorrowMax": 105,
-      "dayAfterMax": 97,
+      "aqi": 84,
+      "pm25": 27.1,
+      "tomorrowMax": 90,
+      "dayAfterMax": 124,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 310,
-        "url": "https://kiwi.com/u/rdg2gw",
+        "amount": 327,
+        "url": "https://kiwi.com/u/6ppqjzp",
         "stops": 1,
         "hours": 11.8,
         "carriers": [
           "AirAsia"
         ],
-        "direct": {
-          "amount": 571,
-          "url": "https://kiwi.com/u/cnjcy5"
-        }
+        "direct": null
       }
     },
     {
@@ -445,17 +439,17 @@
       "lat": 25.033,
       "lon": 121.565,
       "flightMinutes": 280,
-      "aqi": 37,
-      "pm25": 8.1,
-      "tomorrowMax": 61,
-      "dayAfterMax": 75,
+      "aqi": 36,
+      "pm25": 8.3,
+      "tomorrowMax": 58,
+      "dayAfterMax": 78,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 467,
-        "url": "https://kiwi.com/u/zctpgv",
+        "amount": 466,
+        "url": "https://kiwi.com/u/42y99b",
         "stops": 1,
         "hours": 10.3,
         "carriers": [
@@ -472,27 +466,30 @@
       "lat": -31.95,
       "lon": 115.86,
       "flightMinutes": 315,
-      "aqi": 33,
+      "aqi": 34,
       "pm25": 8.4,
       "tomorrowMax": 52,
-      "dayAfterMax": 61,
+      "dayAfterMax": 54,
       "price": {
         "date": "2026-10-25",
-        "checkedAt": "2026-10-24T14:05:04.591457+08:00",
+        "checkedAt": "2026-10-24T18:05:05.671359+08:00",
         "source": "Kiwi.com",
         "currency": "SGD",
-        "amount": 673,
-        "url": "https://kiwi.com/u/yn24phx",
+        "amount": 617,
+        "url": "https://kiwi.com/u/2qukpu",
         "stops": 1,
-        "hours": 8.1,
+        "hours": 20.9,
         "carriers": [
-          "Malaysia Airlines"
+          "VietJet Air"
         ],
-        "direct": null
+        "direct": {
+          "amount": 1027,
+          "url": "https://kiwi.com/u/t7w9t3"
+        }
       }
     }
   ],
-  "generatedAt": "2026-10-24T17:05:06.272932+08:00",
+  "generatedAt": "2026-10-24T18:05:05.671359+08:00",
   "source": "CAMS via Open-Meteo",
   "priceErrors": [],
   "schemaVersion": 1
