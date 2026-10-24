@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-24T14:02:51+08:00",
+    "updatedAt": "2026-10-24T14:12:51+08:00",
     "label": "24 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,7 +34,7 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -298,7 +298,7 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -320,7 +320,7 @@
         "lon": 103.943675,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 10",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-24T14:06:23.575689+08:00",
+  "generatedAt": "2026-10-24T14:15:02.510072+08:00",
   "schemaVersion": 1
 }
