@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-25T16:12:51+08:00",
+    "updatedAt": "2026-10-25T16:22:52+08:00",
     "label": "25 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -89,8 +89,8 @@
         "lon": 103.81721,
         "hours": "Daily, 24 hours",
         "note": "Between Berth B2 and B3",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Merah Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-25T16:15:03.284371+08:00",
+  "generatedAt": "2026-10-25T16:30:02.997957+08:00",
   "schemaVersion": 1
 }
