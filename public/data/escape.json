@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-26T09:00",
+  "observedAt": "2026-10-26T10:00",
   "tomorrow": "2026-10-27",
   "dayAfter": "2026-10-28",
   "cities": [
@@ -11,8 +11,8 @@
       "lat": 1.35,
       "lon": 103.82,
       "flightMinutes": 0,
-      "aqi": 74,
-      "pm25": 17.2,
+      "aqi": 73,
+      "pm25": 20.1,
       "tomorrowMax": 88,
       "dayAfterMax": 91,
       "price": null
@@ -25,8 +25,8 @@
       "lat": 3.139,
       "lon": 101.687,
       "flightMinutes": 60,
-      "aqi": 65,
-      "pm25": 32.6,
+      "aqi": 66,
+      "pm25": 24.6,
       "tomorrowMax": 161,
       "dayAfterMax": 149,
       "price": {
@@ -56,7 +56,7 @@
       "lon": 100.329,
       "flightMinutes": 85,
       "aqi": 32,
-      "pm25": 3.1,
+      "pm25": 4.8,
       "tomorrowMax": 43,
       "dayAfterMax": 55,
       "price": {
@@ -85,8 +85,8 @@
       "lat": 5.98,
       "lon": 116.073,
       "flightMinutes": 150,
-      "aqi": 44,
-      "pm25": 5.1,
+      "aqi": 42,
+      "pm25": 4.8,
       "tomorrowMax": 55,
       "dayAfterMax": 55,
       "price": {
@@ -116,7 +116,7 @@
       "lon": 100.502,
       "flightMinutes": 145,
       "aqi": 55,
-      "pm25": 15.1,
+      "pm25": 15.7,
       "tomorrowMax": 74,
       "dayAfterMax": 79,
       "price": {
@@ -146,7 +146,7 @@
       "lon": 98.392,
       "flightMinutes": 95,
       "aqi": 14,
-      "pm25": 2.0,
+      "pm25": 2.4,
       "tomorrowMax": 13,
       "dayAfterMax": 9,
       "price": {
@@ -176,7 +176,7 @@
       "lon": 98.985,
       "flightMinutes": 195,
       "aqi": 61,
-      "pm25": 18.4,
+      "pm25": 19.4,
       "tomorrowMax": 68,
       "dayAfterMax": 61,
       "price": {
@@ -206,7 +206,7 @@
       "lon": 106.63,
       "flightMinutes": 120,
       "aqi": 67,
-      "pm25": 17.1,
+      "pm25": 17.9,
       "tomorrowMax": 75,
       "dayAfterMax": 80,
       "price": {
@@ -236,7 +236,7 @@
       "lon": 108.202,
       "flightMinutes": 165,
       "aqi": 64,
-      "pm25": 19.8,
+      "pm25": 19.3,
       "tomorrowMax": 66,
       "dayAfterMax": 57,
       "price": {
@@ -262,8 +262,8 @@
       "lat": 21.028,
       "lon": 105.854,
       "flightMinutes": 210,
-      "aqi": 103,
-      "pm25": 27.1,
+      "aqi": 102,
+      "pm25": 24.9,
       "tomorrowMax": 157,
       "dayAfterMax": 165,
       "price": {
@@ -292,8 +292,8 @@
       "lat": 14.6,
       "lon": 120.984,
       "flightMinutes": 215,
-      "aqi": 89,
-      "pm25": 33.5,
+      "aqi": 90,
+      "pm25": 31.4,
       "tomorrowMax": 85,
       "dayAfterMax": 59,
       "price": {
@@ -322,8 +322,8 @@
       "lat": 10.316,
       "lon": 123.885,
       "flightMinutes": 230,
-      "aqi": 38,
-      "pm25": 6.9,
+      "aqi": 39,
+      "pm25": 7.3,
       "tomorrowMax": 44,
       "dayAfterMax": 32,
       "price": {
@@ -353,7 +353,7 @@
       "lon": 115.217,
       "flightMinutes": 160,
       "aqi": 60,
-      "pm25": 12.7,
+      "pm25": 13.1,
       "tomorrowMax": 90,
       "dayAfterMax": 90,
       "price": {
@@ -382,8 +382,8 @@
       "lat": -6.2,
       "lon": 106.845,
       "flightMinutes": 105,
-      "aqi": 123,
-      "pm25": 39.3,
+      "aqi": 121,
+      "pm25": 38.6,
       "tomorrowMax": 158,
       "dayAfterMax": 159,
       "price": {
@@ -413,7 +413,7 @@
       "lon": 114.17,
       "flightMinutes": 235,
       "aqi": 88,
-      "pm25": 31.3,
+      "pm25": 29.2,
       "tomorrowMax": 97,
       "dayAfterMax": 98,
       "price": {
@@ -442,8 +442,8 @@
       "lat": 25.033,
       "lon": 121.565,
       "flightMinutes": 280,
-      "aqi": 64,
-      "pm25": 28.2,
+      "aqi": 66,
+      "pm25": 28.6,
       "tomorrowMax": 89,
       "dayAfterMax": 85,
       "price": {
@@ -473,7 +473,7 @@
       "lon": 115.86,
       "flightMinutes": 315,
       "aqi": 53,
-      "pm25": 3.1,
+      "pm25": 3.3,
       "tomorrowMax": 35,
       "dayAfterMax": 23,
       "price": {
@@ -495,7 +495,7 @@
       }
     }
   ],
-  "generatedAt": "2026-10-26T09:05:04.671130+08:00",
+  "generatedAt": "2026-10-26T10:05:05.849099+08:00",
   "source": "CAMS via Open-Meteo",
   "priceErrors": [],
   "schemaVersion": 1
