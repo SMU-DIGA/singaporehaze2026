@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-26T14:42:51+08:00",
+    "updatedAt": "2026-10-26T14:52:52+08:00",
     "label": "26 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -232,8 +232,8 @@
         "lon": 103.931806,
         "hours": "Daily, 24 hours",
         "note": "Beside CC office; opposite public toilets",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Kreta Ayer Social Service Office (SSO)",
@@ -397,7 +397,7 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-26T14:45:02.657417+08:00",
+  "generatedAt": "2026-10-26T15:00:04.317081+08:00",
   "schemaVersion": 1
 }
