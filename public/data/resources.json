@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-26T10:02:52+08:00",
+    "updatedAt": "2026-10-26T10:12:52+08:00",
     "label": "26 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -199,8 +199,8 @@
         "lon": 103.882875,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby B",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Jalan Besar Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-26T10:05:08.125475+08:00",
+  "generatedAt": "2026-10-26T10:15:02.901689+08:00",
   "schemaVersion": 1
 }
