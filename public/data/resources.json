@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-26T09:42:51+08:00",
+    "updatedAt": "2026-10-26T09:52:52+08:00",
     "label": "26 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -221,8 +221,8 @@
         "lon": 103.740927,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Kampong Chai Chee Community Club (CC)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-26T09:45:02.341099+08:00",
+  "generatedAt": "2026-10-26T10:00:02.714824+08:00",
   "schemaVersion": 1
 }
