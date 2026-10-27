@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-27T13:12:51+08:00",
+    "updatedAt": "2026-10-27T13:22:52+08:00",
     "label": "27 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -155,8 +155,8 @@
         "lon": 103.820609,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby A and B",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Geylang Serai Community Club (CC)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-27T13:15:03.840344+08:00",
+  "generatedAt": "2026-10-27T13:30:02.912013+08:00",
   "schemaVersion": 1
 }
