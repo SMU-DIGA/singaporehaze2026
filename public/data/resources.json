@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-28T12:22:51+08:00",
+    "updatedAt": "2026-10-28T12:42:51+08:00",
     "label": "28 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -232,7 +232,7 @@
         "lon": 103.931806,
         "hours": "Daily, 24 hours",
         "note": "Beside CC office; opposite public toilets",
-        "stock": "limited",
+        "stock": "available",
         "working": true
       },
       {
@@ -408,8 +408,8 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       }
     ]
   },
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-28T12:30:02.671778+08:00",
+  "generatedAt": "2026-10-28T12:45:02.728094+08:00",
   "schemaVersion": 1
 }
