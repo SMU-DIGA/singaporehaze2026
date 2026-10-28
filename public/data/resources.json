@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-28T11:22:51+08:00",
+    "updatedAt": "2026-10-28T11:42:51+08:00",
     "label": "28 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -56,8 +56,8 @@
         "lon": 103.706065,
         "hours": "Daily, 24 hours",
         "note": "Next to Entrance/Exit F",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Boon Lay Social Service Office (SSO)",
@@ -144,8 +144,8 @@
         "lon": 103.849139,
         "hours": "Daily, 24 hours",
         "note": "Outside SSO main office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Former Sembawang Social Service Office (SSO)",
@@ -408,8 +408,8 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       }
     ]
   },
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-28T11:30:02.372855+08:00",
+  "generatedAt": "2026-10-28T11:45:02.784913+08:00",
   "schemaVersion": 1
 }
