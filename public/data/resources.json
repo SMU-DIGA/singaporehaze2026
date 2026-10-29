@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-29T18:22:51+08:00",
+    "updatedAt": "2026-10-29T18:42:51+08:00",
     "label": "29 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,7 +12,7 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "available",
+        "stock": "limited",
         "working": true
       },
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-29T18:30:02.831591+08:00",
+  "generatedAt": "2026-10-29T18:45:03.346767+08:00",
   "schemaVersion": 1
 }
