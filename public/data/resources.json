@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-29T12:22:52+08:00",
+    "updatedAt": "2026-10-29T12:42:51+08:00",
     "label": "29 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -353,8 +353,8 @@
         "lon": 103.847502,
         "hours": "Daily, 24 hours",
         "note": "Outside station entrance/exit",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Woodgrove Zone '8' Residents' Network (RN)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-29T12:30:03.194667+08:00",
+  "generatedAt": "2026-10-29T12:45:02.817392+08:00",
   "schemaVersion": 1
 }
