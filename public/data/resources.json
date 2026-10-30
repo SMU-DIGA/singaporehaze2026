@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-30T23:22:52+08:00",
+    "updatedAt": "2026-10-30T23:42:51+08:00",
     "label": "30 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -45,8 +45,8 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Boon Lay MRT Station",
@@ -254,8 +254,8 @@
         "lon": 103.902304,
         "hours": "Daily, 24 hours",
         "note": "Outside public toilets",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Punggol Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-30T23:30:02.668165+08:00",
+  "generatedAt": "2026-10-30T23:45:02.798657+08:00",
   "schemaVersion": 1
 }
