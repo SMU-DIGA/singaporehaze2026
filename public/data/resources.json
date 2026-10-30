@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-30T20:22:51+08:00",
+    "updatedAt": "2026-10-30T20:42:51+08:00",
     "label": "30 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -254,8 +254,8 @@
         "lon": 103.902304,
         "hours": "Daily, 24 hours",
         "note": "Outside public toilets",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Punggol Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-30T20:30:03.473180+08:00",
+  "generatedAt": "2026-10-30T20:45:03.348798+08:00",
   "schemaVersion": 1
 }
