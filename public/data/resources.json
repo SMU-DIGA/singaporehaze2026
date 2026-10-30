@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-31T04:02:51+08:00",
+    "updatedAt": "2026-10-31T04:12:51+08:00",
     "label": "30 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -56,8 +56,8 @@
         "lon": 103.706065,
         "hours": "Daily, 24 hours",
         "note": "Next to Entrance/Exit F",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Boon Lay Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-31T04:06:24.013247+08:00",
+  "generatedAt": "2026-10-31T04:15:02.793465+08:00",
   "schemaVersion": 1
 }
