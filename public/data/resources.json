@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-30T12:52:51+08:00",
+    "updatedAt": "2026-10-30T13:02:51+08:00",
     "label": "30 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -111,8 +111,8 @@
         "lon": 103.762843,
         "hours": "Daily, 24 hours",
         "note": "Next to lift at Bus Interchange and SMRT@Vendshop",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Clementi Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-30T13:00:02.757504+08:00",
+  "generatedAt": "2026-10-30T13:06:14.867799+08:00",
   "schemaVersion": 1
 }
