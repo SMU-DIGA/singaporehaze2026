@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-30T20:02:51+08:00",
+    "updatedAt": "2026-10-30T20:12:51+08:00",
     "label": "30 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -210,8 +210,8 @@
         "lon": 103.861787,
         "hours": "Daily, 24 hours",
         "note": "Near SSO entrance",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Jurong East Bus Interchange",
@@ -414,7 +414,7 @@
     ]
   },
   "ccs": {
-    "fetchedAt": "2026-10-23T20:15:02.919670+08:00",
+    "fetchedAt": "2026-10-30T20:15:03.293937+08:00",
     "dataset": "d_9de02d3fb33d96da1855f4fbef549a0f",
     "items": [
       {
@@ -1274,7 +1274,7 @@
     ]
   },
   "polyclinics": {
-    "fetchedAt": "2026-10-23T20:15:02.919670+08:00",
+    "fetchedAt": "2026-10-30T20:15:03.293937+08:00",
     "dataset": "d_3ca2a28059588f297908b32da4ac3cbe",
     "items": [
       {
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-30T20:05:12.342596+08:00",
+  "generatedAt": "2026-10-30T20:15:03.293937+08:00",
   "schemaVersion": 1
 }
