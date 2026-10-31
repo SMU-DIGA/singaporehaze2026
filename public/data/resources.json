@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-31T17:52:52+08:00",
+    "updatedAt": "2026-10-31T18:02:52+08:00",
     "label": "31 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -210,8 +210,8 @@
         "lon": 103.861787,
         "hours": "Daily, 24 hours",
         "note": "Near SSO entrance",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Jurong East Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-31T18:00:03.084128+08:00",
+  "generatedAt": "2026-10-31T18:05:08.397510+08:00",
   "schemaVersion": 1
 }
