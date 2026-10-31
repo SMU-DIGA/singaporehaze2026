@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-31T20:22:52+08:00",
+    "updatedAt": "2026-10-31T20:42:51+08:00",
     "label": "31 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -166,8 +166,8 @@
         "lon": 103.89656,
         "hours": "Daily, 24 hours",
         "note": "Near Lobby A",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Hong Kah North Zone '6' Residents' Network (RN)",
@@ -210,8 +210,8 @@
         "lon": 103.861787,
         "hours": "Daily, 24 hours",
         "note": "Near SSO entrance",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Jurong East Bus Interchange",
@@ -265,8 +265,8 @@
         "lon": 103.905104,
         "hours": "Daily, 24 hours",
         "note": "Outside ServiceSG Centre",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Queenstown Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-31T20:30:02.990622+08:00",
+  "generatedAt": "2026-10-31T20:45:02.819244+08:00",
   "schemaVersion": 1
 }
