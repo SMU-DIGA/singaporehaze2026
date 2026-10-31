@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-31T08:02:51+08:00",
+    "updatedAt": "2026-10-31T08:12:51+08:00",
     "label": "31 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -45,8 +45,8 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Boon Lay MRT Station",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-31T08:06:20.423424+08:00",
+  "generatedAt": "2026-10-31T08:15:02.213363+08:00",
   "schemaVersion": 1
 }
