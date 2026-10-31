@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-10-31T14:22:51+08:00",
+    "updatedAt": "2026-10-31T14:42:52+08:00",
     "label": "31 Oct 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,8 +34,8 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bishan Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-10-31T14:30:03.526705+08:00",
+  "generatedAt": "2026-10-31T14:45:02.884583+08:00",
   "schemaVersion": 1
 }
