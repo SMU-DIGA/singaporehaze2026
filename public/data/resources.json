@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-02T00:12:51+08:00",
+    "updatedAt": "2026-11-02T00:22:52+08:00",
     "label": "01 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -78,8 +78,8 @@
         "lon": 103.750969,
         "hours": "Daily, 24 hours",
         "note": "Near Passenger Service Office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Bukit Merah Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-02T00:15:02.839010+08:00",
+  "generatedAt": "2026-11-02T00:30:02.752983+08:00",
   "schemaVersion": 1
 }
