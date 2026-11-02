@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-02T20:02:51+08:00",
+    "updatedAt": "2026-11-02T20:12:52+08:00",
     "label": "02 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,8 +34,8 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bishan Bus Interchange",
@@ -320,8 +320,8 @@
         "lon": 103.943675,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 10",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Tampines Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-02T20:05:08.352541+08:00",
+  "generatedAt": "2026-11-02T20:15:03.003808+08:00",
   "schemaVersion": 1
 }
