@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-02T19:02:50+08:00",
+    "updatedAt": "2026-11-02T19:12:51+08:00",
     "label": "02 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -287,8 +287,8 @@
         "lon": 103.893906,
         "hours": "Daily, 24 hours",
         "note": "Near CC office entrance",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Serangoon MRT Station",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-02T19:06:18.935485+08:00",
+  "generatedAt": "2026-11-02T19:15:02.516664+08:00",
   "schemaVersion": 1
 }
