@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-03T14:42:51+08:00",
+    "updatedAt": "2026-11-03T14:52:51+08:00",
     "label": "03 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -56,8 +56,8 @@
         "lon": 103.706065,
         "hours": "Daily, 24 hours",
         "note": "Next to Entrance/Exit F",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Boon Lay Social Service Office (SSO)",
@@ -67,8 +67,8 @@
         "lon": 103.716519,
         "hours": "Daily, 24 hours",
         "note": "Next to SSO office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Bukit Batok Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-03T14:45:02.599306+08:00",
+  "generatedAt": "2026-11-03T15:00:03.448053+08:00",
   "schemaVersion": 1
 }
