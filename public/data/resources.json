@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-03T13:12:51+08:00",
+    "updatedAt": "2026-11-03T13:22:52+08:00",
     "label": "03 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -67,8 +67,8 @@
         "lon": 103.716519,
         "hours": "Daily, 24 hours",
         "note": "Next to SSO office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Batok Bus Interchange",
@@ -287,8 +287,8 @@
         "lon": 103.893906,
         "hours": "Daily, 24 hours",
         "note": "Near CC office entrance",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Serangoon MRT Station",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-03T13:15:02.955101+08:00",
+  "generatedAt": "2026-11-03T13:30:02.518347+08:00",
   "schemaVersion": 1
 }
