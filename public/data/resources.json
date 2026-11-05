@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-05T08:02:52+08:00",
+    "updatedAt": "2026-11-05T08:12:51+08:00",
     "label": "05 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -188,8 +188,8 @@
         "lon": 103.893158,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 1",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Hougang Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-05T08:06:19.275662+08:00",
+  "generatedAt": "2026-11-05T08:15:02.404313+08:00",
   "schemaVersion": 1
 }
