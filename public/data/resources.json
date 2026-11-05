@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-05T16:22:52+08:00",
+    "updatedAt": "2026-11-05T16:42:51+08:00",
     "label": "05 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -12,8 +12,8 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Ang Mo Kio Bus Interchange 2",
@@ -408,8 +408,8 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       }
     ]
   },
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-05T16:30:02.689712+08:00",
+  "generatedAt": "2026-11-05T16:45:02.234941+08:00",
   "schemaVersion": 1
 }
