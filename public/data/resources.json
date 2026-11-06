@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-06T19:22:51+08:00",
+    "updatedAt": "2026-11-06T19:42:51+08:00",
     "label": "06 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -67,8 +67,8 @@
         "lon": 103.716519,
         "hours": "Daily, 24 hours",
         "note": "Next to SSO office",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Bukit Batok Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-06T19:30:02.488303+08:00",
+  "generatedAt": "2026-11-06T19:45:02.161095+08:00",
   "schemaVersion": 1
 }
