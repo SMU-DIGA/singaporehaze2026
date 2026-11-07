@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-07T18:02:52+08:00",
+    "updatedAt": "2026-11-07T18:12:51+08:00",
     "label": "07 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -34,8 +34,8 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bishan Bus Interchange",
@@ -67,8 +67,8 @@
         "lon": 103.716519,
         "hours": "Daily, 24 hours",
         "note": "Next to SSO office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Batok Bus Interchange",
@@ -100,8 +100,8 @@
         "lon": 103.815565,
         "hours": "Daily, 24 hours",
         "note": "Outside Community Hub entrance",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Panjang Public Transport Hub",
@@ -199,8 +199,8 @@
         "lon": 103.882875,
         "hours": "Daily, 24 hours",
         "note": "Near lift lobby B",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Jalan Besar Social Service Office (SSO)",
@@ -221,8 +221,8 @@
         "lon": 103.740927,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Kampong Chai Chee Community Club (CC)",
@@ -232,8 +232,8 @@
         "lon": 103.931806,
         "hours": "Daily, 24 hours",
         "note": "Beside CC office; opposite public toilets",
-        "stock": "limited",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Kreta Ayer Social Service Office (SSO)",
@@ -265,8 +265,8 @@
         "lon": 103.905104,
         "hours": "Daily, 24 hours",
         "note": "Outside ServiceSG Centre",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Queenstown Social Service Office (SSO)",
@@ -276,8 +276,8 @@
         "lon": 103.806208,
         "hours": "Daily, 24 hours",
         "note": "Level 1 Lift Lobby (below SSO office)",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Sengkang Community Club (CC)",
@@ -331,8 +331,8 @@
         "lon": 103.940381,
         "hours": "Daily, 24 hours",
         "note": "Level 4 near Lobby B",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Toa Payoh Central Zone '2' Residents' Network (RN)",
@@ -375,8 +375,8 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yio Chu Kang Bus Interchange",
@@ -397,8 +397,8 @@
         "lon": 103.836178,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B2",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yishun Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-07T18:05:12.248334+08:00",
+  "generatedAt": "2026-11-07T18:15:02.871773+08:00",
   "schemaVersion": 1
 }
