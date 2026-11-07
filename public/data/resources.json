@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-07T12:52:52+08:00",
+    "updatedAt": "2026-11-07T13:02:52+08:00",
     "label": "07 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -210,8 +210,8 @@
         "lon": 103.861787,
         "hours": "Daily, 24 hours",
         "note": "Near SSO entrance",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Jurong East Bus Interchange",
@@ -298,8 +298,8 @@
         "lon": 103.87107,
         "hours": "Daily, unavailable between 12.40 am - 5.40 am",
         "note": "Between Circle Line Exit E and G (beside NEX entrance)",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Serangoon Social Service Office (SSO)",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-07T13:00:02.939422+08:00",
+  "generatedAt": "2026-11-07T13:06:34.495301+08:00",
   "schemaVersion": 1
 }
