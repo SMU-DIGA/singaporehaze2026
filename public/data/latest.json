@@ -1,7 +1,7 @@
 {
   "psi": {
     "date": "2026-11-07",
-    "updatedTimestamp": "2026-11-07T18:00:56+08:00",
+    "updatedTimestamp": "2026-11-07T18:45:40+08:00",
     "timestamp": "2026-11-07T18:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
@@ -92,7 +92,7 @@
   },
   "pm25": {
     "date": "2026-11-07",
-    "updatedTimestamp": "2026-11-07T18:00:56+08:00",
+    "updatedTimestamp": "2026-11-07T18:45:40+08:00",
     "timestamp": "2026-11-07T18:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
@@ -206,16 +206,6 @@
   ],
   "history": {
     "psi": [
-      {
-        "timestamp": "2026-10-30T19:00:00+08:00",
-        "values": {
-          "central": 61,
-          "east": 55,
-          "north": 59,
-          "south": 60,
-          "west": 59
-        }
-      },
       {
         "timestamp": "2026-10-30T20:00:00+08:00",
         "values": {
@@ -2129,16 +2119,6 @@
     ],
     "pm25": [
       {
-        "timestamp": "2026-10-30T19:00:00+08:00",
-        "values": {
-          "central": 29,
-          "east": 13,
-          "north": 20,
-          "south": 18,
-          "west": 23
-        }
-      },
-      {
         "timestamp": "2026-10-30T20:00:00+08:00",
         "values": {
           "central": 20,
@@ -4050,57 +4030,57 @@
       }
     ]
   },
-  "generatedAt": "2026-11-07T18:05:02.711824+08:00",
-  "nextUpdateAt": "2026-11-07T19:05:00+08:00",
+  "generatedAt": "2026-11-07T19:05:02.975313+08:00",
+  "nextUpdateAt": "2026-11-07T20:05:00+08:00",
   "sources": {
-    "advisories": {
-      "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
-    },
     "psi": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
-    },
-    "history_pm25_2026-11-07": {
-      "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
-    },
-    "history_psi_2026-11-07": {
-      "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
+    },
+    "history_psi_2026-11-07": {
+      "ok": true,
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
+    },
+    "history_pm25_2026-11-07": {
+      "ok": true,
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "history_psi_2026-11-06": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "history_pm25_2026-11-06": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
-    "forecast_nea": {
-      "ok": false,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00",
-      "error": "ValueError"
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
+    },
+    "forecast_nea": {
+      "ok": false,
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00",
+      "error": "ValueError"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-11-07T18:05:02.711824+08:00"
+      "checkedAt": "2026-11-07T19:05:02.975313+08:00"
     }
   },
   "errors": [
@@ -4108,6 +4088,13 @@
   ],
   "schemaVersion": 1,
   "advisories": [
+    {
+      "title": "Haze Situation Update (7 November 2026)",
+      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-7-november-2026",
+      "source": "NEA",
+      "publishedAt": "2026-11-07T18:19:38+08:00",
+      "category": "government"
+    },
     {
       "title": "Haze Situation Update (6 November 2026)",
       "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-6-november-2026",
@@ -4142,24 +4129,17 @@
       "source": "NEA",
       "publishedAt": "2026-11-01T17:02:00+08:00",
       "category": "government"
-    },
-    {
-      "title": "Haze Situation Update (31 October 2026)",
-      "url": "https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-31-october-2026",
-      "source": "NEA",
-      "publishedAt": "2026-10-31T16:20:00+08:00",
-      "category": "government"
     }
   ],
   "forecast": {
     "targetDate": "2026-11-08",
-    "issuedAt": "2026-11-07T18:05:02.711824+08:00",
+    "issuedAt": "2026-11-07T19:05:02.975313+08:00",
     "psi": {
       "low": 36,
       "high": 44
     },
     "regions": {
-      "north": 41,
+      "north": 40,
       "south": 41,
       "east": 36,
       "west": 44,
@@ -4222,7 +4202,6 @@
     },
     "hourly": {
       "times": [
-        "2026-11-07T19",
         "2026-11-07T20",
         "2026-11-07T21",
         "2026-11-07T22",
@@ -4255,7 +4234,6 @@
       "regions": {
         "north": [
           9,
-          9,
           10,
           10,
           11,
@@ -4285,7 +4263,6 @@
           16
         ],
         "south": [
-          9,
           9,
           8,
           8,
@@ -4319,7 +4296,6 @@
           7,
           7,
           7,
-          7,
           6,
           6,
           6,
@@ -4347,9 +4323,8 @@
           7
         ],
         "west": [
-          12,
           11,
-          10,
+          11,
           10,
           10,
           10,
@@ -4373,12 +4348,11 @@
           13,
           12,
           12,
-          11,
+          12,
           11,
           11
         ],
         "central": [
-          8,
           7,
           7,
           7,
@@ -4394,13 +4368,13 @@
           9,
           10,
           9,
-          10,
+          9,
           12,
           14,
           12,
           11,
           10,
-          10,
+          9,
           9,
           8,
           7,
@@ -4438,7 +4412,7 @@
         },
         {
           "date": "2026-11-10",
-          "low": 37,
+          "low": 38,
           "high": 57,
           "source": "model",
           "weather": {
@@ -4603,7 +4577,7 @@
     },
     {
       "targetDate": "2026-11-08",
-      "issuedAt": "2026-11-07T18:05:02.711824+08:00",
+      "issuedAt": "2026-11-07T19:05:02.975313+08:00",
       "low": 36,
       "high": 44,
       "official": false
