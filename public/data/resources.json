@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-07T18:12:51+08:00",
+    "updatedAt": "2026-11-07T18:22:52+08:00",
     "label": "07 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -23,8 +23,8 @@
         "lon": 103.848478,
         "hours": "Daily, unavailable between 1 am - 5 am",
         "note": "Opposite Boarding Berth B4",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bedok Bus Interchange",
@@ -34,8 +34,8 @@
         "lon": 103.929256,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth B6",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Bishan Bus Interchange",
@@ -45,8 +45,8 @@
         "lon": 103.849763,
         "hours": "Daily, 24 hours",
         "note": "Beside Passenger Service Office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Boon Lay MRT Station",
@@ -144,8 +144,8 @@
         "lon": 103.849139,
         "hours": "Daily, 24 hours",
         "note": "Outside SSO main office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Former Sembawang Social Service Office (SSO)",
@@ -386,8 +386,8 @@
         "lon": 103.844818,
         "hours": "Daily, 24 hours",
         "note": "Near bus interchange entrance/exit",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Yishun Bus Interchange",
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-07T18:15:02.871773+08:00",
+  "generatedAt": "2026-11-07T18:30:02.515177+08:00",
   "schemaVersion": 1
 }
