@@ -1,6 +1,6 @@
 {
   "masks": {
-    "updatedAt": "2026-11-07T18:22:52+08:00",
+    "updatedAt": "2026-11-07T18:42:52+08:00",
     "label": "07 Nov 2026",
     "source": "https://www.gowhere.gov.sg/hazemask/",
     "items": [
@@ -78,8 +78,8 @@
         "lon": 103.750969,
         "hours": "Daily, 24 hours",
         "note": "Near Passenger Service Office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Bukit Merah Bus Interchange",
@@ -188,8 +188,8 @@
         "lon": 103.893158,
         "hours": "Daily, 24 hours",
         "note": "Near Boarding Berth 1",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Hougang Social Service Office (SSO)",
@@ -364,8 +364,8 @@
         "lon": 103.785928,
         "hours": "Daily, 24 hours",
         "note": "Next to RC office",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       },
       {
         "name": "Woodlands Bus Interchange",
@@ -375,8 +375,8 @@
         "lon": 103.785326,
         "hours": "Daily, unavailable between 12:30 am - 3:30 am",
         "note": "Near Boarding Berth B6",
-        "stock": "unknown",
-        "working": false
+        "stock": "available",
+        "working": true
       },
       {
         "name": "Yio Chu Kang Bus Interchange",
@@ -408,8 +408,8 @@
         "lon": 103.833476,
         "hours": "Daily, 24 hours",
         "note": "Next to bicycle parking lot",
-        "stock": "available",
-        "working": true
+        "stock": "unknown",
+        "working": false
       }
     ]
   },
@@ -1623,6 +1623,6 @@
     ]
   },
   "errors": [],
-  "generatedAt": "2026-11-07T18:30:02.515177+08:00",
+  "generatedAt": "2026-11-07T18:45:01.966871+08:00",
   "schemaVersion": 1
 }
