@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-11-08T17:00",
+  "observedAt": "2026-11-08T18:00",
   "tomorrow": "2026-11-09",
   "dayAfter": "2026-11-10",
   "cities": [
@@ -11,8 +11,8 @@
       "lat": 1.35,
       "lon": 103.82,
       "flightMinutes": 0,
-      "aqi": 51,
-      "pm25": 14.3,
+      "aqi": 52,
+      "pm25": 13.0,
       "tomorrowMax": 59,
       "dayAfterMax": 65,
       "price": null
@@ -25,8 +25,8 @@
       "lat": 3.139,
       "lon": 101.687,
       "flightMinutes": 60,
-      "aqi": 97,
-      "pm25": 17.5,
+      "aqi": 96,
+      "pm25": 19.6,
       "tomorrowMax": 83,
       "dayAfterMax": 90,
       "price": {
@@ -56,7 +56,7 @@
       "lon": 100.329,
       "flightMinutes": 85,
       "aqi": 60,
-      "pm25": 8.7,
+      "pm25": 8.4,
       "tomorrowMax": 56,
       "dayAfterMax": 55,
       "price": {
@@ -86,7 +86,7 @@
       "lon": 116.073,
       "flightMinutes": 150,
       "aqi": 51,
-      "pm25": 5.2,
+      "pm25": 6.6,
       "tomorrowMax": 51,
       "dayAfterMax": 50,
       "price": {
@@ -116,7 +116,7 @@
       "lon": 100.502,
       "flightMinutes": 145,
       "aqi": 88,
-      "pm25": 13.8,
+      "pm25": 13.9,
       "tomorrowMax": 81,
       "dayAfterMax": 62,
       "price": {
@@ -145,7 +145,7 @@
       "lat": 7.88,
       "lon": 98.392,
       "flightMinutes": 95,
-      "aqi": 20,
+      "aqi": 19,
       "pm25": 2.5,
       "tomorrowMax": 16,
       "dayAfterMax": 16,
@@ -175,8 +175,8 @@
       "lat": 18.788,
       "lon": 98.985,
       "flightMinutes": 195,
-      "aqi": 49,
-      "pm25": 6.2,
+      "aqi": 48,
+      "pm25": 6.4,
       "tomorrowMax": 51,
       "dayAfterMax": 50,
       "price": {
@@ -206,7 +206,7 @@
       "lon": 106.63,
       "flightMinutes": 120,
       "aqi": 78,
-      "pm25": 12.5,
+      "pm25": 14.4,
       "tomorrowMax": 78,
       "dayAfterMax": 91,
       "price": {
@@ -235,8 +235,8 @@
       "lat": 16.054,
       "lon": 108.202,
       "flightMinutes": 165,
-      "aqi": 51,
-      "pm25": 9.6,
+      "aqi": 50,
+      "pm25": 10.1,
       "tomorrowMax": 55,
       "dayAfterMax": 68,
       "price": {
@@ -266,7 +266,7 @@
       "lon": 105.854,
       "flightMinutes": 210,
       "aqi": 95,
-      "pm25": 14.9,
+      "pm25": 22.1,
       "tomorrowMax": 93,
       "dayAfterMax": 72,
       "price": {
@@ -295,8 +295,8 @@
       "lat": 14.6,
       "lon": 120.984,
       "flightMinutes": 215,
-      "aqi": 38,
-      "pm25": 4.6,
+      "aqi": 37,
+      "pm25": 4.9,
       "tomorrowMax": 33,
       "dayAfterMax": 48,
       "price": {
@@ -326,7 +326,7 @@
       "lon": 123.885,
       "flightMinutes": 230,
       "aqi": 21,
-      "pm25": 3.5,
+      "pm25": 3.7,
       "tomorrowMax": 49,
       "dayAfterMax": 51,
       "price": {
@@ -353,7 +353,7 @@
       "lon": 115.217,
       "flightMinutes": 160,
       "aqi": 62,
-      "pm25": 11.0,
+      "pm25": 11.2,
       "tomorrowMax": 67,
       "dayAfterMax": 63,
       "price": {
@@ -382,8 +382,8 @@
       "lat": -6.2,
       "lon": 106.845,
       "flightMinutes": 105,
-      "aqi": 103,
-      "pm25": 25.6,
+      "aqi": 102,
+      "pm25": 25.1,
       "tomorrowMax": 132,
       "dayAfterMax": 150,
       "price": {
@@ -412,8 +412,8 @@
       "lat": 22.32,
       "lon": 114.17,
       "flightMinutes": 235,
-      "aqi": 75,
-      "pm25": 27.0,
+      "aqi": 76,
+      "pm25": 32.4,
       "tomorrowMax": 87,
       "dayAfterMax": 64,
       "price": {
@@ -443,7 +443,7 @@
       "lon": 121.565,
       "flightMinutes": 280,
       "aqi": 64,
-      "pm25": 13.7,
+      "pm25": 15.3,
       "tomorrowMax": 61,
       "dayAfterMax": 64,
       "price": {
@@ -470,7 +470,7 @@
       "lon": 115.86,
       "flightMinutes": 315,
       "aqi": 44,
-      "pm25": 9.7,
+      "pm25": 9.4,
       "tomorrowMax": 42,
       "dayAfterMax": 51,
       "price": {
@@ -492,7 +492,7 @@
       }
     }
   ],
-  "generatedAt": "2026-11-08T17:05:05.831029+08:00",
+  "generatedAt": "2026-11-08T18:05:05.240927+08:00",
   "source": "CAMS via Open-Meteo",
   "priceErrors": [],
   "schemaVersion": 1
