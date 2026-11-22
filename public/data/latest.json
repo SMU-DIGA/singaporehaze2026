@@ -1,29 +1,29 @@
 {
   "psi": {
     "date": "2026-11-22",
-    "updatedTimestamp": "2026-11-22T22:00:32+08:00",
-    "timestamp": "2026-11-22T22:00:00+08:00",
+    "updatedTimestamp": "2026-11-22T23:00:33+08:00",
+    "timestamp": "2026-11-22T23:00:00+08:00",
     "readings": {
       "psi_twenty_four_hourly": {
-        "north": 39,
+        "north": 38,
         "south": 40,
         "west": 51,
         "east": 38,
-        "central": 41
+        "central": 40
       },
       "no2_one_hour_max": {
-        "north": 4,
-        "south": 17,
-        "west": 12,
-        "east": 10,
-        "central": 18
+        "north": 8,
+        "south": 19,
+        "west": 19,
+        "east": 13,
+        "central": 9
       },
       "pm10_twenty_four_hourly": {
         "north": 21,
         "south": 19,
         "west": 25,
         "east": 22,
-        "central": 23
+        "central": 22
       },
       "pm25_twenty_four_hourly": {
         "north": 9,
@@ -47,11 +47,11 @@
         "central": 0
       },
       "o3_eight_hour_max": {
-        "north": 46,
-        "south": 30,
-        "west": 37,
-        "east": 37,
-        "central": 52
+        "north": 40,
+        "south": 28,
+        "west": 31,
+        "east": 35,
+        "central": 46
       },
       "co_sub_index": {
         "north": 4,
@@ -61,25 +61,25 @@
         "central": 5
       },
       "o3_sub_index": {
-        "north": 19,
-        "south": 13,
-        "west": 16,
-        "east": 16,
-        "central": 22
+        "north": 17,
+        "south": 12,
+        "west": 13,
+        "east": 15,
+        "central": 19
       },
       "pm10_sub_index": {
         "north": 21,
         "south": 19,
         "west": 25,
         "east": 22,
-        "central": 23
+        "central": 22
       },
       "pm25_sub_index": {
-        "north": 39,
+        "north": 38,
         "south": 40,
         "west": 51,
         "east": 38,
-        "central": 41
+        "central": 40
       },
       "so2_sub_index": {
         "north": 1,
@@ -92,14 +92,14 @@
   },
   "pm25": {
     "date": "2026-11-22",
-    "updatedTimestamp": "2026-11-22T22:00:32+08:00",
-    "timestamp": "2026-11-22T22:00:00+08:00",
+    "updatedTimestamp": "2026-11-22T23:00:33+08:00",
+    "timestamp": "2026-11-22T23:00:00+08:00",
     "readings": {
       "pm25_one_hourly": {
-        "north": 9,
+        "north": 4,
         "south": 6,
-        "west": 7,
-        "east": 4,
+        "west": 9,
+        "east": 7,
         "central": 7
       }
     }
@@ -199,16 +199,6 @@
   ],
   "history": {
     "psi": [
-      {
-        "timestamp": "2026-11-14T23:00:00+08:00",
-        "values": {
-          "central": 58,
-          "east": 52,
-          "north": 55,
-          "south": 52,
-          "west": 67
-        }
-      },
       {
         "timestamp": "2026-11-15T00:00:00+08:00",
         "values": {
@@ -2072,41 +2062,41 @@
       {
         "timestamp": "2026-11-22T18:00:00+08:00",
         "values": {
+          "central": 40,
+          "east": 39,
           "north": 41,
           "south": 41,
-          "west": 52,
-          "east": 39,
-          "central": 40
+          "west": 52
         }
       },
       {
         "timestamp": "2026-11-22T19:00:00+08:00",
         "values": {
+          "central": 41,
+          "east": 39,
           "north": 40,
           "south": 41,
-          "west": 52,
-          "east": 39,
-          "central": 41
+          "west": 52
         }
       },
       {
         "timestamp": "2026-11-22T20:00:00+08:00",
         "values": {
+          "central": 41,
+          "east": 39,
           "north": 40,
           "south": 41,
-          "west": 52,
-          "east": 39,
-          "central": 41
+          "west": 52
         }
       },
       {
         "timestamp": "2026-11-22T21:00:00+08:00",
         "values": {
+          "central": 41,
+          "east": 39,
           "north": 39,
           "south": 41,
-          "west": 52,
-          "east": 39,
-          "central": 41
+          "west": 52
         }
       },
       {
@@ -2118,19 +2108,19 @@
           "east": 38,
           "central": 41
         }
+      },
+      {
+        "timestamp": "2026-11-22T23:00:00+08:00",
+        "values": {
+          "north": 38,
+          "south": 40,
+          "west": 51,
+          "east": 38,
+          "central": 40
+        }
       }
     ],
     "pm25": [
-      {
-        "timestamp": "2026-11-14T23:00:00+08:00",
-        "values": {
-          "central": 12,
-          "east": 10,
-          "north": 12,
-          "south": 12,
-          "west": 19
-        }
-      },
       {
         "timestamp": "2026-11-15T00:00:00+08:00",
         "values": {
@@ -4040,64 +4030,70 @@
           "east": 4,
           "central": 7
         }
+      },
+      {
+        "timestamp": "2026-11-22T23:00:00+08:00",
+        "values": {
+          "north": 4,
+          "south": 6,
+          "west": 9,
+          "east": 7,
+          "central": 7
+        }
       }
     ]
   },
-  "generatedAt": "2026-11-22T22:05:02.765851+08:00",
-  "nextUpdateAt": "2026-11-22T23:05:00+08:00",
+  "generatedAt": "2026-11-22T23:05:02.769932+08:00",
+  "nextUpdateAt": "2026-11-23T00:05:00+08:00",
   "sources": {
+    "psi": {
+      "ok": true,
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
+    },
     "pm25": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "news": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
-    },
-    "psi": {
-      "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
-    },
-    "history_psi_2026-11-22": {
-      "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "history_pm25_2026-11-22": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
-    "advisories": {
+    "history_psi_2026-11-22": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
-    },
-    "history_pm25_2026-11-21": {
-      "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "history_psi_2026-11-21": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
+    },
+    "history_pm25_2026-11-21": {
+      "ok": true,
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "cna": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
+    },
+    "advisories": {
+      "ok": true,
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "forecast_weather": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     },
     "forecast_nea": {
       "ok": false,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00",
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00",
       "error": "ValueError"
-    },
-    "forecast_asmc": {
-      "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
     },
     "forecast_model": {
       "ok": true,
-      "checkedAt": "2026-11-22T22:05:02.765851+08:00"
+      "checkedAt": "2026-11-22T23:05:02.769932+08:00"
     }
   },
   "errors": [
@@ -4150,22 +4146,22 @@
   ],
   "forecast": {
     "targetDate": "2026-11-23",
-    "issuedAt": "2026-11-22T22:05:02.765851+08:00",
+    "issuedAt": "2026-11-22T23:05:02.769932+08:00",
     "psi": {
-      "low": 39,
+      "low": 38,
       "high": 50
     },
     "regions": {
-      "north": 42,
+      "north": 41,
       "south": 41,
-      "east": 39,
+      "east": 38,
       "west": 50,
-      "central": 41
+      "central": 40
     },
     "confidence": "medium",
     "official": null,
     "trend": {
-      "low": 33,
+      "low": 32,
       "high": 46,
       "change24h": 16
     },
@@ -4173,7 +4169,7 @@
       "low": 45,
       "high": 53,
       "pm25": 12,
-      "bias": 1.12
+      "bias": 1.11
     },
     "weather": {
       "date": "2026-11-23",
@@ -4219,7 +4215,6 @@
     },
     "hourly": {
       "times": [
-        "2026-11-22T23",
         "2026-11-23T00",
         "2026-11-23T01",
         "2026-11-23T02",
@@ -4247,24 +4242,23 @@
       ],
       "regions": {
         "north": [
+          10,
+          9,
+          7,
+          6,
+          6,
+          7,
+          8,
+          9,
+          10,
+          9,
+          10,
+          9,
+          8,
+          8,
+          10,
           12,
-          11,
-          9,
-          7,
-          6,
-          6,
-          7,
-          9,
-          9,
-          10,
-          10,
-          10,
-          9,
-          9,
-          9,
-          10,
-          13,
-          13,
+          12,
           13,
           14,
           16,
@@ -4274,7 +4268,6 @@
           23
         ],
         "south": [
-          8,
           7,
           7,
           6,
@@ -4302,7 +4295,6 @@
         ],
         "east": [
           7,
-          7,
           6,
           6,
           5,
@@ -4328,7 +4320,6 @@
           13
         ],
         "west": [
-          10,
           9,
           9,
           8,
@@ -4336,7 +4327,7 @@
           7,
           7,
           8,
-          9,
+          8,
           10,
           11,
           12,
@@ -4345,7 +4336,7 @@
           20,
           21,
           20,
-          19,
+          18,
           20,
           22,
           20,
@@ -4355,7 +4346,6 @@
           18
         ],
         "central": [
-          8,
           7,
           7,
           6,
@@ -4387,7 +4377,7 @@
       "days": [
         {
           "date": "2026-11-23",
-          "low": 39,
+          "low": 38,
           "high": 50,
           "source": "blend",
           "weather": {
@@ -4423,8 +4413,8 @@
         },
         {
           "date": "2026-11-26",
-          "low": 36,
-          "high": 56,
+          "low": 35,
+          "high": 55,
           "source": "model",
           "weather": {
             "text": "Afternoon thundery showers",
@@ -4576,8 +4566,8 @@
     },
     {
       "targetDate": "2026-11-23",
-      "issuedAt": "2026-11-22T22:05:02.765851+08:00",
-      "low": 39,
+      "issuedAt": "2026-11-22T23:05:02.769932+08:00",
+      "low": 38,
       "high": 50,
       "official": false
     }
